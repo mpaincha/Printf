@@ -14,11 +14,17 @@
 # define FT_PRINTF_H
 
 //# include "libft.h"
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <string.h>
 # include <stdarg.h>
+#include <stdio.h>
+
+/*
+	% [drapeaux] [largeur] [.precision] [modificateur] type
+*/
+
+# define SPECIFIER {s,S,p,d,D,i,o,O,u,U,x,X,c,C}
+# define FLAGS {#,0,-,+,' '}
+# define PRECISION {.0,.n,*} //rien est egalement possible
+
 
 int		ft_printf(const char *format, ...);
 

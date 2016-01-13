@@ -28,5 +28,8 @@
 
 int		ft_printf(const char *format, ...);
 int		recovery_arg(const char *format);
+void	display_percent(int n);
+void	display(const char *format);
+int		percent(const char *format, int *i);
 
 #endif

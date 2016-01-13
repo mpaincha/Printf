@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:12:51 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:12:54 by mpaincha         ###   ########.fr       */
+/*   Created: 2016/01/13 18:22:01 by mpaincha          #+#    #+#             */
+/*   Updated: 2016/01/13 18:22:02 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
-{
-	va_list		ap;
-	va_start(ap, format);
 
-	display(format);
-	//printf("Il y a %d arg %%\n", recovery_arg(format));
-	//va_arg(ap, ); //en deuxieme, il faut le type de parametre  qu'on recupere,
-	//le type du ap en cours
-	va_end(ap); //il faut terminer par ca obligatoirement
-	return (1);
+void	display_percent(int	nb)
+{
+	while (nb > 0)
+	{
+		ft_putchar('%');
+		nb--;
+	}
+}
+
+
+void	display(const char *format)
+{
+	int		i;
+
+	i = 0;
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%')
+			percent(format, &i);
+		else if (ft_isascii(format[i]))
+			ft_putchar(format[i]);
+		i++;
+	}
 }

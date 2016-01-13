@@ -42,6 +42,7 @@ static int		whicharg(const char *format, int *i)
 			j++;
 			*i = *i + 1;
 		}
+		arg[j] = '\0';
 		printf("Argument : %s\n",arg);
 		return (1);
 	}
@@ -49,7 +50,7 @@ static int		whicharg(const char *format, int *i)
 		return (-1);
 }
 
-static int		percent(const char *format, int *i)
+int		percent(const char *format, int *i)
 {
 	int		percent;
 
@@ -62,36 +63,43 @@ static int		percent(const char *format, int *i)
 	if (percent > 1)
 	{
 		if (percent % 2 == 0)
+		{
+			display_percent(percent/2);
 			return (0);
+		}
 	}
+	whicharg(format, i);
 	return (1);
 }
 
-static	int		countarg(const char *format)
-{
-	int		i;
-	int		arg;
+// static	int		countarg(const char *format, t_dbllist **lst_arg)
+// {
+// 	int		i;
+// 	int		arg;
 
-	i = 0;
-	arg = 0;
-	while (format[i] != '\0')
-	{
-		if (format[i] == '%')
-		{
-			arg++;
-			if (percent(format, &i) == 0)
-				arg--;
-			else
-				whicharg(format, &i);
-		}
-		i++;
-	}
-	return (arg);
-}
+// 	i = 0;
+// 	arg = 0;
+// 	while (format[i] != '\0')
+// 	{
+// 		if (format[i] == '%')
+// 		{
+// 			arg++;
+// 			if (percent(format, &i) == 0)
+// 				arg--;
+// 			else
+// 				whicharg(format, &i, lst_arg);
+// 		}
+// 		i++;
+// 	}
+// 	return (arg);
+// }
 
-int		recovery_arg(const char *format)
-{
-	//creation d'une liste chaine et integration des differents
-	//arguments/maillons au fur et a mesure
-	return (countarg(format));
-}
+// int		recovery_arg(const char *format)
+// {
+// 	t_dbllist	*lst_arg;
+// 	size_t		nb_arg;
+
+// 	lst_arg = ft_lstdblnew();
+// 	nb_arg = countarg(format, &lst_arg);
+// 	return (1);
+// }

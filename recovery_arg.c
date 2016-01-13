@@ -37,7 +37,11 @@ static int		whicharg(const char *format, int *i)
 	{
 		arg = ft_strnew(arglen(format, *i));
 		while (format[*i] != ' ' && format[*i] != '\0')
-			arg[j++] = format[*i = *i + 1];
+		{
+			arg[j] = format[*i];
+			j++;
+			*i = *i + 1;
+		}
 		printf("Argument : %s\n",arg);
 		return (1);
 	}
@@ -87,5 +91,7 @@ static	int		countarg(const char *format)
 
 int		recovery_arg(const char *format)
 {
+	//creation d'une liste chaine et integration des differents
+	//arguments/maillons au fur et a mesure
 	return (countarg(format));
 }

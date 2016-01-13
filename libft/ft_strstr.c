@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/11/24 10:24:30 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/11/25 17:38:13 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
-
-		return (1);
-	}
-	else
-		return (0);
+	return (ft_strnstr(s1, s2, ft_strlen(s1)));
 }

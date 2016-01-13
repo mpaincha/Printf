@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/11/30 19:36:51 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/12/01 17:03:47 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
+	t_list	*tmp;
+	t_list	*tmp2;
 
-		return (1);
+	tmp = *alst;
+	while (tmp != NULL)
+	{
+		tmp2 = tmp->next;
+		ft_lstdelone(&tmp, del);
+		tmp = tmp2;
 	}
-	else
-		return (0);
+	*alst = NULL;
 }

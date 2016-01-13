@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/11/23 14:49:14 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/11/25 17:26:20 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_putstr(char const *s)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
-
-		return (1);
-	}
-	else
-		return (0);
+	ft_putstr_fd(s, 1);
 }

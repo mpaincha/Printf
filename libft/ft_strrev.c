@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/12/02 14:39:10 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/12/02 16:34:54 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strrev(char *str)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
+	int		i;
+	int		len;
+	int		ilen;
+	char	c;
 
-		return (1);
+	i = 0;
+	len = ft_strlen(str);
+	ilen = len - 1;
+	while (i < (len / 2))
+	{
+		c = str[i];
+		str[i] = str[ilen];
+		str[ilen] = c;
+		i++;
+		ilen--;
 	}
-	else
-		return (0);
+	return (str);
 }

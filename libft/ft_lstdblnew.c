@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdblnew.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/12/09 09:45:18 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/12/20 16:13:12 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+t_dbllist	*ft_lstdblnew(void)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
+	t_dbllist	*list;
 
-		return (1);
-	}
+	list = (t_dbllist *)malloc(sizeof(t_dbllist));
+	if (list == NULL)
+		return (NULL);
 	else
-		return (0);
+	{
+		list->length = 0;
+		list->tail = NULL;
+		list->head = NULL;
+	}
+	return (list);
 }

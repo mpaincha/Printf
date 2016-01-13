@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/11/30 12:10:00 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/12/02 12:42:27 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
+	int		i;
+	char	*str;
 
-		return (1);
+	i = 0;
+	if (s == NULL && f == NULL)
+		return (NULL);
+	str = ft_strnew(ft_strlen(s));
+	while (s[i])
+	{
+		str[i] = (*f)(s[i]);
+		i++;
 	}
-	else
-		return (0);
+	return (str);
 }

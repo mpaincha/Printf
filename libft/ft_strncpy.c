@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/11/23 16:26:24 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/12/02 11:56:58 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
+	size_t		i;
 
-		return (1);
+	i = 0;
+	while (n > i && src[i] != '\0')
+	{
+		dst[i] = (char)src[i];
+		i++;
 	}
-	else
-		return (0);
+	if (n > i)
+	{
+		while (n > i)
+			dst[i++] = '\0';
+	}
+	if (n < i)
+		dst[i] = '\0';
+	return (dst);
 }

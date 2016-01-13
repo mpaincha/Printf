@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdbldel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/12/11 10:06:14 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/12/20 16:12:56 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_lstdbldel(t_dbllist **list)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
+	t_elem	*tmp;
 
-		return (1);
+	tmp = NULL;
+	while ((*list)->head != NULL)
+	{
+		tmp = (*list)->head->next;
+		free((*list)->head->content);
+		(*list)->head->content = NULL;
+		free((*list)->head);
+		(*list)->head = tmp;
 	}
-	else
-		return (0);
+	(*list)->tail = NULL;
+	(*list)->head = NULL;
 }

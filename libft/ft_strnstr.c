@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/11/24 17:42:25 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/11/25 17:38:55 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
+	size_t	i;
+	size_t	j;
 
-		return (1);
-	}
+	i = 0;
+	j = 0;
+	if (s2[0] == '\0')
+		return ((char *)s1);
+	if (ft_strlen(s2) > ft_strlen(s1))
+		return (NULL);
 	else
-		return (0);
+	{
+		while (s1[i] != '\0')
+		{
+			while (s2[j] != '\0' && s1[i + j] == s2[j] && i + j < n)
+				j++;
+			if (s2[j] == '\0')
+				return ((char *)&s1[i]);
+			i++;
+			j = 0;
+		}
+		return (NULL);
+	}
 }

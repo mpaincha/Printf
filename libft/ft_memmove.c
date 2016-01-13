@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/11/25 15:07:30 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/12/03 15:51:45 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
+	void			*src_tmp;
 
-		return (1);
-	}
-	else
-		return (0);
+	src_tmp = (void *)malloc(sizeof(void) * len);
+	if (src_tmp == NULL)
+		return (NULL);
+	ft_memcpy(src_tmp, src, len);
+	ft_memcpy(dst, src_tmp, len);
+	free(src_tmp);
+	return (dst);
 }

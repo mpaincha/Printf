@@ -12,73 +12,18 @@
 
 #include "ft_printf.h"
 
-// void	ft_whicharg(const char *format, int i)
-// {
-// 	char	*spec;
-// 	int		j;
-
-// 	spec = 0;
-// 	j = 0;
-// 	if (format[i])
-// 	{
-// 		while (format[i] != ' ')
-// 			spec[j++] = format[i++];
-// 	}
-// 	else
-// 		return (-1);
-// }
-
-int		ft_percent(const char *format, int *i)
-{
-	int		percent;
-
-	percent = 1;
-	while (format[*i + 1] == '%')
-	{
-		percent++;
-		*i = *i + 1;
-	}
-	if (percent > 1)
-	{
-		if (percent % 2 == 0)
-			return (0);
-	}
-	return (1);
-}
-
-int		ft_countarg(const char *format)
-{
-	int		i;
-	int		arg;
-
-	i = 0;
-	arg = 0;
-	while (format[i] != '\0')
-	{
-		if (format[i] == '%')
-		{
-			arg++;
-			if (ft_percent(format, &i) == 0)
-				arg--;
-		}
-		i++;
-	}
-	return (arg);
-}
-
 int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	va_start(ap, format);
 
-	printf("Il y a %d signes %%\n", ft_countarg(format));
+	printf("Il y a %d arg %%\n", recovery_arg(format));
 	//va_arg(ap, ); //en deuxieme, il faut le type de parametre  qu'on recupere,
 	//le type du ap en cours
 	va_end(ap); //il faut terminer par ca obligatoirement
 	return (1);
 }
 
-// #include <stdio.h>
 // int		multiplication(int *resultat, ...)
 // {
 // 	int parametre = 1; // Valeur du paramètre actuel

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/11/25 16:52:20 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/11/25 17:40:25 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		// printf("Test PRINTF\n");
-		// printf("bonjour %\n", 42);
-		// printf("bonjour %d\n", 42);
+	size_t			i;
+	unsigned char	*s1_bis;
+	unsigned char	*s2_bis;
 
-		return (1);
-	}
-	else
+	i = 0;
+	s1_bis = (unsigned char *)s1;
+	s2_bis = (unsigned char *)s2;
+	if (n == 0)
 		return (0);
+	while ((n - 1) > i)
+	{
+		if (s1_bis[i] != s2_bis[i])
+			return (s1_bis[i] - s2_bis[i]);
+		i++;
+	}
+	return (s1_bis[i] - s2_bis[i]);
 }

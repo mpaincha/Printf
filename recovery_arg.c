@@ -67,6 +67,7 @@ int		percent(const char *format, int *i)
 			display_percent(percent/2);
 			return (0);
 		}
+		display_percent(percent/2);
 	}
 	whicharg(format, i);
 	return (1);

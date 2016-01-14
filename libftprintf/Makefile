@@ -6,11 +6,11 @@
 #    By: mpaincha <mpaincha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 12:19:31 by fsimmet           #+#    #+#              #
-#    Updated: 2016/01/07 10:58:46 by mpaincha         ###   ########.fr        #
+#    Updated: 2016/01/04 11:15:51 by mpaincha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = libftprintf.a
 SRC = ft_bzero.c \
 ft_atoi.c \
 ft_count_words.c \
@@ -76,7 +76,9 @@ ft_lstmap.c \
 ft_lstadd.c \
 ft_lstdbladd.c \
 ft_lstdbldel.c \
-ft_lstdblnew.c
+ft_lstdblnew.c \
+ft_putlsthead.c \
+ft_putlsttail.c
 SRCO = $(SRC:.c=.o)
 HEADERS = .
 CC = gcc

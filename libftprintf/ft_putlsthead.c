@@ -1,13 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   ft_putlsthead.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 13:50:55 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 13:50:56 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/12/10 15:27:51 by mpaincha          #+#    #+#             */
+/*   Updated: 2016/01/08 12:01:43 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+void	ft_putlsthead(t_dbllist *list)
+{
+	t_elem	*tmp;
+
+	tmp = list->head;
+	while (tmp != NULL)
+	{
+		ft_putstr(tmp->content);
+		tmp = tmp->next;
+	}
+}

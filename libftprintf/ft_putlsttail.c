@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putlsttail.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 11:13:32 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/11 11:13:34 by mpaincha         ###   ########.fr       */
+/*   Created: 2015/12/10 15:29:24 by mpaincha          #+#    #+#             */
+/*   Updated: 2015/12/10 15:30:59 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_putlsttail(t_dbllist *list)
 {
-	if (ac == 2)
-	{
-		ft_printf(av[1]);
-		printf("\n\nTest PRINTF\n");
-		printf("bonjour %#d\n", 42);
-		// printf("bonjour %d\n", 42);
+	t_elem	*tmp;
 
-		return (1);
+	tmp = list->tail;
+	while (tmp != NULL)
+	{
+		ft_putstr(tmp->content);
+		tmp = tmp->prev;
 	}
-	else
-		return (0);
 }

@@ -28,7 +28,7 @@ void	display(const char *format)
 	int		i;
 
 	i = 0;
-	while (format[i] != '\0')
+	while (i < (int)ft_strlen(format))
 	{
 		if (format[i] == '%')
 			percent(format, &i);

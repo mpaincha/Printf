@@ -12,19 +12,19 @@
 
 #include "libft.h"
 
-void	ft_lstdbldel(t_dbllist **list)
+void	ft_lstdbldel(t_dbllist *list)
 {
 	t_elem	*tmp;
 
 	tmp = NULL;
-	while ((*list)->head != NULL)
+	while (list->head != NULL)
 	{
-		tmp = (*list)->head->next;
-		free((*list)->head->content);
-		(*list)->head->content = NULL;
-		free((*list)->head);
-		(*list)->head = tmp;
+		tmp = list->head->next;
+		free(list->head->content);
+		list->head->content = NULL;
+		free(list->head);
+		list->head = tmp;
 	}
-	(*list)->tail = NULL;
-	(*list)->head = NULL;
+	list->tail = NULL;
+	list->head = NULL;
 }

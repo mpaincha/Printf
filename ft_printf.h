@@ -36,9 +36,9 @@ typedef struct		s_arg
 }					t_arg;
 
 int		ft_printf(const char *format, ...);
-int		save_arg(char *arg);
 void	display_percent(int n);
 void	display(const char *format);
 int		percent(const char *format, int *i);
+int		split_arg(char *arg, t_arg sarg);
 
 #endif

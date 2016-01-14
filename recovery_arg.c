@@ -20,46 +20,16 @@ static	void		ini_sarg(t_arg *sarg)
 	sarg->spec = 0;
 }
 
-static	int			split_arg(char *arg)
-{
-	t_arg	sarg;
-	int		i;
-	int		j;
-	(void) arg;
-
-	i = 0;
-	j = 0;
-	ini_sarg(&sarg);
-	while (arg[i] != '\0')
-	{
-		if (sarg.length == 0 && sarg.prec == 0 && sarg.spec == 0
-		&& ft_strchr(FLAGS, arg[i])) //verifier qu'on q pqs deux foi la mem lettre
-			sarg.flags[j++] = arg[i];
-		else if (sarg.length == 0 && sarg.prec == 0 && sarg.spec == 0
-		&& ft_strchr(LENGTH, arg[i]))
-			sarg.length = arg[i];
-		else if (sarg.prec == 0 && sarg.spec == 0
-		&& ft_strchr(PREC, arg[i]))
-			sarg.prec = arg[i];
-		else if (sarg.spec == 0 && ft_strchr(SPEC, arg[i]))
-			sarg.spec = arg[i];
-		else
-			return (-1);
-		i++;
-	}
-	printf("\nsarg.flags  : %s\n", sarg.flags);
-	printf("sarg.length  :%c\n", sarg.length);
-	printf("sarg.prec :%c\n", sarg.prec);
-	printf("sarg.spec :%c\n", sarg.spec);
-	return (1);
-}
-
-int					save_arg(char *arg)
+static int			save_arg(char *arg)
 {
 	t_dbllist	*lst_arg;
+	t_arg		sarg;
 
 	lst_arg = ft_lstdblnew();
-	split_arg(arg);
+	ini_sarg(&sarg);
+	if (split_arg(arg, sarg) == -1)
+		return (-1);
+	//ft_lstdbladd(lst_arg, sarg, sizeof(t_arg));,
 	return (1);
 }
 

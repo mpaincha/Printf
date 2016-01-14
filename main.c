@@ -17,8 +17,8 @@ int		main(int ac, char **av)
 	if (ac == 2)
 	{
 		ft_printf(av[1]);
-		printf("\n\nTest PRINTF\n");
-		printf("bonjour %#d\n", 42);
+		// printf("\n\nTest PRINTF\n");
+		// printf("bonjour \n", 42);
 		// printf("bonjour %d\n", 42);
 
 		return (1);

@@ -14,7 +14,8 @@
 
 static int		check_length(t_arg sarg, char find)
 {
-	static int	k = 0;
+	static int	k = 0; //ne marche pas pour les prochains %% rencontre
+	//car il faudrait remettre la variable a 0 pour ca
 
 	if (ft_strlen(sarg.length) < 2 && ft_strlen(sarg.prec) == 0
 	&& ft_strlen(sarg.spec) == 0 && ft_strchr(LENGTH, find))
@@ -34,7 +35,8 @@ static int		check_length(t_arg sarg, char find)
 static int		check_flags(t_arg sarg, char find)
 {
 	int			i;
-	static int	j = 0;
+	static int	j = 0; //ne marche pas pour les prochains %% rencontre
+	//car il faudrait remettre la variable a 0 pour ca
 
 	i = 0;
 	if (ft_strlen(sarg.length) == 0 && ft_strlen(sarg.prec) == 0

@@ -50,6 +50,7 @@ void	display(const char *format)
 	i = 0;
 	while (i < (int)ft_strlen(format))
 	{
+		printf("boucle DISPLAY===\n");
 		if (format[i] == '%')
 			percent(format, &i);
 		else if (ft_isascii(format[i]))

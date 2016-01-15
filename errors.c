@@ -12,4 +12,8 @@
 
 #include "ft_printf.h"
 
-
+int		error(char *msg)
+{
+	ft_putendl(msg);
+	return (0);
+}

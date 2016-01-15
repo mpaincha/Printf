@@ -28,7 +28,7 @@ static int			save_arg(char *arg)
 	lst_arg = ft_lstdblnew();
 	ini_sarg(&sarg);
 	if (split_arg(arg, sarg) == -1)
-		return (-1);
+		return (0);
 	//ft_lstdbladd(lst_arg, sarg, sizeof(t_arg));,
 	return (1);
 }
@@ -63,13 +63,13 @@ static int			recovery_arg(const char *format, int *i)
 			*i = *i + 1;
 		}
 		arg[j] = '\0';
-		if (save_arg(arg) == -1)
-			ft_putstr("Error\n");
+		if (!(save_arg(arg) == -1))
+			return (0);
 		printf("Argument : %s\n",arg);
 		return (1);
 	}
 	else
-		return (-1);
+		return (0);
 }
 
 int					percent(const char *format, int *i)
@@ -89,7 +89,7 @@ int					percent(const char *format, int *i)
 			return (0);
 	}
 	if (!recovery_arg(format, i))
-		return (-1);
+		return (0);
 	return (1);
 }
 

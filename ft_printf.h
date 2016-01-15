@@ -40,5 +40,6 @@ void	display_percent(int n);
 void	display(const char *format);
 int		percent(const char *format, int *i);
 int		split_arg(char *arg, t_arg sarg);
+int		error(char *msg);
 
 #endif

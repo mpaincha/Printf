@@ -30,8 +30,8 @@ typedef struct		s_arg
 {
 	char			*flags;
 	char			*length;
-	char			prec;
-	char			spec;
+	char			*prec;
+	char			*spec;
 
 }					t_arg;
 

@@ -25,9 +25,9 @@ void	ft_putlst(t_dbllist	*list)
 		ft_putstr("\nlength : ");
 		ft_putstr(((t_arg *)(tmp->content))->length);
 		ft_putstr("\nprec : ");
-		ft_putchar(((t_arg *)(tmp->content))->prec);
+		ft_putstr(((t_arg *)(tmp->content))->prec);
 		ft_putstr("\nspec : ");
-		ft_putchar(((t_arg *)(tmp->content))->spec);
+		ft_putstr(((t_arg *)(tmp->content))->spec);
 		tmp = tmp->next;
 	}
 }
@@ -35,8 +35,8 @@ static	void		ini_sarg(t_arg *sarg)
 {
 	sarg->flags = ft_strnew(sizeof(char) * 5);
 	sarg->length = ft_strnew(sizeof(char) * 2);
-	sarg->prec = 0;
-	sarg->spec = 0;
+	sarg->prec = ft_strnew(sizeof(char) * 1);
+	sarg->spec = ft_strnew(sizeof(char) * 1);
 }
 
 static int			save_arg(char *arg)
@@ -49,7 +49,6 @@ static int			save_arg(char *arg)
 	if (!(split_arg(arg, sarg)))
 		return (0);
 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
-	printf("ffichage list\n");
 	ft_putlst(lst_arg);
 	return (1);
 }
@@ -84,7 +83,7 @@ int			recovery_arg(const char *format, int *i)
 			*i = *i + 1;
 		}
 		arg[j] = '\0';
-		if (!(save_arg(arg) == -1))
+		if (!(save_arg(arg)))
 			return (0);
 		printf("Argument : %s\n",arg);
 		return (1);

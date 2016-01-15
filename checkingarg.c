@@ -16,13 +16,14 @@ static int		check_length(t_arg sarg, char find)
 {
 	static int	k = 0;
 
-	if (ft_strlen(sarg.length) < 2 && sarg.prec == 0 && sarg.spec == 0
-		&& ft_strchr(LENGTH, find))
+	if (ft_strlen(sarg.length) < 2 && ft_strlen(sarg.prec) == 0
+	&& ft_strlen(sarg.spec) == 0 && ft_strchr(LENGTH, find))
 	{
 		if (((sarg.length[0] == 'h' || sarg.length[0] == 'l')
 		&& sarg.length[0] == find) || sarg.length[0] == '\0')
 		{
 			sarg.length[k++] = find;
+			sarg.length[k] = '\0';
 			return (1);
 		}
 		return (error("Length error"));
@@ -36,14 +37,15 @@ static int		check_flags(t_arg sarg, char find)
 	static int	j = 0;
 
 	i = 0;
-	if (ft_strlen(sarg.length) == 0 && sarg.prec == 0 && sarg.spec == 0
-	&& ft_strchr(FLAGS, find))
+	if (ft_strlen(sarg.length) == 0 && ft_strlen(sarg.prec) == 0
+	&& ft_strlen(sarg.spec) == 0 && ft_strchr(FLAGS, find))
 	{
 		while (sarg.flags[i] != '\0' && sarg.flags[i] != find)
 			i++;
 		if (sarg.flags[i] == find)
 			return (error("Flags error"));
 		sarg.flags[j++] = find;
+		sarg.flags[j] = '\0';
 		return (1);
 	}
 	return (0);
@@ -60,14 +62,14 @@ int				split_arg(char *arg, t_arg sarg)
 			continue ;
 		else if (check_length(sarg, arg[i]))
 			continue ;
-		else if (arg[i] == '.' && sarg.prec == 0 && sarg.spec == 0
-		&& ft_strchr(PREC, arg[i + 1]))
+		else if (arg[i] == '.' && ft_strlen(sarg.prec) == 0 &&
+		ft_strlen(sarg.spec) == 0 && ft_strchr(PREC, arg[i + 1]))
 		{
-			sarg.prec = arg[i + 1];
+			sarg.prec[0] = arg[i + 1];
 			i++;
 		}
-		else if (sarg.spec == 0 && ft_strchr(SPEC, arg[i]))
-			sarg.spec = arg[i];
+		else if (ft_strlen(sarg.spec) == 0 && ft_strchr(SPEC, arg[i]))
+			sarg.spec[0] = arg[i];
 		else
 			return (error("Parameter probleme"));
 	}
@@ -75,8 +77,8 @@ int				split_arg(char *arg, t_arg sarg)
 		return (error("Missing specifier"));
 	printf("\nsarg.flags  : %s\n", sarg.flags);
 	printf("sarg.length  :%s\n", sarg.length);
-	printf("sarg.prec :%c\n", sarg.prec);
-	printf("sarg.spec :%c\n", sarg.spec);
+	printf("sarg.prec :%s\n", sarg.prec);
+	printf("sarg.spec :%s\n", sarg.spec);
 	return (1);
 }
 

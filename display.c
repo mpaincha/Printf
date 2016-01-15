@@ -22,6 +22,26 @@ void	display_percent(int	nb)
 	}
 }
 
+int		percent(const char *format, int *i)
+{
+	int		percent;
+
+	percent = 1;
+	while (format[*i + 1] == '%')
+	{
+		percent++;
+		*i = *i + 1;
+	}
+	if (percent > 1)
+	{
+		display_percent(percent/2);
+		if (percent % 2 == 0)
+			return (0);
+	}
+	if (!recovery_arg(format, i))
+		return (0);
+	return (1);
+}
 
 void	display(const char *format)
 {

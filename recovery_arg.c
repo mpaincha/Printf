@@ -12,6 +12,25 @@
 
 #include "ft_printf.h"
 
+void	ft_putlst(t_dbllist	*list)
+{
+	t_elem	*tmp;
+
+	tmp = list->head;
+	while (tmp != NULL)
+	{
+		ft_putstr("AFFICHAGE LISTE: \n");
+		ft_putstr("flags : ");
+		ft_putstr(((t_arg *)(tmp->content))->flags);
+		ft_putstr("\nlength : ");
+		ft_putstr(((t_arg *)(tmp->content))->length);
+		ft_putstr("\nprec : ");
+		ft_putchar(((t_arg *)(tmp->content))->prec);
+		ft_putstr("\nspec : ");
+		ft_putchar(((t_arg *)(tmp->content))->spec);
+		tmp = tmp->next;
+	}
+}
 static	void		ini_sarg(t_arg *sarg)
 {
 	sarg->flags = ft_strnew(sizeof(char) * 5);
@@ -27,9 +46,11 @@ static int			save_arg(char *arg)
 
 	lst_arg = ft_lstdblnew();
 	ini_sarg(&sarg);
-	if (split_arg(arg, sarg) == -1)
+	if (!(split_arg(arg, sarg)))
 		return (0);
-	//ft_lstdbladd(lst_arg, sarg, sizeof(t_arg));,
+	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
+	printf("ffichage list\n");
+	ft_putlst(lst_arg);
 	return (1);
 }
 
@@ -46,7 +67,7 @@ static int			arglen(const char *format, int i)
 	return (len);
 }
 
-static int			recovery_arg(const char *format, int *i)
+int			recovery_arg(const char *format, int *i)
 {
 	char	*arg;
 	int		j;
@@ -70,27 +91,6 @@ static int			recovery_arg(const char *format, int *i)
 	}
 	else
 		return (0);
-}
-
-int					percent(const char *format, int *i)
-{
-	int		percent;
-
-	percent = 1;
-	while (format[*i + 1] == '%')
-	{
-		percent++;
-		*i = *i + 1;
-	}
-	if (percent > 1)
-	{
-		display_percent(percent/2);
-		if (percent % 2 == 0)
-			return (0);
-	}
-	if (!recovery_arg(format, i))
-		return (0);
-	return (1);
 }
 
 // static	int		countarg(const char *format, t_dbllist **lst_arg)

@@ -73,9 +73,10 @@ int				split_arg(char *arg, t_arg sarg)
 	}
 	if (sarg.spec == 0)
 		return (error("Missing specifier"));
+	printf("\nsarg.flags  : %s\n", sarg.flags);
+	printf("sarg.length  :%s\n", sarg.length);
+	printf("sarg.prec :%c\n", sarg.prec);
+	printf("sarg.spec :%c\n", sarg.spec);
 	return (1);
 }
-	// printf("\nsarg.flags  : %s\n", sarg.flags);
-	// printf("sarg.length  :%s\n", sarg.length);
-	// printf("sarg.prec :%c\n", sarg.prec);
-	// printf("sarg.spec :%c\n", sarg.spec);
+

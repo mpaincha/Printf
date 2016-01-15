@@ -29,7 +29,7 @@
 typedef struct		s_arg
 {
 	char			*flags;
-	char			length;
+	char			*length;
 	char			prec;
 	char			spec;
 

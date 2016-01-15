@@ -14,8 +14,8 @@
 
 static	void		ini_sarg(t_arg *sarg)
 {
-	sarg->flags = ft_strnew(5);
-	sarg->length = 0;
+	sarg->flags = ft_strnew(sizeof(char) * 5);
+	sarg->length = ft_strnew(sizeof(char) * 2);
 	sarg->prec = 0;
 	sarg->spec = 0;
 }
@@ -63,7 +63,8 @@ static int			recovery_arg(const char *format, int *i)
 			*i = *i + 1;
 		}
 		arg[j] = '\0';
-		save_arg(arg);
+		if (save_arg(arg) == -1)
+			ft_putstr("Error\n");
 		printf("Argument : %s\n",arg);
 		return (1);
 	}

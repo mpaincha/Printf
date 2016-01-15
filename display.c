@@ -22,7 +22,7 @@ void	display_percent(int	nb)
 	}
 }
 
-int		percent(const char *format, int *i)
+int		percent(const char *format, int *i, t_dbllist *lst_arg)
 {
 	int		percent;
 
@@ -38,21 +38,20 @@ int		percent(const char *format, int *i)
 		if (percent % 2 == 0)
 			return (0);
 	}
-	if (!recovery_arg(format, i))
+	if (!recovery_arg(format, i, lst_arg))
 		return (0);
 	return (1);
 }
 
-void	display(const char *format)
+void	display(const char *format, t_dbllist *lst_arg)
 {
 	int		i;
 
 	i = 0;
 	while (i < (int)ft_strlen(format))
 	{
-		printf("boucle DISPLAY===\n");
 		if (format[i] == '%')
-			percent(format, &i);
+			percent(format, &i, lst_arg);
 		else if (ft_isascii(format[i]))
 			ft_putchar(format[i]);
 		i++;

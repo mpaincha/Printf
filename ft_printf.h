@@ -37,10 +37,10 @@ typedef struct		s_arg
 
 int		ft_printf(const char *format, ...);
 void	display_percent(int n);
-void	display(const char *format);
-int		percent(const char *format, int *i);
+void	display(const char *format, t_dbllist *lst_arg);
+int		percent(const char *format, int *i, t_dbllist *lst_arg);
 int		split_arg(char *arg, t_arg sarg);
 int		error(char *msg);
-int		recovery_arg(const char *format, int *i);
+int		recovery_arg(const char *format, int *i, t_dbllist *lst_arg);
 
 #endif

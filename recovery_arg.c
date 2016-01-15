@@ -17,9 +17,10 @@ void	ft_putlst(t_dbllist	*list)
 	t_elem	*tmp;
 
 	tmp = list->head;
+	ft_putstr("AFFICHAGE LISTE: \n");
 	while (tmp != NULL)
 	{
-		ft_putstr("AFFICHAGE LISTE: \n");
+		ft_putstr("\nMAILLON : \n");
 		ft_putstr("flags : ");
 		ft_putstr(((t_arg *)(tmp->content))->flags);
 		ft_putstr("\nlength : ");
@@ -39,12 +40,11 @@ static	void		ini_sarg(t_arg *sarg)
 	sarg->spec = ft_strnew(sizeof(char) * 1);
 }
 
-static int			save_arg(char *arg)
+static int			save_arg(char *arg, t_dbllist *lst_arg)
 {
-	t_dbllist	*lst_arg;
+
 	t_arg		sarg;
 
-	lst_arg = ft_lstdblnew();
 	ini_sarg(&sarg);
 	if (!(split_arg(arg, sarg)))
 		return (0);
@@ -66,7 +66,7 @@ static int			arglen(const char *format, int i)
 	return (len);
 }
 
-int			recovery_arg(const char *format, int *i)
+int			recovery_arg(const char *format, int *i, t_dbllist *lst_arg)
 {
 	char	*arg;
 	int		j;
@@ -83,7 +83,7 @@ int			recovery_arg(const char *format, int *i)
 			*i = *i + 1;
 		}
 		arg[j] = '\0';
-		if (!(save_arg(arg)))
+		if (!(save_arg(arg, lst_arg)))
 			return (0);
 		printf("Argument : %s\n",arg);
 		return (1);

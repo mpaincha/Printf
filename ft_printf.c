@@ -16,8 +16,10 @@ int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	va_start(ap, format);
+	t_dbllist	*lst_arg;
 
-	display(format);
+	lst_arg = ft_lstdblnew();
+	display(format, lst_arg);
 	//printf("Il y a %d arg %%\n", recovery_arg(format));
 	//va_arg(ap, ); //en deuxieme, il faut le type de parametre  qu'on recupere,
 	//le type du ap en cours

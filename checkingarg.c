@@ -14,8 +14,7 @@
 
 static int		check_length(t_arg sarg, char find)
 {
-	static int	k = 0; //ne marche pas pour les prochains %% rencontre
-	//car il faudrait remettre la variable a 0 pour ca
+	static int	k = 0;
 
 	if (ft_strlen(sarg.length) == 0)
 		k = 0;
@@ -37,8 +36,7 @@ static int		check_length(t_arg sarg, char find)
 static int		check_flags(t_arg sarg, char find)
 {
 	int			i;
-	static int	j = 0; //ne marche pas pour les prochains %% rencontre
-	//car il faudrait remettre la variable a 0 pour ca
+	static int	j = 0;
 
 	i = 0;
 	if (ft_strlen(sarg.flags) == 0)
@@ -55,6 +53,20 @@ static int		check_flags(t_arg sarg, char find)
 		return (1);
 	}
 	return (0);
+}
+
+static void		convert_spec(char	arg, t_arg	sarg)
+{
+	if (arg == 'c' || arg == 'C' || arg == 'd' || arg == 'i')
+		ft_strcpy(sarg.type, "int");
+	if (arg == 'u' || arg == 'o' || arg == 'x' || arg == 'X')
+		ft_strcpy(sarg.type, "unsigned int");
+	if (arg == 'U' || arg == 'O' || arg == 'D')
+		ft_strcpy(sarg.type, "long int");
+	if (arg == 's' || arg == 'S')
+		ft_strcpy(sarg.type, "const char*");
+	if (arg == 'p')
+		ft_strcpy(sarg.type, "void*");
 }
 
 int				split_arg(char *arg, t_arg sarg)
@@ -75,16 +87,21 @@ int				split_arg(char *arg, t_arg sarg)
 			i++;
 		}
 		else if (ft_strlen(sarg.spec) == 0 && ft_strchr(SPEC, arg[i]))
+		{
 			sarg.spec[0] = arg[i];
+			convert_spec(arg[i], sarg);
+		}
 		else
 			return (error("Parameter probleme"));
 	}
 	if (sarg.spec == 0)
 		return (error("Missing specifier"));
+	// ===========  debug  ===================
 	printf("\nsarg.flags  : %s\n", sarg.flags);
 	printf("sarg.length  :%s\n", sarg.length);
 	printf("sarg.prec :%s\n", sarg.prec);
 	printf("sarg.spec :%s\n", sarg.spec);
+	// =========  fin debug  =================
 	return (1);
 }
 

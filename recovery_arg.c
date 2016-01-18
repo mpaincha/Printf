@@ -12,6 +12,10 @@
 
 #include "ft_printf.h"
 
+/*
+	Fonctions debug
+*/
+
 void	ft_putlst(t_dbllist	*list)
 {
 	t_elem	*tmp;
@@ -29,15 +33,23 @@ void	ft_putlst(t_dbllist	*list)
 		ft_putstr(((t_arg *)(tmp->content))->prec);
 		ft_putstr("\nspec : ");
 		ft_putstr(((t_arg *)(tmp->content))->spec);
+		ft_putstr("\ntype : ");
+		ft_putstr(((t_arg *)(tmp->content))->type);
 		tmp = tmp->next;
 	}
 }
+
+/*
+	Fin fonctions debug
+*/
+
 static	void		ini_sarg(t_arg *sarg)
 {
 	sarg->flags = ft_strnew(sizeof(char) * 5);
 	sarg->length = ft_strnew(sizeof(char) * 2);
 	sarg->prec = ft_strnew(sizeof(char) * 1);
 	sarg->spec = ft_strnew(sizeof(char) * 1);
+	sarg->type = ft_strnew(sizeof(char) * 13);
 }
 
 static int			save_arg(char *arg, t_dbllist *lst_arg)
@@ -85,7 +97,7 @@ int			recovery_arg(const char *format, int *i, t_dbllist *lst_arg)
 		arg[j] = '\0';
 		if (!(save_arg(arg, lst_arg)))
 			return (0);
-		printf("Argument : %s\n",arg);
+		printf("\nRappel Argument : %s\n",arg);
 		return (1);
 	}
 	else

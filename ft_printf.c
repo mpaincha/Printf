@@ -20,6 +20,9 @@ int		ft_printf(const char *format, ...)
 
 	lst_arg = ft_lstdblnew();
 	display(format, lst_arg);
+	// open(ap, lst_arg);
+	//if (lst_arg->length > 0)
+	//	return (error("il manque un ou des parametres"));
 	//printf("Il y a %d arg %%\n", recovery_arg(format));
 	//va_arg(ap, ); //en deuxieme, il faut le type de parametre  qu'on recupere,
 	//le type du ap en cours

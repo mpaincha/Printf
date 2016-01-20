@@ -43,66 +43,57 @@ void	ft_putlst(t_dbllist	*list)
 	Fin fonctions debug
 */
 
-static	void		ini_sarg(t_arg *sarg)
-{
-	sarg->flags = ft_strnew(sizeof(char) * 5);
-	sarg->length = ft_strnew(sizeof(char) * 2);
-	sarg->prec = ft_strnew(sizeof(char) * 1);
-	sarg->spec = ft_strnew(sizeof(char) * 1);
-	sarg->type = ft_strnew(sizeof(char) * 13);
-}
+// static int			save_arg(char *arg, t_dbllist *lst_arg)
+// {
 
-static int			save_arg(char *arg, t_dbllist *lst_arg)
-{
+// 	t_arg		sarg;
 
-	t_arg		sarg;
+// 	ini_sarg(&sarg);
+// 	if (!(split_arg(arg, sarg)))
+// 		return (0);
+// 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
+// 	ft_putlst(lst_arg);
+// 	return (1);
+// }
 
-	ini_sarg(&sarg);
-	if (!(split_arg(arg, sarg)))
-		return (0);
-	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
-	ft_putlst(lst_arg);
-	return (1);
-}
+// static int			arglen(const char *format, int i)
+// {
+// 	size_t	len;
 
-static int			arglen(const char *format, int i)
-{
-	size_t	len;
+// 	len = 0;
+// 	while (format[i] != ' ' && format[i] != '\0')
+// 	{
+// 		i++;
+// 		len++;
+// 	}
+// 	return (len);
+// }
 
-	len = 0;
-	while (format[i] != ' ' && format[i] != '\0')
-	{
-		i++;
-		len++;
-	}
-	return (len);
-}
+// int			recovery_arg(const char *format, int *i, t_dbllist *lst_arg)
+// {
+// 	char	*arg;
+// 	int		j;
 
-int			recovery_arg(const char *format, int *i, t_dbllist *lst_arg)
-{
-	char	*arg;
-	int		j;
-
-	j = 0;
-	*i = *i + 1;
-	if (format[*i])
-	{
-		arg = ft_strnew(arglen(format, *i));
-		while (format[*i] != ' ' && format[*i] != '\0')
-		{
-			arg[j] = format[*i];
-			j++;
-			*i = *i + 1;
-		}
-		arg[j] = '\0';
-		if (!(save_arg(arg, lst_arg)))
-			return (0);
-		printf("\nRappel Argument : %s\n",arg);
-		return (1);
-	}
-	else
-		return (0);
-}
+// 	j = 0;
+// 	*i = *i + 1;
+// 	if (format[*i])
+// 	{
+// 		arg = ft_strnew(arglen(format, *i));
+// 		while (format[*i] != ' ' && format[*i] != '\0')
+// 		{
+// 			arg[j] = format[*i];
+// 			j++;
+// 			*i = *i + 1;
+// 		}
+// 		arg[j] = '\0';
+// 		if (!(save_arg(arg, lst_arg)))
+// 			return (0);
+// 		printf("\nRappel Argument : %s\n",arg);
+// 		return (1);
+// 	}
+// 	else
+// 		return (0);
+// }
 
 // static	int		countarg(const char *format, t_dbllist **lst_arg)
 // {

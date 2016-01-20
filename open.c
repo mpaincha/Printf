@@ -12,27 +12,27 @@
 
 #include "ft_printf.h"
 
-// void	open_int(va_list ap)
+// int	open_int(va_list ap)
 // {
 // 	va_arg(ap, int);
 // }
 
-// void	open_unsignedint(va_list ap)
+// unsigned int	open_unsignedint(va_list ap)
 // {
 // 	va_arg(ap, unsigned int);
 // }
 
-// void	open_longint(va_list ap)
+// long int	open_longint(va_list ap)
 // {
 // 	va_arg(ap, long int);
 // }
 
-// void	open_constchar(va_list ap)
+// const char	*open_constchar(va_list ap)
 // {
 // 	va_arg(ap, const char*);
 // }
 
-// void	open_void(va_list ap)
+// void	*open_void(va_list ap)
 // {
 // 	va_arg(ap, void*);
 // }

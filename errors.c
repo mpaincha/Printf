@@ -12,8 +12,19 @@
 
 #include "ft_printf.h"
 
-int		error(char *msg)
+int		error(const char *msg)
 {
 	ft_putendl(msg);
+	return (-1);
+}
+
+int		clean_lst(t_dbllist *lst_arg)
+{
+	if (lst_arg->head)
+	{
+		ft_lstdbldel(lst_arg);
+		free(lst_arg);
+		lst_arg = NULL;
+	}
 	return (0);
 }

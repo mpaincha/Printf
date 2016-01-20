@@ -19,7 +19,7 @@ int		main(int ac, char **av)
 		ft_printf(av[1], av[2], av[3], av[4]);
 		// printf("\n\nTest PRINTF\n");
 		// printf("bonjour \n", 42);
-		printf("bonjour %d%d%d\n", 42, 1, 12);
+		//printf("bonjour %d%d%d\n", 42, 1, 12);
 
 		return (1);
 	}
@@ -28,7 +28,7 @@ int		main(int ac, char **av)
 		ft_printf(av[1]);
 		// printf("\n\nTest PRINTF\n");
 		// printf("bonjour \n", 42);
-		printf("bonjour %d%d%d\n", 42, 1, 12);
+		//printf("bonjour %d%d%d\n", 42, 1, 12);
 
 		return (1);
 	}

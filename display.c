@@ -13,6 +13,7 @@
 #include "ft_printf.h"
 
 
+
 void	display_percent(int	nb)
 {
 	while (nb > 0)
@@ -22,7 +23,7 @@ void	display_percent(int	nb)
 	}
 }
 
-int		percent(const char *format, int *i, t_dbllist *lst_arg)
+int		percent(const char *format, t_dbllist *lst_arg, int *i)
 {
 	int		percent;
 
@@ -36,22 +37,27 @@ int		percent(const char *format, int *i, t_dbllist *lst_arg)
 	{
 		display_percent(percent/2);
 		if (percent % 2 == 0)
-			return (0);
+			return (1);
 	}
-	if (!recovery_arg(format, i, lst_arg))
-		return (0);
+	*i = *i + 1;
+	//return (split_arg(format, lst_arg, i) == 0) ? 0 : 1;
+	if (split_arg(format,lst_arg, i) == -1)
+	{
+		clean_lst(lst_arg);
+		return (-1);
+	}
 	return (1);
+
 }
 
 void	display(const char *format, t_dbllist *lst_arg)
 {
-	int		i;
+	static	int	i = 0;
 
-	i = 0;
 	while (i < (int)ft_strlen(format))
 	{
-		if (format[i] == '%')
-			percent(format, &i, lst_arg);
+		if (format[i] == '%' && percent(format, lst_arg, &i) == -1)
+			return ;
 		else if (ft_isascii(format[i]))
 			ft_putchar(format[i]);
 		i++;

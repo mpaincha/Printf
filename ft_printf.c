@@ -19,9 +19,10 @@ int		ft_printf(const char *format, ...)
 	t_dbllist	*lst_arg;
 
 	lst_arg = ft_lstdblnew();
+	//recover_arg(ap, lst_arg);
 	display(format, lst_arg);
-	if (lst_arg->head)
-		ft_putlst(lst_arg); // FREE LA LISTE SI PB PARAMETRE
+	 if (lst_arg->head)
+	 	ft_putlst(lst_arg); // FREE LA LISTE SI PB PARAMETRE
 	// open(ap, lst_arg);
 	//if (lst_arg->length > 0)
 	//	return (error("il manque un ou des parametres"));

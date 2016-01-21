@@ -28,6 +28,7 @@
 
 typedef struct		s_arg
 {
+	void			*arg;
 	char			*flags;
 	char			*length;
 	char			*prec;
@@ -42,10 +43,10 @@ void	display(const char *format, t_dbllist *lst_arg);
 int		percent(const char *format, t_dbllist *lst_arg, int *i);
 int		split_arg(const char *format, t_dbllist *lst_arg, int *i);
 int		error(const char *msg);
-int		recovery_arg(const char *format, int *i, t_dbllist *lst_arg);
-void	open(va_list ap, t_dbllist *lst_arg);
 void	ft_putlst(t_dbllist	*list); //fonction de debug
 int		clean_lst(t_dbllist *lst_arg);
+void	recover_arg(va_list ap, t_dbllist *lst_arg);
+void	ini_sarg(t_arg *sarg);
 
 #endif
 

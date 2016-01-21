@@ -47,7 +47,7 @@ static int		check_flags(t_arg *sarg, char find)
 		while (sarg->flags[i] != '\0' && sarg->flags[i] != find)
 			i++;
 		if (sarg->flags[i] == find)
-			return (error("Flags error"));
+			return (1);
 		sarg->flags[j++] = find;
 		sarg->flags[j] = '\0';
 		return (1);
@@ -96,8 +96,9 @@ static int		check_spec(t_arg *sarg, char find)
 	return (0);
 }
 
-static	void	ini_sarg(t_arg *sarg)
+void	ini_sarg(t_arg *sarg)
 {
+	sarg->arg = NULL;
 	sarg->flags = ft_strnew(sizeof(char) * 5);
 	sarg->length = ft_strnew(sizeof(char) * 2);
 	sarg->prec = ft_strnew(sizeof(char) * 1);

@@ -12,8 +12,6 @@
 
 #include "ft_printf.h"
 
-
-
 void	display_percent(int	nb)
 {
 	while (nb > 0)
@@ -60,12 +58,9 @@ void	display(const char *format, t_dbllist *lst_arg)
 		if (format[i] == '%' && percent(format, lst_arg, &i) == -1)
 			return ;
 		else if (format[i] == '%' && percent(format, lst_arg, &i) == 0)
-			continue ;
+			continue;
 		else if (format[i] == '%' && percent(format, lst_arg, &i) == 1)
-		{
-			//faire action sur le parametre
-			continue ;
-		}
+			continue;
 		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
 			ft_putchar(format[i]);
 		i++;

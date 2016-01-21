@@ -21,7 +21,9 @@ void	ft_putlst(t_dbllist	*list)
 	while (tmp != NULL)
 	{
 		ft_putstr("\nMAILLON : \n");
-		ft_putstr("flags : ");
+		ft_putstr("arg : ");
+		ft_putstr(((t_arg *)(tmp->content))->arg);
+		ft_putstr("\nflags : ");
 		ft_putstr(((t_arg *)(tmp->content))->flags);
 		ft_putstr("\nlength : ");
 		ft_putstr(((t_arg *)(tmp->content))->length);

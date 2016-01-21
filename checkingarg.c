@@ -125,10 +125,7 @@ int				split_arg(const char *format, t_dbllist *lst_arg, int *i)
 	}
 	*i = *i + 1;
 	if (ft_strlen(sarg.spec) != 1)
-	{
-		clean_lst(lst_arg);
 		return (error("Missing specifier"));
-	}
 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
 	if (format[*i] != '\0')
 		display(format, lst_arg);

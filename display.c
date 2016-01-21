@@ -57,8 +57,13 @@ void	display(const char *format, t_dbllist *lst_arg)
 	while (i < (int)ft_strlen(format))
 	{
 		if (format[i] == '%' && percent(format, lst_arg, &i) == -1)
+		{
+			i = 0;
 			return ;
-		else if (ft_isascii(format[i]))
+		}
+		else if (format[i] == '%' && percent(format, lst_arg, &i) == 1)
+			continue;
+		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
 			ft_putchar(format[i]);
 		i++;
 	}

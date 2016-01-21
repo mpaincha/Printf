@@ -37,17 +37,18 @@ int		percent(const char *format, t_dbllist *lst_arg, int *i)
 	{
 		display_percent(percent/2);
 		if (percent % 2 == 0)
-			return (1);
+		{
+			*i = *i + 1;
+			return (0);
+		}
 	}
 	*i = *i + 1;
-	//return (split_arg(format, lst_arg, i) == 0) ? 0 : 1;
 	if (split_arg(format,lst_arg, i) == -1)
 	{
 		clean_lst(lst_arg);
 		return (-1);
 	}
 	return (1);
-
 }
 
 void	display(const char *format, t_dbllist *lst_arg)
@@ -57,12 +58,14 @@ void	display(const char *format, t_dbllist *lst_arg)
 	while (i < (int)ft_strlen(format))
 	{
 		if (format[i] == '%' && percent(format, lst_arg, &i) == -1)
-		{
-			i = 0;
 			return ;
-		}
+		else if (format[i] == '%' && percent(format, lst_arg, &i) == 0)
+			continue ;
 		else if (format[i] == '%' && percent(format, lst_arg, &i) == 1)
-			continue;
+		{
+			//faire action sur le parametre
+			continue ;
+		}
 		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
 			ft_putchar(format[i]);
 		i++;

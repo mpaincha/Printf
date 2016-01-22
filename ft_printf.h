@@ -26,6 +26,8 @@
 # define PREC "0n*" //il doit y avoir un point devant + rien est egalement possible
 # define SPEC "sSpdDioOuUxXcC"
 
+# define ARG ((t_arg *)(tmp->content))
+
 typedef struct		s_arg
 {
 	void			*arg;

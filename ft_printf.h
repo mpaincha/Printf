@@ -39,9 +39,9 @@ typedef struct		s_arg
 
 int		ft_printf(const char *format, ...);
 void	display_percent(int n);
-void	display(const char *format, t_dbllist *lst_arg);
-int		percent(const char *format, t_dbllist *lst_arg, int *i);
-int		split_arg(const char *format, t_dbllist *lst_arg, int *i);
+void	display(const char *format, t_dbllist *lst_arg, t_elem *tmp);
+int		percent(const char *format, t_dbllist *lst_arg, int *i, t_elem *tmp);
+int		split_arg(const char *format, t_dbllist *lst_arg, int *i, t_elem *tmp);
 int		error(const char *msg);
 void	ft_putlst(t_dbllist	*list); //fonction de debug
 int		clean_lst(t_dbllist *lst_arg);

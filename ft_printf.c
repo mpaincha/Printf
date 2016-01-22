@@ -17,13 +17,15 @@ int		ft_printf(const char *format, ...)
 	va_list		ap;
 	va_start(ap, format);
 	t_dbllist	*lst_arg;
+	t_elem	*tmp;
 
 	lst_arg = ft_lstdblnew();
-	//recover_arg(ap, lst_arg);
-	display(format, lst_arg);
-	 if (lst_arg->head)
-	 	ft_putlst(lst_arg); // FREE LA LISTE SI PB PARAMETRE
-	// open(ap, lst_arg);
+	recover_arg(ap, lst_arg);
+	tmp = lst_arg->head;
+	display(format, lst_arg, tmp);
+	//  if (lst_arg->head)
+	//  	ft_putlst(lst_arg); // FREE LA LISTE SI PB PARAMETRE
+	// // open(ap, lst_arg);
 	//if (lst_arg->length > 0)
 	//	return (error("il manque un ou des parametres"));
 	//printf("Il y a %d arg %%\n", recovery_arg(format));

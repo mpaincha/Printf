@@ -14,21 +14,21 @@
 
 static int		check_flags(char find, t_elem *tmp)
 {
-	int			i;
+	int			k;
 	static int	j = 0;
 
-	i = 0;
+	k = 0;
 	if (ft_strlen(ARG->flags) == 0)
 		j = 0;
 	if (ft_strlen(ARG->length) == 0 && ft_strlen(ARG->prec) == 0
 	&& ft_strlen(ARG->spec) == 0 && ft_strchr(FLAGS, find))
 	{
-		while (ARG->flags[i] != '\0' && ARG->flags[i] != find)
-			i++;
-		if (ARG->flags[i] == find)
+		while (ARG->flags[k] != '\0' && ARG->flags[k] != find)
+			k++;
+		if (ARG->flags[k] == find)
 			return (1);
-		ARG->flags[j++] = find;
-		ARG->flags[j] = '\0';
+		ARG->flags[k++] = find;
+		ARG->flags[k] = '\0';
 		return (1);
 	}
 	return (0);

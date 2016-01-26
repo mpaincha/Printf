@@ -21,7 +21,7 @@ void	display_percent(int nb)
 	}
 }
 
-int		percent(const char *format, t_dbllist *lst_arg, int *i, t_elem *tmp)
+int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i, t_elem *tmp)
 {
 	int		percent;
 
@@ -41,7 +41,7 @@ int		percent(const char *format, t_dbllist *lst_arg, int *i, t_elem *tmp)
 		}
 	}
 	*i = *i + 1;
-	if (split_arg(format, lst_arg, i, tmp) == -1)
+	if (split_arg(format, lst_arg, lst_str, i, tmp) == -1)
 	{
 		clean_lst(lst_arg);
 		return (-1);
@@ -49,20 +49,37 @@ int		percent(const char *format, t_dbllist *lst_arg, int *i, t_elem *tmp)
 	return (1);
 }
 
-void	display(const char *format, t_dbllist *lst_arg, t_elem *tmp)
+int		stock_str(const char *format, int	i)
+{
+	char 	*str;
+	int		start;
+
+	str = NULL;
+	start = i;
+	while (format[i] != '\0' && format[i] != '%')
+		i++;
+	if (format[i] == '%')
+		str = ft_strsub(format, start, (i - start));
+	ft_putstr("\nstr :");
+	ft_putstr(str);
+	ft_putstr("\n");
+	return (i - 1);
+}
+
+void	display(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, t_elem *tmp)
 {
 	static	int	i = 0;
 
 	while (i < (int)ft_strlen(format))
 	{
-		if (format[i] == '%' && percent(format, lst_arg, &i, tmp) == -1)
+		if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == -1)
 			return ;
-		else if (format[i] == '%' && percent(format, lst_arg, &i, tmp) == 0)
+		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == 0)
 			continue;
-		else if (format[i] == '%' && percent(format, lst_arg, &i, tmp) == 1)
+		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == 1)
 			continue;
 		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
-			ft_putchar(format[i]);
+			i = i + stock_str(format, i);
 		i++;
 	}
 }

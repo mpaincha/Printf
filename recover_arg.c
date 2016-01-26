@@ -23,8 +23,8 @@ void	ini_sarg(t_arg *sarg)
 	sarg->type = NULL;
 }
 
-int		split_arg(const char *format, t_dbllist *lst_arg, int *i,
-				t_elem *tmp)
+int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
+		int *i, t_elem *tmp)
 {
 	while (format[*i] != '\0')
 	{
@@ -49,7 +49,7 @@ int		split_arg(const char *format, t_dbllist *lst_arg, int *i,
 		return (error("Missing specifier"));
 	tmp = tmp->next;
 	if (format[*i] != '\0')
-		display(format, lst_arg, tmp);
+		display(format, lst_arg, lst_str, tmp);
 	return (1);
 }
 

@@ -16,13 +16,15 @@ int		ft_printf(const char *format, ...)
 {
 	va_list			ap;
 	t_dbllist		*lst_arg;
+	t_dbllist		*lst_str;
 	t_elem			*tmp;
 
 	va_start(ap, format);
 	lst_arg = ft_lstdblnew();
+	lst_str = ft_lstdblnew();
 	recover_arg(ap, lst_arg);
 	tmp = lst_arg->head;
-	display(format, lst_arg, tmp);
+	display(format, lst_arg, lst_str, tmp);
 	if (lst_arg->head)
 		ft_putlst(lst_arg);
 	va_end(ap);

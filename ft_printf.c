@@ -14,23 +14,17 @@
 
 int		ft_printf(const char *format, ...)
 {
-	va_list		ap;
-	va_start(ap, format);
-	t_dbllist	*lst_arg;
-	t_elem	*tmp;
+	va_list			ap;
+	t_dbllist		*lst_arg;
+	t_elem			*tmp;
 
+	va_start(ap, format);
 	lst_arg = ft_lstdblnew();
 	recover_arg(ap, lst_arg);
 	tmp = lst_arg->head;
 	display(format, lst_arg, tmp);
-	 if (lst_arg->head)
-	 	ft_putlst(lst_arg); // FREE LA LISTE SI PB PARAMETRE
-	// // open(ap, lst_arg);
-	//if (lst_arg->length > 0)
-	//	return (error("il manque un ou des parametres"));
-	//printf("Il y a %d arg %%\n", recovery_arg(format));
-	//va_arg(ap, ); //en deuxieme, il faut le type de parametre  qu'on recupere,
-	//le type du ap en cours
-	va_end(ap); //il faut terminer par ca obligatoirement
+	if (lst_arg->head)
+		ft_putlst(lst_arg);
+	va_end(ap);
 	return (1);
 }

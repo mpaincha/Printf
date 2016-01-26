@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int		check_flags(char find, t_elem *tmp)
+int				check_flags(char find, t_elem *tmp)
 {
 	int			k;
 	static int	j = 0;
@@ -34,7 +34,7 @@ static int		check_flags(char find, t_elem *tmp)
 	return (0);
 }
 
-static	int		check_number(char *str, t_elem *tmp, int	*i)
+int				check_number(char *str, t_elem *tmp, int	*i)
 {
 	int		numb;
 
@@ -44,16 +44,12 @@ static	int		check_number(char *str, t_elem *tmp, int	*i)
 	else
 		return (0);
 	*i = *i + (ft_intlen(numb) - 1);
-	ft_putstr("numbsortie check number");
-	ft_putnbr(numb);
-	ft_putstr("*i sortie check number");
-	ft_putnbr(*i);
 	return (1);
 }
 
-static int		check_length(char find, t_elem *tmp)
+int				check_length(char find, t_elem *tmp)
 {
-	static int	k = 0;
+	int		k = 0;
 
 	if (ft_strlen(ARG->length) == 0)
 		k = 0;
@@ -72,7 +68,7 @@ static int		check_length(char find, t_elem *tmp)
 	return (0);
 }
 
-static int		check_prec(char point, char find, int *i,
+int				check_prec(char point, char find, int *i,
 				t_elem *tmp)
 {
 	if (point != '.')
@@ -101,7 +97,7 @@ static void		convert_spec(char arg, t_elem *tmp)
 		ARG->type = ft_strdup("void*");
 }
 
-static int		check_spec(char find, t_elem *tmp)
+int				check_spec(char find, t_elem *tmp)
 {
 	if (ft_strlen(ARG->spec) == 0 && ft_strchr(SPEC, find))
 	{
@@ -110,45 +106,4 @@ static int		check_spec(char find, t_elem *tmp)
 		return (1);
 	}
 	return (0);
-}
-
-void			ini_sarg(t_arg *sarg)
-{
-	sarg->arg = NULL;
-	sarg->flags = ft_strnew(sizeof(char) * 5);
-	sarg->numb = 0;
-	sarg->length = ft_strnew(sizeof(char) * 2);
-	sarg->prec = ft_strnew(sizeof(char) * 1);
-	sarg->spec = ft_strnew(sizeof(char) * 1);
-	sarg->type = NULL;
-}
-
-int				split_arg(const char *format, t_dbllist *lst_arg, int *i,
-				t_elem *tmp)
-{
-	while (format[*i] != '\0')
-	{
-		if (check_flags(format[*i], tmp))
-		{
-			*i = *i + 1;
-			if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
-				tmp, i))
-				*i = *i + 1;
-		}
-		else if (check_length(format[*i], tmp))
-			*i = *i + 1;
-		else if (check_prec(format[*i], format[*i + 1], i, tmp))
-			*i = *i + 1;
-		else if (check_spec(format[*i], tmp))
-			break ;
-		else
-			return (error("Parameter problem"));
-	}
-	*i = *i + 1;
-	if (ft_strlen(ARG->spec) != 1)
-		return (error("Missing specifier"));
-	tmp = tmp->next;
-	if (format[*i] != '\0')
-		display(format, lst_arg, tmp);
-	return (1);
 }

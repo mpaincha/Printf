@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	display_percent(int	nb)
+void	display_percent(int nb)
 {
 	while (nb > 0)
 	{
@@ -33,7 +33,7 @@ int		percent(const char *format, t_dbllist *lst_arg, int *i, t_elem *tmp)
 	}
 	if (percent > 1)
 	{
-		display_percent(percent/2);
+		display_percent(percent / 2);
 		if (percent % 2 == 0)
 		{
 			*i = *i + 1;
@@ -41,7 +41,7 @@ int		percent(const char *format, t_dbllist *lst_arg, int *i, t_elem *tmp)
 		}
 	}
 	*i = *i + 1;
-	if (split_arg(format,lst_arg, i, tmp) == -1)
+	if (split_arg(format, lst_arg, i, tmp) == -1)
 	{
 		clean_lst(lst_arg);
 		return (-1);

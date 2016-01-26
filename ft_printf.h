@@ -50,6 +50,11 @@ void	ft_putlst(t_dbllist	*list); //fonction de debug
 int		clean_lst(t_dbllist *lst_arg);
 void	recover_arg(va_list ap, t_dbllist *lst_arg);
 void	ini_sarg(t_arg *sarg);
+int		check_spec(char find, t_elem *tmp);
+int		check_prec(char point, char find, int *i, t_elem *tmp);
+int		check_length(char find, t_elem *tmp);
+int		check_number(char *str, t_elem *tmp, int *i);
+int		check_flags(char find, t_elem *tmp);
 
 #endif
 

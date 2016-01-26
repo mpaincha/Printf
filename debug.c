@@ -25,6 +25,8 @@ void	ft_putlst(t_dbllist	*list)
 		ft_putstr(((t_arg *)(tmp->content))->arg);
 		ft_putstr("\nflags : ");
 		ft_putstr(((t_arg *)(tmp->content))->flags);
+		ft_putstr("\nnumb : ");
+		ft_putnbr(((t_arg *)(tmp->content))->numb);
 		ft_putstr("\nlength : ");
 		ft_putstr(((t_arg *)(tmp->content))->length);
 		ft_putstr("\nprec : ");

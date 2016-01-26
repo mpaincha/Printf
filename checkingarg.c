@@ -34,6 +34,23 @@ static int		check_flags(char find, t_elem *tmp)
 	return (0);
 }
 
+static	int		check_number(char *str, t_elem *tmp, int	*i)
+{
+	int		numb;
+
+	numb = 0;
+	if ((numb = ft_atoi(str)))
+		ARG->numb = numb;
+	else
+		return (0);
+	*i = *i + (ft_intlen(numb) - 1);
+	ft_putstr("numbsortie check number");
+	ft_putnbr(numb);
+	ft_putstr("*i sortie check number");
+	ft_putnbr(*i);
+	return (1);
+}
+
 static int		check_length(char find, t_elem *tmp)
 {
 	static int	k = 0;
@@ -95,10 +112,11 @@ static int		check_spec(char find, t_elem *tmp)
 	return (0);
 }
 
-void	ini_sarg(t_arg *sarg)
+void			ini_sarg(t_arg *sarg)
 {
 	sarg->arg = NULL;
 	sarg->flags = ft_strnew(sizeof(char) * 5);
+	sarg->numb = 0;
 	sarg->length = ft_strnew(sizeof(char) * 2);
 	sarg->prec = ft_strnew(sizeof(char) * 1);
 	sarg->spec = ft_strnew(sizeof(char) * 1);
@@ -111,7 +129,12 @@ int				split_arg(const char *format, t_dbllist *lst_arg, int *i,
 	while (format[*i] != '\0')
 	{
 		if (check_flags(format[*i], tmp))
+		{
 			*i = *i + 1;
+			if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
+				tmp, i))
+				*i = *i + 1;
+		}
 		else if (check_length(format[*i], tmp))
 			*i = *i + 1;
 		else if (check_prec(format[*i], format[*i + 1], i, tmp))

@@ -32,6 +32,7 @@ typedef struct		s_arg
 {
 	void			*arg;
 	char			*flags;
+	int				numb;
 	char			*length;
 	char			*prec;
 	char			*spec;

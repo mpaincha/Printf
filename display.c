@@ -25,7 +25,6 @@ int		percent(const char *format, t_dbllist *lst_arg, int *i, t_elem *tmp)
 {
 	int		percent;
 
-	ft_putstr(((t_arg *)(tmp->content))->arg);
 	percent = 1;
 	while (format[*i + 1] == '%')
 	{

@@ -26,7 +26,7 @@
 # define PREC "0n*" //il doit y avoir un point devant + rien est egalement possible
 # define SPEC "sSpdDioOuUxXcC"
 
-# define ARG ((t_arg *)(tmp->content))
+# define ARG ((t_arg *)(tmpA->content))
 
 typedef struct		s_arg
 {
@@ -57,6 +57,8 @@ int		check_number(char *str, t_elem *tmp, int *i);
 int		check_flags(char find, t_elem *tmp);
 void	ft_putlststr(t_dbllist	*list);
 int		stock_str(const char *format, int	i, t_dbllist *lst_str);
+void	ini_lst(t_dbllist *lst_arg, t_dbllist *lst_str);
+void	ini_tmp(t_elem *tmpA, t_elem *tmpS);
 
 #endif
 
@@ -123,7 +125,8 @@ Voici la liste de ces formats "complémentaires" donc pour initier :
 
 * - : résultat cadré à gauche
 * + : résultat préfixé avec le signe + si le nombre est positif
-* # : résultat préfixé par 0 si placé dans %o
+* # :
+résultat préfixé par 0 si placé dans %o
 résultat préfixé par Ox si placé dans %x, %X
 présence systématique du point décimale si placé dans %f, %e, %g, %E, %F
 * 0 : résultat complété à gauche par des zéros

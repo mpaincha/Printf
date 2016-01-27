@@ -14,42 +14,28 @@
 
 void	ft_putlst(t_dbllist	*list)
 {
-	t_elem	*tmp;
+	t_elem	*tmpA;
 
-	tmp = list->head;
+	tmpA = list->head;
 	ft_putstr("\nAFFICHAGE LISTE: \n");
-	while (tmp != NULL)
+	while (tmpA != NULL)
 	{
 		ft_putstr("\nMAILLON : \n");
 		ft_putstr("arg : ");
-		ft_putstr(((t_arg *)(tmp->content))->arg);
+		ft_putstr(((t_arg *)(tmpA->content))->arg);
 		ft_putstr("\nflags : ");
-		ft_putstr(((t_arg *)(tmp->content))->flags);
+		ft_putstr(((t_arg *)(tmpA->content))->flags);
 		ft_putstr("\nnumb : ");
-		ft_putnbr(((t_arg *)(tmp->content))->numb);
+		ft_putnbr(((t_arg *)(tmpA->content))->numb);
 		ft_putstr("\nlength : ");
-		ft_putstr(((t_arg *)(tmp->content))->length);
+		ft_putstr(((t_arg *)(tmpA->content))->length);
 		ft_putstr("\nprec : ");
-		ft_putstr(((t_arg *)(tmp->content))->prec);
+		ft_putstr(((t_arg *)(tmpA->content))->prec);
 		ft_putstr("\nspec : ");
-		ft_putstr(((t_arg *)(tmp->content))->spec);
+		ft_putstr(((t_arg *)(tmpA->content))->spec);
 		ft_putstr("\ntype : ");
-		ft_putstr(((t_arg *)(tmp->content))->type);
-		tmp = tmp->next;
+		ft_putstr(((t_arg *)(tmpA->content))->type);
+		tmpA = tmpA->next;
 	}
-}
-
-void	ft_putlststr(t_dbllist	*list)
-{
-	t_elem	*tmp;
-
-	tmp = list->head;
-	ft_putstr("\nAFFICHAGE LISTE: \n");
-	while (tmp != NULL)
-	{
-		ft_putstr("\nMAILLON : \n");
-		ft_putstr("STR : ");
-		ft_putstr(tmp->content);
-		tmp = tmp->next;
-	}
+	ft_putchar('\n');
 }

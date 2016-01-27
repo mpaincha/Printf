@@ -17,19 +17,21 @@ int		ft_printf(const char *format, ...)
 	va_list			ap;
 	t_dbllist		*lst_arg;
 	t_dbllist		*lst_str;
-	t_elem			*tmp;
+	t_elem			*tmpA;
+	t_elem			*tmpS;
 
 	va_start(ap, format);
 	lst_arg = ft_lstdblnew();
 	lst_str = ft_lstdblnew();
 	recover_param(ap, lst_arg);
-	tmp = lst_arg->head;
-	recover_arg(format, lst_arg, lst_str, tmp);
-
+	tmpA = lst_arg->head;
+	tmpS = lst_str->head;
+	recover_arg(format, lst_arg, lst_str, tmpA);
 	if (lst_arg->head) //debug
 		ft_putlst(lst_arg); //debug
 	if (lst_str->head) //debug
 		ft_putlststr(lst_str); //debug
+	// action(lst_arg, lst_str);
 	va_end(ap);
 	return (1);
 }

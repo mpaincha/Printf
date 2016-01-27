@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int				check_flags(char find, t_elem *tmp)
+int				check_flags(char find, t_elem *tmpA)
 {
 	int			k;
 	static int	j = 0;
@@ -34,7 +34,7 @@ int				check_flags(char find, t_elem *tmp)
 	return (0);
 }
 
-int				check_number(char *str, t_elem *tmp, int	*i)
+int				check_number(char *str, t_elem *tmpA, int	*i)
 {
 	int		numb;
 
@@ -47,7 +47,7 @@ int				check_number(char *str, t_elem *tmp, int	*i)
 	return (1);
 }
 
-int				check_length(char find, t_elem *tmp)
+int				check_length(char find, t_elem *tmpA)
 {
 	int		k = 0;
 
@@ -69,7 +69,7 @@ int				check_length(char find, t_elem *tmp)
 }
 
 int				check_prec(char point, char find, int *i,
-				t_elem *tmp)
+				t_elem *tmpA)
 {
 	if (point != '.')
 		return (0);
@@ -83,7 +83,7 @@ int				check_prec(char point, char find, int *i,
 	return (0);
 }
 
-static void		convert_spec(char arg, t_elem *tmp)
+static void		convert_spec(char arg, t_elem *tmpA)
 {
 	if (arg == 'c' || arg == 'C' || arg == 'd' || arg == 'i')
 		ARG->type = ft_strdup("int");
@@ -97,12 +97,12 @@ static void		convert_spec(char arg, t_elem *tmp)
 		ARG->type = ft_strdup("void*");
 }
 
-int				check_spec(char find, t_elem *tmp)
+int				check_spec(char find, t_elem *tmpA)
 {
 	if (ft_strlen(ARG->spec) == 0 && ft_strchr(SPEC, find))
 	{
 		ARG->spec[0] = find;
-		convert_spec(find, tmp);
+		convert_spec(find, tmpA);
 		return (1);
 	}
 	return (0);

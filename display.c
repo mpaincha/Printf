@@ -58,9 +58,8 @@ int		stock_str(const char *format, int	i)
 	start = i;
 	while (format[i] != '\0' && format[i] != '%')
 		i++;
-	if (format[i] == '%')
-		str = ft_strsub(format, start, (i - start));
-	ft_putstr("\nstr :");
+	str = ft_strsub(format, start, (i - start));
+	ft_putstr("str :");
 	ft_putstr(str);
 	ft_putstr("\n");
 	return (i - 1);
@@ -72,14 +71,23 @@ void	display(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, t_elem 
 
 	while (i < (int)ft_strlen(format))
 	{
+		ft_putstr("\nvaleur de i :");
+		ft_putnbr(i);
+		ft_putstr("\n");
 		if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == -1)
 			return ;
 		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == 0)
 			continue;
 		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == 1)
-			continue;
+			continue ;
 		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
-			i = i + stock_str(format, i);
+		{
+			i = stock_str(format, i);
+			ft_putstr("\nvaleur de i :");
+			ft_putnbr(i);
+			ft_putstr("\n");
+		}
 		i++;
+		ft_putstr("\nfin boucle\n");
 	}
 }

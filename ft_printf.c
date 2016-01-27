@@ -27,6 +27,8 @@ int		ft_printf(const char *format, ...)
 	display(format, lst_arg, lst_str, tmp);
 	if (lst_arg->head)
 		ft_putlst(lst_arg);
+	if (lst_str->head)
+		ft_putlststr(lst_str);
 	va_end(ap);
 	return (1);
 }

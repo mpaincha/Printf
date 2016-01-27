@@ -38,3 +38,18 @@ void	ft_putlst(t_dbllist	*list)
 		tmp = tmp->next;
 	}
 }
+
+void	ft_putlststr(t_dbllist	*list)
+{
+	t_elem	*tmp;
+
+	tmp = list->head;
+	ft_putstr("\nAFFICHAGE LISTE: \n");
+	while (tmp != NULL)
+	{
+		ft_putstr("\nMAILLON : \n");
+		ft_putstr("STR : ");
+		ft_putstr(tmp->content);
+		tmp = tmp->next;
+	}
+}

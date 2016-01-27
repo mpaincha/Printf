@@ -55,6 +55,7 @@ int		check_prec(char point, char find, int *i, t_elem *tmp);
 int		check_length(char find, t_elem *tmp);
 int		check_number(char *str, t_elem *tmp, int *i);
 int		check_flags(char find, t_elem *tmp);
+void	ft_putlststr(t_dbllist	*list);
 
 #endif
 

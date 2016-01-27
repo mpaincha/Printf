@@ -49,7 +49,7 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i,
 	return (1);
 }
 
-int		stock_str(const char *format, int	i, t_dbltlist *lst_str)
+int		stock_str(const char *format, int	i, t_dbllist *lst_str)
 {
 	char 	*str;
 	int		start;

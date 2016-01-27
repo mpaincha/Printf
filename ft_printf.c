@@ -25,10 +25,10 @@ int		ft_printf(const char *format, ...)
 	recover_arg(ap, lst_arg);
 	tmp = lst_arg->head;
 	display(format, lst_arg, lst_str, tmp);
-	if (lst_arg->head)
-		ft_putlst(lst_arg);
-	if (lst_str->head)
-		ft_putlststr(lst_str);
+	if (lst_arg->head) //debug
+		ft_putlst(lst_arg); //debug
+	if (lst_str->head) //debug
+		ft_putlststr(lst_str); //debug
 	va_end(ap);
 	return (1);
 }

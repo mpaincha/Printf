@@ -22,9 +22,10 @@ int		ft_printf(const char *format, ...)
 	va_start(ap, format);
 	lst_arg = ft_lstdblnew();
 	lst_str = ft_lstdblnew();
-	recover_arg(ap, lst_arg);
+	recover_param(ap, lst_arg);
 	tmp = lst_arg->head;
-	display(format, lst_arg, lst_str, tmp);
+	recover_arg(format, lst_arg, lst_str, tmp);
+
 	if (lst_arg->head) //debug
 		ft_putlst(lst_arg); //debug
 	if (lst_str->head) //debug

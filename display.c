@@ -12,41 +12,24 @@
 
 #include "ft_printf.h"
 
-void	display_percent(int nb)
+void	display_percent(int nb, t_dbllist *lst_str)
 {
-	while (nb > 0)
-	{
-		ft_putchar('%');
-		nb--;
-	}
-}
+	char	*str;
+	int		i;
 
-int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i, t_elem *tmp)
-{
-	int		percent;
-
-	percent = 1;
-	while (format[*i + 1] == '%')
+	str = ft_strnew(nb);
+	i = 0;
+	if (nb >= 1)
 	{
-		percent++;
-		*i = *i + 1;
-	}
-	if (percent > 1)
-	{
-		display_percent(percent / 2);
-		if (percent % 2 == 0)
+		while (i < nb)
 		{
-			*i = *i + 1;
-			return (0);
+			str[i] = '%';
+			ft_putchar('%');
+			i++;
 		}
+		str[i] = '\0';
+		ft_lstdbladd(lst_str, str, (sizeof(char) * nb));
 	}
-	*i = *i + 1;
-	if (split_arg(format, lst_arg, lst_str, i, tmp) == -1)
-	{
-		clean_lst(lst_arg);
-		return (-1);
-	}
-	return (1);
 }
 
 int		stock_str(const char *format, int	i, t_dbllist *lst_str)
@@ -60,25 +43,6 @@ int		stock_str(const char *format, int	i, t_dbllist *lst_str)
 		i++;
 	str = ft_strsub(format, start, (i - start));
 	ft_putstr(str);
-	ft_lstdbladd(lst_str, str, (sizeof(char) *ft_strlen(str)));
+	ft_lstdbladd(lst_str, str, (sizeof(char) * ft_strlen(str)));
 	return (i - 1);
-}
-
-void	display(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
-		t_elem *tmp)
-{
-	static	int	i = 0;
-
-	while (i < (int)ft_strlen(format))
-	{
-		if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == -1)
-			return ;
-		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == 0)
-			continue;
-		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == 1)
-			continue ;
-		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
-			i = stock_str(format, i, lst_str);
-		i++;
-	}
 }

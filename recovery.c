@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recover_arg.c                                      :+:      :+:    :+:   */
+/*   recovery.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 12:09:34 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/21 12:09:35 by mpaincha         ###   ########.fr       */
+/*   Created: 2016/01/27 11:01:37 by mpaincha          #+#    #+#             */
+/*   Updated: 2016/01/27 11:01:40 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 		return (error("Missing specifier"));
 	tmp = tmp->next;
 	if (format[*i] != '\0')
-		display(format, lst_arg, lst_str, tmp);
+		recover_arg(format, lst_arg, lst_str, tmp);
 	return (1);
 }
 
-void	recover_arg(va_list ap, t_dbllist *lst_arg)
+void	recover_param(va_list ap, t_dbllist *lst_arg)
 {
 	t_arg	sarg;
 	void	*arg;
@@ -68,5 +68,52 @@ void	recover_arg(va_list ap, t_dbllist *lst_arg)
 			break ;
 		sarg.arg = arg;
 		ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
+	}
+}
+
+int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i, t_elem *tmp)
+{
+	int		percent;
+
+	percent = 1;
+	while (format[*i + 1] == '%')
+	{
+		percent++;
+		*i = *i + 1;
+	}
+	if (percent > 1)
+	{
+		display_percent((percent / 2), lst_str);
+		if (percent % 2 == 0)
+		{
+			*i = *i + 1;
+			return (0);
+		}
+	}
+	*i = *i + 1;
+	if (split_arg(format, lst_arg, lst_str, i, tmp) == -1)
+	{
+		clean_lst(lst_arg);
+		return (-1);
+	}
+	return (1);
+}
+
+void	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
+		t_elem *tmp)
+{
+	static	int	i = 0;
+
+	while (i < (int)ft_strlen(format))
+	{
+		if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == -1)
+			return ;
+		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == 0)
+			continue;
+		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmp) == 1)
+			continue ;
+		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
+			i = stock_str(format, i, lst_str);
+		i++;
 	}
 }

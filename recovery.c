@@ -21,7 +21,7 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 		{
 			*i = *i + 1;
 			if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
-				tmpA, i))
+				tmpA->content, i))
 				*i = *i + 1;
 		}
 		else if (check_length(format[*i], tmpA))
@@ -44,9 +44,10 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 
 void	recover_param(va_list ap, t_dbllist *lst_arg)
 {
-	t_arg	sarg;
-	void	*arg;
+	t_arg		sarg;
+	void		*arg;
 
+	ft_putstr("\n====recover param====\n");
 	ini_sarg(&sarg);
 	arg = (void *)1;
 	while (1)
@@ -96,11 +97,14 @@ void	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 
 	while (i < (int)ft_strlen(format))
 	{
-		if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmpA) == -1)
+		if (format[i] == '%'
+		&& percent(format, lst_arg, lst_str, &i, tmpA) == -1)
 			return ;
-		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmpA) == 0)
+		else if (format[i] == '%'
+		&& percent(format, lst_arg, lst_str, &i, tmpA) == 0)
 			continue;
-		else if (format[i] == '%' && percent(format, lst_arg, lst_str, &i, tmpA) == 1)
+		else if (format[i] == '%'
+		&& percent(format, lst_arg, lst_str, &i, tmpA) == 1)
 			continue ;
 		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
 			i = stock_str(format, i, lst_str);

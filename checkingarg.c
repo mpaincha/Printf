@@ -12,35 +12,47 @@
 
 #include "ft_printf.h"
 
+void			saveflags(char find, t_arg *sarg)
+{
+	if (find == '#')
+		sarg->flags.diez = 1;
+	if (find == '0')
+		sarg->flags.zero = 1;
+	if (find == '-')
+		sarg->flags.minus = 1;
+	if (find == '+')
+		sarg->flags.plus = 1;
+	if (find == ' ')
+		sarg->flags.space = 1;
+}
+
 int				check_flags(char find, t_elem *tmpA)
 {
 	int			k;
 	static int	j = 0;
+	char		*nm;
 
 	k = 0;
-	if (ft_strlen(ARG->flags) == 0)
+	nm = NULL;
+	if (SFLAGS.diez == 0 && SFLAGS.zero == 0 && SFLAGS.minus == 0
+		&& SFLAGS.plus == 0 && SFLAGS.space == 0)
 		j = 0;
 	if (ft_strlen(ARG->length) == 0 && ft_strlen(ARG->prec) == 0
 	&& ft_strlen(ARG->spec) == 0 && ft_strchr(FLAGS, find))
 	{
-		while (ARG->flags[k] != '\0' && ARG->flags[k] != find)
-			k++;
-		if (ARG->flags[k] == find)
-			return (1);
-		ARG->flags[k++] = find;
-		ARG->flags[k] = '\0';
+		saveflags(find, tmpA->content);
 		return (1);
 	}
 	return (0);
 }
 
-int				check_number(char *str, t_elem *tmpA, int	*i)
+int				check_number(char *str, t_arg *sarg, int *i)
 {
 	int		numb;
 
 	numb = 0;
 	if ((numb = ft_atoi(str)))
-		ARG->numb = numb;
+		sarg->flags.numb = numb;
 	else
 		return (0);
 	*i = *i + (ft_intlen(numb) - 1);

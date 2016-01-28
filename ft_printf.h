@@ -27,12 +27,22 @@
 # define SPEC "sSpdDioOuUxXcC"
 
 # define ARG ((t_arg *)(tmpA->content))
+# define SFLAGS ((t_flags)(ARG->flags))
+
+typedef struct		s_flags
+{
+	int				diez;
+	int				zero;
+	int				minus;
+	int				plus;
+	int				space;
+	int				numb;
+}					t_flags;
 
 typedef struct		s_arg
 {
 	void			*arg;
-	char			*flags;
-	int				numb;
+	t_flags			flags;
 	char			*length;
 	char			*prec;
 	char			*spec;
@@ -53,12 +63,11 @@ void	ini_sarg(t_arg *sarg);
 int		check_spec(char find, t_elem *tmp);
 int		check_prec(char point, char find, int *i, t_elem *tmp);
 int		check_length(char find, t_elem *tmp);
-int		check_number(char *str, t_elem *tmp, int *i);
+int		check_number(char *str, t_arg *sarg, int *i);
 int		check_flags(char find, t_elem *tmp);
 void	ft_putlststr(t_dbllist	*list);
 int		stock_str(const char *format, int	i, t_dbllist *lst_str);
-void	ini_lst(t_dbllist *lst_arg, t_dbllist *lst_str);
-void	ini_tmp(t_elem *tmpA, t_elem *tmpS);
+void	cleanarg(t_dbllist *lst_arg);
 
 #endif
 

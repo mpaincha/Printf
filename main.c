@@ -14,9 +14,28 @@
 
 int		main(int ac, char **av)
 {
-	if (ac == 5)
+	if (ac == 8)
+	{
+		ft_printf(av[1], av[2], av[3], av[4], av[5], av[6], av[7]);
+		printf("%#3o\n", 125);
+		return (1);
+	}
+	else if (ac == 5)
 	{
 		ft_printf(av[1], av[2], av[3], av[4]);
+		printf("%#3o\n", 125);
+		return (1);
+	}
+	else if (ac == 4)
+	{
+		ft_printf(av[1], av[2], av[3]);
+		printf("%#3o\n", 125);
+		return (1);
+	}
+	else if (ac == 3)
+	{
+		ft_printf(av[1], av[2]);
+		printf("%#3o\n", 125);
 		return (1);
 	}
 	else if (ac == 2)

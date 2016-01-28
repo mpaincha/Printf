@@ -68,6 +68,12 @@ int		check_flags(char find, t_elem *tmp);
 void	ft_putlststr(t_dbllist	*list);
 int		stock_str(const char *format, int	i, t_dbllist *lst_str);
 void	cleanarg(t_dbllist *lst_arg);
+void	action(t_dbllist *lst_arg, t_dbllist *lst_str);
+void	action_flags(t_elem *tmpa,t_dbllist *lst_str, char *str);
+void	action_length(t_elem *tmpa,t_dbllist *lst_str, char *str);
+void	action_prec(t_elem *tmpa,t_dbllist *lst_str, char *str);
+void	action_spec(t_elem *tmpa,t_dbllist *lst_str, char *str);
+void	diez(t_elem *tmpa, char *str);
 
 #endif
 

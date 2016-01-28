@@ -57,18 +57,28 @@ int		stock_str(const char *format, int	i, t_dbllist *lst_str)
 	return (i - 1);
 }
 
-// void	action(t_dbllist *lst_arg, t_dbllist *lst_str)
-// {
-// 	t_elem			*tmpa;
-// 	t_elem			*tmpS;
+void	action(t_dbllist *lst_arg, t_dbllist *lst_str)
+{
+	t_elem			*tmpa;
+	char			*str;
 
-// 	tmpa = lst_arg->head;
-// 	tmpS = lst_str->head;
-// 	if (ft_strlen(ARG->flags) != 0)
-// 		action_flags();
-// 	if (ARG->length != '\0')
-// 		action_length();
-// 	if (ARG->prec != '\0')
-// 		action_prec();
-// 	action_spec();
-// }
+	tmpa = lst_arg->head;
+	str = NULL;
+	while (tmpa != NULL)
+	{
+		str = ft_strdup(ARG->arg);
+		if (ARG->flags.diez != 0 || ARG->flags.zero != 0 || ARG->flags.minus != 0
+		|| ARG->flags.plus != 0 || ARG->flags.space != 0)
+			action_flags(tmpa, lst_str, str);
+		if (ARG->length[0] != '\0')
+			action_length(tmpa, lst_str, str);
+		if (ARG->prec[0] != '\0')
+			action_prec(tmpa, lst_str, str);
+		action_spec(tmpa, lst_str, str);
+		tmpa = tmpa->next;
+	}
+}
+
+		// ft_putstr("\nstr :");
+		// ft_putstr(str);
+		// ft_putstr("\n");

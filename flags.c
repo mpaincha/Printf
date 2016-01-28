@@ -12,7 +12,11 @@
 
 #include "ft_printf.h"
 
-// void	diez(t_dbllist *lst_arg, t_dbllist *lst_str)
-// {
-// 	if ()
-// }
+void	diez(t_elem *tmpa, char *str)
+{
+	if (ARG->spec[0] == 'o')
+		ft_strjoin("0", str);
+	ft_putstr("\napres strjoin");
+	ft_putstr(str);
+	ft_putstr("\n");
+}

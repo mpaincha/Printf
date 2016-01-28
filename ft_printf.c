@@ -32,7 +32,7 @@ int		ft_printf(const char *format, ...)
 	cleanarg(lst_arg);
 	if (lst_arg->head) //debug
 		ft_putlst(lst_arg); //debug
-	// action(lst_arg, lst_str);
+	action(lst_arg, lst_str);
 	va_end(ap);
 	return (1);
 }

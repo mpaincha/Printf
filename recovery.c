@@ -50,12 +50,15 @@ void	recover_param(va_list ap, t_dbllist *lst_arg)
 	ft_putstr("\n====recover param====\n");
 	ini_sarg(&sarg);
 	arg = (void *)1;
-	while (1)
+	while ((arg = va_arg(ap, void *)))
 	{
+		// arg = va_arg(ap, void *);
+		// if (arg == NULL)
+		// 	break ;
+		ft_putstr("arg : ");
+		ft_putstr((char *)arg);
+		ft_putstr("\n");
 		ini_sarg(&sarg);
-		arg = va_arg(ap, void *);
-		if (arg == NULL)
-			break ;
 		sarg.arg = arg;
 		ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
 	}

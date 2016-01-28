@@ -17,25 +17,15 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *
 	t_arg		sarg;
 
 	ini_sarg(&sarg);
-	while (format[*i] != '\0')
-	{
-		if (check_flags(format[*i], &sarg))
-		{
-			*i = *i + 1;
-			if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
-				&sarg, i))
-				*i = *i + 1;
-		}
-		else if (check_length(format[*i], &sarg))
-			*i = *i + 1;
-		else if (check_prec(format[*i], format[*i + 1], i, &sarg))
-			*i = *i + 1;
-		else if (check_spec(format[*i], &sarg))
-			break ;
-		else
-			return (error("Parameter problem"));
-	}
+	if (checks(format, i, &sarg) == -1)
+		return (-1);
+	ft_putstr("\ni DBt SPLIT number");
+	ft_putnbr(*i);
+	ft_putstr("\n");
 	*i = *i + 1;
+	ft_putstr("\ni APRES number");
+	ft_putnbr(*i);
+	ft_putstr("\n");
 	if (ft_strlen(sarg.spec) != 1)
 		return (error("Missing specifier"));
 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));

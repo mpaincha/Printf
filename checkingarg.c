@@ -51,11 +51,27 @@ int				check_number(char *str, t_arg *sarg, int *i)
 	int		numb;
 
 	numb = 0;
+	ft_putstr("\ncheck number=======\n");
+	ft_putstr(str);
+	ft_putstr("\n");
 	if ((numb = ft_atoi(str)))
+	{
+		ft_putstr("\nnumb");
+		ft_putnbr(numb);
+		ft_putstr("\n");
 		sarg->flags.numb = numb;
+		ft_putnbr(sarg->flags.numb);
+		ft_putstr("\n");
+	}
 	else
 		return (0);
+	ft_putstr("\ni avant check number");
+	ft_putnbr(*i);
+	ft_putstr("\n");
 	*i = *i + (ft_intlen(numb) - 1);
+	ft_putstr("\ni fin check number");
+	ft_putnbr(*i);
+	ft_putstr("\n");
 	return (1);
 }
 
@@ -118,4 +134,30 @@ int				check_spec(char find, t_arg *sarg)
 		return (1);
 	}
 	return (0);
+}
+
+int				checks(const char *format, int *i, t_arg *sarg)
+{
+	while (format[*i] != '\0')
+	{
+		if (check_flags(format[*i], sarg))
+		{
+			*i = *i + 1;
+			if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
+				sarg, i))
+				*i = *i + 1;
+				ft_putstr("\ni SORTIE IF=====");
+				ft_putnbr(*i);
+				ft_putstr("\n");
+		}
+		else if (check_length(format[*i], sarg))
+			*i = *i + 1;
+		else if (check_prec(format[*i], format[*i + 1], i, sarg))
+			*i = *i + 1;
+		else if (check_spec(format[*i], sarg))
+			break ;
+		else
+			return (error("Parameter problem"));
+	}
+	return (1);
 }

@@ -13,22 +13,22 @@
 #include "ft_printf.h"
 
 int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
-		int *i, t_elem *tmpA)
+		int *i, t_elem *tmpa)
 {
 	while (format[*i] != '\0')
 	{
-		if (check_flags(format[*i], tmpA))
+		if (check_flags(format[*i], tmpa))
 		{
 			*i = *i + 1;
 			if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
-				tmpA->content, i))
+				tmpa->content, i))
 				*i = *i + 1;
 		}
-		else if (check_length(format[*i], tmpA))
+		else if (check_length(format[*i], tmpa))
 			*i = *i + 1;
-		else if (check_prec(format[*i], format[*i + 1], i, tmpA))
+		else if (check_prec(format[*i], format[*i + 1], i, tmpa))
 			*i = *i + 1;
-		else if (check_spec(format[*i], tmpA))
+		else if (check_spec(format[*i], tmpa))
 			break ;
 		else
 			return (error("Parameter problem"));
@@ -36,9 +36,9 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	*i = *i + 1;
 	if (ft_strlen(ARG->spec) != 1)
 		return (error("Missing specifier"));
-	tmpA = tmpA->next;
+	tmpa = tmpa->next;
 	if (format[*i] != '\0')
-		recover_arg(format, lst_arg, lst_str, tmpA);
+		recover_arg(format, lst_arg, lst_str, tmpa);
 	return (1);
 }
 
@@ -62,7 +62,7 @@ void	recover_param(va_list ap, t_dbllist *lst_arg)
 }
 
 int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
-		int *i, t_elem *tmpA)
+		int *i, t_elem *tmpa)
 {
 	int		percent;
 
@@ -82,7 +82,7 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 		}
 	}
 	*i = *i + 1;
-	if (split_arg(format, lst_arg, lst_str, i, tmpA) == -1)
+	if (split_arg(format, lst_arg, lst_str, i, tmpa) == -1)
 	{
 		clean_lst(lst_arg);
 		return (-1);
@@ -91,20 +91,20 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 }
 
 void	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
-		t_elem *tmpA)
+		t_elem *tmpa)
 {
 	static	int	i = 0;
 
 	while (i < (int)ft_strlen(format))
 	{
 		if (format[i] == '%'
-		&& percent(format, lst_arg, lst_str, &i, tmpA) == -1)
+		&& percent(format, lst_arg, lst_str, &i, tmpa) == -1)
 			return ;
 		else if (format[i] == '%'
-		&& percent(format, lst_arg, lst_str, &i, tmpA) == 0)
+		&& percent(format, lst_arg, lst_str, &i, tmpa) == 0)
 			continue;
 		else if (format[i] == '%'
-		&& percent(format, lst_arg, lst_str, &i, tmpA) == 1)
+		&& percent(format, lst_arg, lst_str, &i, tmpa) == 1)
 			continue ;
 		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
 			i = stock_str(format, i, lst_str);

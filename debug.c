@@ -14,15 +14,15 @@
 
 void	ft_putlst(t_dbllist	*list)
 {
-	t_elem	*tmpA;
+	t_elem	*tmpa;
 
-	tmpA = list->head;
+	tmpa = list->head;
 	ft_putstr("\nAFFICHAGE LISTE: \n");
-	while (tmpA != NULL)
+	while (tmpa != NULL)
 	{
 		ft_putstr("\nMAILLON : \n");
 		ft_putstr("arg : ");
-		ft_putstr(((t_arg *)(tmpA->content))->arg);
+		ft_putstr(((t_arg *)(tmpa->content))->arg);
 		ft_putstr("\nflags, diez : ");
 		ft_putnbr(SFLAGS.diez);
 		ft_putstr("\nflags, zero : ");
@@ -36,14 +36,14 @@ void	ft_putlst(t_dbllist	*list)
 		ft_putstr("\nflags, numb : ");
 		ft_putnbr(SFLAGS.numb);
 		ft_putstr("\nlength : ");
-		ft_putstr(((t_arg *)(tmpA->content))->length);
+		ft_putstr(((t_arg *)(tmpa->content))->length);
 		ft_putstr("\nprec : ");
-		ft_putstr(((t_arg *)(tmpA->content))->prec);
+		ft_putstr(((t_arg *)(tmpa->content))->prec);
 		ft_putstr("\nspec : ");
-		ft_putstr(((t_arg *)(tmpA->content))->spec);
+		ft_putstr(((t_arg *)(tmpa->content))->spec);
 		ft_putstr("\ntype : ");
-		ft_putstr(((t_arg *)(tmpA->content))->type);
-		tmpA = tmpA->next;
+		ft_putstr(((t_arg *)(tmpa->content))->type);
+		tmpa = tmpa->next;
 	}
 	ft_putchar('\n');
 }

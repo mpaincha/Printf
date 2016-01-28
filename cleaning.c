@@ -12,18 +12,24 @@
 
 #include "ft_printf.h"
 
-// void	cleanarg(t_dbllist *lst_arg)
-// {
-// 	t_elem	tmpA;
-// 	char	*ptr;
+void	cleanarg(t_dbllist *lst_arg)
+{
+	t_elem	*tmpa;
 
-// 	tmpA = lst_agr->head;
-// 	ptr = NULL;
-// 	while (tmpA != NULL)
-// 	{
-// 		if (ARG->spec != 'x' && ARg->spec != 'X' && (ptr = ft_strchr(ARG->flags, '#')))
-// 			cleanit(ptr, tmpA)
-// 	sSpdDioOuUcC
-// 	}
-
-// }
+	tmpa = lst_arg->head;
+	while (tmpa != NULL)
+	{
+		if ((ARG->spec[0] != 'x' || ARG->spec[0] != 'X')
+		&& ARG->flags.diez == 1)
+			ARG->flags.diez = 0;
+		if (ARG->flags.zero == 1 && ARG->flags.minus == 1)
+			ARG->flags.zero = 0;
+		if (ARG->prec[0] != '\0' && ARG->flags.zero == 1 && (ARG->spec[0] == 'd'
+		|| ARG->spec[0] == 'i' || ARG->spec[0] == 'o' || ARG->spec[0] == 'u'
+		|| ARG->spec[0] == 'x' || ARG->spec[0] == 'X'))
+			ARG->flags.zero = 0;
+		if (ARG->flags.plus == 1 && ARG->flags.space == 1)
+			ARG->flags.plus = 0;
+		tmpa = tmpa->next;
+	}
+}

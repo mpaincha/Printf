@@ -26,7 +26,7 @@
 # define PREC "0n*" //il doit y avoir un point devant + rien est egalement possible
 # define SPEC "sSpdDioOuUxXcC"
 
-# define ARG ((t_arg *)(tmpA->content))
+# define ARG ((t_arg *)(tmpa->content))
 # define SFLAGS ((t_flags)(ARG->flags))
 
 typedef struct		s_flags

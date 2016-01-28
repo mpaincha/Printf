@@ -59,10 +59,10 @@ int		stock_str(const char *format, int	i, t_dbllist *lst_str)
 
 // void	action(t_dbllist *lst_arg, t_dbllist *lst_str)
 // {
-// 	t_elem			*tmpA;
+// 	t_elem			*tmpa;
 // 	t_elem			*tmpS;
 
-// 	tmpA = lst_arg->head;
+// 	tmpa = lst_arg->head;
 // 	tmpS = lst_str->head;
 // 	if (ft_strlen(ARG->flags) != 0)
 // 		action_flags();

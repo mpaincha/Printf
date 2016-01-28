@@ -52,19 +52,19 @@ typedef struct		s_arg
 
 int		ft_printf(const char *format, ...);
 void	display_percent(int n, t_dbllist *lst_str);
-void	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, t_elem *tmp);
-int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i, t_elem *tmp);
-int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i, t_elem *tmp);
+void	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str);
+int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
+int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
 int		error(const char *msg);
 void	ft_putlst(t_dbllist	*list); //fonction de debug
 int		clean_lst(t_dbllist *lst_arg);
 void	recover_param(va_list ap, t_dbllist *lst_arg);
 void	ini_sarg(t_arg *sarg);
-int		check_spec(char find, t_elem *tmp);
-int		check_prec(char point, char find, int *i, t_elem *tmp);
-int		check_length(char find, t_elem *tmp);
+int		check_spec(char find, t_arg *sarg);
+int		check_prec(char point, char find, int *i, t_arg *sarg);
+int		check_length(char find, t_arg *sarg);
 int		check_number(char *str, t_arg *sarg, int *i);
-int		check_flags(char find, t_elem *tmp);
+int		check_flags(char find, t_arg *sarg);
 void	ft_putlststr(t_dbllist	*list);
 int		stock_str(const char *format, int	i, t_dbllist *lst_str);
 void	cleanarg(t_dbllist *lst_arg);

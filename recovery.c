@@ -12,60 +12,58 @@
 
 #include "ft_printf.h"
 
-int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
-		int *i, t_elem *tmpa)
+int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i)
 {
+	t_arg		sarg;
+
+	ini_sarg(&sarg);
 	while (format[*i] != '\0')
 	{
-		if (check_flags(format[*i], tmpa))
+		if (check_flags(format[*i], &sarg))
 		{
 			*i = *i + 1;
 			if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
-				tmpa->content, i))
+				&sarg, i))
 				*i = *i + 1;
 		}
-		else if (check_length(format[*i], tmpa))
+		else if (check_length(format[*i], &sarg))
 			*i = *i + 1;
-		else if (check_prec(format[*i], format[*i + 1], i, tmpa))
+		else if (check_prec(format[*i], format[*i + 1], i, &sarg))
 			*i = *i + 1;
-		else if (check_spec(format[*i], tmpa))
+		else if (check_spec(format[*i], &sarg))
 			break ;
 		else
 			return (error("Parameter problem"));
 	}
 	*i = *i + 1;
-	if (ft_strlen(ARG->spec) != 1)
+	if (ft_strlen(sarg.spec) != 1)
 		return (error("Missing specifier"));
-	tmpa = tmpa->next;
+	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
+	ini_sarg(&sarg);
 	if (format[*i] != '\0')
-		recover_arg(format, lst_arg, lst_str, tmpa);
+		recover_arg(format, lst_arg, lst_str);
 	return (1);
 }
 
 void	recover_param(va_list ap, t_dbllist *lst_arg)
 {
-	t_arg		sarg;
 	void		*arg;
+	t_elem		*tmpa;
 
-	ft_putstr("\n====recover param====\n");
-	ini_sarg(&sarg);
+	tmpa = lst_arg->head;
 	arg = (void *)1;
-	while ((arg = va_arg(ap, void *)))
+	while (tmpa != NULL)
 	{
-		// arg = va_arg(ap, void *);
-		// if (arg == NULL)
-		// 	break ;
+		arg = va_arg(ap, void *);
 		ft_putstr("arg : ");
 		ft_putstr((char *)arg);
 		ft_putstr("\n");
-		ini_sarg(&sarg);
-		sarg.arg = arg;
-		ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
+		ARG->arg = arg;
+		tmpa = tmpa->next;
 	}
 }
 
-int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
-		int *i, t_elem *tmpa)
+int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i)
 {
 	int		percent;
 
@@ -85,7 +83,7 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 		}
 	}
 	*i = *i + 1;
-	if (split_arg(format, lst_arg, lst_str, i, tmpa) == -1)
+	if (split_arg(format, lst_arg, lst_str, i) == -1)
 	{
 		clean_lst(lst_arg);
 		return (-1);
@@ -93,21 +91,20 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	return (1);
 }
 
-void	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
-		t_elem *tmpa)
+void	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str)
 {
 	static	int	i = 0;
 
 	while (i < (int)ft_strlen(format))
 	{
 		if (format[i] == '%'
-		&& percent(format, lst_arg, lst_str, &i, tmpa) == -1)
+		&& percent(format, lst_arg, lst_str, &i) == -1)
 			return ;
 		else if (format[i] == '%'
-		&& percent(format, lst_arg, lst_str, &i, tmpa) == 0)
+		&& percent(format, lst_arg, lst_str, &i) == 0)
 			continue;
 		else if (format[i] == '%'
-		&& percent(format, lst_arg, lst_str, &i, tmpa) == 1)
+		&& percent(format, lst_arg, lst_str, &i) == 1)
 			continue ;
 		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
 			i = stock_str(format, i, lst_str);

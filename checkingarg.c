@@ -26,7 +26,7 @@ void			saveflags(char find, t_arg *sarg)
 		sarg->flags.space = 1;
 }
 
-int				check_flags(char find, t_elem *tmpa)
+int				check_flags(char find, t_arg *sarg)
 {
 	int			k;
 	static int	j = 0;
@@ -34,13 +34,13 @@ int				check_flags(char find, t_elem *tmpa)
 
 	k = 0;
 	nm = NULL;
-	if (SFLAGS.diez == 0 && SFLAGS.zero == 0 && SFLAGS.minus == 0
-		&& SFLAGS.plus == 0 && SFLAGS.space == 0)
+	if (sarg->flags.diez == 0 && sarg->flags.zero == 0 && sarg->flags.minus == 0
+		&& sarg->flags.plus == 0 && sarg->flags.space == 0)
 		j = 0;
-	if (ft_strlen(ARG->length) == 0 && ft_strlen(ARG->prec) == 0
-	&& ft_strlen(ARG->spec) == 0 && ft_strchr(FLAGS, find))
+	if (ft_strlen(sarg->length) == 0 && ft_strlen(sarg->prec) == 0
+	&& ft_strlen(sarg->spec) == 0 && ft_strchr(FLAGS, find))
 	{
-		saveflags(find, tmpa->content);
+		saveflags(find, sarg);
 		return (1);
 	}
 	return (0);
@@ -59,20 +59,20 @@ int				check_number(char *str, t_arg *sarg, int *i)
 	return (1);
 }
 
-int				check_length(char find, t_elem *tmpa)
+int				check_length(char find, t_arg *sarg)
 {
 	int		k = 0;
 
-	if (ft_strlen(ARG->length) == 0)
+	if (ft_strlen(sarg->length) == 0)
 		k = 0;
-	if (ft_strlen(ARG->length) < 2 && ft_strlen(ARG->prec) == 0
-	&& ft_strlen(ARG->spec) == 0 && ft_strchr(LENGTH, find))
+	if (ft_strlen(sarg->length) < 2 && ft_strlen(sarg->prec) == 0
+	&& ft_strlen(sarg->spec) == 0 && ft_strchr(LENGTH, find))
 	{
-		if (((ARG->length[0] == 'h' || ARG->length[0] == 'l')
-		&& ARG->length[0] == find) || ARG->length[0] == '\0')
+		if (((sarg->length[0] == 'h' || sarg->length[0] == 'l')
+		&& sarg->length[0] == find) || sarg->length[0] == '\0')
 		{
-			ARG->length[k++] = find;
-			ARG->length[k] = '\0';
+			sarg->length[k++] = find;
+			sarg->length[k] = '\0';
 			return (1);
 		}
 		return (error("Length error"));
@@ -81,40 +81,40 @@ int				check_length(char find, t_elem *tmpa)
 }
 
 int				check_prec(char point, char find, int *i,
-				t_elem *tmpa)
+				t_arg *sarg)
 {
 	if (point != '.')
 		return (0);
-	if (ft_strlen(ARG->prec) == 0 && ft_strlen(ARG->spec) == 0
+	if (ft_strlen(sarg->prec) == 0 && ft_strlen(sarg->spec) == 0
 	&& ft_strchr(PREC, find))
 	{
-		ARG->prec[0] = find;
+		sarg->prec[0] = find;
 		*i = *i + 1;
 		return (1);
 	}
 	return (0);
 }
 
-static void		convert_spec(char arg, t_elem *tmpa)
+static void		convert_spec(char arg, t_arg *sarg)
 {
 	if (arg == 'c' || arg == 'C' || arg == 'd' || arg == 'i')
-		ARG->type = ft_strdup("int");
+		sarg->type = ft_strdup("int");
 	else if (arg == 'u' || arg == 'o' || arg == 'x' || arg == 'X')
-		ARG->type = ft_strdup("unsigned int");
+		sarg->type = ft_strdup("unsigned int");
 	else if (arg == 'U' || arg == 'O' || arg == 'D')
-		ARG->type = ft_strdup("long int");
+		sarg->type = ft_strdup("long int");
 	else if (arg == 's' || arg == 'S')
-		ARG->type = ft_strdup("const char*");
+		sarg->type = ft_strdup("const char*");
 	else if (arg == 'p')
-		ARG->type = ft_strdup("void*");
+		sarg->type = ft_strdup("void*");
 }
 
-int				check_spec(char find, t_elem *tmpa)
+int				check_spec(char find, t_arg *sarg)
 {
-	if (ft_strlen(ARG->spec) == 0 && ft_strchr(SPEC, find))
+	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, find))
 	{
-		ARG->spec[0] = find;
-		convert_spec(find, tmpa);
+		sarg->spec[0] = find;
+		convert_spec(find, sarg);
 		return (1);
 	}
 	return (0);

@@ -39,9 +39,6 @@ void	recover_param(va_list ap, t_dbllist *lst_arg)
 	while (tmpa != NULL)
 	{
 		arg = va_arg(ap, void *);
-		ft_putstr("arg : ");
-		ft_putstr((char *)arg);
-		ft_putstr("\n");
 		ARG->arg = arg;
 		tmpa = tmpa->next;
 	}
@@ -69,29 +66,33 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i)
 	*i = *i + 1;
 	if (split_arg(format, lst_arg, lst_str, i) == -1)
 	{
+		ft_putstr("percent");
 		clean_lst(lst_arg);
 		return (-1);
 	}
 	return (1);
 }
 
-void	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str)
+int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str)
 {
 	static	int	i = 0;
+	int		ret;
 
 	while (i < (int)ft_strlen(format))
 	{
-		if (format[i] == '%'
-		&& percent(format, lst_arg, lst_str, &i) == -1)
-			return ;
-		else if (format[i] == '%'
-		&& percent(format, lst_arg, lst_str, &i) == 0)
-			continue;
-		else if (format[i] == '%'
-		&& percent(format, lst_arg, lst_str, &i) == 1)
-			continue ;
+		if (format[i] == '%')
+		{
+			ret = percent(format, lst_arg, lst_str, &i);
+			if (ret == -1)
+			{
+				ft_putstr("ici");
+				return (-1);
+			}
+		}
 		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
 			i = stock_str(format, i, lst_str);
 		i++;
 	}
+	ft_putstr("POUET");
+	return (1);
 }

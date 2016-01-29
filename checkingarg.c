@@ -138,26 +138,17 @@ int				check_spec(char find, t_arg *sarg)
 
 int				checks(const char *format, int *i, t_arg *sarg)
 {
-	while (format[*i] != '\0')
-	{
 		if (check_flags(format[*i], sarg))
-		{
 			*i = *i + 1;
-			if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
-				sarg, i))
-				*i = *i + 1;
-				ft_putstr("\ni SORTIE IF=====");
-				ft_putnbr(*i);
-				ft_putstr("\n");
-		}
-		else if (check_length(format[*i], sarg))
+		if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
+		sarg, i))
 			*i = *i + 1;
-		else if (check_prec(format[*i], format[*i + 1], i, sarg))
+		if (check_length(format[*i], sarg))
 			*i = *i + 1;
-		else if (check_spec(format[*i], sarg))
-			break ;
+		if (check_prec(format[*i], format[*i + 1], i, sarg))
+			*i = *i + 1;
+		if (check_spec(format[*i], sarg))
+			return (1);
 		else
 			return (error("Parameter problem"));
-	}
-	return (1);
 }

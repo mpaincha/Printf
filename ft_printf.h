@@ -52,7 +52,7 @@ typedef struct		s_arg
 
 int		ft_printf(const char *format, ...);
 void	display_percent(int n, t_dbllist *lst_str);
-void	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str);
+int	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str);
 int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
 int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
 int		error(const char *msg);

@@ -18,13 +18,13 @@ int		error(const char *msg)
 	return (-1);
 }
 
-int		clean_lst(t_dbllist *lst_arg)
+int		clean_lst(t_dbllist *lst)
 {
-	if (lst_arg->head)
+	if (lst->head)
 	{
-		ft_lstdbldel(lst_arg);
-		free(lst_arg);
-		lst_arg = NULL;
+		ft_lstdbldel(lst);
+		free(lst);
+		lst = NULL;
 	}
 	return (0);
 }

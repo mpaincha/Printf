@@ -19,13 +19,7 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *
 	ini_sarg(&sarg);
 	if (checks(format, i, &sarg) == -1)
 		return (-1);
-	ft_putstr("\ni DBt SPLIT number");
-	ft_putnbr(*i);
-	ft_putstr("\n");
 	*i = *i + 1;
-	ft_putstr("\ni APRES number");
-	ft_putnbr(*i);
-	ft_putstr("\n");
 	if (ft_strlen(sarg.spec) != 1)
 		return (error("Missing specifier"));
 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));

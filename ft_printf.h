@@ -65,7 +65,7 @@ int		check_spec(char find, t_arg *sarg);
 int		check_prec(char point, char find, int *i, t_arg *sarg);
 int		check_length(char find, t_arg *sarg);
 int		check_number(char *str, t_arg *sarg, int *i);
-int		check_flags(char find, t_arg *sarg);
+int		check_flags(const char *format, int *i, t_arg *sarg);
 void	ft_putlststr(t_dbllist	*list);
 int		stock_str(const char *format, int	i, t_dbllist *lst_str);
 void	cleanarg(t_dbllist *lst_arg);

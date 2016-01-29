@@ -21,10 +21,9 @@ int		ft_printf(const char *format, ...)
 	va_start(ap, format);
 	lst_arg = ft_lstdblnew();
 	lst_str = ft_lstdblnew();
-	ft_putnbr(recover_arg(format, lst_arg, lst_str));
+	recover_arg(format, lst_arg, lst_str);
 	if (lst_arg == NULL)
 		return (0);
-	ft_putstr("LAA");
 	recover_param(ap, lst_arg);
 	if (lst_arg->head) //debug
 		ft_putlst(lst_arg); //debug

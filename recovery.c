@@ -12,7 +12,8 @@
 
 #include "ft_printf.h"
 
-int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i)
+int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
+		int *i)
 {
 	t_arg		sarg;
 
@@ -44,7 +45,8 @@ void	recover_param(va_list ap, t_dbllist *lst_arg)
 	}
 }
 
-int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i)
+int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
+		int *i)
 {
 	int		percent;
 
@@ -84,15 +86,11 @@ int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str)
 		{
 			ret = percent(format, lst_arg, lst_str, &i);
 			if (ret == -1)
-			{
-				ft_putstr("ici");
 				return (-1);
-			}
 		}
 		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
 			i = stock_str(format, i, lst_str);
 		i++;
 	}
-	ft_putstr("POUET");
 	return (1);
 }

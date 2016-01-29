@@ -26,24 +26,15 @@ void			saveflags(char find, t_arg *sarg)
 		sarg->flags.space = 1;
 }
 
-int				check_flags(char find, t_arg *sarg)
+int				check_flags(const char *format, int *i, t_arg *sarg)
 {
-	int			k;
-	static int	j = 0;
-	char		*nm;
-
-	k = 0;
-	nm = NULL;
-	if (sarg->flags.diez == 0 && sarg->flags.zero == 0 && sarg->flags.minus == 0
-		&& sarg->flags.plus == 0 && sarg->flags.space == 0)
-		j = 0;
-	if (ft_strlen(sarg->length) == 0 && ft_strlen(sarg->prec) == 0
-	&& ft_strlen(sarg->spec) == 0 && ft_strchr(FLAGS, find))
+	while (format[*i] != '\0' && ft_strlen(sarg->length) == 0 && ft_strlen(sarg->prec) == 0
+	&& ft_strlen(sarg->spec) == 0 && ft_strchr(FLAGS, format[*i]))
 	{
-		saveflags(find, sarg);
-		return (1);
+		saveflags(format[*i], sarg);
+		*i = *i + 1;
 	}
-	return (0);
+	return (1);
 }
 
 int				check_number(char *str, t_arg *sarg, int *i)
@@ -51,27 +42,11 @@ int				check_number(char *str, t_arg *sarg, int *i)
 	int		numb;
 
 	numb = 0;
-	ft_putstr("\ncheck number=======\n");
-	ft_putstr(str);
-	ft_putstr("\n");
 	if ((numb = ft_atoi(str)))
-	{
-		ft_putstr("\nnumb");
-		ft_putnbr(numb);
-		ft_putstr("\n");
 		sarg->flags.numb = numb;
-		ft_putnbr(sarg->flags.numb);
-		ft_putstr("\n");
-	}
 	else
 		return (0);
-	ft_putstr("\ni avant check number");
-	ft_putnbr(*i);
-	ft_putstr("\n");
 	*i = *i + (ft_intlen(numb) - 1);
-	ft_putstr("\ni fin check number");
-	ft_putnbr(*i);
-	ft_putstr("\n");
 	return (1);
 }
 
@@ -138,17 +113,40 @@ int				check_spec(char find, t_arg *sarg)
 
 int				checks(const char *format, int *i, t_arg *sarg)
 {
-		if (check_flags(format[*i], sarg))
-			*i = *i + 1;
-		if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
-		sarg, i))
-			*i = *i + 1;
-		if (check_length(format[*i], sarg))
-			*i = *i + 1;
-		if (check_prec(format[*i], format[*i + 1], i, sarg))
-			*i = *i + 1;
-		if (check_spec(format[*i], sarg))
-			return (1);
-		else
-			return (error("Parameter problem"));
+	int		isave;
+
+	isave = *i;
+	if (check_flags(format, i, sarg))
+	{
+		*i = *i + 1;
+		isave = *i;
+	}
+	else
+		*i = isave;
+	if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
+	sarg, i))
+	{
+		*i = *i + 1;
+		isave = *i;
+	}
+	else
+		*i = isave;
+	if (check_length(format[*i], sarg))
+	{
+		*i = *i + 1;
+		isave = *i;
+	}
+	else
+		*i = isave;
+	if (check_prec(format[*i], format[*i + 1], i, sarg))
+	{
+		*i = *i + 1;
+		isave = *i;
+	}
+	else
+		*i = isave;
+	if (check_spec(format[*i], sarg))
+		return (1);
+	else
+		return (error("Parameter problem"));
 }

@@ -16,7 +16,7 @@ int		main(void)
 {
 
 	// ft_printf("%789c", "coucou");
-	ft_printf("%789.n45s", "coucou");
+	ft_printf("%#o789.ns", "coucou");
 	// if (ac == 8)
 	// {
 	// 	if (ft_printf(av[1], av[2], av[3], av[4], av[5], av[6], av[7]) == 0)

@@ -109,19 +109,24 @@ int				check_mod(const char *format, int *i, t_arg *sarg)
 	return (errormod(sarg));
 }
 
-int				check_prec(char point, char find, int *i,
-				t_arg *sarg)
+int				check_prec(const char *format, int *i, t_arg *sarg)
 {
-	if (point != '.')
-		return (0);
-	if (ft_strlen(sarg->prec) == 0 && ft_strlen(sarg->spec) == 0
-	&& ft_strchr(PREC, find))
+	int		numb;
+	char	*str;
+
+	numb = 0;
+	sarg->prec.pt = 1;
+	str = ft_strsub(format, *i + 1, ft_strlen(format) - *i - 1);
+	ft_putstr("\nstr : ");
+	ft_putstr(str);
+	if ((numb = ft_atoi(str)))
 	{
-		sarg->prec[0] = find;
-		*i = *i + 1;
-		return (1);
+		ft_putstr("\nnumb : ");
+		ft_putnbr(numb);
+		sarg->prec.n = numb;
 	}
-	return (0);
+	*i = *i + ft_intlen(numb) + 1;
+	return (1);
 }
 
 int				check_spec(char find, t_arg *sarg)
@@ -145,16 +150,12 @@ int				checks(const char *format, int *i, t_arg *sarg)
 		isave = *i;
 	else
 		*i = isave;
-	if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i),
-	sarg, i))
+	if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i), sarg, i))
 		isave = *i;
 	else
 		*i = isave;
-	if (check_prec(format[*i], format[*i + 1], i, sarg))
-	{
-		*i = *i + 1;
+	if (format[*i] == '.' && check_prec(format, i, sarg))
 		isave = *i;
-	}
 	else
 		*i = isave;
 	ret = check_mod(format, i, sarg);

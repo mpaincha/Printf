@@ -39,7 +39,9 @@ void	recover_param(va_list ap, t_dbllist *lst_arg)
 	arg = (void *)1;
 	while (tmpa != NULL)
 	{
+		ft_putstr("\navant recup\n");
 		arg = va_arg(ap, void *);
+		ft_putstr("\napres recup\n");
 		ARG->arg = arg;
 		tmpa = tmpa->next;
 	}

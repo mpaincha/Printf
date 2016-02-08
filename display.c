@@ -73,7 +73,7 @@ void	action(t_dbllist *lst_arg, t_dbllist *lst_str)
 		if (ARG->mod.h != 0 || ARG->mod.l != 0 || ARG->mod.j != 0
 		|| ARG->mod.z != 0)
 			action_mod(tmpa, lst_str, str);
-		if (ARG->prec[0] != '\0')
+		if (ARG->prec.pt != 0)
 			action_prec(tmpa, lst_str, str);
 		action_spec(tmpa, lst_str, str);
 		tmpa = tmpa->next;

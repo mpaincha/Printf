@@ -29,6 +29,7 @@
 # define ARG ((t_arg *)(tmpa->content))
 # define SFLAGS ((t_flags)(ARG->flags))
 # define SMOD ((t_mod)(ARG->mod))
+# define SPREC ((t_prec)(ARG->prec))
 
 typedef struct		s_mod
 {
@@ -48,12 +49,18 @@ typedef struct		s_flags
 	int				numb;
 }					t_flags;
 
+typedef struct		s_prec
+{
+	int				pt;
+	int				n;
+}					t_prec;
+
 typedef struct		s_arg
 {
 	void			*arg;
 	t_flags			flags;
 	t_mod			mod;
-	char			*prec;
+	t_prec			prec;
 	char			*spec;
 
 }					t_arg;
@@ -63,14 +70,14 @@ void	display_percent(int n, t_dbllist *lst_str);
 int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str);
 int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
 int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
-int	error(const char *msg);
+int		error(const char *msg);
 void	ft_putlst(t_dbllist	*list); //fonction de debug
 int		clean_lst(t_dbllist *lst_arg);
 void	recover_param(va_list ap, t_dbllist *lst_arg);
 void	ini_sarg(t_arg *sarg);
 int		checks(const char *format, int *i, t_arg *sarg);
 int		check_spec(char find, t_arg *sarg);
-int		check_prec(char point, char find, int *i, t_arg *sarg);
+int		check_prec(const char *format, int *i, t_arg *sarg);
 int		check_mod(const char *format, int *i, t_arg *sarg);
 int		check_number(char *str, t_arg *sarg, int *i);
 int		check_flags(const char *format, int *i, t_arg *sarg);

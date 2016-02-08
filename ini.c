@@ -22,8 +22,10 @@ void	ini_sarg(t_arg *sarg)
 	sarg->flags.plus = 0;
 	sarg->flags.space = 0;
 	sarg->flags.numb = 0;
-	sarg->length = ft_strnew(sizeof(char) * 2);
+	sarg->mod.h = 0;
+	sarg->mod.l = 0;
+	sarg->mod.j = 0;
+	sarg->mod.z = 0;
 	sarg->prec = ft_strnew(sizeof(char) * 1);
 	sarg->spec = ft_strnew(sizeof(char) * 1);
-	sarg->type = NULL;
 }

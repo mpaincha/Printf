@@ -70,8 +70,9 @@ void	action(t_dbllist *lst_arg, t_dbllist *lst_str)
 		if (ARG->flags.diez != 0 || ARG->flags.zero != 0 || ARG->flags.minus != 0
 		|| ARG->flags.plus != 0 || ARG->flags.space != 0)
 			action_flags(tmpa, lst_str, str);
-		if (ARG->length[0] != '\0')
-			action_length(tmpa, lst_str, str);
+		if (ARG->mod.h != 0 || ARG->mod.l != 0 || ARG->mod.j != 0
+		|| ARG->mod.z != 0)
+			action_mod(tmpa, lst_str, str);
 		if (ARG->prec[0] != '\0')
 			action_prec(tmpa, lst_str, str);
 		action_spec(tmpa, lst_str, str);

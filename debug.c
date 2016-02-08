@@ -35,14 +35,18 @@ void	ft_putlst(t_dbllist	*list)
 		ft_putnbr(SFLAGS.space);
 		ft_putstr("\nflags, numb : ");
 		ft_putnbr(SFLAGS.numb);
-		ft_putstr("\nlength : ");
-		ft_putstr(((t_arg *)(tmpa->content))->length);
+		ft_putstr("\nlength, h : ");
+		ft_putnbr(SMOD.h);
+		ft_putstr("\nMOD, l : ");
+		ft_putnbr(SMOD.l);
+		ft_putstr("\nMOD, j : ");
+		ft_putnbr(SMOD.j);
+		ft_putstr("\nMOD, z : ");
+		ft_putnbr(SMOD.z);
 		ft_putstr("\nprec : ");
 		ft_putstr(((t_arg *)(tmpa->content))->prec);
 		ft_putstr("\nspec : ");
 		ft_putstr(((t_arg *)(tmpa->content))->spec);
-		ft_putstr("\ntype : ");
-		ft_putstr(((t_arg *)(tmpa->content))->type);
 		tmpa = tmpa->next;
 	}
 	ft_putchar('\n');

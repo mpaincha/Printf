@@ -22,12 +22,21 @@
 */
 
 # define FLAGS "#0-+ "
-# define LENGTH "hljz"
 # define PREC "0n*" //il doit y avoir un point devant + rien est egalement possible
+# define MOD "hljz"
 # define SPEC "sSpdDioOuUxXcC"
 
 # define ARG ((t_arg *)(tmpa->content))
 # define SFLAGS ((t_flags)(ARG->flags))
+# define SMOD ((t_mod)(ARG->mod))
+
+typedef struct		s_mod
+{
+	int				h;
+	int				l;
+	int				j;
+	int				z;
+}					t_mod;
 
 typedef struct		s_flags
 {
@@ -43,19 +52,18 @@ typedef struct		s_arg
 {
 	void			*arg;
 	t_flags			flags;
-	char			*length;
+	t_mod			mod;
 	char			*prec;
 	char			*spec;
-	char			*type;
 
 }					t_arg;
 
 int		ft_printf(const char *format, ...);
 void	display_percent(int n, t_dbllist *lst_str);
-int	recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str);
+int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str);
 int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
 int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
-int		error(const char *msg);
+int	error(const char *msg);
 void	ft_putlst(t_dbllist	*list); //fonction de debug
 int		clean_lst(t_dbllist *lst_arg);
 void	recover_param(va_list ap, t_dbllist *lst_arg);
@@ -63,7 +71,7 @@ void	ini_sarg(t_arg *sarg);
 int		checks(const char *format, int *i, t_arg *sarg);
 int		check_spec(char find, t_arg *sarg);
 int		check_prec(char point, char find, int *i, t_arg *sarg);
-int		check_length(char find, t_arg *sarg);
+int		check_mod(const char *format, int *i, t_arg *sarg);
 int		check_number(char *str, t_arg *sarg, int *i);
 int		check_flags(const char *format, int *i, t_arg *sarg);
 void	ft_putlststr(t_dbllist	*list);
@@ -71,10 +79,12 @@ int		stock_str(const char *format, int	i, t_dbllist *lst_str);
 void	cleanarg(t_dbllist *lst_arg);
 void	action(t_dbllist *lst_arg, t_dbllist *lst_str);
 void	action_flags(t_elem *tmpa,t_dbllist *lst_str, char *str);
-void	action_length(t_elem *tmpa,t_dbllist *lst_str, char *str);
+void	action_mod(t_elem *tmpa,t_dbllist *lst_str, char *str);
 void	action_prec(t_elem *tmpa,t_dbllist *lst_str, char *str);
 void	action_spec(t_elem *tmpa,t_dbllist *lst_str, char *str);
 void	diez(t_elem *tmpa, char *str);
+int		errormod(t_arg *sarg);
+
 
 #endif
 

@@ -22,7 +22,7 @@ void	action_flags(t_elem *tmpa,t_dbllist *lst_str, char *str)
 		diez(tmpa, str);
 }
 
-void	action_length(t_elem *tmpa,t_dbllist *lst_str, char *str)
+void	action_mod(t_elem *tmpa,t_dbllist *lst_str, char *str)
 {
 		(void)tmpa;
 	(void)lst_str;

@@ -20,17 +20,24 @@ char	*convert_char(t_elem *tmpa, void *arg)
 			return (ft_itoabase_imax((int)arg, 10));
 		// A VOIR apres c avec l qui correspond 0 C
 	}
-	if (ARG->spec[0] == 'u' || ARG->spec[0] == 'U' || ARG->spec[0] == 'd'
-		|| ARG->spec[0] == 'D' ||ARG->spec[0] == 'i')
-		return (ft_itoabase_imax(arg, 10));
-	if (ARG->spec[0] == 'o' || ARG->spec[0] == 'O' )
-		return (ft_itoabase_imax(arg, 8));
+	if (ARG->spec[0] == 'u')
+		return (ft_itoabase_imax((unsigned int)arg, 10));
+	if (ARG->spec[0] == 'U' || ARG->spec[0] == 'D')
+		return (ft_itoabase_imax((long int)arg, 10));
+	if (ARG->spec[0] == 'd' || ARG->spec[0] == 'i')
+		return (ft_itoabase_imax((int)arg, 10));
+	if (ARG->spec[0] == 'o')
+		return (ft_itoabase_imax((unsigned int)arg, 8));
+	if (ARG->spec[0] == 'O' )
+		return (ft_itoabase_imax((long int)arg, 8));
+	if (ARG->spec[0] == 'X')
+		return (ft_itoabase_imax((unsigned int)arg, 16));
+	if (ARG->spec[0] == 'x')
+		return (ft_itoabase_imax_x((unsigned int)arg, 16));
+	if (ARG->spec[0] == 'p')
+		return (ft_itoabase_imax((int)arg, 16));
 	if (ARG->spec[0] == 's' || ARG->spec[0] == 'S')
 		return ((char *)arg);
-	if (ARG->spec[0] == 'p' || ARG->spec[0] == 'X')
-		return (ft_itoabase_imax(arg, 16));
-	if (ARG->spec[0] == 'x')
-		return (ft_itoabase_imax_x(arg, 16));
 	return (0);
 }
 

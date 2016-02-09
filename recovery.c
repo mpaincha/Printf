@@ -14,30 +14,30 @@
 
 char	*convert_char(t_elem *tmpa, void *arg)
 {
-	if (ARG->spec[0] == 'c')
-	{
-		if (SMOD.l == 0)
-			return (ft_itoabase_imax((int)arg, 10));
-		// A VOIR apres c avec l qui correspond 0 C
-	}
-	if (ARG->spec[0] == 'u')
-		return (ft_itoabase_imax((unsigned int)arg, 10));
-	if (ARG->spec[0] == 'U' || ARG->spec[0] == 'D')
-		return (ft_itoabase_imax((long int)arg, 10));
-	if (ARG->spec[0] == 'd' || ARG->spec[0] == 'i')
-		return (ft_itoabase_imax((int)arg, 10));
-	if (ARG->spec[0] == 'o')
-		return (ft_itoabase_imax((unsigned int)arg, 8));
-	if (ARG->spec[0] == 'O' )
-		return (ft_itoabase_imax((long int)arg, 8));
-	if (ARG->spec[0] == 'X')
-		return (ft_itoabase_imax((unsigned int)arg, 16));
-	if (ARG->spec[0] == 'x')
-		return (ft_itoabase_imax_x((unsigned int)arg, 16));
+	if (ARG->spec[0] == 's')
+		return (convert_s(tmpa, arg));
+	if (ARG->spec[0] == 'S')
+		return (convert_su(tmpa, arg));
 	if (ARG->spec[0] == 'p')
-		return (ft_itoabase_imax((int)arg, 16));
-	if (ARG->spec[0] == 's' || ARG->spec[0] == 'S')
-		return ((char *)arg);
+		return (convert_p(tmpa, arg));
+	if (ARG->spec[0] == 'd' || ARG->spec[0] == 'i')
+		return (convert_di(tmpa, arg));
+	if (ARG->spec[0] == 'D')
+		return (convert_du(tmpa, arg));
+	if (ARG->spec[0] == 'o')
+		return (convert_o(tmpa, arg));
+	if (ARG->spec[0] == 'O' )
+		return (convert_ou(tmpa, arg));
+	if (ARG->spec[0] == 'u')
+		return (convert_u(tmpa, arg));
+	if (ARG->spec[0] == 'U')
+		return (convert_uu(tmpa, arg));
+	if (ARG->spec[0] == 'x')
+		return (convert_x(tmpa, arg));
+	if (ARG->spec[0] == 'X')
+		return (convert_xu(tmpa, arg));
+	if (ARG->spec[0] == 'c')
+		return (convert_c(tmpa, arg));
 	return (0);
 }
 

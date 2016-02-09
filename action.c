@@ -20,6 +20,14 @@ void	action_flags(t_elem *tmpa,t_dbllist *lst_str, char *str)
 	ft_putstr("\n======action FLAGS=====\n");
 	if (ARG->flags.diez == 1)
 		diez(tmpa, str);
+	// if (ARG->flags.zero == 1)
+	// 	zero(tmpa, str);
+	// else if (ARG->flags.minus == 1)
+	// 	minus(tmpa, str);
+	// if (ARG->flags.plus == 1)
+	// 	plus(tmpa, str);
+	// else if (ARG->flags.space == 1)
+	// 	space(tmpa, str);
 }
 
 void	action_mod(t_elem *tmpa,t_dbllist *lst_str, char *str)

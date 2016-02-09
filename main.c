@@ -14,6 +14,6 @@
 
 int		main(void)
 {
-	ft_printf("%#        12.68542hs %d %c", "coucou", 42, 'k');
+	ft_printf("%#        12.68542hs %s %s", "coucou", "42", "k");
 	return (0);
 }

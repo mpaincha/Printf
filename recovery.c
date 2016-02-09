@@ -12,6 +12,28 @@
 
 #include "ft_printf.h"
 
+char	*convert_char(t_elem *tmpa, void *arg)
+{
+	if (ARG->spec[0] == 'c')
+	{
+		if (SMOD.l == 0)
+			return (ft_itoabase_imax((int)arg, 10));
+		// A VOIR apres c avec l qui correspond 0 C
+	}
+	if (ARG->spec[0] == 'u' || ARG->spec[0] == 'U' || ARG->spec[0] == 'd'
+		|| ARG->spec[0] == 'D' ||ARG->spec[0] == 'i')
+		return (ft_itoabase_imax(arg, 10));
+	if (ARG->spec[0] == 'o' || ARG->spec[0] == 'O' )
+		return (ft_itoabase_imax(arg, 8));
+	if (ARG->spec[0] == 's' || ARG->spec[0] == 'S')
+		return ((char *)arg);
+	if (ARG->spec[0] == 'p' || ARG->spec[0] == 'X')
+		return (ft_itoabase_imax(arg, 16));
+	if (ARG->spec[0] == 'x')
+		return (ft_itoabase_imax_x(arg, 16));
+	return (0);
+}
+
 int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 		int *i)
 {
@@ -32,16 +54,16 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 
 void	recover_param(va_list ap, t_dbllist *lst_arg)
 {
-	void		*arg;
+	void		*recup;
 	t_elem		*tmpa;
+	char		*arg;
 
 	tmpa = lst_arg->head;
-	arg = (void *)1;
+	recup = (void *)1;
 	while (tmpa != NULL)
 	{
-		ft_putstr("\navant recup\n");
-		arg = va_arg(ap, void *);
-		ft_putstr("\napres recup\n");
+		recup = va_arg(ap, void *);
+		arg = ft_strdup(convert_char(tmpa, recup));
 		ARG->arg = arg;
 		tmpa = tmpa->next;
 	}

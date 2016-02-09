@@ -91,7 +91,7 @@ void	action_prec(t_elem *tmpa,t_dbllist *lst_str, char *str);
 void	action_spec(t_elem *tmpa,t_dbllist *lst_str, char *str);
 void	diez(t_elem *tmpa, char *str);
 int		errormod(t_arg *sarg);
-
+char	*convert_char(t_elem *tmpa, void *arg);
 
 #endif
 

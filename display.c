@@ -57,31 +57,30 @@ int		stock_str(const char *format, int	i, t_dbllist *lst_str)
 	return (i - 1);
 }
 
-void	action(t_dbllist *lst_arg, t_dbllist *lst_str)
+void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 {
-	t_elem			*tmpa;
-	char			*str;
-	// char			*fct_action[]()
+	t_elem		*tmpa;
+	char		*str;
+	t_action	fct_action[] = {ft_string, ft_ptr, ft_dec, ft_octal, ft_unsig,
+				ft_hexalower, ft_hexaupper, ft_char};
+	t_action	actions;
 
 	tmpa = lst_arg->head;
 	str = NULL;
 	while (tmpa != NULL)
 	{
-
-		str = ft_strdup(ARG->arg);
-		if (ARG->flags.diez != 0 || ARG->flags.zero != 0 || ARG->flags.minus != 0
-		|| ARG->flags.plus != 0 || ARG->flags.space != 0)
-			action_flags(tmpa, lst_str, str);
-		if (ARG->mod.h != 0 || ARG->mod.l != 0 || ARG->mod.j != 0
-		|| ARG->mod.z != 0)
-			action_mod(tmpa, lst_str, str);
-		if (ARG->prec.pt != 0)
-			action_prec(tmpa, lst_str, str);
-		action_spec(tmpa, lst_str, str);
+		actions = fct_action[ARG->action];
+		str = actions(tmpa, ARG->arg);
+		ft_lstdbladd(lst_str, str, (sizeof(char) * ft_strlen(str)));
+		// if (ARG->flags.diez != 0 || ARG->flags.zero != 0 || ARG->flags.minus != 0
+		// || ARG->flags.plus != 0 || ARG->flags.space != 0)
+		// 	action_flags(tmpa, lst_str, str);
+		// if (ARG->mod.h != 0 || ARG->mod.l != 0 || ARG->mod.j != 0
+		// || ARG->mod.z != 0)
+		// 	action_mod(tmpa, lst_str, str);
+		// if (ARG->prec.pt != 0)
+		// 	action_prec(tmpa, lst_str, str);
+		// action_spec(tmpa, lst_str, str);
 		tmpa = tmpa->next;
 	}
 }
-
-		// ft_putstr("\nstr :");
-		// ft_putstr(str);
-		// ft_putstr("\n");

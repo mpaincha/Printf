@@ -31,7 +31,7 @@ int		ft_printf(const char *format, ...)
 	ft_putstr("\n ================= AFTER cleaning ======================\n");
 	if (lst_arg->head) //debug
 		ft_putlst(lst_arg); //debug
-	action(lst_arg, lst_str);
+	transformation(lst_arg, lst_str);
 	if (lst_str->head) //debug
 		ft_putlststr(lst_str); //debug
 	va_end(ap);

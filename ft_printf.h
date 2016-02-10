@@ -67,6 +67,8 @@ typedef struct		s_arg
 
 }					t_arg;
 
+typedef char *(* t_action)(t_elem *, void *);
+
 int		ft_printf(const char *format, ...);
 void	display_percent(int n, t_dbllist *lst_str);
 int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str);
@@ -86,15 +88,29 @@ int		check_flags(const char *format, int *i, t_arg *sarg);
 void	ft_putlststr(t_dbllist	*list);
 int		stock_str(const char *format, int	i, t_dbllist *lst_str);
 void	cleanarg(t_dbllist *lst_arg);
-void	action(t_dbllist *lst_arg, t_dbllist *lst_str);
-void	action_flags(t_elem *tmpa,t_dbllist *lst_str, char *str);
-void	action_mod(t_elem *tmpa,t_dbllist *lst_str, char *str);
-void	action_prec(t_elem *tmpa,t_dbllist *lst_str, char *str);
-void	action_spec(t_elem *tmpa,t_dbllist *lst_str, char *str);
+
+void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str);
+char	*ft_string(t_elem *tmpa, void *str);
+char	*ft_ptr(t_elem *tmpa, void *str);
+char	*ft_dec(t_elem *tmpa, void *str);
+char	*ft_octal(t_elem *tmpa, void *str);
+char	*ft_unsig(t_elem *tmpa, void *str);
+char	*ft_hexalower(t_elem *tmpa, void *str);
+char	*ft_hexaupper(t_elem *tmpa, void *str);
+char	*ft_char(t_elem *tmpa, void *str);
+
 void	diez(t_elem *tmpa, char *str);
 int		errormod(t_arg *sarg);
 char	*convert_char(t_elem *tmpa, void *arg);
 
+/*
+	Pointeurs sur fonctions actions
+*/
+
+
+/*
+	======
+*/
 #endif
 
 

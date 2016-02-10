@@ -12,14 +12,10 @@
 
 #include "ft_printf.h"
 
-void	action_flags(t_elem *tmpa,t_dbllist *lst_str, char *str)
+char	*ft_string(t_elem *tmpa, void *str)
 {
-	// (void)tmpa;
-	(void)lst_str;
-	// (void)str;
-	ft_putstr("\n======action FLAGS=====\n");
-	if (ARG->flags.diez == 1)
-		diez(tmpa, str);
+	(void)tmpa;
+	ft_putstr("\n======action string=====\n");
 	// if (ARG->flags.zero == 1)
 	// 	zero(tmpa, str);
 	// else if (ARG->flags.minus == 1)
@@ -28,30 +24,54 @@ void	action_flags(t_elem *tmpa,t_dbllist *lst_str, char *str)
 	// 	plus(tmpa, str);
 	// else if (ARG->flags.space == 1)
 	// 	space(tmpa, str);
+	return (str);
 }
 
-void	action_mod(t_elem *tmpa,t_dbllist *lst_str, char *str)
+char	*ft_ptr(t_elem *tmpa, void *str)
 {
-		(void)tmpa;
-	(void)lst_str;
-	(void)str;
-	ft_putstr("\n======action LENGTH=====\n");
+	(void)tmpa;
+	ft_putstr("\n======action ptr=====\n");
+	return (str);
 }
 
-void	action_prec(t_elem *tmpa,t_dbllist *lst_str, char *str)
+char	*ft_dec(t_elem *tmpa, void *str)
 {
-		(void)tmpa;
-	(void)lst_str;
-	(void)str;
-	ft_putstr("\n======action PREC=====\n");
-
+	(void)tmpa;
+	ft_putstr("\n======action dec=====\n");
+	return (str);
 }
 
-void	action_spec(t_elem *tmpa,t_dbllist *lst_str, char *str)
+char	*ft_octal(t_elem *tmpa, void *str)
 {
-		(void)tmpa;
-	(void)lst_str;
-	(void)str;
-	ft_putstr("\n======action SPEC=====\n");
+	(void)tmpa;
+	ft_putstr("\n======action octal=====\n");
+	return (str);
+}
 
+char	*ft_unsig(t_elem *tmpa, void *str)
+{
+	(void)tmpa;
+	ft_putstr("\n======action UNSIG=====\n");
+	return (str);
+}
+
+char	*ft_hexalower(t_elem *tmpa, void *str)
+{
+	(void)tmpa;
+	ft_putstr("\n======action hexalower=====\n");
+	return (str);
+}
+
+char	*ft_hexaupper(t_elem *tmpa, void *str)
+{
+	(void)tmpa;
+	ft_putstr("\n======action hexaupper=====\n");
+	return (str);
+}
+
+char	*ft_char(t_elem *tmpa, void *str)
+{
+	(void)tmpa;
+	ft_putstr("\n======action char=====\n");
+	return (str);
 }

@@ -14,6 +14,6 @@
 
 int		main(void)
 {
-	ft_printf("%#        12.68542hs %D %i", "coucou", "42", "456897");
+	ft_printf("%s%S%p%d%D%i%o%O%u%U%x%X%c%C", "s", "S", "p", "d", "D", "i", "o", "O", "u", "U", "x", "X", "c", "C");
 	return (0);
 }

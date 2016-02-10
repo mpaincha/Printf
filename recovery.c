@@ -12,34 +12,35 @@
 
 #include "ft_printf.h"
 
-char	*convert_char(t_elem *tmpa, void *arg)
-{
-	if (ARG->spec[0] == 's')
-		return (convert_s(tmpa, arg));
-	if (ARG->spec[0] == 'S')
-		return (convert_su(tmpa, arg));
-	if (ARG->spec[0] == 'p')
-		return (convert_p(tmpa, arg));
-	if (ARG->spec[0] == 'd' || ARG->spec[0] == 'i')
-		return (convert_di(tmpa, arg));
-	if (ARG->spec[0] == 'D')
-		return (convert_du(tmpa, arg));
-	if (ARG->spec[0] == 'o')
-		return (convert_o(tmpa, arg));
-	if (ARG->spec[0] == 'O' )
-		return (convert_ou(tmpa, arg));
-	if (ARG->spec[0] == 'u')
-		return (convert_u(tmpa, arg));
-	if (ARG->spec[0] == 'U')
-		return (convert_uu(tmpa, arg));
-	if (ARG->spec[0] == 'x')
-		return (convert_x(tmpa, arg));
-	if (ARG->spec[0] == 'X')
-		return (convert_xu(tmpa, arg));
-	if (ARG->spec[0] == 'c')
-		return (convert_c(tmpa, arg));
-	return (0);
-}
+// char	*convert_char(t_elem *tmpa, void *arg)
+// {
+// 	char (* fct
+// 	if (ARG->spec[0] == 's')
+// 		return (convert_s(tmpa, arg));
+// 	if (ARG->spec[0] == 'S')
+// 		return (convert_su(tmpa, arg));
+// 	if (ARG->spec[0] == 'p')
+// 		return (convert_p(tmpa, arg));
+// 	if (ARG->spec[0] == 'd' || ARG->spec[0] == 'i')
+// 		return (convert_di(tmpa, arg));
+// 	if (ARG->spec[0] == 'D')
+// 		return (convert_du(tmpa, arg));
+// 	if (ARG->spec[0] == 'o')
+// 		return (convert_o(tmpa, arg));
+// 	if (ARG->spec[0] == 'O' )
+// 		return (convert_ou(tmpa, arg));
+// 	if (ARG->spec[0] == 'u')
+// 		return (convert_u(tmpa, arg));
+// 	if (ARG->spec[0] == 'U')
+// 		return (convert_uu(tmpa, arg));
+// 	if (ARG->spec[0] == 'x')
+// 		return (convert_x(tmpa, arg));
+// 	if (ARG->spec[0] == 'X')
+// 		return (convert_xu(tmpa, arg));
+// 	if (ARG->spec[0] == 'c')
+// 		return (convert_c(tmpa, arg));
+// 	return (0);
+// }
 
 int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 		int *i)
@@ -61,16 +62,14 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 
 void	recover_param(va_list ap, t_dbllist *lst_arg)
 {
-	void		*recup;
+	void		*arg;
 	t_elem		*tmpa;
-	char		*arg;
 
 	tmpa = lst_arg->head;
-	recup = (void *)1;
+	arg = (void *)1;
 	while (tmpa != NULL)
 	{
-		recup = va_arg(ap, void *);
-		arg = ft_strdup(convert_char(tmpa, recup));
+		arg = va_arg(ap, void *);
 		ARG->arg = arg;
 		tmpa = tmpa->next;
 	}

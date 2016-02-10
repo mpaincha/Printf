@@ -62,6 +62,7 @@ typedef struct		s_arg
 	t_mod			mod;
 	t_prec			prec;
 	char			*spec;
+	int				action;
 
 }					t_arg;
 

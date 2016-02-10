@@ -109,6 +109,20 @@ int				check_mod(const char *format, int *i, t_arg *sarg)
 	return (errormod(sarg));
 }
 
+static int		define_act(char *spec, char find)
+{
+	size_t		i;
+
+	i = 0;
+	while (spec[i] != '\0')
+	{
+		if (spec[i] == find)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 int				check_prec(const char *format, int *i, t_arg *sarg)
 {
 	int		numb;
@@ -134,6 +148,7 @@ int				check_spec(char find, t_arg *sarg)
 	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, find))
 	{
 		sarg->spec[0] = find;
+		sarg->action = define_act(SPEC, find);
 		return (1);
 	}
 	return (0);

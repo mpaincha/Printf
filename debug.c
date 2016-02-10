@@ -49,6 +49,8 @@ void	ft_putlst(t_dbllist	*list)
 		ft_putnbr(SPREC.n);
 		ft_putstr("\nspec : ");
 		ft_putstr(((t_arg *)(tmpa->content))->spec);
+		ft_putstr("\naction : ");
+		ft_putnbr(((t_arg *)(tmpa->content))->action);
 		tmpa = tmpa->next;
 	}
 	ft_putchar('\n');

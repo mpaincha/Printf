@@ -66,6 +66,7 @@ void	action(t_dbllist *lst_arg, t_dbllist *lst_str)
 	str = NULL;
 	while (tmpa != NULL)
 	{
+
 		str = ft_strdup(ARG->arg);
 		if (ARG->flags.diez != 0 || ARG->flags.zero != 0 || ARG->flags.minus != 0
 		|| ARG->flags.plus != 0 || ARG->flags.space != 0)

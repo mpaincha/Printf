@@ -61,6 +61,7 @@ void	action(t_dbllist *lst_arg, t_dbllist *lst_str)
 {
 	t_elem			*tmpa;
 	char			*str;
+	// char			*fct_action[]()
 
 	tmpa = lst_arg->head;
 	str = NULL;

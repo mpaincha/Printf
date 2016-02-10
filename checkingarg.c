@@ -158,6 +158,12 @@ int				check_spec(char find, t_arg *sarg)
 		}
 		return (1);
 	}
+	if (find == 'i')
+	{
+		sarg->spec[0] = 'd';
+		sarg->action = define_action(SPEC, 'd');
+		return (1);
+	}
 	return (0);
 }
 

@@ -106,7 +106,6 @@ int				check_mod(const char *format, int *i, t_arg *sarg)
 		else
 			sarg->mod.l = 1;
 	}
-	define_mod();
 	return (errormod(sarg));
 }
 

@@ -24,7 +24,8 @@
 # define FLAGS "#0-+ "
 # define PREC "0n*" //il doit y avoir un point devant + rien est egalement possible
 # define MOD "hljz"
-# define SPEC "sSpdDioOuUxXcC"
+// # define SPEC "sSpdDioOuUxXcC"
+# define SPEC "spdiouxXc"
 
 # define ARG ((t_arg *)(tmpa->content))
 # define SFLAGS ((t_flags)(ARG->flags))

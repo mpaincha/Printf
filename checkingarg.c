@@ -109,7 +109,7 @@ int				check_mod(const char *format, int *i, t_arg *sarg)
 	return (errormod(sarg));
 }
 
-static int		define_act(char *spec, char find)
+static int		define_action(char *spec, char find)
 {
 	size_t		i;
 
@@ -145,14 +145,16 @@ int				check_prec(const char *format, int *i, t_arg *sarg)
 
 int				check_spec(char find, t_arg *sarg)
 {
-	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, find))
+	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, ft_tolower(find)))
 	{
 		sarg->spec[0] = find;
-		sarg->action = define_act(SPEC, find);
-		if (ft_isupper(find))
+		sarg->action = define_action(SPEC, find);
+		if (ft_isupper(find) && find != 'X')
 		{
-			if (sarg->mod.l == 1)
-				sarg->action = define_act(SPEC, ft_tolower(find));
+			if (sarg->mod.l == 0)
+				sarg->mod.l = 1;
+			sarg->spec[0] = ft_tolower(find);
+			sarg->action = define_action(SPEC, ft_tolower(find));
 		}
 		return (1);
 	}

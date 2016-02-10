@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action.c                                           :+:      :+:    :+:   */
+/*   ft_action.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/27 12:45:11 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/01/27 12:45:13 by mpaincha         ###   ########.fr       */
+/*   Created: 2016/02/10 18:19:44 by mpaincha          #+#    #+#             */
+/*   Updated: 2016/02/10 18:19:46 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,7 @@ char	*ft_string(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
 	ft_putstr("\n======action string=====\n");
-	// if (ARG->flags.zero == 1)
-	// 	zero(tmpa, str);
-	// else if (ARG->flags.minus == 1)
-	// 	minus(tmpa, str);
-	// if (ARG->flags.plus == 1)
-	// 	plus(tmpa, str);
-	// else if (ARG->flags.space == 1)
-	// 	space(tmpa, str);
+
 	return (str);
 }
 
@@ -38,6 +31,8 @@ char	*ft_dec(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
 	ft_putstr("\n======action dec=====\n");
+	mod_dec(tmpa, str);
+
 	return (str);
 }
 

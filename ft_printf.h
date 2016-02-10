@@ -34,11 +34,22 @@
 
 typedef struct		s_mod
 {
-	int				h;
-	int				l;
-	int				j;
-	int				z;
+	int				h;//useless
+	int				l;//useless
+	int				j;//useless
+	int				z;//useless
+	int				mod;
 }					t_mod;
+
+/*
+	ind :
+	h = 0;
+	hh = 1;
+	l = 2;
+	ll = 3;
+	j = 4;
+	z = 5;
+*/
 
 typedef struct		s_flags
 {

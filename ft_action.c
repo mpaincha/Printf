@@ -31,8 +31,10 @@ char	*ft_dec(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
 	ft_putstr("\n======action dec=====\n");
-	mod_dec(tmpa, str);
-
+	str = mod_dec(tmpa);
+	ft_putstr("\napres mod dec\n");
+	ft_putstr(str);
+	ft_putstr("\napres mod dec\n");
 	return (str);
 }
 

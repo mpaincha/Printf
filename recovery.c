@@ -12,36 +12,6 @@
 
 #include "ft_printf.h"
 
-// char	*convert_char(t_elem *tmpa, void *arg)
-// {
-// 	char (* fct
-// 	if (ARG->spec[0] == 's')
-// 		return (convert_s(tmpa, arg));
-// 	if (ARG->spec[0] == 'S')
-// 		return (convert_su(tmpa, arg));
-// 	if (ARG->spec[0] == 'p')
-// 		return (convert_p(tmpa, arg));
-// 	if (ARG->spec[0] == 'd' || ARG->spec[0] == 'i')
-// 		return (convert_di(tmpa, arg));
-// 	if (ARG->spec[0] == 'D')
-// 		return (convert_du(tmpa, arg));
-// 	if (ARG->spec[0] == 'o')
-// 		return (convert_o(tmpa, arg));
-// 	if (ARG->spec[0] == 'O' )
-// 		return (convert_ou(tmpa, arg));
-// 	if (ARG->spec[0] == 'u')
-// 		return (convert_u(tmpa, arg));
-// 	if (ARG->spec[0] == 'U')
-// 		return (convert_uu(tmpa, arg));
-// 	if (ARG->spec[0] == 'x')
-// 		return (convert_x(tmpa, arg));
-// 	if (ARG->spec[0] == 'X')
-// 		return (convert_xu(tmpa, arg));
-// 	if (ARG->spec[0] == 'c')
-// 		return (convert_c(tmpa, arg));
-// 	return (0);
-// }
-
 int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 		int *i)
 {
@@ -51,10 +21,11 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	if (checks(format, i, &sarg) == -1)
 		return (-1);
 	*i = *i + 1;
-	if (ft_strlen(sarg.spec) != 1)
-		return (error("Missing specifier"));
+	// if (ft_strlen(sarg.spec) != 1)
+	// 	return (error("Missing specifier"));
 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
-	ini_sarg(&sarg);
+	ft_lstdbladd(lst_str, sarg.spec, (sizeof(char) * 2));
+	// ini_sarg(&sarg);
 	if (format[*i] != '\0')
 		recover_arg(format, lst_arg, lst_str);
 	return (1);

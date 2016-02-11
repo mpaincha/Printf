@@ -17,11 +17,14 @@ void	ft_putlststr(t_dbllist	*list)
 	t_elem	*tmp;
 
 	tmp = list->head;
+	ft_putstr("debut liste str====");
 	while (tmp != NULL)
 	{
+		ft_putstr("MAILLON");
 		ft_putstr(tmp->content);
 		tmp = tmp->next;
 	}
+	ft_putstr("fin liste str====");
 }
 
 void	display_percent(int nb, t_dbllist *lst_str)
@@ -57,6 +60,31 @@ int		stock_str(const char *format, int	i, t_dbllist *lst_str)
 	return (i - 1);
 }
 
+static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
+{
+	int			found;
+	t_elem		*tmps;
+
+	tmps = lst_str->head;
+	found = 0;
+	while (tmps != NULL && !found)
+	{
+		if (tmps->content == spec)
+		{
+			found = 1;
+			break ;
+		}
+		else
+			tmps = tmps->next;
+	}
+	if (found == 0)
+		tmps = NULL;
+	ft_putstr("\nfound =");
+	ft_putnbr(found);
+	ft_putstr("\n");
+	return (tmps);
+}
+
 void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 {
 	t_elem		*tmpa;
@@ -64,14 +92,27 @@ void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 	t_action	ft_action[] = {ft_string, ft_ptr, ft_dec, ft_octal, ft_unsig,
 				ft_hexalower, ft_hexaupper, ft_char};
 	t_action	actions;
+	t_elem		*tmps;
 
 	tmpa = lst_arg->head;
+	tmps = lst_str->head;
 	str = NULL;
 	while (tmpa != NULL)
 	{
-		actions = fct_action[ARG->action];
+		actions = ft_action[ARG->action];
 		str = actions(tmpa, ARG->arg);
-		ft_lstdbladd(lst_str, str, (sizeof(char) * ft_strlen(str)));
+		ft_putstr("\nstr :");
+		ft_putstr(str);
+		ft_putstr("\n");
+		ft_putstr(ARG->spec);
+		ft_putstr("\n");
+		tmps = find_pos(ARG->spec, lst_str);
+		ft_putstr(tmps->content);
+		ft_putstr("\navant strdup\n");
+		ft_strdel(tmps->content);
+		ft_putstr("\navant DEL\n");
+		tmps->content = ft_strdup(str);
+		ft_putstr("\napres strdup\n");
 		tmpa = tmpa->next;
 	}
 }

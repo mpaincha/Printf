@@ -34,22 +34,11 @@
 
 typedef struct		s_mod
 {
-	int				h;//useless
-	int				l;//useless
-	int				j;//useless
-	int				z;//useless
-	int				mod;
+	int				h;
+	int				l;
+	int				j;
+	int				z;
 }					t_mod;
-
-/*
-	ind :
-	h = 0;
-	hh = 1;
-	l = 2;
-	ll = 3;
-	j = 4;
-	z = 5;
-*/
 
 typedef struct		s_flags
 {
@@ -112,7 +101,7 @@ char	*ft_char(t_elem *tmpa, void *str);
 
 void	diez(t_elem *tmpa, char *str);
 int		errormod(t_arg *sarg);
-char	*convert_char(t_elem *tmpa, void *arg);
+char	*mod_dec(t_elem *tmpa);
 
 /*
 	Pointeurs sur fonctions actions

@@ -31,25 +31,33 @@ int		main(void)
 	ft_putstr("======   PRINTF   ======\n");
 	printf("hhd: %hhd\n", 'b');
 	ft_putstr("== == == == == == == == ==\n");
-	// ft_putstr("======   FT_PRINTF   ======\n\n");
-	// ft_printf("ld: %ld\n", 10);
-	// ft_putstr("======   PRINTF   ======\n");
-	// printf("lld: %lld\n", 10);
-	// ft_putstr("== == == == == == == == ==\n");
-	// ft_putstr("======   FT_PRINTF   ======\n\n");
-	// ft_printf("jd: %jd\n", 10);
-	// ft_putstr("======   PRINTF   ======\n");
-	// printf("jd: %jd\n", 10);
-	// ft_putstr("== == == == == == == == ==\n");
-	// ft_putstr("======   FT_PRINTF   ======\n\n");
-	// ft_printf("zd: %zd\n", 10);
-	// ft_putstr("======   PRINTF   ======\n");
-	// printf("zd: %zd\n", 10);
-	// ft_putstr("== == == == == == == == ==\n");
-	// ft_putstr("======   FT_PRINTF   ======\n\n");
-	// ft_printf("D: %D\n", 4545454510);
-	// ft_putstr("======   PRINTF   ======\n");
-	// printf("D: %D\n", 4545454510);
-	// ft_putstr("== == == == == == == == ==\n");
+	ft_putstr("======   FT_PRINTF   ======\n\n");
+	ft_printf("ld: %ld\n", 545454510);
+	ft_putstr("======   PRINTF   ======\n");
+	printf("ld: %ld\n", 545454510);
+	ft_putstr("== == == == == == == == ==\n");
+	ft_putstr("======   FT_PRINTF   ======\n\n");
+	ft_printf("lld: %lld\n", 10);
+	ft_putstr("======   PRINTF   ======\n");
+	printf("lld: %lld\n", 10);
+	ft_putstr("== == == == == == == == ==\n");
+	ft_putstr("======   FT_PRINTF   ======\n\n");
+	ft_printf("jd: %jd\n", 10);
+	ft_putstr("======   PRINTF   ======\n");
+	printf("jd: %jd\n", 10);
+	ft_putstr("== == == == == == == == ==\n");
+	ft_putstr("======   FT_PRINTF   ======\n\n");
+	ft_printf("zd: %zd\n", 10);
+	ft_putstr("======   PRINTF   ======\n");
+	printf("zd: %zd\n", 10);
+	ft_putstr("== == == == == == == == ==\n");
+	ft_putstr("======   FT_PRINTF   ======\n\n");
+	ft_printf("D: %D\n", 545454510);
+	ft_putstr("======   PRINTF   ======\n");
+	printf("D: %D\n", 545454510);
+	ft_putstr("== == == == == == == == ==\n");
 return (0);
 }
+
+
+ne marche pas si nombre = 4545454510 pour mon printf f

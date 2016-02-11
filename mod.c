@@ -29,7 +29,9 @@ char	*mod_ptr(t_elem *tmpa)
 
 char	*mod_dec(t_elem *tmpa)
 {
-	ft_putstr("\nmod dec\n");
+	ft_putstr("\n=== MOD DEC ===\n");
+	ft_putstr(ft_itoabase_imax((long)ARG->arg, 10));
+	ft_putstr("\n");
 	if (SMOD.h == 1)
 		return (ft_itoabase_imax((short)ARG->arg, 10));
 // probleme avec les negatifs

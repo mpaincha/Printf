@@ -84,7 +84,6 @@ int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int
 
 	while (*i < (int)ft_strlen(format))
 	{
-		ft_putnbr(*i);
 		if (format[*i] == '%')
 		{
 			ret = percent(format, lst_arg, lst_str, i);

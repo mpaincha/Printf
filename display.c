@@ -93,9 +93,7 @@ void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 	str = NULL;
 	while (tmpa != NULL)
 	{
-		ft_putstr("\nboucle transfromation \n");
 		actions = ft_action[ARG->action];
-		ft_putstr("actions");
 		str = actions(tmpa, ARG->arg);
 		tmps = find_pos(ARG->spec, lst_str);
 		tmps->content = ft_strdup(str);

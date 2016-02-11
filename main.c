@@ -16,6 +16,6 @@ int		main(void)
 {
 	// ft_printf("%s%S%p%d%D%i%o%O%u%U%x%X%c%C", "s", "S", "p", "d", "D", "i", "o", "O", "u", "U", "x", "X", "c", "C");
 	// ft_printf("d: %d\n i : %i\n ld : %ld\n D :%D\n", 10, 10, 10, 10);
-	ft_printf("d: %d\n D : %D\n ld : %ld\n D :%D\n", 10, 10, 10, 10);
+	ft_printf("d: %d\n D : %D\n ld : %ld\n D :%D\n", 10, 12, 13, 10);
 	return (0);
 }

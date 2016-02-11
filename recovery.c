@@ -16,15 +16,18 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 		int *i)
 {
 	t_arg		sarg;
+	char		*str;
 
 	ini_sarg(&sarg);
+	str = ft_strnew(2);
 	if (checks(format, i, &sarg) == -1)
 		return (-1);
 	*i = *i + 1;
 	// if (ft_strlen(sarg.spec) != 1)
 	// 	return (error("Missing specifier"));
 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
-	ft_lstdbladd(lst_str, sarg.spec, (sizeof(char) * 2));
+	ft_strcpy(str, sarg.spec);
+	ft_lstdbladd(lst_str, str, (sizeof(char) * ft_strlen(str)));
 	// ini_sarg(&sarg);
 	if (format[*i] != '\0')
 		recover_arg(format, lst_arg, lst_str);

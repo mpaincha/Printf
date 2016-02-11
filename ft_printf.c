@@ -27,8 +27,8 @@ int		ft_printf(const char *format, ...)
 	recover_param(ap, lst_arg);
 	if (lst_str->head) //debug
 		ft_putlststr(lst_str); //debug
-	// if (lst_arg->head) //debug
-	// 	ft_putlst(lst_arg); //debug
+	if (lst_arg->head) //debug
+		ft_putlst(lst_arg); //debug
 	cleanarg(lst_arg);
 	ft_putstr("\n ================= AFTER cleaning ======================\n");
 	// if (lst_arg->head) //debug

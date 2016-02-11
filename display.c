@@ -69,7 +69,7 @@ static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 	found = 0;
 	while (tmps != NULL && !found)
 	{
-		if (tmps->content == spec)
+		if (ft_strequ(tmps->content, spec))
 		{
 			found = 1;
 			break ;
@@ -79,9 +79,6 @@ static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 	}
 	if (found == 0)
 		tmps = NULL;
-	ft_putstr("\nfound =");
-	ft_putnbr(found);
-	ft_putstr("\n");
 	return (tmps);
 }
 
@@ -101,18 +98,8 @@ void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 	{
 		actions = ft_action[ARG->action];
 		str = actions(tmpa, ARG->arg);
-		ft_putstr("\nstr :");
-		ft_putstr(str);
-		ft_putstr("\n");
-		ft_putstr(ARG->spec);
-		ft_putstr("\n");
 		tmps = find_pos(ARG->spec, lst_str);
-		ft_putstr(tmps->content);
-		ft_putstr("\navant strdup\n");
-		ft_strdel(tmps->content);
-		ft_putstr("\navant DEL\n");
 		tmps->content = ft_strdup(str);
-		ft_putstr("\napres strdup\n");
 		tmpa = tmpa->next;
 	}
 }

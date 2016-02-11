@@ -21,8 +21,8 @@ void	ft_putlst(t_dbllist	*list)
 	while (tmpa != NULL)
 	{
 		ft_putstr("\nMAILLON : \n");
-		ft_putstr("arg : ");
-		ft_putstr(((t_arg *)(tmpa->content))->arg);
+		// ft_putstr("arg : ");
+		// ft_putstr(((t_arg *)(tmpa->content))->arg);
 		ft_putstr("\nflags, diez : ");
 		ft_putnbr(SFLAGS.diez);
 		ft_putstr("\nflags, zero : ");

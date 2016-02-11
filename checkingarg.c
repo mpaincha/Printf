@@ -148,6 +148,7 @@ int				check_spec(char find, t_arg *sarg)
 	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, ft_tolower(find)))
 	{
 		sarg->spec[0] = find;
+		sarg->spec[1] = '\0';
 		sarg->action = define_action(SPEC, find);
 		if (ft_isupper(find) && find != 'X')
 		{

@@ -42,6 +42,7 @@ char	*ft_octal(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
 	ft_putstr("\n======action octal=====\n");
+	str = mod_octal(tmpa);
 	return (str);
 }
 

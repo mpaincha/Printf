@@ -15,19 +15,24 @@
 char	*mod_string(t_elem *tmpa)
 {
 	if (SMOD.l == 1)
-		return ((wchar_t *)ARG->arg)
-	return ((char *)ARG->arg)
+		return ("a traiter");
+	return ((char *)ARG->arg);
 }
 
 char	*mod_ptr(t_elem *tmpa)
 {
-	return (ft_itoabase_imax((void *)ARG->arg));
+	(void)tmpa;
+
+	return ("a traiter");
+	// return (ft_itoabase_imax((void *)ARG->arg, 16));
 }
 
 char	*mod_dec(t_elem *tmpa)
 {
+	ft_putstr("\nmod dec\n");
 	if (SMOD.h == 1)
 		return (ft_itoabase_imax((short)ARG->arg, 10));
+// probleme avec les negatifs
 	else if (SMOD.h == 2)
 		return (ft_itoabase_imax((signed char)ARG->arg, 10));
 	else if (SMOD.l == 1)
@@ -117,7 +122,6 @@ char	*mod_hexaupper(t_elem *tmpa)
 char	*mod_char(t_elem *tmpa)
 {
 	if (SMOD.l == 1)
-		return ((wint_t *)ARG->arg)
-	return ((int)ARG->arg)
-
+		return ("a traiter");
+	return (ft_itoabase_imax((int)ARG->arg, 10));
 }

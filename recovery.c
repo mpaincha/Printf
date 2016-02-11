@@ -30,7 +30,7 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	ft_lstdbladd(lst_str, str, (sizeof(char) * ft_strlen(str)));
 	// ini_sarg(&sarg);
 	if (format[*i] != '\0')
-		recover_arg(format, lst_arg, lst_str);
+		recover_arg(format, lst_arg, lst_str, i);
 	return (1);
 }
 
@@ -78,22 +78,22 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	return (1);
 }
 
-int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str)
+int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i)
 {
-	static	int	i = 0;
 	int		ret;
 
-	while (i < (int)ft_strlen(format))
+	while (*i < (int)ft_strlen(format))
 	{
-		if (format[i] == '%')
+		ft_putnbr(*i);
+		if (format[*i] == '%')
 		{
-			ret = percent(format, lst_arg, lst_str, &i);
+			ret = percent(format, lst_arg, lst_str, i);
 			if (ret == -1)
 				return (-1);
 		}
-		else if (i < (int)ft_strlen(format) && ft_isascii(format[i]))
-			i = stock_str(format, i, lst_str);
-		i++;
+		else if (*i < (int)ft_strlen(format) && ft_isascii(format[*i]))
+			*i = stock_str(format, *i, lst_str);
+		*i = *i + 1;
 	}
 	return (1);
 }

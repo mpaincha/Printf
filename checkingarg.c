@@ -85,10 +85,8 @@ int				errormod(t_arg *sarg)
 
 int				check_mod(const char *format, int *i, t_arg *sarg)
 {
-	ft_putstr("===check mod===");
 	while (format[*i] != '\0' && ft_strchr(MOD, format[*i]))
 	{
-		ft_putstr("===BOUCLE check mod===");
 		savemod(format[*i], sarg);
 		*i = *i + 1;
 	}
@@ -131,14 +129,8 @@ int				check_prec(const char *format, int *i, t_arg *sarg)
 	numb = 0;
 	sarg->prec.pt = 1;
 	str = ft_strsub(format, *i + 1, ft_strlen(format) - *i - 1);
-	ft_putstr("\nstr : ");
-	ft_putstr(str);
 	if ((numb = ft_atoi(str)))
-	{
-		ft_putstr("\nnumb : ");
-		ft_putnbr(numb);
 		sarg->prec.n = numb;
-	}
 	*i = *i + ft_intlen(numb) + 1;
 	return (1);
 }

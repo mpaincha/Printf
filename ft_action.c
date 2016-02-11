@@ -15,7 +15,7 @@
 char	*ft_string(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	ft_putstr("\n======action string=====\n");
+	// ft_putstr("\n======action string=====\n");
 
 	return (str);
 }
@@ -23,25 +23,22 @@ char	*ft_string(t_elem *tmpa, void *str)
 char	*ft_ptr(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	ft_putstr("\n======action ptr=====\n");
+	// ft_putstr("\n======action ptr=====\n");
 	return (str);
 }
 
 char	*ft_dec(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	ft_putstr("\n======action dec=====\n");
-	str = mod_dec(tmpa);
-	ft_putstr("\napres mod dec\n");
-	ft_putstr(str);
-	ft_putstr("\napres mod dec\n");
+	// ft_putstr("\n======action dec=====\n");
+	str = ft_strdup(mod_dec(tmpa));
 	return (str);
 }
 
 char	*ft_octal(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	ft_putstr("\n======action octal=====\n");
+	// ft_putstr("\n======action octal=====\n");
 	str = mod_octal(tmpa);
 	return (str);
 }
@@ -49,27 +46,27 @@ char	*ft_octal(t_elem *tmpa, void *str)
 char	*ft_unsig(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	ft_putstr("\n======action UNSIG=====\n");
+	// ft_putstr("\n======action UNSIG=====\n");
 	return (str);
 }
 
 char	*ft_hexalower(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	ft_putstr("\n======action hexalower=====\n");
+	// ft_putstr("\n======action hexalower=====\n");
 	return (str);
 }
 
 char	*ft_hexaupper(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	ft_putstr("\n======action hexaupper=====\n");
+	// ft_putstr("\n======action hexaupper=====\n");
 	return (str);
 }
 
 char	*ft_char(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	ft_putstr("\n======action char=====\n");
+	// ft_putstr("\n======action char=====\n");
 	return (str);
 }

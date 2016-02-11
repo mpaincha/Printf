@@ -14,7 +14,6 @@
 
 void	ini_sarg(t_arg *sarg)
 {
-	ft_putstr("\n====INI SARG====\n");
 	sarg->arg = NULL;
 	sarg->flags.diez = 0;
 	sarg->flags.zero = 0;

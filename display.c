@@ -17,14 +17,11 @@ void	ft_putlststr(t_dbllist	*list)
 	t_elem	*tmp;
 
 	tmp = list->head;
-	ft_putstr("debut liste str====");
 	while (tmp != NULL)
 	{
-		ft_putstr("MAILLON");
 		ft_putstr(tmp->content);
 		tmp = tmp->next;
 	}
-	ft_putstr("fin liste str====");
 }
 
 void	display_percent(int nb, t_dbllist *lst_str)
@@ -46,7 +43,7 @@ void	display_percent(int nb, t_dbllist *lst_str)
 	}
 }
 
-int		stock_str(const char *format, int	i, t_dbllist *lst_str)
+int		stock_str(const char *format, int i, t_dbllist *lst_str)
 {
 	char 	*str;
 	int		start;
@@ -96,7 +93,9 @@ void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 	str = NULL;
 	while (tmpa != NULL)
 	{
+		ft_putstr("\nboucle transfromation \n");
 		actions = ft_action[ARG->action];
+		ft_putstr("actions");
 		str = actions(tmpa, ARG->arg);
 		tmps = find_pos(ARG->spec, lst_str);
 		tmps->content = ft_strdup(str);

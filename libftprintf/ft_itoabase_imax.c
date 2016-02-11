@@ -35,7 +35,9 @@ char				*ft_itoabase_imax(intmax_t n, size_t base)
 	int				i;
 	size_t			len;
 
+	ft_putstr("DEDANS");
 	len = ft_intlenbase(n, base);
+	ft_putnbr(len);
 	i = 0;
 	str = ft_strnew(len + 1);
 	if (base == 10 && n < 0)

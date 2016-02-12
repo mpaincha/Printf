@@ -113,7 +113,13 @@ char	*diez_o(t_elem *tmpa, char *str);
 char	*diez_hexalower(t_elem *tmpa, char *str);
 char	*diez_hexaupper(t_elem *tmpa, char *str);
 
+char	*define_width(t_elem *tmpa, char *str);
+char	*width_minus(t_elem *tmpa, char *str);
 char	*width(t_elem *tmpa, char *str);
+
+char	*space(t_elem *tmpa, char *str);
+
+char	*plus(t_elem *tmpa, char *str);
 
 #endif
 

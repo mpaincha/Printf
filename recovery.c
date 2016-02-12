@@ -64,10 +64,7 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	{
 		display_percent((percent / 2), lst_str);
 		if (percent % 2 == 0)
-		{
-			*i = *i + 1;
 			return (0);
-		}
 	}
 	*i = *i + 1;
 	if (split_arg(format, lst_arg, lst_str, i) == -1)

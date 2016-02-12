@@ -17,7 +17,8 @@ char	*ft_string(t_elem *tmpa, void *str)
 	(void)tmpa;
 	// ft_putstr("\n======action string=====\n");
 	str = ft_strdup(mod_string(tmpa));
-
+	if (SFLAGS.width != 0)
+		str = define_width(tmpa, str);
 	return (str);
 }
 
@@ -32,29 +33,36 @@ char	*ft_ptr(t_elem *tmpa, void *str)
 char	*ft_dec(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	// ft_putstr("\n======action dec=====\n");
+
 	str = ft_strdup(mod_dec(tmpa));
+	if (SFLAGS.space == 1)
+		str = space(tmpa, str);
+	// if (SFLAGS.minus == 1)
+	// 	str = minus(tmpa, str);
+	if (SFLAGS.plus == 1)
+		str = plus(tmpa, str);
+	if (SFLAGS.width != 0)
+		str = define_width(tmpa, str);
 	return (str);
 }
 
 char	*ft_octal(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	// ft_putstr("\n======action octal=====\n");
 	str = ft_strdup(mod_octal(tmpa));
 	if (SFLAGS.diez == 1)
 		str = diez_o(tmpa, str);
 	if (SFLAGS.width != 0)
-		str = width(tmpa, str);
+		str = define_width(tmpa, str);
 	return (str);
 }
 
 char	*ft_unsig(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	// ft_putstr("\n======action UNSIG=====\n");
 	str = ft_strdup(mod_unsig(tmpa));
-
+	if (SFLAGS.width != 0)
+		str = define_width(tmpa, str);
 	return (str);
 }
 
@@ -64,23 +72,27 @@ char	*ft_hexalower(t_elem *tmpa, void *str)
 	str = ft_strdup(mod_hexalower(tmpa));
 	if (SFLAGS.diez == 1)
 		str = diez_hexalower(tmpa, str);
+	if (SFLAGS.width != 0)
+		str = define_width(tmpa, str);
 	return (str);
 }
 
 char	*ft_hexaupper(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	// ft_putstr("\n======action hexaupper=====\n");
 	str = ft_strdup(mod_hexaupper(tmpa));
 	if (SFLAGS.diez == 1)
 		str = diez_hexaupper(tmpa, str);
+	if (SFLAGS.width != 0)
+		str = define_width(tmpa, str);
 	return (str);
 }
 
 char	*ft_char(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	// ft_putstr("\n======action char=====\n");
 	str = ft_strdup(mod_char(tmpa));
+	if (SFLAGS.width != 0)
+		str = define_width(tmpa, str);
 	return (str);
 }

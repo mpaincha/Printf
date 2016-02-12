@@ -18,6 +18,8 @@ ft_isalnum.c \
 ft_itoa.c \
 ft_itoabase_imax.c \
 ft_itoabase_imax_x.c \
+ft_itoabase_uimax.c \
+ft_itoabase_uimax_x.c \
 ft_itoabase.c \
 ft_intlen.c \
 ft_isascii.c \

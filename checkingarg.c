@@ -150,7 +150,7 @@ int				check_spec(char find, t_arg *sarg)
 			sarg->action = define_action(SPEC, ft_tolower(find));
 		}
 		else if (find == 'p')
-			sarg->mod.l = 2;
+			sarg->mod.j = 1;
 		return (1);
 	}
 	if (find == 'i')

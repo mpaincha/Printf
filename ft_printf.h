@@ -110,14 +110,6 @@ char	*mod_hexalower(t_elem *tmpa);
 char	*mod_hexaupper(t_elem *tmpa);
 char	*mod_char(t_elem *tmpa);
 
-/*
-	Pointeurs sur fonctions actions
-*/
-
-
-/*
-	======
-*/
 #endif
 
 

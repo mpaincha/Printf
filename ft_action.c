@@ -44,6 +44,8 @@ char	*ft_octal(t_elem *tmpa, void *str)
 	str = ft_strdup(mod_octal(tmpa));
 	if (SFLAGS.diez == 1)
 		str = diez_o(tmpa, str);
+	if (SFLAGS.width != 0)
+		str = width(tmpa, str);
 	return (str);
 }
 

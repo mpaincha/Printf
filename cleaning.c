@@ -24,7 +24,7 @@ void	cleanarg(t_dbllist *lst_arg)
 			ARG->flags.diez = 0;
 		if (ARG->flags.zero == 1 && ARG->flags.minus == 1)
 			ARG->flags.zero = 0;
-		if (ARG->prec.pt == 0 && ARG->flags.zero == 1 && (ARG->spec[0] == 'd'
+		if (ARG->prec.n != -1 && ARG->flags.zero == 1 && (ARG->spec[0] == 'd'
 		|| ARG->spec[0] == 'i' || ARG->spec[0] == 'o' || ARG->spec[0] == 'u'
 		|| ARG->spec[0] == 'x' || ARG->spec[0] == 'X'))
 			ARG->flags.zero = 0;

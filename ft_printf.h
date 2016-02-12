@@ -22,9 +22,7 @@
 */
 
 # define FLAGS "#0-+ "
-# define PREC "0n*" //il doit y avoir un point devant + rien est egalement possible
 # define MOD "hljz"
-// # define SPEC "sSpdDioOuUxXcC"
 # define SPEC "spdouxXc"
 
 # define ARG ((t_arg *)(tmpa->content))
@@ -120,6 +118,9 @@ char	*width(t_elem *tmpa, char *str);
 char	*space(t_elem *tmpa, char *str);
 
 char	*plus(t_elem *tmpa, char *str);
+
+char	*prec_doux(t_elem *tmpa, char *str);
+char	*prec_s(t_elem *tmpa, char *str);
 
 #endif
 

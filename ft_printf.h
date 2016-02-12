@@ -114,6 +114,7 @@ char	*diez_hexaupper(t_elem *tmpa, char *str);
 char	*define_width(t_elem *tmpa, char *str);
 char	*width_minus(t_elem *tmpa, char *str);
 char	*width(t_elem *tmpa, char *str);
+char	*width_ptr(t_elem *tmpa, char *str);
 
 char	*space(t_elem *tmpa, char *str);
 

@@ -61,12 +61,14 @@ char	*ft_octal(t_elem *tmpa, void *str)
 	(void)tmpa;
 	//MOD
 	str = ft_strdup(mod_octal(tmpa));
+	//PREC
+	if (SPREC.n != 0)
+		str = prec_doux(tmpa, str);
 	//FLAGS
 	if (SFLAGS.diez == 1)
 		str = diez_o(tmpa, str);
 	if (SFLAGS.width != 0)
 		str = define_width(tmpa, str);
-	//PREC
 	return (str);
 }
 
@@ -86,12 +88,14 @@ char	*ft_hexalower(t_elem *tmpa, void *str)
 	(void)tmpa;
 	//MOD
 	str = ft_strdup(mod_hexalower(tmpa));
+	//PREC
+	if (SPREC.n != 0)
+		str = prec_doux(tmpa, str);
 	//FLAGS
 	if (SFLAGS.diez == 1)
 		str = diez_hexalower(tmpa, str);
 	if (SFLAGS.width != 0)
 		str = define_width(tmpa, str);
-	//PREC
 	return (str);
 }
 
@@ -100,6 +104,9 @@ char	*ft_hexaupper(t_elem *tmpa, void *str)
 	(void)tmpa;
 	//MOD
 	str = ft_strdup(mod_hexaupper(tmpa));
+	//PREC
+	if (SPREC.n != 0)
+		str = prec_doux(tmpa, str);
 	//FLAGS
 	if (SFLAGS.diez == 1)
 		str = diez_hexaupper(tmpa, str);

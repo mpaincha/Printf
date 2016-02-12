@@ -129,7 +129,7 @@ int				check_prec(const char *format, int *i, t_arg *sarg)
 	numb = 0;
 	sarg->prec.pt = 1;
 	str = ft_strsub(format, *i + 1, ft_strlen(format) - *i - 1);
-	if ((numb = ft_atoi(str)))
+	if ((numb = ft_atoi(str)) >= 0)
 		sarg->prec.n = numb;
 	*i = *i + ft_intlen(numb) + 1;
 	return (1);

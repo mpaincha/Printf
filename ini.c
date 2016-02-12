@@ -20,7 +20,7 @@ void	ini_sarg(t_arg *sarg)
 	sarg->flags.minus = 0;
 	sarg->flags.plus = 0;
 	sarg->flags.space = 0;
-	sarg->flags.numb = 0;
+	sarg->flags.width = 0;
 	sarg->mod.h = 0;
 	sarg->mod.l = 0;
 	sarg->mod.j = 0;

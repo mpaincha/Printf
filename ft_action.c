@@ -42,6 +42,8 @@ char	*ft_octal(t_elem *tmpa, void *str)
 	(void)tmpa;
 	// ft_putstr("\n======action octal=====\n");
 	str = ft_strdup(mod_octal(tmpa));
+	if (SFLAGS.diez == 1)
+		str = diez_o(tmpa, str);
 	return (str);
 }
 
@@ -57,11 +59,9 @@ char	*ft_unsig(t_elem *tmpa, void *str)
 char	*ft_hexalower(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
+	str = ft_strdup(mod_hexalower(tmpa));
 	if (SFLAGS.diez == 1)
-		str = ft_strjoin("0x", ft_strdup(mod_hexalower(tmpa)));
-	else
-		str = ft_strdup(mod_hexalower(tmpa));
-
+		str = diez_hexalower(tmpa, str);
 	return (str);
 }
 
@@ -70,7 +70,8 @@ char	*ft_hexaupper(t_elem *tmpa, void *str)
 	(void)tmpa;
 	// ft_putstr("\n======action hexaupper=====\n");
 	str = ft_strdup(mod_hexaupper(tmpa));
-
+	if (SFLAGS.diez == 1)
+		str = diez_hexaupper(tmpa, str);
 	return (str);
 }
 

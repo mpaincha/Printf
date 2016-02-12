@@ -12,11 +12,28 @@
 
 #include "ft_printf.h"
 
-void	diez(t_elem *tmpa, char *str)
+char	*diez_o(t_elem *tmpa, char *str)
 {
-	if (ARG->spec[0] == 'o')
-		ft_strjoin("0", str);
-	ft_putstr("\napres strjoin");
-	ft_putstr(str);
-	ft_putstr("\n");
+	char	*new_str;
+
+	new_str = ft_strjoin("0", str);
+	return (new_str);
 }
+
+char	*diez_hexalower(t_elem *tmpa, char *str)
+{
+	char	*new_str;
+
+	new_str = ft_strjoin("0x", str);
+	return (new_str);
+}
+
+char	*diez_hexaupper(t_elem *tmpa, char *str)
+{
+	char	*new_str;
+
+	new_str = ft_strjoin("0X", str);
+	return (new_str);
+}
+
+// char	*width

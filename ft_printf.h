@@ -47,7 +47,7 @@ typedef struct		s_flags
 	int				minus;
 	int				plus;
 	int				space;
-	int				numb;
+	int				width;
 }					t_flags;
 
 typedef struct		s_prec
@@ -84,7 +84,7 @@ int		checks(const char *format, int *i, t_arg *sarg);
 int		check_spec(char find, t_arg *sarg);
 int		check_prec(const char *format, int *i, t_arg *sarg);
 int		check_mod(const char *format, int *i, t_arg *sarg);
-int		check_number(char *str, t_arg *sarg, int *i);
+int		check_width(char *str, t_arg *sarg, int *i);
 int		check_flags(const char *format, int *i, t_arg *sarg);
 void	ft_putlststr(t_dbllist	*list);
 int		stock_str(const char *format, int	i, t_dbllist *lst_str);
@@ -100,7 +100,6 @@ char	*ft_hexalower(t_elem *tmpa, void *str);
 char	*ft_hexaupper(t_elem *tmpa, void *str);
 char	*ft_char(t_elem *tmpa, void *str);
 
-void	diez(t_elem *tmpa, char *str);
 int		errormod(t_arg *sarg);
 char	*mod_string(t_elem *tmpa);
 char	*mod_dec(t_elem *tmpa);
@@ -109,6 +108,10 @@ char	*mod_unsig(t_elem *tmpa);
 char	*mod_hexalower(t_elem *tmpa);
 char	*mod_hexaupper(t_elem *tmpa);
 char	*mod_char(t_elem *tmpa);
+
+char	*diez_o(t_elem *tmpa, char *str);
+char	*diez_hexalower(t_elem *tmpa, char *str);
+char	*diez_hexaupper(t_elem *tmpa, char *str);
 
 #endif
 
@@ -178,7 +181,7 @@ Voici la liste de ces formats "complémentaires" donc pour initier :
 * # :
 résultat préfixé par 0 si placé dans %o
 résultat préfixé par Ox si placé dans %x, %X
-présence systématique du point décimale si placé dans %f, %e, %g, %E, %F
+
 * 0 : résultat complété à gauche par des zéros
 * n : taille de la chaine affichée, où n est le nombre minimum de caractère à
 afficher.

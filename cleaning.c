@@ -19,7 +19,7 @@ void	cleanarg(t_dbllist *lst_arg)
 	tmpa = lst_arg->head;
 	while (tmpa != NULL)
 	{
-		if ((ARG->spec[0] != 'x' && ARG->spec[0] != 'X')
+		if ((ARG->spec[0] != 'x' && ARG->spec[0] != 'X' && ARG->spec[0] != 'o')
 		&& ARG->flags.diez == 1)
 			ARG->flags.diez = 0;
 		if (ARG->flags.zero == 1 && ARG->flags.minus == 1)

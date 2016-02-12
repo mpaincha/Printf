@@ -38,16 +38,16 @@ int				check_flags(const char *format, int *i, t_arg *sarg)
 	return (1);
 }
 
-int				check_number(char *str, t_arg *sarg, int *i)
+int				check_width(char *str, t_arg *sarg, int *i)
 {
-	int		numb;
+	int		width;
 
-	numb = 0;
-	if ((numb = ft_atoi(str)))
-		sarg->flags.numb = numb;
+	width = 0;
+	if ((width = ft_atoi(str)))
+		sarg->flags.width = width;
 	else
 		return (0);
-	*i = *i + ft_intlen(numb);
+	*i = *i + ft_intlen(width);
 	return (1);
 }
 
@@ -173,7 +173,7 @@ int				checks(const char *format, int *i, t_arg *sarg)
 		isave = *i;
 	else
 		*i = isave;
-	if (check_number(ft_strsub(format, *i, ft_strlen(format) - *i), sarg, i))
+	if (check_width(ft_strsub(format, *i, ft_strlen(format) - *i), sarg, i))
 		isave = *i;
 	else
 		*i = isave;

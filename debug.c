@@ -33,8 +33,8 @@ void	ft_putlst(t_dbllist	*list)
 		ft_putnbr(SFLAGS.plus);
 		ft_putstr("\nflags, space : ");
 		ft_putnbr(SFLAGS.space);
-		ft_putstr("\nflags, numb : ");
-		ft_putnbr(SFLAGS.numb);
+		ft_putstr("\nflags, width : ");
+		ft_putnbr(SFLAGS.width);
 		ft_putstr("\nMOD, h : ");
 		ft_putnbr(SMOD.h);
 		ft_putstr("\nMOD, l : ");

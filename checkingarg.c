@@ -149,6 +149,8 @@ int				check_spec(char find, t_arg *sarg)
 			sarg->spec[0] = ft_tolower(find);
 			sarg->action = define_action(SPEC, ft_tolower(find));
 		}
+		else if (find == 'p')
+			sarg->mod.l = 2;
 		return (1);
 	}
 	if (find == 'i')

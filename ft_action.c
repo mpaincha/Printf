@@ -24,8 +24,8 @@ char	*ft_string(t_elem *tmpa, void *str)
 char	*ft_ptr(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	// ft_putstr("\n======action ptr=====\n");
-	str = ft_strdup(mod_ptr(tmpa));
+
+	str = ft_strjoin("0x", ft_strdup(mod_hexalower(tmpa)));
 	return (str);
 }
 
@@ -57,8 +57,10 @@ char	*ft_unsig(t_elem *tmpa, void *str)
 char	*ft_hexalower(t_elem *tmpa, void *str)
 {
 	(void)tmpa;
-	// ft_putstr("\n======action hexalower=====\n");
-	str = ft_strdup(mod_hexalower(tmpa));
+	if (SFLAGS.diez == 1)
+		str = ft_strjoin("0x", ft_strdup(mod_hexalower(tmpa)));
+	else
+		str = ft_strdup(mod_hexalower(tmpa));
 
 	return (str);
 }

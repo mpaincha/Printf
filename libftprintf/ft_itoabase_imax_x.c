@@ -18,7 +18,7 @@ char				*ft_itoabase_imax_x(intmax_t n, size_t base)
 	int				i;
 	size_t			len;
 
-	len = ft_intlenbase(n, base);
+	len = ft_intlenbase_imax(n, base);
 	i = 0;
 	str = ft_strnew(len + 1);
 	if (base == 10 && n < 0)

@@ -20,7 +20,10 @@ size_t		ft_intlen(int n)
 	if (n == 0)
 		return (1);
 	if (n < 0)
+	{
+		n = -n;
 		i++;
+	}
 	while (n != 0)
 	{
 		n = n / 10;
@@ -37,7 +40,10 @@ size_t		ft_intlenbase(int n, size_t base)
 	if (n == 0)
 		return (1);
 	if (base == 10 && n < 0)
+	{
+		n = -n;
 		i++;
+	}
 	while (n != 0)
 	{
 		n = n / base;

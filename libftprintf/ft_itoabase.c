@@ -12,23 +12,6 @@
 
 #include "libft.h"
 
-size_t		ft_intlenbase(int n, size_t base)
-{
-	int		i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	if (base == 10 && n < 0)
-		i++;
-	while (n != 0)
-	{
-		n = n / base;
-		i++;
-	}
-	return (i);
-}
-
 char				*ft_itoabase(int n, size_t base)
 {
 	char			*str;

@@ -29,11 +29,13 @@ char	*mod_ptr(t_elem *tmpa)
 
 char	*mod_dec(t_elem *tmpa)
 {
-	ft_putstr("\n=== MOD DEC ===\n");
-	ft_putstr(ft_itoabase_imax((long)ARG->arg, 10));
-	ft_putstr("\n");
+	// ft_putstr("\n=== MOD DEC ===\n");
+	// ft_putstr(ft_itoabase_imax((long)ARG->arg, 10));
+	// ft_putstr("\n");
+	// ft_putnbr(SMOD.l);
+	// ft_putstr("\n");
 	if (SMOD.h == 1)
-		return (ft_itoabase_imax((short)ARG->arg, 10));
+		return (ft_itoabase_imax((signed short)ARG->arg, 10));
 // probleme avec les negatifs
 	else if (SMOD.h == 2)
 		return (ft_itoabase_imax((signed char)ARG->arg, 10));
@@ -69,6 +71,11 @@ char	*mod_octal(t_elem *tmpa)
 
 char	*mod_unsig(t_elem *tmpa)
 {
+	ft_putstr("\n=== MOD DEC ===\n");
+	ft_putstr(ft_itoabase_imax((long)ARG->arg, 10));
+	ft_putstr("\n");
+	ft_putnbr(SMOD.l);
+	ft_putstr("\n");
 	if (SMOD.h == 1)
 		return (ft_itoabase_imax((unsigned short)ARG->arg, 10));
 	else if (SMOD.h == 2)

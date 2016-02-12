@@ -28,8 +28,6 @@ size_t		ft_intlenbase_imax(intmax_t n, size_t base)
 	{
 		n = n / base;
 		i++;
-		ft_putnbr(i);
-		ft_putstr("\n");
 	}
 	return (i);
 }
@@ -40,13 +38,7 @@ char				*ft_itoabase_imax(intmax_t n, size_t base)
 	int				i;
 	size_t			len;
 
-	// ft_putstr("\nItoabase imax, n : ");
-	ft_putnbr(n);
-	ft_putstr("\n");
 	len = ft_intlenbase_imax(n, base);
-	ft_putstr("\nLEN  : ");
-	ft_putnbr(len);
-	ft_putstr("\n");
 	i = 0;
 	str = ft_strnew(len + 1);
 	if (base == 10 && n < 0)

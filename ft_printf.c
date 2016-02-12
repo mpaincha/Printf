@@ -32,11 +32,11 @@ int		ft_printf(const char *format, ...)
 	// if (lst_arg->head) //debug
 	// 	ft_putlst(lst_arg); //debug
 	cleanarg(lst_arg);
-	if (lst_arg->head) //debug
-		ft_putlst(lst_arg); //debug
+	// if (lst_arg->head) //debug
+	// 	ft_putlst(lst_arg); //debug
 	transformation(lst_arg, lst_str);
-	if (lst_str->head) //debug
-		ft_putlststr(lst_str); //debug
+	if (lst_str->head)
+		ft_putlststr(lst_str);
 	va_end(ap);
 	return (1);
 }

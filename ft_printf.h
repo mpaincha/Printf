@@ -102,8 +102,14 @@ char	*ft_char(t_elem *tmpa, void *str);
 
 void	diez(t_elem *tmpa, char *str);
 int		errormod(t_arg *sarg);
+char	*mod_string(t_elem *tmpa);
+char	*mod_ptr(t_elem *tmpa);
 char	*mod_dec(t_elem *tmpa);
 char	*mod_octal(t_elem *tmpa);
+char	*mod_unsig(t_elem *tmpa);
+char	*mod_hexalower(t_elem *tmpa);
+char	*mod_hexaupper(t_elem *tmpa);
+char	*mod_char(t_elem *tmpa);
 
 /*
 	Pointeurs sur fonctions actions

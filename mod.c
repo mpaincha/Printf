@@ -111,7 +111,12 @@ char	*mod_hexaupper(t_elem *tmpa)
 
 char	*mod_char(t_elem *tmpa)
 {
+	char	*str;
+
+	str = ft_strnew(2);
 	if (SMOD.l == 1)
 		return ("a traiter");
-	return (ft_itoabase_imax((int)ARG->arg, 10));
+	str[0] = (char)ARG->arg;
+	str[1] = '\0';
+	return (str);
 }

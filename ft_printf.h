@@ -30,10 +30,6 @@
 # define SMOD ((t_mod)(ARG->mod))
 # define SPREC ((t_prec)(ARG->prec))
 
-# define MASKA "110xxxxx 10xxxxxx"
-# define MASKB "1110xxxx 10xxxxxx 10xxxxxx"
-# define MASKC "11110xxx 10xxxxxx 10xxxxxx 10xxxxxx"
-
 typedef struct		s_mod
 {
 	int				h;
@@ -127,6 +123,10 @@ char	*prec_doux(t_elem *tmpa, char *str);
 char	*prec_s(t_elem *tmpa, char *str);
 
 char	*ft_wchar(t_elem *tmpa);
+char	*mask(t_elem *tmpa, wchar_t c);
+char	*fill_maska(wchar_t nb);
+char	*fill_maskb(wchar_t nb);
+char	*fill_maskc(wchar_t nb);
 
 #endif
 

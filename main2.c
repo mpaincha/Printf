@@ -106,8 +106,8 @@ int 	main (void)
 	// ft_printf("%d\n", ft_printf("|%-8C| |%#0 9lc| |%S|\n", myChar1, L'ℜ', L"ο Δικαιοπολις"));
 	// printf("%d\n", printf("|%S|\n", L"ο Δικαιοπολις"));
 	// ft_printf("%d\n", ft_printf("|%S|\n", L"ο Δικαιοπολις"));
-	printf("%d\n", printf("|%lc|\n", L'α'));
-	ft_printf("%d\n", ft_printf("|%lc|\n", L'α'));
+	printf("%d\n", printf("|%lc|\n", 'a'));
+	ft_printf("%d\n", ft_printf("|%lc|\n", 'a'));
 
 	// printf("\n\n/******************************************************   TEST WTF   ******************************************************/\n");
 	// printf("|%xoxoxoxo| |%0000000000000x| |%-7llllllllllllx| |%#hhhhhhhhhhx| |%#----######-######08.0X| |%#-###-----#0++ #####9.8o| |%++++++-0-+++  +++----06X|\n", 43, -54, 95, 9, 532, 467349478438, -555);

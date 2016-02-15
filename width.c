@@ -39,7 +39,7 @@ char	*width(t_elem *tmpa, char *str)
 			add[i++] = tadd;
 		add[i] = '\0';
 		new_str = ft_strjoin(add, str);
-		ft_strdel(&add);
+		free(add);
 		return (new_str);
 	}
 	else

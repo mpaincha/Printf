@@ -65,7 +65,7 @@ typedef struct		s_arg
 
 }					t_arg;
 
-typedef char *(* t_action)(t_elem *, void *);
+typedef char *(* t_action)(t_elem *);
 
 int		ft_printf(const char *format, ...);
 void	display_percent(int n, t_dbllist *lst_str);
@@ -89,14 +89,14 @@ int		stock_str(const char *format, int	i, t_dbllist *lst_str);
 void	cleanarg(t_dbllist *lst_arg);
 
 void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str);
-char	*ft_string(t_elem *tmpa, void *str);
-char	*ft_ptr(t_elem *tmpa, void *str);
-char	*ft_dec(t_elem *tmpa, void *str);
-char	*ft_octal(t_elem *tmpa, void *str);
-char	*ft_unsig(t_elem *tmpa, void *str);
-char	*ft_hexalower(t_elem *tmpa, void *str);
-char	*ft_hexaupper(t_elem *tmpa, void *str);
-char	*ft_char(t_elem *tmpa, void *str);
+char	*ft_string(t_elem *tmpa);
+char	*ft_ptr(t_elem *tmpa);
+char	*ft_dec(t_elem *tmpa);
+char	*ft_octal(t_elem *tmpa);
+char	*ft_unsig(t_elem *tmpa);
+char	*ft_hexalower(t_elem *tmpa);
+char	*ft_hexaupper(t_elem *tmpa);
+char	*ft_char(t_elem *tmpa);
 
 int		errormod(t_arg *sarg);
 char	*mod_string(t_elem *tmpa);
@@ -122,8 +122,8 @@ char	*plus(t_elem *tmpa, char *str);
 char	*prec_doux(t_elem *tmpa, char *str);
 char	*prec_s(t_elem *tmpa, char *str);
 
-char	*ft_wchar(t_elem *tmpa);
-char	*mask(t_elem *tmpa, wchar_t c);
+char	*ft_wchar_str(t_elem *tmpa);
+char	*mask(wchar_t c);
 char	*fill_maska(wchar_t nb);
 char	*fill_maskb(wchar_t nb);
 char	*fill_maskc(wchar_t nb);

@@ -82,7 +82,6 @@ static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 {
 	t_elem					*tmpa;
-	char					*str;
 	static const t_action	ft_action[] = {ft_string, ft_ptr, ft_dec, ft_octal, ft_unsig,
 							ft_hexalower, ft_hexaupper, ft_char};
 	t_action				actions;
@@ -90,13 +89,11 @@ void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 
 	tmpa = lst_arg->head;
 	tmps = lst_str->head;
-	str = NULL;
 	while (tmpa != NULL)
 	{
 		actions = ft_action[ARG->action];
-		str = actions(tmpa, ARG->arg);
 		tmps = find_pos(ARG->spec, lst_str);
-		tmps->content = ft_strdup(str);
+		tmps->content = actions(tmpa);
 		tmpa = tmpa->next;
 	}
 }

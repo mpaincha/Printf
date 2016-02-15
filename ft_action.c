@@ -12,11 +12,13 @@
 
 #include "ft_printf.h"
 
-char	*ft_string(t_elem *tmpa, void *str)
+char	*ft_string(t_elem *tmpa)
 {
+	char	*str;
+
 	// ft_putstr("\n======action string=====\n");
 	//MOD
-	str = ft_strdup(mod_string(tmpa));
+	str = mod_string(tmpa);
 	//PREC
 	// if (SPREC.n != 0)
 	// 	str = prec_s(tmpa, str);
@@ -26,9 +28,11 @@ char	*ft_string(t_elem *tmpa, void *str)
 	return (str);
 }
 
-char	*ft_ptr(t_elem *tmpa, void *str)
+char	*ft_ptr(t_elem *tmpa)
 {
-	str = ft_strdup(mod_hexalower(tmpa));
+	char	*str;
+
+	str = mod_hexalower(tmpa);
 	//FLAGS
 	if (SFLAGS.zero == 0)
 	{
@@ -46,10 +50,12 @@ char	*ft_ptr(t_elem *tmpa, void *str)
 	return (str);
 }
 
-char	*ft_dec(t_elem *tmpa, void *str)
+char	*ft_dec(t_elem *tmpa)
 {
+	char	*str;
+
 	//MOD
-	str = ft_strdup(mod_dec(tmpa));
+	str = mod_dec(tmpa);
 	//FLAGS
 	if (SFLAGS.space == 1)
 		str = space(tmpa, str);
@@ -65,10 +71,12 @@ char	*ft_dec(t_elem *tmpa, void *str)
 	return (str);
 }
 
-char	*ft_octal(t_elem *tmpa, void *str)
+char	*ft_octal(t_elem *tmpa)
 {
+	char	*str;
+
 	//MOD
-	str = ft_strdup(mod_octal(tmpa));
+	str = mod_octal(tmpa);
 	//FLAGS
 	if (SFLAGS.diez == 1)
 		str = diez_o(tmpa, str);
@@ -81,10 +89,12 @@ char	*ft_octal(t_elem *tmpa, void *str)
 	return (str);
 }
 
-char	*ft_unsig(t_elem *tmpa, void *str)
+char	*ft_unsig(t_elem *tmpa)
 {
+	char	*str;
+
 	//MOD
-	str = ft_strdup(mod_unsig(tmpa));
+	str = mod_unsig(tmpa);
 	//PREC
 	if (SPREC.n != 0)
 		str = prec_doux(tmpa, str);
@@ -94,10 +104,12 @@ char	*ft_unsig(t_elem *tmpa, void *str)
 	return (str);
 }
 
-char	*ft_hexalower(t_elem *tmpa, void *str)
+char	*ft_hexalower(t_elem *tmpa)
 {
+	char	*str;
+
 	//MOD
-	str = ft_strdup(mod_hexalower(tmpa));
+	str = mod_hexalower(tmpa);
 	//PREC
 	if (SPREC.n != 0)
 		str = prec_doux(tmpa, str);
@@ -109,11 +121,13 @@ char	*ft_hexalower(t_elem *tmpa, void *str)
 	return (str);
 }
 
-char	*ft_hexaupper(t_elem *tmpa, void *str)
+char	*ft_hexaupper(t_elem *tmpa)
 {
+	char	*str;
+
 	(void)tmpa;
 	//MOD
-	str = ft_strdup(mod_hexaupper(tmpa));
+	str = mod_hexaupper(tmpa);
 	//PREC
 	if (SPREC.n != 0)
 		str = prec_doux(tmpa, str);
@@ -126,11 +140,13 @@ char	*ft_hexaupper(t_elem *tmpa, void *str)
 	return (str);
 }
 
-char	*ft_char(t_elem *tmpa, void *str)
+char	*ft_char(t_elem *tmpa)
 {
+	char	*str;
+
 	(void)tmpa;
 	//MOD
-	str = ft_strdup(mod_char(tmpa));
+	str = mod_char(tmpa);
 	//FLAGS
 	if (SFLAGS.width != 0)
 		str = define_width(tmpa, str);

@@ -37,6 +37,7 @@ int		ft_printf(const char *format, ...)
 	transformation(lst_arg, lst_str);
 	if (lst_str->head)
 		ft_putlststr(lst_str);
+	//VIDER MES LISTES
 	va_end(ap);
 	return (1);
 }

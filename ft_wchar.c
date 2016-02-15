@@ -105,36 +105,34 @@ char	*fill_maskc(wchar_t nb)
 	return (str);
 }
 
-char	*mask(t_elem *tmpa, wchar_t c)
+char	*mask(wchar_t c)
 {
-	char	*nb;
-
-	nb = ft_strdup(ft_itoabase_imax((wchar_t)ARG->arg, 2));
 	if (c <= 127)
-		return (fill_mask((wchar_t)ARG->arg));
+		return (fill_mask(c));
 	else if (c <= 2047)
-		return (fill_maska((wchar_t)ARG->arg));
+		return (fill_maska(c));
 	else if (c <= 65535)
-		return (fill_maskb((wchar_t)ARG->arg));
+		return (fill_maskb(c));
 	else
-		return (fill_maskc((wchar_t)ARG->arg));
+		return (fill_maskc(c));
 }
 
-char	*ft_wchar(t_elem *tmpa)
+char	*ft_wchar_str(t_elem *tmpa)
 {
-	char	*nb;
-	char	*dec; //debug
+	char		*str;
+	wchar_t		*arg;
+	int			i;
 
-	ft_putstr("\n\nFT WCHAR : "); //debug
-	dec = ft_strdup(ft_itoabase_imax((wchar_t)ARG->arg, 10));
-	ft_putstr("\n\nen dec : "); //debug
-	ft_putstr(dec); //debug
-	ft_putstr("\n\n"); //debug
-	nb = ft_strdup(mask(tmpa, (wchar_t)ARG->arg));
-	// ft_putstr("\n\nen binaire : ");
-	// ft_putstr(str);
-	// ft_putstr("\n\n");
-	return (nb);
+	i = 0;
+	arg = (wchar_t *)ARG->arg;
+	str = ft_strnew(0);
+	str[0] = '\0';
+	while (arg[i])
+	{
+		str = ft_strjoin(str, mask(arg[i]));
+		i++;
+	}
+	return (str);
 }
 
 // 0xxxxxxx

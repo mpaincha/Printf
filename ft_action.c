@@ -14,7 +14,6 @@
 
 char	*ft_string(t_elem *tmpa, void *str)
 {
-	(void)tmpa;
 	// ft_putstr("\n======action string=====\n");
 	//MOD
 	str = ft_strdup(mod_string(tmpa));
@@ -26,8 +25,6 @@ char	*ft_string(t_elem *tmpa, void *str)
 
 char	*ft_ptr(t_elem *tmpa, void *str)
 {
-	(void)tmpa;
-
 	str = ft_strdup(mod_hexalower(tmpa));
 	//FLAGS
 	if (SFLAGS.zero == 0)
@@ -40,6 +37,7 @@ char	*ft_ptr(t_elem *tmpa, void *str)
 	{
 		if (SFLAGS.width != 0)
 			str = define_width(tmpa, str);
+		str = ft_strsub(str, 2, ft_strlen(str) - 2);
 		str = ft_strjoin("0x", str);
 	}
 	return (str);
@@ -47,8 +45,6 @@ char	*ft_ptr(t_elem *tmpa, void *str)
 
 char	*ft_dec(t_elem *tmpa, void *str)
 {
-	(void)tmpa;
-
 	//MOD
 	str = ft_strdup(mod_dec(tmpa));
 	//FLAGS
@@ -68,7 +64,6 @@ char	*ft_dec(t_elem *tmpa, void *str)
 
 char	*ft_octal(t_elem *tmpa, void *str)
 {
-	(void)tmpa;
 	//MOD
 	str = ft_strdup(mod_octal(tmpa));
 	//FLAGS
@@ -85,7 +80,6 @@ char	*ft_octal(t_elem *tmpa, void *str)
 
 char	*ft_unsig(t_elem *tmpa, void *str)
 {
-	(void)tmpa;
 	//MOD
 	str = ft_strdup(mod_unsig(tmpa));
 	//PREC
@@ -99,7 +93,6 @@ char	*ft_unsig(t_elem *tmpa, void *str)
 
 char	*ft_hexalower(t_elem *tmpa, void *str)
 {
-	(void)tmpa;
 	//MOD
 	str = ft_strdup(mod_hexalower(tmpa));
 	//PREC

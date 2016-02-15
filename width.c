@@ -14,10 +14,14 @@
 
 char	*define_width(t_elem *tmpa, char *str)
 {
+	// char		*tmp;
+
+	// tmp = str;
 	if (SFLAGS.minus == 0)
 		str = width(tmpa, str);
 	else
 		str = width_minus(tmpa, str);
+	// free(tmp);
 	return (str);
 }
 

@@ -31,6 +31,7 @@ char	*ft_string(t_elem *tmpa)
 char	*ft_ptr(t_elem *tmpa)
 {
 	char	*str;
+	char	*tmp;
 
 	str = mod_hexalower(tmpa);
 	//FLAGS
@@ -38,12 +39,20 @@ char	*ft_ptr(t_elem *tmpa)
 	{
 		str = ft_strjoin("0x", str);
 		if (SFLAGS.width != 0)
-			str = define_width(tmpa, str);
+		{
+			tmp = str;
+			str = define_width(tmpa, tmp);
+			free(tmp);
+		}
 	}
 	else
 	{
 		if (SFLAGS.width != 0)
-			str = define_width(tmpa, str);
+		{
+			tmp = str;
+			str = define_width(tmpa, tmp);
+			free(tmp);
+		}
 		str = ft_strsub(str, 2, ft_strlen(str) - 2);
 		str = ft_strjoin("0x", str);
 	}
@@ -53,89 +62,154 @@ char	*ft_ptr(t_elem *tmpa)
 char	*ft_dec(t_elem *tmpa)
 {
 	char	*str;
+	char	*tmp;
 
 	//MOD
 	str = mod_dec(tmpa);
 	//FLAGS
 	if (SFLAGS.space == 1)
-		str = space(tmpa, str);
+	{
+		tmp = str;
+		str = space(tmpa, tmp);
+		free(tmp);
+	}
 
 	//PREC
 	if (SPREC.n != 0)
-		str = prec_doux(tmpa, str);
+	{
+		tmp = str;
+		str = prec_doux(tmpa, tmp);
+		free(tmp);
+	}
 	//FLAGS
 	if (SFLAGS.plus == 1)
-		str = plus(tmpa, str);
+	{
+		tmp = str;
+		str = plus(tmpa, tmp);
+		free(tmp);
+	}
 	if (SFLAGS.width != 0)
-		str = define_width(tmpa, str);
+	{
+		tmp = str;
+		str = define_width(tmpa, tmp);
+		free(tmp);
+	}
 	return (str);
 }
 
 char	*ft_octal(t_elem *tmpa)
 {
 	char	*str;
+	char	*tmp;
 
 	//MOD
 	str = mod_octal(tmpa);
 	//FLAGS
 	if (SFLAGS.diez == 1)
-		str = diez_o(tmpa, str);
+	{
+		tmp = str;
+		str = diez_o(tmpa, tmp);
+		free(tmp);
+	}
 	//PREC
 	if (SPREC.n != 0)
-		str = prec_doux(tmpa, str);
+	{
+		tmp = str;
+		str = prec_doux(tmpa, tmp);
+		free(tmp);
+	}
 	//FLAGS
 	if (SFLAGS.width != 0)
-		str = define_width(tmpa, str);
+	{
+		tmp = str;
+		str = define_width(tmpa, tmp);
+		free(tmp);
+	}
 	return (str);
 }
 
 char	*ft_unsig(t_elem *tmpa)
 {
 	char	*str;
+	char	*tmp;
 
 	//MOD
 	str = mod_unsig(tmpa);
 	//PREC
 	if (SPREC.n != 0)
-		str = prec_doux(tmpa, str);
+	{
+		tmp = str;
+		str = prec_doux(tmpa, tmp);
+		free(tmp);
+	}
 	//FLAGS
 	if (SFLAGS.width != 0)
-		str = define_width(tmpa, str);
+	{
+		tmp = str;
+		str = define_width(tmpa, tmp);
+		free(tmp);
+	}
 	return (str);
 }
 
 char	*ft_hexalower(t_elem *tmpa)
 {
 	char	*str;
+	char	*tmp;
 
 	//MOD
 	str = mod_hexalower(tmpa);
 	//PREC
 	if (SPREC.n != 0)
-		str = prec_doux(tmpa, str);
+	{
+		tmp = str;
+		str = prec_doux(tmpa, tmp);
+		free(tmp);
+	}
 	//FLAGS
 	if (SFLAGS.diez == 1)
-		str = diez_hexalower(tmpa, str);
+	{
+		tmp = str;
+		str = diez_hexalower(tmpa, tmp);
+		free(tmp);
+	}
 	if (SFLAGS.width != 0)
-		str = define_width(tmpa, str);
+	{
+		tmp = str;
+		str = define_width(tmpa, tmp);
+		free(tmp);
+	}
 	return (str);
 }
 
 char	*ft_hexaupper(t_elem *tmpa)
 {
 	char	*str;
+	char	*tmp;
 
 	(void)tmpa;
 	//MOD
 	str = mod_hexaupper(tmpa);
 	//PREC
 	if (SPREC.n != 0)
-		str = prec_doux(tmpa, str);
+	{
+		tmp = str;
+		str = prec_doux(tmpa, tmp);
+		free(tmp);
+	}
 	//FLAGS
 	if (SFLAGS.diez == 1)
-		str = diez_hexaupper(tmpa, str);
+	{
+		tmp = str;
+		str = diez_hexaupper(tmpa, tmp);
+		free(tmp);
+	}
 	if (SFLAGS.width != 0)
-		str = define_width(tmpa, str);
+	{
+		tmp = str;
+		str = define_width(tmpa, tmp);
+		free(tmp);
+	}
 	//PREC
 	return (str);
 }
@@ -143,13 +217,19 @@ char	*ft_hexaupper(t_elem *tmpa)
 char	*ft_char(t_elem *tmpa)
 {
 	char	*str;
+	// char	*tmp;
 
 	(void)tmpa;
 	//MOD
 	str = mod_char(tmpa);
 	//FLAGS
 	if (SFLAGS.width != 0)
+	{
+
+		// tmp = str;
 		str = define_width(tmpa, str);
+		// free(tmp);
+	}
 	//PREC
 	return (str);
 }

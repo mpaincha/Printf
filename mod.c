@@ -15,7 +15,7 @@
 char	*mod_string(t_elem *tmpa)
 {
 	if (SMOD.l == 1)
-		return ("a traiter");
+		return (ft_wchar(tmpa));
 	return ((char *)ARG->arg);
 }
 
@@ -115,7 +115,7 @@ char	*mod_char(t_elem *tmpa)
 
 	str = ft_strnew(2);
 	if (SMOD.l == 1)
-		return ("a traiter");
+		return (ft_wchar(tmpa));
 	str[0] = (char)ARG->arg;
 	str[1] = '\0';
 	return (str);

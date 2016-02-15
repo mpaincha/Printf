@@ -17,9 +17,12 @@ char	*ft_string(t_elem *tmpa, void *str)
 	// ft_putstr("\n======action string=====\n");
 	//MOD
 	str = ft_strdup(mod_string(tmpa));
+	//PREC
+	// if (SPREC.n != 0)
+	// 	str = prec_s(tmpa, str);
 	//FLAGS
-	if (SFLAGS.width != 0)
-		str = define_width(tmpa, str);
+	// if (SFLAGS.width != 0)
+	// 	str = define_width(tmpa, str);
 	return (str);
 }
 

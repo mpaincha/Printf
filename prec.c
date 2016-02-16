@@ -12,10 +12,18 @@
 
 #include "ft_printf.h"
 
-// char	*prec_s(t_elem *tmpa, char *str)
-// {
+char	*prec_s(t_elem *tmpa, char *str)
+{
+	char	*new_str;
 
-// }
+	new_str = ft_strnew(SPREC.n + 1);
+	if (SPREC.n != 0 && SPREC.n < ft_strlen(str))
+	{
+		new_str = ft_strncpy(new_str, str, SPREC.n);
+		return (new_str);
+	}
+	return (str);
+}
 
 char	*prec_doux(t_elem *tmpa, char *str)
 {

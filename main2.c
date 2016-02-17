@@ -141,5 +141,6 @@ int 	main (void)
 	// printf("%d\n", printf("|%#o| |%#-.4o| |%012o| |%-#6o| |%+06.4o| |%-4o| |%#-5.11o|\n", 10, 12, 21, 11, 12, 5, 54));
 	// ft_printf("%d\n", ft_printf("|%#o| |%#-.4o| |%012o| |%-#6o| |%+06.4o| |%-4o| |%#-5.11o|\n", 10, 12, 21, 11, 12, 5, 54));
 
+	ft_putstr("\n\n\nCOMPILATION OK\n\n\n");
 	return (0);
 }

@@ -12,8 +12,6 @@
 
 #include "ft_printf.h"
 
-//&& ft_strlen(sarg->length) == 0 && ft_strlen(sarg->prec) == 0 && ft_strlen(sarg->spec) == 0
-
 void			saveflags(char find, t_arg *sarg)
 {
 	if (find == '#')
@@ -169,10 +167,7 @@ int				checks(const char *format, int *i, t_arg *sarg)
 
 	isave = *i;
 	ret = 0;
-	if (check_flags(format, i, sarg))
-		isave = *i;
-	else
-		*i = isave;
+	(check_flags(format, i, sarg)) ? (isave = *i) : (*i = isave);
 	if (check_width(ft_strsub(format, *i, ft_strlen(format) - *i), sarg, i))
 		isave = *i;
 	else

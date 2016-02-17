@@ -21,11 +21,11 @@ void	width(t_elem *tmpa, char **str)
 	char	tadd;
 
 	i = 0;
-	if (SFLAGS.width > (int)ft_strlen(*str))
+	if (SFLAGS.width > ft_strlen(*str))
 	{
-	 	nb = SFLAGS.width - (int)ft_strlen(*str);
+		nb = SFLAGS.width - ft_strlen(*str);
 		add = ft_strnew(nb);
-	 	(SFLAGS.zero == 0) ? (tadd = ' ') : (tadd = '0');
+		(SFLAGS.zero == 0) ? (tadd = ' ') : (tadd = '0');
 		while (i < nb)
 			add[i++] = tadd;
 		add[i] = '\0';

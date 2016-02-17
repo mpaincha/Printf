@@ -21,6 +21,8 @@ void	width(t_elem *tmpa, char **str)
 	char	tadd;
 
 	i = 0;
+	tmp = NULL;
+	add = NULL;
 	if (SFLAGS.width > ft_strlen(*str))
 	{
 		nb = SFLAGS.width - ft_strlen(*str);

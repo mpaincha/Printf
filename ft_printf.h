@@ -13,10 +13,10 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libftprintf/libft.h"
 # include <stdarg.h>
-# include <stdio.h>
-
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
 /*
 	% [drapeaux] [largeur] [.precision] [modificateur] type
 */
@@ -65,6 +65,25 @@ typedef struct		s_arg
 
 }					t_arg;
 
+typedef	struct		s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
+typedef struct		s_elem
+{
+	void			*content;
+	struct s_elem	*prev;
+	struct s_elem	*next;
+}					t_elem;
+typedef struct		s_dbllist
+{
+	size_t			length;
+	struct s_elem	*head;
+	struct s_elem	*tail;
+}					t_dbllist;
+
 typedef char *(* t_action)(t_elem *, char **);
 
 int		ft_printf(const char *format, ...);
@@ -73,7 +92,6 @@ int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int
 int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
 int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
 int		error(const char *msg);
-void	ft_putlst(t_dbllist	*list); //fonction de debug
 int		clean_lst(t_dbllist *lst_arg);
 void	recover_param(va_list ap, t_dbllist *lst_arg);
 void	ini_sarg(t_arg *sarg);
@@ -125,80 +143,83 @@ char	*fill_maska(wchar_t nb);
 char	*fill_maskb(wchar_t nb);
 char	*fill_maskc(wchar_t nb);
 
+
+int					ft_atoi(const char *str);
+void				*ft_bzero(void *s, size_t n);
+int					ft_count_words(char const *s, char c);
+size_t				ft_intlen(int n);
+int					ft_isalnum(int c);
+int					ft_isalpha(int c);
+int					ft_isascii(int c);
+int					ft_isdigit(int c);
+int					ft_islower(int c);
+int					ft_isprint(int c);
+int					ft_isupper(int c);
+char				*ft_itoa(int n);
+size_t				ft_intlenbase_imax(intmax_t n, size_t base);
+size_t				ft_intlenbase(int n, size_t base);
+size_t				ft_intlenbase_uimax_x(uintmax_t n, size_t base);
+size_t				ft_intlenbase_uimax(uintmax_t n, size_t base);
+char				*ft_itoabase_imax(intmax_t n, size_t base);
+char				*ft_itoabase_imax_x(intmax_t n, size_t base);
+char				*ft_itoabase_uimax_x(uintmax_t n, size_t base);
+char				*ft_itoabase_uimax(uintmax_t n, size_t base);
+void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void				ft_lstiter(t_list *lst, void(*f)(t_list *elem));
+t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+t_list				*ft_lstnew(void const *content, size_t content_size);
+void				ft_lstdbladd(t_dbllist *list, void *content, size_t cont_size);
+void				ft_lstdbldel(t_dbllist *list);
+t_dbllist			*ft_lstdblnew(void);
+void				ft_putlsthead(t_dbllist *list);
+void				ft_putlsttail(t_dbllist *list);
+void				*ft_memalloc(size_t size);
+void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
+void				*ft_memchr(const void *s, int c, size_t n);
+int					ft_memcmp(const void *s1, const void *s2, size_t n);
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+void				ft_memdel(void **ap);
+void				*ft_memmove(void *dst, const void *src, size_t len);
+void				*ft_memset(void *b, int c, size_t len);
+void				ft_putchar(char c);
+void				ft_putchar_fd(char c, int fd);
+void				ft_putendl(char const *s);
+void				ft_putendl_fd(char const *s, int fd);
+void				ft_putnbr(int n);
+void				ft_putnbr_fd(int n, int fd);
+void				ft_putstr(char const *s);
+void				ft_putstr_fd(char const*s, int fd);
+char				*ft_strcat(char *s1, const char *s2);
+char				*ft_strchr(const char *s, int c);
+void				ft_strclr(char *s);
+int					ft_strcmp(const char *s1, const char *s2);
+char				*ft_strcpy(char *dst, const char *src);
+void				ft_strdel(char **as);
+char				*ft_strdup(const char *s1);
+int					ft_strequ(char const *s1, char const *s2);
+void				ft_striter(char *s, void (*f)(char *));
+void				ft_striteri(char *s, void (*f)(unsigned int, char *));
+char				*ft_strjoin(char const *s1, char const *s2);
+size_t				ft_strlcat(char *dst, const char *src, size_t size);
+size_t				ft_strlen(const char *s);
+char				*ft_strmap(char const *s, char (*f)(char));
+char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char				*ft_strncat(char *s1, const char *s2, size_t n);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				*ft_strncpy(char *dst, const char *src, size_t n);
+int					ft_strnequ(char const *s1, char const *s2, size_t n);
+char				*ft_strnew(size_t size);
+char				*ft_strnstr(const char *s1, const char *s2, size_t n);
+char				*ft_strrchr(const char *s, int c);
+char				*ft_strrev(char *str);
+char				**ft_strsplit(char const *s, char c);
+char				*ft_strstr(const char *s1, const char *s2);
+char				*ft_strsub(char const *s, unsigned int start, size_t len);
+char				*ft_strtrim(char const *s);
+int					ft_tolower(int c);
+int					ft_toupper(int c);
+
 #endif
 
-
-/*
-Voila la liste des différents formats utilisables pour la fonction printf :
-
-* %c : S'il n'y a pas de modificateur l, l'argument entier, de type int, est
-converti en un unsigned char, et le caractère correspondant est affiché. Si un
-modificateur l est présent, l'argument de type wint_t (caractère large) est
-converti en séquence multi-octet par un appel à wcrtomb(3), avec un état de
-conversion débutant dans l'état initial. La chaîne multi-octet résultante est
-écrite.
-
-* %C : Treated as c with the l (ell) modifier.
-
-* %u : L'argument unsigned int est converti en chiffre décimal non signé (u)\
-
-* %U :  The long int argument is converted to unsigned decimal, as if the format
-had been lu.  These conversion characters are deprecated, and will eventually
-disappear.
-
-* %o : L'argument unsigned int est converti en un chiffre octal non signé (o)
-
-* %O : The long int argument is converted to unsigned octal, as if the format
-had been ld, lo,
-
-* %d : L'argument int est converti en un chiffre décimal signé. La précision,
-si elle est mentionnée, correspond au nombre minimal de chiffres qui doivent
-apparaître. Si la conversion fournit moins de chiffres, le résultat est rempli
-à gauche avec des zéros. Par défaut la précision vaut 1. Lorsque 0 est converti
-avec une précision valant 0, la sortie est vide.
-
-* %D : The long int argument is converted to signed decimal, as if the format
-had been ld, lo,
-
-* %i : L'argument int est converti en un chiffre décimal signé. La précision,
-si elle est mentionnée, correspond au nombre minimal de chiffres qui doivent
-apparaître. Si la conversion fournit moins de chiffres, le résultat est rempli
-à gauche avec des zéros. Par défaut la précision vaut 1. Lorsque 0 est converti
-avec une précision valant 0, la sortie est vide.
-
-* %x : converti en un chiffre hexadécimal non signé. Les lettres abcdef sont
-utilisées pour les conversions avec x - unsigned int
-
-* %X : converti en un chiffre hexadécimal non signé. les lettres ABCDEF sont
-utilisées pour les conversions avec X. - unsigned i nt
-
-* %s : S'il n'y a pas de modificateur l, l'argument de type const char * est
-supposé être un pointeur sur un tableau de caractères (pointeur sur une chaîne).
-Les caractères du tableau sont écrits jusqu'à l'octet nul « \0 » final, non
-compris. Si une précision est indiquée, seul ce nombre de caractères sont
-écrits. Si une précision est fournie, il n'y a pas besoin d'octet nul. Si la
-précision n'est pas donnée, ou si elle est supérieure à la longueur de la
-chaîne, l'octet nul final est nécessaire
-
-* %S : Treated as s with the l (ell) modifier.
-
-* %p : The void * pointer argument is printed in hexadecimal
-(as if by `%#x' or `%#lx').
-
-
-Voici la liste de ces formats "complémentaires" donc pour initier :
-
-* - : résultat cadré à gauche
-* + : résultat préfixé avec le signe + si le nombre est positif
-* # :
-résultat préfixé par 0 si placé dans %o
-résultat préfixé par Ox si placé dans %x, %X
-
-* 0 : résultat complété à gauche par des zéros
-* n : taille de la chaine affichée, où n est le nombre minimum de caractère à
-afficher.
-* .n : précision décimal où n est le nombre de chiffres après la virgule.
-* h : précise que le paramètre est de type short
-* l : précise que le paramètre est de type long
-* L : précise que le paramètre est type long double
-*/

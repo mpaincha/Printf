@@ -1,6 +1,0 @@
- 0 et - quelque soit l'ordre :
- error: flag '0' is ignored when flag '-' is present [-Werror,-Wformat]
-                printf("bonjour %-0d\n", 42);
-
-error: flag '#' results in undefined behavior with 'd' conversion specifier [-Werror,-Wformat]
-                printf("bonjour %#d\n", 42);

@@ -29,17 +29,14 @@ int		ft_printf(const char *format, ...)
 	if (lst_arg == NULL)
 		return (0);
 	recover_param(ap, lst_arg);
-	// if (lst_str->head) //debug
-	// 	ft_putlststr(lst_str); //debug
-	// if (lst_arg->head) //debug
-	// 	ft_putlst(lst_arg); //debug
 	cleanarg(lst_arg);
-	// if (lst_arg->head) //debug
-	// 	ft_putlst(lst_arg); //debug
 	transformation(lst_arg, lst_str);
 	if (lst_str->head)
 		ft_putlststr(lst_str, &oct);
-	// VIDER MES LISTES
+	// ft_lstdbldel(lst_arg);
+	// free(lst_arg);
+	// ft_lstdbldel(lst_str);
+	// free(lst_str);
 	va_end(ap);
 	return (oct);
 }

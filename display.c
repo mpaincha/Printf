@@ -90,13 +90,12 @@ void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 
 	tmpa = lst_arg->head;
 	tmps = lst_str->head;
+	str = NULL;
 	while (tmpa != NULL)
 	{
-		str = NULL;
 		actions = ft_action[ARG->action];
 		tmps = find_pos(ARG->spec, lst_str);
 		tmps->content = actions(tmpa, &str);
-		ft_strdel(&str);
 		tmpa = tmpa->next;
 	}
 }

@@ -112,8 +112,6 @@ int 	main (void)
 	printf("\n\n/*****************************************************    TEST C S    *****************************************************/\n");
 	printf("%d\n", printf("|%-8C| |%#0 9lc| |%S|\n", myChar1, L'ℜ', L"ο Δικαιοπολις"));
 	ft_printf("%d\n", ft_printf("|%-8C| |%#0 9lc| |%S|\n", myChar1, L'ℜ', L"ο Δικαιοπολις"));
-	printf("%d\n", printf("|%S|\n", L"ο Δικαιοπολις"));
-	ft_printf("%d\n", ft_printf("|%S|\n", L"ο Δικαιοπολις"));
 	printf("%d\n", printf("|%lc|\n", 'a'));
 	ft_printf("%d\n", ft_printf("|%lc|\n", 'a'));
 
@@ -127,21 +125,21 @@ int 	main (void)
 	// printf("%d\n", printf("|%-10d| |%c| |%s| |%u| |%C| |%p|\n", NULL, NULL, NULL, NULL, NULL, 0));
 	// ft_printf("%d\n", ft_printf("|%-10d| |%c| |%s| |%u| |%C| |%p|\n", NULL, NULL, NULL, NULL, NULL, 0));
 
-	// printf("\n\n/******************************************************   VALEUR RETOUR   ******************************************************/\n");
+	printf("\n\n/******************************************************   VALEUR RETOUR   ******************************************************/\n");
 
 
-	// printf("%d\n", printf("\n|%+3lx| |%8hhx| |%-#3.6hx| |%0.0jx| |%+06.12hhx| |%-07llx| |%#-7.3zx|\n", 5, 7843 ,43, 548, 123456789, 123, 9876));
-	// ft_printf("%d\n", ft_printf("\n|%+3lx| |%8hhx| |%-#3.6hx| |%0.0jx| |%+06.12hhx| |%-07llx| |%#-7.3zx|\n", 5, 7843 ,43, 548, 123456789, 123, 9876));
+	printf("%d\n", printf("\n|%+3lx| |%8hhx| |%-#3.6hx| |%0.0jx| |%+06.12hhx| |%-07llx| |%#-7.3zx|\n", 5, 7843 ,43, 548, 123456789, 123, 9876));
+	ft_printf("%d\n", ft_printf("\n|%+3lx| |%8hhx| |%-#3.6hx| |%0.0jx| |%+06.12hhx| |%-07llx| |%#-7.3zx|\n", 5, 7843 ,43, 548, 123456789, 123, 9876));
 
-	// printf("%d\n", printf("|%p| |%016p| |%-16p|\n", str, str, nbr));
-	// ft_printf("%d\n", ft_printf("|%p| |%016p| |%-16p|\n", str, str, nbr));
+	printf("%d\n", printf("|%p| |%016p| |%-16p|\n", str, str, nbr));
+	ft_printf("%d\n", ft_printf("|%p| |%016p| |%-16p|\n", str, str, nbr));
 
-	// printf("%d\n", printf("|%xoxoxoxo| |%0000000000000x| |%-7llllllllllllx| |%#hhhhhhhhhhx| |%#----######-######08.0X| |%#-###-----#0++ #####9.8o| |%++++++-0-+++  +++----06X|\n", 43, -54, 95, 9, 532, 467349478438, -555));
-	// ft_printf("%d\n", ft_printf("|%xoxoxoxo| |%0000000000000x| |%-7llllllllllllx| |%#hhhhhhhhhhx| |%#----######-######08.0X| |%#-###-----#0++ #####9.8o| |%++++++-0-+++  +++----06X|\n", 43, -54, 95, 9, 532, 467349478438, -555));
+	printf("%d\n", printf("|%xoxoxoxo| |%0000000000000x| |%-7llllllllllllx| |%#hhhhhhhhhhx| |%#----######-######08.0X| |%#-###-----#0++ #####9.8o| |%++++++-0-+++  +++----06X|\n", 43, -54, 95, 9, 532, 467349478438, -555));
+	ft_printf("%d\n", ft_printf("|%xoxoxoxo| |%0000000000000x| |%-7llllllllllllx| |%#hhhhhhhhhhx| |%#----######-######08.0X| |%#-###-----#0++ #####9.8o| |%++++++-0-+++  +++----06X|\n", 43, -54, 95, 9, 532, 467349478438, -555));
 
 	// printf("%d\n", printf("|%#o| |%#-.4o| |%012o| |%-#6o| |%+06.4o| |%-4o| |%#-5.11o|\n", 10, 12, 21, 11, 12, 5, 54));
 	// ft_printf("%d\n", ft_printf("|%#o| |%#-.4o| |%012o| |%-#6o| |%+06.4o| |%-4o| |%#-5.11o|\n", 10, 12, 21, 11, 12, 5, 54));
 
-	ft_putstr("\n\n\nCOMPILATION OK\n\n\n");
+	ft_putstr("\n\n\nCOMPILATION OK POULET\n\n\n");
 	return (0);
 }

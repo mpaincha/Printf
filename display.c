@@ -34,14 +34,14 @@ static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 	return (tmps);
 }
 
-void			ft_putlststr(t_dbllist *list)
+void			ft_putlststr(t_dbllist *list, int *oct)
 {
 	t_elem	*tmp;
 
 	tmp = list->head;
 	while (tmp != NULL)
 	{
-		ft_putstr(tmp->content);
+		*oct = *oct + write(1, tmp->content, ft_strlen(tmp->content));
 		tmp = tmp->next;
 	}
 }

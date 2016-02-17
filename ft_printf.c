@@ -18,8 +18,10 @@ int		ft_printf(const char *format, ...)
 	t_dbllist		*lst_arg;
 	t_dbllist		*lst_str;
 	int				i;
+	int				oct;
 
 	i = 0;
+	oct = 0;
 	va_start(ap, format);
 	lst_arg = ft_lstdblnew();
 	lst_str = ft_lstdblnew();
@@ -36,8 +38,8 @@ int		ft_printf(const char *format, ...)
 	// 	ft_putlst(lst_arg); //debug
 	transformation(lst_arg, lst_str);
 	if (lst_str->head)
-		ft_putlststr(lst_str);
+		ft_putlststr(lst_str, &oct);
 	// VIDER MES LISTES
 	va_end(ap);
-	return (1);
+	return (oct);
 }

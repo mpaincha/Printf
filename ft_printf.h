@@ -83,7 +83,7 @@ int		check_prec(const char *format, int *i, t_arg *sarg);
 int		check_mod(const char *format, int *i, t_arg *sarg);
 int		check_width(char *str, t_arg *sarg, int *i);
 int		check_flags(const char *format, int *i, t_arg *sarg);
-void	ft_putlststr(t_dbllist	*list);
+void	ft_putlststr(t_dbllist	*list, int	*oct);
 int		stock_str(const char *format, int	i, t_dbllist *lst_str);
 void	cleanarg(t_dbllist *lst_arg);
 

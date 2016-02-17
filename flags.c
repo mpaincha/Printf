@@ -12,48 +12,58 @@
 
 #include "ft_printf.h"
 
-char	*diez_o(t_elem *tmpa, char *str)
+void	diez_o(char **str)
 {
-	char	*new_str;
+	char	*tmp;
 
-	new_str = ft_strjoin("0", str);
-	return (new_str);
+	tmp = ft_strjoin("0", *str);
+	ft_strdel(str);
+	*str = ft_strdup(tmp);
+	ft_strdel(&tmp);
 }
 
-char	*diez_hexalower(t_elem *tmpa, char *str)
+void	diez_hexalower(char **str)
 {
-	char	*new_str;
+	char	*tmp;
 
-	new_str = ft_strjoin("0x", str);
-	return (new_str);
+	tmp = ft_strjoin("0x", *str);
+	ft_strdel(str);
+	*str = ft_strdup(tmp);
+	ft_strdel(&tmp);
 }
 
-char	*diez_hexaupper(t_elem *tmpa, char *str)
+void	diez_hexaupper(char **str)
 {
-	char	*new_str;
+	char	*tmp;
 
-	new_str = ft_strjoin("0X", str);
-	return (new_str);
+	tmp = ft_strjoin("0X", *str);
+	ft_strdel(str);
+	*str = ft_strdup(tmp);
+	ft_strdel(&tmp);
 }
 
-char	*space(t_elem *tmpa, char *str)
+void	space(char **str)
 {
-	char	*new_str;
+	char	*tmp;
 
-	if (str[0] == '-')
-		return (str);
-	else
-		new_str = ft_strjoin(" ", str);
-	return (new_str);
+	if (*str[0] != '-')
+	{
+		tmp = ft_strjoin(" ", *str);
+		ft_strdel(str);
+		*str = ft_strdup(tmp);
+		ft_strdel(&tmp);
+	}
 }
 
-char	*plus(t_elem *tmpa, char *str)
+void	plus(char **str)
 {
-	char	*new_str;
+	char	*tmp;
 
-	if (str[0] != '-')
-		new_str = ft_strjoin("+", str);
-	else
-		return (str);
-	return (new_str);
+	if (*str[0] != '-')
+	{
+		tmp = ft_strjoin("+", *str);
+		ft_strdel(str);
+		*str = ft_strdup(tmp);
+		ft_strdel(&tmp);
+	}
 }

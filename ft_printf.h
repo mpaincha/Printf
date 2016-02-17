@@ -65,7 +65,7 @@ typedef struct		s_arg
 
 }					t_arg;
 
-typedef char *(* t_action)(t_elem *);
+typedef char *(* t_action)(t_elem *, char **);
 
 int		ft_printf(const char *format, ...);
 void	display_percent(int n, t_dbllist *lst_str);
@@ -89,14 +89,14 @@ int		stock_str(const char *format, int	i, t_dbllist *lst_str);
 void	cleanarg(t_dbllist *lst_arg);
 
 void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str);
-char	*ft_string(t_elem *tmpa);
-char	*ft_ptr(t_elem *tmpa);
-char	*ft_dec(t_elem *tmpa);
-char	*ft_octal(t_elem *tmpa);
-char	*ft_unsig(t_elem *tmpa);
-char	*ft_hexalower(t_elem *tmpa);
-char	*ft_hexaupper(t_elem *tmpa);
-char	*ft_char(t_elem *tmpa);
+char	*ft_string(t_elem *tmpa, char **str);
+char	*ft_ptr(t_elem *tmpa, char **str);
+char	*ft_dec(t_elem *tmpa, char **str);
+char	*ft_octal(t_elem *tmpa, char **str);
+char	*ft_unsig(t_elem *tmpa, char **str);
+char	*ft_hexalower(t_elem *tmpa, char **str);
+char	*ft_hexaupper(t_elem *tmpa, char **str);
+char	*ft_char(t_elem *tmpa, char **str);
 
 int		errormod(t_arg *sarg);
 char	*mod_string(t_elem *tmpa);
@@ -107,20 +107,18 @@ char	*mod_hexalower(t_elem *tmpa);
 char	*mod_hexaupper(t_elem *tmpa);
 char	*mod_char(t_elem *tmpa);
 
-char	*diez_o(t_elem *tmpa, char *str);
-char	*diez_hexalower(t_elem *tmpa, char *str);
-char	*diez_hexaupper(t_elem *tmpa, char *str);
+void	diez_o(char **str);
+void	diez_hexalower(char **str);
+void	diez_hexaupper(char **str);
 
-char	*define_width(t_elem *tmpa, char *str);
-char	*width_minus(t_elem *tmpa, char *str);
-char	*width(t_elem *tmpa, char *str);
+void	width(t_elem *tmpa, char **str);
 
-char	*space(t_elem *tmpa, char *str);
+void	space(char **str);
 
-char	*plus(t_elem *tmpa, char *str);
+void	plus(char **str);
 
-char	*prec_doux(t_elem *tmpa, char *str);
-char	*prec_s(t_elem *tmpa, char *str);
+void	prec_doux(t_elem *tmpa, char **str);
+void	prec_s(t_elem *tmpa, char **str);
 
 char	*ft_wchar_str(t_elem *tmpa);
 char	*mask(wchar_t c);

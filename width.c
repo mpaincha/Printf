@@ -12,65 +12,30 @@
 
 #include "ft_printf.h"
 
-char	*define_width(t_elem *tmpa, char *str)
+void	width(t_elem *tmpa, char **str)
 {
-	// char		*tmp;
-
-	// tmp = str;
-	if (SFLAGS.minus == 0)
-		str = width(tmpa, str);
-	else
-		str = width_minus(tmpa, str);
-	// free(tmp);
-	return (str);
-}
-
-char	*width(t_elem *tmpa, char *str)
-{
-	char	*new_str;
+	char	*tmp;
 	size_t	i;
 	size_t	nb;
 	char	*add;
 	char	tadd;
 
 	i = 0;
-	if (SFLAGS.width > ft_strlen(str))
+	if (SFLAGS.width > (int)ft_strlen(*str))
 	{
-	 	nb = SFLAGS.width - ft_strlen(str);
+	 	nb = SFLAGS.width - (int)ft_strlen(*str);
 		add = ft_strnew(nb);
 	 	(SFLAGS.zero == 0) ? (tadd = ' ') : (tadd = '0');
 		while (i < nb)
 			add[i++] = tadd;
 		add[i] = '\0';
-		new_str = ft_strjoin(add, str);
-		free(add);
-		return (new_str);
-	}
-	else
-		return (str);
-}
-
-char	*width_minus(t_elem *tmpa, char *str)
-{
-	char	*new_str;
-	size_t	i;
-	size_t	nb;
-	char	*add;
-	char	tadd;
-
-	i = 0;
-	if (SFLAGS.width > ft_strlen(str))
-	{
-	 	nb = SFLAGS.width - ft_strlen(str);
-		add = ft_strnew(nb);
-	 	(SFLAGS.zero == 0) ? (tadd = ' ') : (tadd = '0');
-		while (i < nb)
-			add[i++] = tadd;
-		add[i] = '\0';
-		new_str = ft_strjoin(str, add);
+		if (SFLAGS.minus == 0)
+			tmp = ft_strjoin(add, *str);
+		else
+			tmp = ft_strjoin(*str, add);
+		ft_strdel(str);
 		ft_strdel(&add);
-		return (new_str);
+		*str = ft_strdup(tmp);
+		ft_strdel(&tmp);
 	}
-	else
-		return (str);
 }

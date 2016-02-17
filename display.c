@@ -86,14 +86,16 @@ void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 							ft_hexalower, ft_hexaupper, ft_char};
 	t_action				actions;
 	t_elem					*tmps;
+	char					*str;
 
 	tmpa = lst_arg->head;
 	tmps = lst_str->head;
+	str = NULL;
 	while (tmpa != NULL)
 	{
 		actions = ft_action[ARG->action];
 		tmps = find_pos(ARG->spec, lst_str);
-		tmps->content = actions(tmpa);
+		tmps->content = actions(tmpa, &str);
 		tmpa = tmpa->next;
 	}
 }

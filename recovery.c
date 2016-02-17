@@ -19,13 +19,13 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	char		*str;
 
 	ini_sarg(&sarg);
-	str = ft_strnew(2);
 	if (checks(format, i, &sarg) == -1)
 		return (-1);
 	*i = *i + 1;
 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
-	ft_strcpy(str, sarg.spec);
+	str = ft_strdup(sarg.spec);
 	ft_lstdbladd(lst_str, str, (sizeof(char) * ft_strlen(str)));
+	ft_strdel(&str);
 	if (format[*i] != '\0')
 		recover_arg(format, lst_arg, lst_str, i);
 	return (1);

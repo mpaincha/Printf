@@ -51,10 +51,11 @@ void			display_percent(int nb, t_dbllist *lst_str)
 	char	*str;
 	int		i;
 
-	str = ft_strnew(nb);
 	i = 0;
+	str = NULL;
 	if (nb >= 1)
 	{
+		str = ft_strnew(nb);
 		while (i < nb)
 		{
 			str[i] = '%';
@@ -62,6 +63,7 @@ void			display_percent(int nb, t_dbllist *lst_str)
 		}
 		str[i] = '\0';
 		ft_lstdbladd(lst_str, str, (sizeof(char) * nb));
+		ft_strdel(&str);
 	}
 }
 
@@ -76,6 +78,7 @@ int				stock_str(const char *format, int i, t_dbllist *lst_str)
 		i++;
 	str = ft_strsub(format, start, (i - start));
 	ft_lstdbladd(lst_str, str, (sizeof(char) * ft_strlen(str)));
+	// ft_strdel(&str); non sinon pb avec 42 filecheck
 	return (i - 1);
 }
 

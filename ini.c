@@ -26,7 +26,7 @@ void	ini_sarg(t_arg *sarg)
 	sarg->mod.j = 0;
 	sarg->mod.z = 0;
 	sarg->prec.pt = 0;
-	sarg->prec.n = -1;
+	sarg->prec.n = 0;
 	sarg->spec = ft_strnew(sizeof(char) * 2);
 	sarg->action = -1;
 }

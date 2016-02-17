@@ -16,6 +16,7 @@ void	prec_s(t_elem *tmpa, char **str)
 {
 	char	*tmp;
 
+	ft_putstr(*str);
 	if (SPREC.n != 0 && SPREC.n < ft_strlen(*str))
 	{
 		tmp = ft_strnew(SPREC.n + 1);
@@ -34,9 +35,9 @@ void	prec_doux(t_elem *tmpa, char **str)
 	char		*add;
 
 	i = 0;
-	if (SPREC.n != -1 && (SPREC.n > ft_strlen(*str)))
+	if (SPREC.n != 0 && (SPREC.n > ft_strlen(*str)))
 	{
-		nb = SPREC.n - (int)ft_strlen(*str);
+		nb = SPREC.n - ft_strlen(*str);
 		add = ft_strnew(nb);
 		while (i < nb)
 			add[i++] = '0';

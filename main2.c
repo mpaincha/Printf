@@ -33,9 +33,10 @@ int 	main (void)
 	printf("\n\n/*******************************************************   TEST s   *****************************************************/\n");
 	printf("%d\n", printf("|%#0.2s| |%3s| |%04s| |%-04s| |%+011s| |%07.2s| |%-8.4s|\n", "salut", "42", "32", "wq", "43", "salut", "123456789"));
 	ft_printf("%d\n", ft_printf("|%#0.2s| |%3s| |%04s| |%-04s| |%+011s| |%07.2s| |%-8.4s|\n", "salut", "42", "32", "wq", "43", "salut", "123456789"));
+		printf("%d\n", printf("|%#0.2s| |%3s| |%04s| |%-04s| |%+011s| |%07.2s| |%-8.4s|\n", "salut", "42", "32", "wq", "43", "salut", "123456789"));
 
-	printf("%d\n", printf("|%4s| \n", "wq"));
-	ft_printf("%d\n", ft_printf("|%4s| \n", "wq"));
+	printf("%d\n", printf("|%3s| \n", "42"));
+	ft_printf("%d\n", ft_printf("|%3s| \n", "42"));
 
 
 	printf("|%-#3.6hs| |%0.0js| |%+06.12hhs| |%-07lls| |%#-7.3zs|\n", "qwerty", "qwerty", "qwerty", "qwerty", "qwerty");

@@ -45,13 +45,13 @@ typedef struct		s_flags
 	int				minus;
 	int				plus;
 	int				space;
-	int				width;
+	size_t			width;
 }					t_flags;
 
 typedef struct		s_prec
 {
 	int				pt;
-	int				n;
+	size_t			n;
 }					t_prec;
 
 typedef struct		s_arg

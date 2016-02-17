@@ -67,7 +67,7 @@ char	*width_minus(t_elem *tmpa, char *str)
 		while (i < nb)
 			add[i++] = tadd;
 		add[i] = '\0';
-		new_str = ft_strcat(str, add);
+		new_str = ft_strjoin(str, add);
 		ft_strdel(&add);
 		return (new_str);
 	}

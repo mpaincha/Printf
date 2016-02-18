@@ -66,7 +66,8 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	*i = *i + 1;
 	if (split_arg(format, lst_arg, lst_str, i) == -1)
 	{
-		clean_lst(lst_arg);
+		ft_lstdbldel(lst_arg);
+//		ft_lstdbldel(&lst_str);
 		return (-1);
 	}
 	return (1);

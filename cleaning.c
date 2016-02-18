@@ -29,7 +29,7 @@ void	cleanarg(t_dbllist *lst_arg)
 		|| ARG->spec[0] == 'x' || ARG->spec[0] == 'X'))
 			ARG->flags.zero = 0;
 		if (ARG->flags.plus == 1 && ARG->flags.space == 1)
-			ARG->flags.plus = 0;
+			ARG->flags.space = 0;
 		tmpa = tmpa->next;
 	}
 }

@@ -51,15 +51,18 @@ char	*ft_ptr(t_elem *tmpa, char **str)
 
 char	*ft_dec(t_elem *tmpa, char **str)
 {
+	char *tmp;
+
 	*str = mod_dec(tmpa);
+	tmp = ft_strdup(*str);
 	if (SFLAGS.space == 1)
 		space(str);
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
-	if (SFLAGS.plus == 1)
-		plus(str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);
+	if (SFLAGS.plus == 1)
+		plus(tmpa, str, tmp);
 	return (*str);
 }
 
@@ -112,6 +115,17 @@ char	*ft_hexaupper(t_elem *tmpa, char **str)
 char	*ft_char(t_elem *tmpa, char **str)
 {
 	*str = mod_char(tmpa);
+	if (SFLAGS.width != 0)
+		width(tmpa, str);
+	return (*str);
+}
+
+char	*ft_percent(t_elem *tmpa, char **str)
+{
+	if (ARG->spec == "2")
+		*str = ft_strdup("%%");
+	else
+		*str = ft_strdup("%");
 	if (SFLAGS.width != 0)
 		width(tmpa, str);
 	return (*str);

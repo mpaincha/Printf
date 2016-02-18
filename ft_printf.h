@@ -23,7 +23,7 @@
 
 # define FLAGS "#0-+ "
 # define MOD "hljz"
-# define SPEC "spdouxXc"
+# define SPEC "spdouxXc%"
 
 # define ARG ((t_arg *)(tmpa->content))
 # define SFLAGS ((t_flags)(ARG->flags))
@@ -96,7 +96,7 @@ int		clean_lst(t_dbllist *lst_arg);
 void	recover_param(va_list ap, t_dbllist *lst_arg);
 void	ini_sarg(t_arg *sarg);
 int		checks(const char *format, int *i, t_arg *sarg);
-int		check_spec(char find, t_arg *sarg);
+int		check_spec(const char *format, int *i, t_arg *sarg);
 int		check_prec(const char *format, int *i, t_arg *sarg);
 int		check_mod(const char *format, int *i, t_arg *sarg);
 int		check_width(char *str, t_arg *sarg, int *i);
@@ -114,6 +114,7 @@ char	*ft_unsig(t_elem *tmpa, char **str);
 char	*ft_hexalower(t_elem *tmpa, char **str);
 char	*ft_hexaupper(t_elem *tmpa, char **str);
 char	*ft_char(t_elem *tmpa, char **str);
+char	*ft_percent(t_elem *tmpa, char **str);
 
 int		errormod(t_arg *sarg);
 char	*mod_string(t_elem *tmpa);
@@ -132,7 +133,7 @@ void	width(t_elem *tmpa, char **str);
 
 void	space(char **str);
 
-void	plus(char **str);
+void	plus(t_elem *tmpa, char **str, char *tmp);
 
 void	prec_doux(t_elem *tmpa, char **str);
 void	prec_s(t_elem *tmpa, char **str);

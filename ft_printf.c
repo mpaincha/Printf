@@ -25,7 +25,8 @@ int		ft_printf(const char *format, ...)
 	va_start(ap, format);
 	lst_arg = ft_lstdblnew();
 	lst_str = ft_lstdblnew();
-	recover_arg(format, lst_arg, lst_str, &i);
+	if (recover_arg(format, lst_arg, lst_str, &i) == -1)
+		return(0);
 	if (lst_arg == NULL)
 		return (0);
 	recover_param(ap, lst_arg);
@@ -33,9 +34,9 @@ int		ft_printf(const char *format, ...)
 	transformation(lst_arg, lst_str);
 	if (lst_str->head)
 		ft_putlststr(lst_str, &oct);
-	// ft_lstdbldel(lst_arg);
+	// ft_lstdbldel(&lst_arg);
 	// free(lst_arg);
-	// ft_lstdbldel(lst_str);
+	// ft_lstdbldel(&lst_str);
 	// free(lst_str);
 	va_end(ap);
 	return (oct);

@@ -75,7 +75,7 @@ int				errormod(t_arg *sarg)
 	if (sarg->mod.z > 0)
 		i++;
 	if (i > 1)
-		return (error("mod problems"));
+		return (-1);
 	else if (i == 0)
 		return (0);
 	return (1);
@@ -133,28 +133,37 @@ int				check_prec(const char *format, int *i, t_arg *sarg)
 	return (1);
 }
 
-int				check_spec(char find, t_arg *sarg)
+int				check_spec(const char *format, int *i, t_arg *sarg)
 {
-	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, ft_tolower(find)))
+	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, ft_tolower(format[*i])))
 	{
-		sarg->spec[0] = find;
+		sarg->spec[0] = format[*i];
 		sarg->spec[1] = '\0';
-		sarg->action = define_action(SPEC, find);
-		if (ft_isupper(find) && find != 'X')
+		sarg->action = define_action(SPEC, format[*i]);
+		if (ft_isupper(format[*i]) && format[*i] != 'X')
 		{
 			if (sarg->mod.l == 0)
 				sarg->mod.l = 1;
-			sarg->spec[0] = ft_tolower(find);
-			sarg->action = define_action(SPEC, ft_tolower(find));
+			sarg->spec[0] = ft_tolower(format[*i]);
+			sarg->action = define_action(SPEC, ft_tolower(format[*i]));
 		}
-		else if (find == 'p')
+		else if (format[*i] == 'p')
 			sarg->mod.j = 1;
 		return (1);
 	}
-	if (find == 'i')
+	if (format[*i] == 'i')
 	{
 		sarg->spec[0] = 'd';
 		sarg->action = define_action(SPEC, 'd');
+		return (1);
+	}
+	if (format[*i] == '%')
+	{
+		if (format[*i + 1] == '%')
+			sarg->spec[0] = '2';
+		else
+			sarg->spec[0] = '1';
+		sarg->action = 8;
 		return (1);
 	}
 	return (0);
@@ -183,8 +192,8 @@ int				checks(const char *format, int *i, t_arg *sarg)
 		*i = isave;
 	else
 		return (-1);
-	if (check_spec(format[*i], sarg))
+	if (check_spec(format, i, sarg))
 		return (1);
 	else
-		return (error("Parameter problem"));
+		return (-1);
 }

@@ -55,15 +55,18 @@ void	space(char **str)
 	}
 }
 
-void	plus(char **str)
+void	plus(t_elem *tmpa, char **str, char *tmp)
 {
-	char	*tmp;
-
-	if (*str[0] != '-')
+	if (!(ft_strchr(*str, '-')))
 	{
-		tmp = ft_strjoin("+", *str);
-		ft_strdel(str);
-		*str = ft_strdup(tmp);
-		ft_strdel(&tmp);
+		if (SFLAGS.width > ft_strlen(tmp))
+			*str[0] = '+';
+		else
+		{
+			tmp = ft_strjoin("+", *str);
+			// ft_strdel(str);
+			*str = ft_strdup(tmp);
+			// ft_strdel(&tmp);
+		}
 	}
 }

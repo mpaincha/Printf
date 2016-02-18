@@ -86,7 +86,8 @@ void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 {
 	t_elem					*tmpa;
 	static const t_action	ft_action[] = {ft_string, ft_ptr, ft_dec, ft_octal,
-							ft_unsig, ft_hexalower, ft_hexaupper, ft_char};
+							ft_unsig, ft_hexalower, ft_hexaupper, ft_char,
+							ft_percent};
 	t_action				actions;
 	t_elem					*tmps;
 	char					*str;

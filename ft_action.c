@@ -82,10 +82,10 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 {
 	size_t		len;
 
-	if (SFLAGS.space == 1)
-		space(str);
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
+	if (SFLAGS.space == 1)
+		space(str);
 	len = ft_strlen(*str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);

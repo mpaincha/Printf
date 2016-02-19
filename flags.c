@@ -46,12 +46,13 @@ void	space(char **str)
 {
 	char	*tmp;
 
-	if (*str[0] != '-')
+	if ((*str)[0] != '-')
 	{
+
 		tmp = ft_strjoin(" ", *str);
-		ft_strdel(str);
+		// ft_strdel(str);
 		*str = ft_strdup(tmp);
-		ft_strdel(&tmp);
+		// ft_strdel(&tmp);
 	}
 }
 
@@ -73,7 +74,9 @@ void	plus(t_elem *tmpa, char **str, size_t len)
 		else
 		{
 			tmp = ft_strjoin("+", *str);
+			// ft_strdel(str);
 			*str = ft_strdup(tmp);
+			// ft_strdel(&tmp);
 		}
 	}
 }

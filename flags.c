@@ -55,18 +55,25 @@ void	space(char **str)
 	}
 }
 
-void	plus(t_elem *tmpa, char **str, char *tmp)
+void	plus(t_elem *tmpa, char **str, size_t len)
 {
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
 	if (!(ft_strchr(*str, '-')))
 	{
-		if (SFLAGS.width > ft_strlen(tmp))
-			*str[0] = '+';
+		if (SFLAGS.width > len)
+		{
+			while (!(ft_isdigit((*str)[i])))
+				i++;
+			(*str)[i - 1] = '+';
+		}
 		else
 		{
 			tmp = ft_strjoin("+", *str);
-			// ft_strdel(str);
 			*str = ft_strdup(tmp);
-			// ft_strdel(&tmp);
 		}
 	}
 }

@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
+
+
 char	*ft_string(t_elem *tmpa, char **str)
 {
 	*str = mod_string(tmpa);
@@ -49,20 +51,55 @@ char	*ft_ptr(t_elem *tmpa, char **str)
 	return (*str);
 }
 
-char	*ft_dec(t_elem *tmpa, char **str)
+static	void	ft_negative(t_elem *tmpa, char **str)
 {
-	char *tmp;
+	char	*tmp;
 
-	*str = mod_dec(tmpa);
-	tmp = ft_strdup(*str);
+	tmp = ft_strsub(*str, 1, ft_strlen(*str) - 1);
+	if (SFLAGS.space == 1)
+		space(&tmp);
+	if (SPREC.n != 0)
+		prec_doux(tmpa, &tmp);
+	if (SFLAGS.width != 0)
+	{
+		width(tmpa, &tmp);
+		if (SFLAGS.width > ft_strlen(*str))
+		{
+			tmp[0] = '-';
+			ft_strdel(str);
+			*str = ft_strdup(tmp);
+			ft_strdel(&tmp);
+			return ;
+		}
+	}
+	ft_strdel(str);
+	*str = ft_strjoin("-", tmp);
+	ft_strdel(&tmp);
+
+}
+
+static	void	ft_positive(t_elem *tmpa, char **str)
+{
+	size_t		len;
+
 	if (SFLAGS.space == 1)
 		space(str);
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
+	len = ft_strlen(*str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);
 	if (SFLAGS.plus == 1)
-		plus(tmpa, str, tmp);
+		plus(tmpa, str, len);
+}
+
+char	*ft_dec(t_elem *tmpa, char **str)
+{
+	*str = mod_dec(tmpa);
+	if ((*str)[0] != '-' || ((*str)[0] == '-' && SFLAGS.zero == 0))
+		ft_positive(tmpa, str);
+	else
+		ft_negative(tmpa, str);
 	return (*str);
 }
 

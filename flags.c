@@ -22,24 +22,68 @@ void	diez_o(char **str)
 	ft_strdel(&tmp);
 }
 
-void	diez_hexalower(char **str)
+void	diez_hexalower(char **str, size_t len, size_t w)
 {
 	char	*tmp;
 
-	tmp = ft_strjoin("0x", *str);
-	ft_strdel(str);
-	*str = ft_strdup(tmp);
-	ft_strdel(&tmp);
+	tmp = NULL;
+	if (w > len)
+	{
+		if (w - len == 1)
+		{
+			*str[0] = 'x';
+			tmp = ft_strjoin("0", *str);
+			ft_strdel(str);
+			*str = ft_strdup(tmp);
+			ft_strdel(&tmp);
+		}
+		else
+		{
+			(*str)[0] = '0';
+			(*str)[1] = 'x';
+			ft_strdel(&tmp);
+		}
+
+	}
+	else
+	{
+		tmp = ft_strjoin("0x", *str);
+		ft_strdel(str);
+		*str = ft_strdup(tmp);
+		ft_strdel(&tmp);
+	}
 }
 
-void	diez_hexaupper(char **str)
+void	diez_hexaupper(char **str, size_t len, size_t w)
 {
 	char	*tmp;
 
-	tmp = ft_strjoin("0X", *str);
-	ft_strdel(str);
-	*str = ft_strdup(tmp);
-	ft_strdel(&tmp);
+	tmp = NULL;
+	if (w > len)
+	{
+		if (w - len == 1)
+		{
+			*str[0] = 'x';
+			tmp = ft_strjoin("0", *str);
+			ft_strdel(str);
+			*str = ft_strdup(tmp);
+			ft_strdel(&tmp);
+		}
+		else
+		{
+			(*str)[0] = '0';
+			(*str)[1] = 'x';
+			ft_strdel(&tmp);
+		}
+
+	}
+	else
+	{
+		tmp = ft_strjoin("0x", *str);
+		ft_strdel(str);
+		*str = ft_strdup(tmp);
+		ft_strdel(&tmp);
+	}
 }
 
 void	space(char **str)

@@ -280,10 +280,10 @@ int 	main (void)
 	// printf("\n%d\n", printf("%5d", 42));
 	// ft_printf("\n%d\n", ft_printf("%5d", 42));
 
-	// printf("\n**** 25 *****\n");
+	printf("\n**** 25 *****\n");
 
-	// printf("\n%d\n", printf("%+5d", 42));
-	// ft_printf("\n%d\n", ft_printf("%+5d", 42));
+	printf("\n%d\n", printf("%#08x", 42));
+	ft_printf("\n%d\n", ft_printf("%#08x", 42));
 
 	printf("\n**** 26 *****\n");
 

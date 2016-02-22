@@ -127,25 +127,36 @@ char	*ft_unsig(t_elem *tmpa, char **str)
 
 char	*ft_hexalower(t_elem *tmpa, char **str)
 {
+	size_t	len;
+	size_t	w;
+
 	*str = mod_hexalower(tmpa);
+	len = ft_strlen(*str);
+	w = SFLAGS.width;
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
-	if (SFLAGS.diez == 1)
-		diez_hexalower(str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);
+	if (SFLAGS.diez == 1)
+		diez_hexalower(str, len, w);
 	return (*str);
 }
 
 char	*ft_hexaupper(t_elem *tmpa, char **str)
 {
+	size_t	len;
+	size_t	w;
+
+	*str = mod_hexalower(tmpa);
+	len = ft_strlen(*str);
+	w = SFLAGS.width;
 	*str = mod_hexaupper(tmpa);
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
-	if (SFLAGS.diez == 1)
-		diez_hexaupper(str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);
+	if (SFLAGS.diez == 1)
+		diez_hexaupper(str, len, w);
 	return (*str);
 }
 

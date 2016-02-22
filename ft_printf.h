@@ -126,8 +126,8 @@ char	*mod_hexaupper(t_elem *tmpa);
 char	*mod_char(t_elem *tmpa);
 
 void	diez_o(char **str);
-void	diez_hexalower(char **str);
-void	diez_hexaupper(char **str);
+void	diez_hexalower(char **str, size_t len, size_t w);
+void	diez_hexaupper(char **str, size_t len, size_t w);
 
 void	width(t_elem *tmpa, char **str);
 

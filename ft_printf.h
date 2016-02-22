@@ -121,13 +121,12 @@ char	*mod_string(t_elem *tmpa);
 char	*mod_dec(t_elem *tmpa);
 char	*mod_octal(t_elem *tmpa);
 char	*mod_unsig(t_elem *tmpa);
-char	*mod_hexalower(t_elem *tmpa);
-char	*mod_hexaupper(t_elem *tmpa);
+char	*mod_hexa(t_elem *tmpa);
 char	*mod_char(t_elem *tmpa);
 
 void	diez_o(char **str);
-void	diez_hexaupper_zero(char **str, size_t len, size_t w);
-void	diez_hexaupper_space(char **str, size_t len, size_t w);
+void	diez_hexaupper_zero(char **str, size_t len, t_elem *tmpa);
+void	diez_hexaupper(char **str, size_t len, t_elem *tmpa);
 
 void	width(t_elem *tmpa, char **str);
 

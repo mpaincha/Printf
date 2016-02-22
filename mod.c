@@ -73,25 +73,7 @@ char	*mod_unsig(t_elem *tmpa)
 		return (ft_itoabase_uimax((unsigned int)ARG->arg, 10));
 }
 
-char	*mod_hexalower(t_elem *tmpa)
-{
-	if (SMOD.h == 1)
-		return (ft_itoabase_uimax_x((unsigned short)ARG->arg, 16));
-	else if (SMOD.h == 2)
-		return (ft_itoabase_uimax_x((unsigned char)ARG->arg, 16));
-	else if (SMOD.l == 1)
-		return (ft_itoabase_uimax_x((unsigned long)ARG->arg, 16));
-	else if (SMOD.l == 2)
-		return (ft_itoabase_uimax_x((unsigned long long)ARG->arg, 16));
-	else if (SMOD.j == 1)
-		return (ft_itoabase_uimax_x((uintmax_t)ARG->arg, 16));
-	else if (SMOD.z == 1)
-		return (ft_itoabase_uimax_x((size_t)ARG->arg, 16));
-	else
-		return (ft_itoabase_uimax_x((unsigned int)ARG->arg, 16));
-}
-
-char	*mod_hexaupper(t_elem *tmpa)
+char	*mod_hexa(t_elem *tmpa)
 {
 	if (SMOD.h == 1)
 		return (ft_itoabase_uimax((unsigned short)ARG->arg, 16));

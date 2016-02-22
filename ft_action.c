@@ -26,7 +26,7 @@ char	*ft_ptr(t_elem *tmpa, char **str)
 {
 	char	*tmp;
 
-	*str = mod_hexalower(tmpa);
+	*str = mod_hexa(tmpa);
 	if (SFLAGS.zero == 0)
 	{
 		tmp = ft_strjoin("0x", *str);
@@ -126,19 +126,25 @@ char	*ft_unsig(t_elem *tmpa, char **str)
 char	*ft_hexalower(t_elem *tmpa, char **str)
 {
 	size_t	len;
-	size_t	w;
 
-	*str = mod_hexaupper(tmpa);
+	*str = mod_hexa(tmpa);
 	len = ft_strlen(*str);
-	w = SFLAGS.width;
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
-	if (SFLAGS.width != 0)
-		width(tmpa, str);
-	if (SFLAGS.diez == 1 && SFLAGS.zero == 1)
-		diez_hexaupper_zero(str, len, w);
-	else if (SFLAGS.diez == 1 && SFLAGS.zero == 0)
-		diez_hexaupper_space(str, len, w);
+	if (SFLAGS.zero == 0)
+	{
+		if (SFLAGS.diez == 1)
+			diez_hexaupper(str, len, tmpa);
+		if (SFLAGS.width != 0)
+			width(tmpa, str);
+	}
+	else
+	{
+		if (SFLAGS.width != 0)
+			width(tmpa, str);
+		if (SFLAGS.diez == 1)
+			diez_hexaupper_zero(str, len, tmpa);
+	}
 	ft_strlower(str);
 	return (*str);
 }
@@ -146,21 +152,27 @@ char	*ft_hexalower(t_elem *tmpa, char **str)
 char	*ft_hexaupper(t_elem *tmpa, char **str)
 {
 	size_t	len;
-	size_t	w;
 	int		i;
 
-	*str = mod_hexaupper(tmpa);
+	*str = mod_hexa(tmpa);
 	len = ft_strlen(*str);
-	w = SFLAGS.width;
 	i = 0;
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
-	if (SFLAGS.width != 0)
-		width(tmpa, str);
-	if (SFLAGS.diez == 1 && SFLAGS.zero == 1)
-		diez_hexaupper_zero(str, len, w);
-	else if (SFLAGS.diez == 1 && SFLAGS.zero == 0)
-		diez_hexaupper_space(str, len, w);
+	if (SFLAGS.zero == 0)
+	{
+		if (SFLAGS.diez == 1)
+			diez_hexaupper(str, len, tmpa);
+		if (SFLAGS.width != 0)
+			width(tmpa, str);
+	}
+	else
+	{
+		if (SFLAGS.width != 0)
+			width(tmpa, str);
+		if (SFLAGS.diez == 1)
+			diez_hexaupper_zero(str, len, tmpa);
+	}
 	return (*str);
 }
 

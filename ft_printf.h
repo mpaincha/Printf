@@ -126,8 +126,8 @@ char	*mod_hexaupper(t_elem *tmpa);
 char	*mod_char(t_elem *tmpa);
 
 void	diez_o(char **str);
-void	diez_hexalower(char **str, size_t len, size_t w);
-void	diez_hexaupper(char **str, size_t len, size_t w);
+void	diez_hexaupper_zero(char **str, size_t len, size_t w);
+void	diez_hexaupper_space(char **str, size_t len, size_t w);
 
 void	width(t_elem *tmpa, char **str);
 
@@ -220,6 +220,7 @@ char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
+void				ft_strlower(char **str);
 int					ft_toupper(int c);
 
 #endif

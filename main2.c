@@ -282,18 +282,33 @@ int 	main (void)
 
 	printf("\n**** 25 *****\n");
 
-	printf("\n%d\n", printf("%#08x", 42));
-	ft_printf("\n%d\n", ft_printf("%#08x", 42));
+	printf("\n%d\n", printf("%#X", 42));
+	ft_printf("\n%d\n", ft_printf("%#X", 42));
 
 	printf("\n**** 26 *****\n");
 
-	printf("\n%d\n", printf("% 10.5d", 4242));
-	ft_printf("\n%d\n", ft_printf("% 10.5d", 4242));
+	printf("\n%d\n", printf("%#8x", 42));
+	ft_printf("\n%d\n", ft_printf("%#8x", 42));
 
-	printf("\n**** 27 *****\n");
+	printf("\n**** 26 *****\n");
 
-	printf("\n%d\n", printf("%03.2d", -1));
-	ft_printf("\n%d\n", ft_printf("%03.2d", -1));
+	printf("\n%d\n", printf("%#-08x", 42));
+	ft_printf("\n%d\n", ft_printf("%#-08x", 42));
+
+	// printf("\n**** 26 *****\n");
+
+	// printf("\n%d\n", printf("%#8x", 42)));
+	// ft_printf("\n%d\n", ft_printf("%#8x", 42)));
+
+	// printf("\n**** 26 *****\n");
+
+	// printf("\n%d\n", printf("%#8x", 42)));
+	// ft_printf("\n%d\n", ft_printf("%#8x", 42)));
+
+	// printf("\n**** 27 *****\n");
+
+	// printf("\n%d\n", printf("%03.2d", -1));
+	// ft_printf("\n%d\n", ft_printf("%03.2d", -1));
 
 	// printf("\n**** 28 *****\n");
 

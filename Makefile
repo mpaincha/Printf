@@ -96,7 +96,9 @@ wchar.c \
 ini.c \
 mod.c \
 prec.c \
-width.c
+width.c \
+diez.c \
+ft_strlower.c
 SRCO = $(SRC:.c=.o)
 HEADERS = .
 CC = gcc

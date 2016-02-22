@@ -12,8 +12,6 @@
 
 #include "ft_printf.h"
 
-
-
 char	*ft_string(t_elem *tmpa, char **str)
 {
 	*str = mod_string(tmpa);
@@ -130,15 +128,18 @@ char	*ft_hexalower(t_elem *tmpa, char **str)
 	size_t	len;
 	size_t	w;
 
-	*str = mod_hexalower(tmpa);
+	*str = mod_hexaupper(tmpa);
 	len = ft_strlen(*str);
 	w = SFLAGS.width;
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);
-	if (SFLAGS.diez == 1)
-		diez_hexalower(str, len, w);
+	if (SFLAGS.diez == 1 && SFLAGS.zero == 1)
+		diez_hexaupper_zero(str, len, w);
+	else if (SFLAGS.diez == 1 && SFLAGS.zero == 0)
+		diez_hexaupper_space(str, len, w);
+	ft_strlower(str);
 	return (*str);
 }
 
@@ -146,17 +147,20 @@ char	*ft_hexaupper(t_elem *tmpa, char **str)
 {
 	size_t	len;
 	size_t	w;
+	int		i;
 
-	*str = mod_hexalower(tmpa);
+	*str = mod_hexaupper(tmpa);
 	len = ft_strlen(*str);
 	w = SFLAGS.width;
-	*str = mod_hexaupper(tmpa);
+	i = 0;
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);
-	if (SFLAGS.diez == 1)
-		diez_hexaupper(str, len, w);
+	if (SFLAGS.diez == 1 && SFLAGS.zero == 1)
+		diez_hexaupper_zero(str, len, w);
+	else if (SFLAGS.diez == 1 && SFLAGS.zero == 0)
+		diez_hexaupper_space(str, len, w);
 	return (*str);
 }
 

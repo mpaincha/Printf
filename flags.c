@@ -35,7 +35,7 @@ void	plus(t_elem *tmpa, char **str, size_t len)
 	tmp = NULL;
 	if (!(ft_strchr(*str, '-')))
 	{
-		if (SFLAGS.width > len)
+		if (SFLAGS.width > len && SFLAGS.zero == 1)
 		{
 			while (!(ft_isdigit((*str)[i])))
 				i++;

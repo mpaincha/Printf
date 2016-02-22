@@ -85,10 +85,10 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 	if (SFLAGS.space == 1)
 		space(str);
 	len = ft_strlen(*str);
-	if (SFLAGS.width != 0)
-		width(tmpa, str);
 	if (SFLAGS.plus == 1)
 		plus(tmpa, str, len);
+	if (SFLAGS.width != 0)
+		width(tmpa, str);
 }
 
 char	*ft_dec(t_elem *tmpa, char **str)

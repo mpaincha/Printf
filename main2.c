@@ -234,12 +234,12 @@ int 	main (void)
 	// printf("\n***** 17 ****\n");
 
 	// printf("%d\n", printf("%d is one\n", 1));
-	// ft_printf("%d\n", ft_printf("%d is one\n", 1));
+	// // ft_printf("%d\n", ft_printf("%d is one\n", 1));
 
 	// printf("\n***** 18 ****\n");
 
-	// printf("%d\n", printf("% +d", 42));
-	// ft_printf("%d\n", ft_printf("% +d", 42));
+	// printf("%d\n", printf("% d\n", -42));
+	// ft_printf("%d\n", ft_printf("% d\n", -42));
 
 	// printf("\n**** 19 *****\n");
 
@@ -269,26 +269,26 @@ int 	main (void)
 	// ft_printf("%d\n", ft_printf("%0+d\n", 42));
 
 
-// printf("\n**** 23 BIS*****\n");
+	printf("\n**** 23 BIS*****\n");
 
-// 	printf("%d\n", printf("%5d", -42));
-// 	ft_printf("%d\n", ft_printf("%5d", -42));
+	printf("%d\n", printf("%0+5d\n", 42));
+	ft_printf("%d\n", ft_printf("%0+5d\n", 42));
 
 
-	// printf("\n***** 24 ****\n");
+	printf("\n***** 24 ****\n");
 
-	// printf("\n%d\n", printf("%5d", 42));
-	// ft_printf("\n%d\n", ft_printf("%5d", 42));
+	printf("\n%d\n", printf("%5d\n", 42));
+	ft_printf("\n%d\n", ft_printf("%5d\n", 42));
 
-	// printf("\n**** 25 *****\n");
+	printf("\n**** 25 *****\n");
 
-	// printf("\n%d\n", printf("%#X", 42));
-	// ft_printf("\n%d\n", ft_printf("%#X", 42));
+	printf("\n%d\n", printf("%-5d\n", -42));
+	ft_printf("\n%d\n", ft_printf("%-5d\n", -42));
 
-	// printf("\n**** 26 *****\n");
+	printf("\n**** 26 *****\n");
 
-	// printf("\n%d\n", printf("%#-08x", 42));
-	// ft_printf("\n%d\n", ft_printf("%#-08x", 42));
+	printf("\n%d\n", printf("%-05d\n", -42));
+	ft_printf("\n%d\n", ft_printf("%-05d\n", -42));
 
 	// printf("\n**** 26 *****\n");
 
@@ -307,13 +307,18 @@ int 	main (void)
 
 	printf("\n**** 27 *****\n");
 
+	printf("\n%d\n", printf("%+10.5d", 4242));
+	ft_printf("\n%d\n", ft_printf("%+10.5d", 4242));
+
+	printf("\n**** 27 *****\n");
+
 	printf("\n%d\n", printf("%-+10.5d", 4242));
 	ft_printf("\n%d\n", ft_printf("%-+10.5d", 4242));
 
-	// printf("\n**** 28 *****\n");
+	printf("\n**** 28 *****\n");
 
-	// printf("%d\n", printf("@moulitest: %.10d", -42));
-	// ft_printf("%d\n", ft_printf("@moulitest: %.10d", -42));
+	printf("%d\n", printf("@moulitest: %.10d\n", -42));
+	ft_printf("%d\n", ft_printf("@moulitest: %.10d\n", -42));
 
 
 	// printf("\n**** 29 *****\n");

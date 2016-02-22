@@ -54,8 +54,6 @@ static	void	ft_negative(t_elem *tmpa, char **str)
 	char	*tmp;
 
 	tmp = ft_strsub(*str, 1, ft_strlen(*str) - 1);
-	if (SFLAGS.space == 1)
-		space(&tmp);
 	if (SPREC.n != 0)
 		prec_doux(tmpa, &tmp);
 	if (SFLAGS.width != 0)
@@ -94,10 +92,10 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 char	*ft_dec(t_elem *tmpa, char **str)
 {
 	*str = mod_dec(tmpa);
-	if ((*str)[0] != '-' || ((*str)[0] == '-' && SFLAGS.zero == 0))
-		ft_positive(tmpa, str);
-	else
+	if ((*str)[0] == '-')
 		ft_negative(tmpa, str);
+	else if ((*str)[0] != '-' || ((*str)[0] == '-' && SFLAGS.zero == 0))
+		ft_positive(tmpa, str);
 	return (*str);
 }
 

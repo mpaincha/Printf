@@ -67,6 +67,11 @@ char	*ft_octal(t_elem *tmpa, char **str, int *cpt_null)
 		prec_doux(tmpa, str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);
+	if ((*str)[0] == '\0' && SPREC.pt == 0)
+	{
+		ft_strdel(str);
+		*str = ft_strdup("0");
+	}
 	return (*str);
 }
 
@@ -143,6 +148,11 @@ char	*ft_hexaupper(t_elem *tmpa, char **str, int *cpt_null)
 			width(tmpa, str);
 		if (SFLAGS.diez == 1 && ARG->arg != NULL)
 			diez_hexaupper_zero(str, len, tmpa);
+	}
+	if ((*str)[0] == '\0' && SPREC.pt == 0)
+	{
+		ft_strdel(str);
+		*str = ft_strdup("0");
 	}
 	return (*str);
 }

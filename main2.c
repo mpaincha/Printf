@@ -176,7 +176,7 @@ int 	main (void)
 	printf("%d\n", printf("%X\n", 0));
 	ft_printf("%d\n", ft_printf("%X\n", 0));
 
-		printf("\n**** 3 *****\n");
+	printf("\n**** 3 *****\n");
 
 	printf("%d\n", printf("%x\n", 0));
 	ft_printf("%d\n", ft_printf("%x\n", 0));
@@ -187,41 +187,41 @@ int 	main (void)
 	printf("%d\n", printf("%x", str));
 	ft_printf("%d\n", ft_printf("%x", str));
 
-	printf("\n**** 5 *****\n");
-
-	printf("%d\n", printf("%o\n", 0));
-	ft_printf("%d\n", ft_printf("%o\n", 0));
-
-	printf("\n**** 6 *****\n");
-
-	printf("%d\n", printf("%03.2d", 0));
-	ft_printf("%d\n", ft_printf("%03.2d", 0));
-
-	printf("\n**** 7 *****\n");
-
-	printf("%d\n", printf("@moulitest: %.d, %.0d", 0, 0));
-	ft_printf("%d\n", ft_printf("@moulitest: %.d, %.0d", 0, 0));
-
-	printf("\n**** 8 *****\n");
-
-	printf("%d\n", printf("@moulitest: %5.d, %5.0d", 0, 0));
-	ft_printf("%d\n", ft_printf("@moulitest: %5.d, %5.0d", 0, 0));
-
-
 	// printf("\n**** 5 *****\n");
 
-	// printf("%d\n", printf("@moulitest: %#.x, %#.0x", 0, 0));
-	// ft_printf("%d\n", ft_printf("@moulitest: %#.x, %#.0x", 0, 0));
+	// printf("%d\n", printf("%o\n", 0));
+	// ft_printf("%d\n", ft_printf("%o\n", 0));
 
-	// printf("\n***** 6 ****\n");
+	// printf("\n**** 6 *****\n");
 
-	// printf("%d\n", printf("@moulitest: %.x, %.0x", 0, 0));
-	// ft_printf("%d\n", ft_printf("@moulitest: %.x, %.0x", 0, 0));
+	// printf("%d\n", printf("%03.2d", 0));
+	// ft_printf("%d\n", ft_printf("%03.2d", 0));
 
-	// printf("\n***** 7 ****\n");
+	// printf("\n**** 7 *****\n");
 
-	// printf("%d\n", printf("@moulitest: %5.x, %5.0x", 0, 0));
-	// ft_printf("%d\n", ft_printf("@moulitest: %5.x, %5.0x", 0, 0));
+	// printf("%d\n", printf("@moulitest: %.d, %.0d", 0, 0));
+	// ft_printf("%d\n", ft_printf("@moulitest: %.d, %.0d", 0, 0));
+
+	// printf("\n**** 8 *****\n");
+
+	// printf("%d\n", printf("@moulitest: %5.d, %5.0d", 0, 0));
+	// ft_printf("%d\n", ft_printf("@moulitest: %5.d, %5.0d", 0, 0));
+
+
+	printf("\n**** 5 *****\n");
+
+	printf("%d\n", printf("@moulitest: %#.x, %#.0x", 0, 0));
+	ft_printf("%d\n", ft_printf("@moulitest: %#.x, %#.0x", 0, 0));
+
+	printf("\n***** 6 ****\n");
+
+	printf("%d\n", printf("@moulitest: %.x, %.0x", 0, 0));
+	ft_printf("%d\n", ft_printf("@moulitest: %.x, %.0x", 0, 0));
+
+	printf("\n***** 7 ****\n");
+
+	printf("%d\n", printf("@moulitest: %5.x, %5.0x", 0, 0));
+	ft_printf("%d\n", ft_printf("@moulitest: %5.x, %5.0x", 0, 0));
 
 	// printf("\n**** 8 *****\n");
 

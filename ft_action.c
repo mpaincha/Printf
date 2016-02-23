@@ -108,6 +108,11 @@ char	*ft_hexalower(t_elem *tmpa, char **str, int *cpt_null)
 			diez_hexaupper_zero(str, len, tmpa);
 	}
 	ft_strlower(str);
+	if ((*str)[0] == '\0' && SPREC.pt == 0)
+	{
+		ft_strdel(str);
+		*str = ft_strdup("0");
+	}
 	return (*str);
 }
 

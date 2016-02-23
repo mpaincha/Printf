@@ -69,8 +69,9 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 	}
 }
 
-char	*ft_dec(t_elem *tmpa, char **str)
+char	*ft_dec(t_elem *tmpa, char **str, int *cpt_null)
 {
+	(void)cpt_null;
 	*str = mod_dec(tmpa);
 	if ((*str)[0] == '-')
 		ft_negative(tmpa, str);

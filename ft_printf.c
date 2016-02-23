@@ -39,9 +39,11 @@ int		ft_printf(const char *format, ...)
 	t_dbllist		*lst_str;
 	int				i;
 	int				oct;
+	int				cpt_null;
 
 	i = 0;
 	oct = 0;
+	cpt_null = 0;
 	va_start(ap, format);
 	lst_arg = ft_lstdblnew();
 	lst_str = ft_lstdblnew();
@@ -53,9 +55,11 @@ int		ft_printf(const char *format, ...)
 	// if (lst_arg->head)
 	// 	ft_putlstarg(lst_arg);
 	cleanarg(lst_arg);
-	transformation(lst_arg, lst_str);
+	transformation(lst_arg, lst_str, &cpt_null);
 	if (lst_str->head)
 		ft_putlststr(lst_str, &oct);
+	if (cpt_null != 0)
+		oct = oct + cpt_null;
 	// ft_lstdbldel(&lst_arg);
 	// free(lst_arg);
 	// ft_lstdbldel(&lst_str);

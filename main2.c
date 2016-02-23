@@ -213,23 +213,23 @@ int 	main (void)
 
 	// printf("\n***** 13 ****\n");
 
-	// printf("%d\n", printf("% c", 0));
-	// ft_printf("%d\n", ft_printf("% c", 0));
+	// printf("%d\n", printf("% c\n", 0));
+	// ft_printf("%d\n", ft_printf("% c\n", 0));
 
-	// printf("\n**** 14 *****\n");
+	printf("\n**** 14 *****\n");
 
-	// printf("%d\n", printf("@moulitest: %.o, %.0o", 0, 0));
-	// ft_printf("%d\n", ft_printf("@moulitest: %.o, %.0o", 0, 0));
+	printf("%d\n", printf("@moulitest: %.o, %.0o\n", 0, 0));
+	ft_printf("%d\n", ft_printf("@moulitest: %.o, %.0o\n", 0, 0));
 
-	// printf("\n**** 15 *****\n");
+	printf("\n**** 15 *****\n");
 
-	// printf("%d\n", printf("@moulitest: %5.o, %5.0o", 0, 0));
-	// ft_printf("%d\n", ft_printf("@moulitest: %5.o, %5.0o", 0, 0));
+	printf("%d\n", printf("@moulitest: %5.o, %5.0o\n", 0, 0));
+	ft_printf("%d\n", ft_printf("@moulitest: %5.o, %5.0o\n", 0, 0));
 
-	// printf("\n**** 16 *****\n");
+	printf("\n**** 16 *****\n");
 
-	// printf("%d\n", printf("@moulitest: %#.o, %#.0o", 0, 0));
-	// ft_printf("%d\n", ft_printf("@moulitest: %#.o, %#.0o", 0, 0));
+	printf("%d\n", printf("@moulitest: %#.o, %#.0o\n", 0, 0));
+	ft_printf("%d\n", ft_printf("@moulitest: %#.o, %#.0o\n", 0, 0));
 
 	// printf("\n***** 17 ****\n");
 
@@ -366,10 +366,10 @@ int 	main (void)
 	// printf("%d\n", printf("@moulitest: %5.d, %5.0d", 0, 0));
 	// ft_printf("%d\n", ft_printf("@moulitest: %5.d, %5.0d", 0, 0));
 
-	printf("\n**** 32 *****\n");
+	// printf("\n**** 32 *****\n");
 
-	printf("%d\n", printf("%hU\n", "4294967296"));
-	ft_printf("%d\n", ft_printf("%hU\n", "4294967296"));
+	// printf("%d\n", printf("%hU\n", "4294967296"));
+	// ft_printf("%d\n", ft_printf("%hU\n", "4294967296"));
 
 	ft_putstr("\n\n\nCOMPILATION OK FUCK YEAH\n\n\n");
 	return (0);

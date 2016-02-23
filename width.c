@@ -19,13 +19,19 @@ void	width(t_elem *tmpa, char **str)
 	size_t	nb;
 	char	*add;
 	char	tadd;
+	size_t	len;
 
 	i = 0;
 	tmp = NULL;
 	add = NULL;
-	if (SFLAGS.width > ft_strlen(*str))
+	len = 0;
+	if (ARG->arg != NULL)
+		len = ft_strlen(*str);
+	else if (ARG->spec[0] == 'c')
+		len = 1;
+	if (SFLAGS.width > len)
 	{
-		nb = SFLAGS.width - ft_strlen(*str);
+		nb = SFLAGS.width - len;
 		add = ft_strnew(nb);
 		(SFLAGS.zero == 0) ? (tadd = ' ') : (tadd = '0');
 		while (i < nb)

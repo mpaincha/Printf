@@ -82,7 +82,8 @@ int				stock_str(const char *format, int i, t_dbllist *lst_str)
 	return (i - 1);
 }
 
-void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
+void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str,
+				int * cpt_null)
 {
 	t_elem					*tmpa;
 	static const t_action	ft_action[] = {ft_string, ft_ptr, ft_dec, ft_octal,
@@ -99,7 +100,7 @@ void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str)
 	{
 		actions = ft_action[ARG->action];
 		tmps = find_pos(ARG->spec, lst_str);
-		tmps->content = actions(tmpa, &str);
+		tmps->content = actions(tmpa, &str, cpt_null);
 		tmpa = tmpa->next;
 	}
 }

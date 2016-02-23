@@ -84,68 +84,68 @@ typedef struct		s_dbllist
 	struct s_elem	*tail;
 }					t_dbllist;
 
-typedef char *(* t_action)(t_elem *, char **);
+typedef char *(* t_action)(t_elem *, char **, int *);
 
-int		ft_printf(const char *format, ...);
-void	display_percent(int n, t_dbllist *lst_str);
-int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
-int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
-int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
-int		error(const char *msg);
-int		clean_lst(t_dbllist *lst_arg);
-void	recover_param(va_list ap, t_dbllist *lst_arg);
-void	ini_sarg(t_arg *sarg);
-void	reini_mod(t_arg *sarg);
-int		checks(const char *format, int *i, t_arg *sarg);
-int		check_spec(const char *format, int *i, t_arg *sarg);
-int		check_prec(const char *format, int *i, t_arg *sarg);
-int		check_mod(const char *format, int *i, t_arg *sarg);
-int		check_width(char *str, t_arg *sarg, int *i);
-int		check_flags(const char *format, int *i, t_arg *sarg);
-void	ft_putlststr(t_dbllist	*list, int	*oct);
-int		stock_str(const char *format, int	i, t_dbllist *lst_str);
-void	cleanarg(t_dbllist *lst_arg);
+int					ft_printf(const char *format, ...);
+void				display_percent(int n, t_dbllist *lst_str);
+int					recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
+int					percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
+int					split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
+int					error(const char *msg);
+int					clean_lst(t_dbllist *lst_arg);
+void				recover_param(va_list ap, t_dbllist *lst_arg);
+void				ini_sarg(t_arg *sarg);
+void				reini_mod(t_arg *sarg);
+int					checks(const char *format, int *i, t_arg *sarg);
+int					check_spec(const char *format, int *i, t_arg *sarg);
+int					check_prec(const char *format, int *i, t_arg *sarg);
+int					check_mod(const char *format, int *i, t_arg *sarg);
+int					check_width(char *str, t_arg *sarg, int *i);
+int					check_flags(const char *format, int *i, t_arg *sarg);
+void				ft_putlststr(t_dbllist *lst_str, int *oct);
+int					stock_str(const char *format, int	i, t_dbllist *lst_str);
+void				cleanarg(t_dbllist *lst_arg);
+void				ft_null(t_elem *tmpa);
+void				transformation(t_dbllist *lst_arg, t_dbllist *lst_str, int *cpt_null);
+char				*ft_string(t_elem *tmpa, char **str, int *cpt_null);
+char				*ft_ptr(t_elem *tmpa, char **str, int *cpt_null);
+char				*ft_dec(t_elem *tmpa, char **str, int *cpt_null);
+char				*ft_octal(t_elem *tmpa, char **str, int *cpt_null);
+char				*ft_unsig(t_elem *tmpa, char **str, int *cpt_null);
+char				*ft_hexalower(t_elem *tmpa, char **str, int *cpt_null);
+char				*ft_hexaupper(t_elem *tmpa, char **str, int *cpt_null);
+char				*ft_char(t_elem *tmpa, char **str, int *cpt_null);
+char				*ft_percent(t_elem *tmpa, char **str, int *cpt_null);
 
-void	transformation(t_dbllist *lst_arg, t_dbllist *lst_str);
-char	*ft_string(t_elem *tmpa, char **str);
-char	*ft_ptr(t_elem *tmpa, char **str);
-char	*ft_dec(t_elem *tmpa, char **str);
-char	*ft_octal(t_elem *tmpa, char **str);
-char	*ft_unsig(t_elem *tmpa, char **str);
-char	*ft_hexalower(t_elem *tmpa, char **str);
-char	*ft_hexaupper(t_elem *tmpa, char **str);
-char	*ft_char(t_elem *tmpa, char **str);
-char	*ft_percent(t_elem *tmpa, char **str);
+int					errormod(t_arg *sarg);
+char				*mod_string(t_elem *tmpa);
+char				*mod_dec(t_elem *tmpa);
+char				*mod_octal(t_elem *tmpa);
+char				*mod_unsig(t_elem *tmpa);
+char				*mod_hexa(t_elem *tmpa);
+char				*mod_char(t_elem *tmpa);
 
-int		errormod(t_arg *sarg);
-char	*mod_string(t_elem *tmpa);
-char	*mod_dec(t_elem *tmpa);
-char	*mod_octal(t_elem *tmpa);
-char	*mod_unsig(t_elem *tmpa);
-char	*mod_hexa(t_elem *tmpa);
-char	*mod_char(t_elem *tmpa);
+void				diez_o(char **str);
+void				diez_hexaupper_zero(char **str, size_t len, t_elem *tmpa);
+void				diez_hexaupper(char **str, size_t len, t_elem *tmpa);
 
-void	diez_o(char **str);
-void	diez_hexaupper_zero(char **str, size_t len, t_elem *tmpa);
-void	diez_hexaupper(char **str, size_t len, t_elem *tmpa);
+void				width(t_elem *tmpa, char **str);
 
-void	width(t_elem *tmpa, char **str);
+void				space(char **str);
 
-void	space(char **str);
+void				plus_space(t_elem *tmpa, char **str, size_t	len);
+void				plus_zero(t_elem *tmpa, char **str, size_t	len);
+void				minus_space(t_elem *tmpa, char **str, size_t len);
+void				minus_zero(t_elem *tmpa, char **str, size_t len);
 
-void	plus_space(t_elem *tmpa, char **str, size_t	len);
-void	plus_zero(t_elem *tmpa, char **str, size_t	len);
-void	minus_space(t_elem *tmpa, char **str, size_t len);
-void	minus_zero(t_elem *tmpa, char **str, size_t len);
+void				prec_doux(t_elem *tmpa, char **str);
+void				prec_s(t_elem *tmpa, char **str);
 
-void	prec_doux(t_elem *tmpa, char **str);
-void	prec_s(t_elem *tmpa, char **str);
-
-char	*ft_wchar_str(t_elem *tmpa);
-char	*mask(wchar_t c);
-char	*fill_maska(wchar_t nb);
-char	*fill_maskb(wchar_t nb);
-char	*fill_maskc(wchar_t nb);
+char				*ft_wchar_str(t_elem *tmpa);
+char				*mask(wchar_t c);
+char				*fill_maska(wchar_t nb);
+char				*fill_maskb(wchar_t nb);
+char				*fill_maskc(wchar_t nb);
 
 
 int					ft_atoi(const char *str);

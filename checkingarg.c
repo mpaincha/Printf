@@ -129,22 +129,14 @@ int				check_prec(const char *format, int *i, t_arg *sarg)
 	str = ft_strsub(format, *i + 1, ft_strlen(format) - *i - 1);
 	if ((numb = ft_atoi(str)) >= 0)
 	{
-		// ft_putstr("prec atoi");
 		sarg->prec.n = numb;
-		// ft_putstr("\nnumb :");
-		// ft_putnbr(numb);
-		// ft_putstr("\n");
 		if (numb > 0 || (numb == 0 && str[0] == '0'))
 			*i = *i + ft_intlen(numb) + 1;
 		else
 			*i = *i + 1;
-		// ft_putstr("\n[*i] :");
-		// ft_putnbr(*i);
-		// ft_putstr("\n");
 	}
 	else
 	{
-		// ft_putstr("else prec");
 		sarg->prec.n = 0;
 		*i = *i + 1;
 	}
@@ -153,12 +145,6 @@ int				check_prec(const char *format, int *i, t_arg *sarg)
 
 int				check_spec(const char *format, int *i, t_arg *sarg)
 {
-	// ft_putstr("\n[*i] :");
-	// ft_putnbr(*i);
-	// ft_putstr("\n");
-	// ft_putstr("\nformat[*i] :");
-	// ft_putchar(format[*i]);
-	// ft_putstr("\n");
 	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, ft_tolower(format[*i])))
 	{
 		sarg->spec[0] = format[*i];
@@ -211,31 +197,15 @@ int				checks(const char *format, int *i, t_arg *sarg)
 	}
 	else
 		*i = isave;
-	//
-	// ft_putstr("\n===  i :");
-	// ft_putnbr(*i);
-	// ft_putstr("\nPREC dan checks\n");
-	// ft_putstr("Point :");
-	// ft_putnbr(sarg->prec.pt);
-	// ft_putstr("\nNum :");
-	// ft_putnbr(sarg->prec.n);
-	// ft_putstr("\n");
-	//
 	ret = check_mod(format, i, sarg);
 	if (ret == 1)
 		isave = *i;
 	else if (ret == 0)
 		*i = isave;
 	else
-	// {
-	// 	ft_putstr("WES1");
 		return (-1);
-	// }
 	if (check_spec(format, i, sarg))
 		return (1);
 	else
-	// {
-	// 	ft_putstr("WES2");
 		return (-1);
-	// }
 }

@@ -61,6 +61,7 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 	}
 	else
 	{
+
 		if (SFLAGS.width != 0)
 			width(tmpa, str);
 		if (SFLAGS.plus == 1)

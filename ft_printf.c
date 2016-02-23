@@ -12,6 +12,26 @@
 
 #include "ft_printf.h"
 
+
+// static void			ft_putlstarg(t_dbllist *list)
+// {
+// 	t_elem	*tmpa;
+
+// 	tmpa = list->head;
+// 		ft_putstr("\n====LIST ARG =====\n");
+
+// 	while (tmpa != NULL)
+// 	{
+// 		ft_putstr("PREC\n");
+// 		ft_putstr("Point :");
+// 		ft_putnbr(SPREC.pt);
+// 		ft_putstr("\nNum :");
+// 		ft_putnbr(SPREC.n);
+// 		ft_putstr("\n");
+// 		tmpa = tmpa->next;
+// 	}
+// }
+
 int		ft_printf(const char *format, ...)
 {
 	va_list			ap;
@@ -30,6 +50,8 @@ int		ft_printf(const char *format, ...)
 	if (lst_arg == NULL)
 		return (0);
 	recover_param(ap, lst_arg);
+	// if (lst_arg->head)
+	// 	ft_putlstarg(lst_arg);
 	cleanarg(lst_arg);
 	transformation(lst_arg, lst_str);
 	if (lst_str->head)

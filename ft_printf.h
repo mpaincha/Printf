@@ -95,6 +95,7 @@ int		error(const char *msg);
 int		clean_lst(t_dbllist *lst_arg);
 void	recover_param(va_list ap, t_dbllist *lst_arg);
 void	ini_sarg(t_arg *sarg);
+void	reini_mod(t_arg *sarg);
 int		checks(const char *format, int *i, t_arg *sarg);
 int		check_spec(const char *format, int *i, t_arg *sarg);
 int		check_prec(const char *format, int *i, t_arg *sarg);

@@ -30,3 +30,11 @@ void	ini_sarg(t_arg *sarg)
 	sarg->spec = ft_strnew(sizeof(char) * 2);
 	sarg->action = -1;
 }
+
+void	reini_mod(t_arg *sarg)
+{
+	sarg->mod.h = 0;
+	sarg->mod.l = 1;
+	sarg->mod.j = 0;
+	sarg->mod.z = 0;
+}

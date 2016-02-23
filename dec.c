@@ -47,7 +47,7 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 {
 	size_t		len;
 
-	if (SPREC.n != 0)
+	if (SPREC.pt != 0)
 		prec_doux(tmpa, str);
 	if (SFLAGS.space == 1)
 		space(str);

@@ -49,56 +49,6 @@ char	*ft_ptr(t_elem *tmpa, char **str)
 	return (*str);
 }
 
-static	void	ft_negative(t_elem *tmpa, char **str)
-{
-	char	*tmp;
-
-	tmp = ft_strsub(*str, 1, ft_strlen(*str) - 1);
-	if (SPREC.n != 0)
-		prec_doux(tmpa, &tmp);
-	if (SFLAGS.width != 0)
-	{
-		width(tmpa, &tmp);
-		if (SFLAGS.width > ft_strlen(*str))
-		{
-			tmp[0] = '-';
-			ft_strdel(str);
-			*str = ft_strdup(tmp);
-			ft_strdel(&tmp);
-			return ;
-		}
-	}
-	ft_strdel(str);
-	*str = ft_strjoin("-", tmp);
-	ft_strdel(&tmp);
-
-}
-
-static	void	ft_positive(t_elem *tmpa, char **str)
-{
-	size_t		len;
-
-	if (SPREC.n != 0)
-		prec_doux(tmpa, str);
-	if (SFLAGS.space == 1)
-		space(str);
-	len = ft_strlen(*str);
-	if (SFLAGS.plus == 1)
-		plus(tmpa, str, len);
-	if (SFLAGS.width != 0)
-		width(tmpa, str);
-}
-
-char	*ft_dec(t_elem *tmpa, char **str)
-{
-	*str = mod_dec(tmpa);
-	if ((*str)[0] == '-')
-		ft_negative(tmpa, str);
-	else if ((*str)[0] != '-' || ((*str)[0] == '-' && SFLAGS.zero == 0))
-		ft_positive(tmpa, str);
-	return (*str);
-}
-
 char	*ft_octal(t_elem *tmpa, char **str)
 {
 	*str = mod_octal(tmpa);

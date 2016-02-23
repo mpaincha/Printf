@@ -98,6 +98,7 @@ mod.c \
 prec.c \
 width.c \
 diez.c \
+dec.c \
 ft_strlower.c
 SRCO = $(SRC:.c=.o)
 HEADERS = .

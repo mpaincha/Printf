@@ -26,40 +26,85 @@ void	space(char **str)
 	}
 }
 
-void	plus(t_elem *tmpa, char **str, size_t len)
+void	plus_space(t_elem *tmpa, char **str, size_t len)
 {
 	char	*tmp;
 	int		i;
 
 	i = 0;
 	tmp = NULL;
-	if (!(ft_strchr(*str, '-')))
+	if (SFLAGS.width > len)
 	{
-		if (SFLAGS.width > len)
+		while (!(ft_isdigit((*str)[i])))
+			i++;
+		if (i > 0)
 		{
-			while (!(ft_isdigit((*str)[i])))
-				i++;
-			if (i > 0)
-				(*str)[i - 1] = '+';
-			else
-			{
-				tmp = ft_strjoin("+", *str);
-				// ft_strdel(str);
-				*str = ft_strdup(tmp);
-			}
-			// ft_putstr("str plus :");
-			// ft_putstr(*str);
-			// ft_putstr("/\n");
-		}
-		else
-		{
-			tmp = ft_strjoin("+", *str);
-			// ft_strdel(str);
-			*str = ft_strdup(tmp);
-			// ft_putstr("str plus ELSE:");
-			// ft_putstr(*str);
-			// ft_putstr("/\n");
-			// ft_strdel(&tmp);
+			(*str)[i - 1] = '+';
+			return ;
 		}
 	}
+	tmp = ft_strjoin("+", *str);
+	// ft_strdel(str);
+	*str = ft_strdup(tmp);
+	// ft_strdel(&tmp);
 }
+
+void	plus_zero(t_elem *tmpa, char **str, size_t len)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	if (SFLAGS.width > len)
+		(*str)[0] = '+';
+	else
+	{
+		tmp = ft_strjoin("+", *str);
+		// ft_strdel(str);
+		*str = ft_strdup(tmp);
+		// ft_strdel(&tmp);
+	}
+}
+
+void	minus_space(t_elem *tmpa, char **str, size_t len)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	if (SFLAGS.width > len)
+	{
+		while (!(ft_isdigit((*str)[i])))
+			i++;
+		if (i > 0)
+		{
+			(*str)[i - 1] = '-';
+			return ;
+		}
+	}
+	tmp = ft_strjoin("-", *str);
+	// ft_strdel(str);
+	*str = ft_strdup(tmp);
+	// ft_strdel(&tmp);
+}
+
+void	minus_zero(t_elem *tmpa, char **str, size_t len)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	if (SFLAGS.width > len)
+		(*str)[0] = '-';
+	else
+	{
+		tmp = ft_strjoin("-", *str);
+		// ft_strdel(str);
+		*str = ft_strdup(tmp);
+		// ft_strdel(&tmp);
+	}
+}
+

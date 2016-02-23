@@ -132,7 +132,10 @@ void	width(t_elem *tmpa, char **str);
 
 void	space(char **str);
 
-void	plus(t_elem *tmpa, char **str, size_t	len);
+void	plus_space(t_elem *tmpa, char **str, size_t	len);
+void	plus_zero(t_elem *tmpa, char **str, size_t	len);
+void	minus_space(t_elem *tmpa, char **str, size_t len);
+void	minus_zero(t_elem *tmpa, char **str, size_t len);
 
 void	prec_doux(t_elem *tmpa, char **str);
 void	prec_s(t_elem *tmpa, char **str);

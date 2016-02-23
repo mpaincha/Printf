@@ -268,12 +268,30 @@ int 	main (void)
 	// printf("%d\n", printf("%0+d\n", 42));
 	// ft_printf("%d\n", ft_printf("%0+d\n", 42));
 
+	printf("\n**** 20 *****\n");
+
+	printf("%d\n", printf("%5d\n", -42));
+	ft_printf("%d\n", ft_printf("%5d\n", -42));
+
+	printf("\n**** 21 *****\n");
+
+	printf("%d\n", printf("%05d\n", -42));
+	ft_printf("%d\n", ft_printf("%05d\n", -42));
+
+	printf("\n**** 22 *****\n");
+
+	printf("%d\n", printf("%0+5d\n", -42));
+	ft_printf("%d\n", ft_printf("%0+5d\n", -42));
+
+	printf("\n**** 23 *****\n");
+
+	printf("%d\n", printf("%0+12d\n", 42));
+	ft_printf("%d\n", ft_printf("%0+12d\n", 42));
 
 	printf("\n**** 23 BIS*****\n");
 
-	printf("%d\n", printf("%0+5d\n", 42));
-	ft_printf("%d\n", ft_printf("%0+5d\n", 42));
-
+	printf("%d\n", printf("%+5d\n", 42));
+	ft_printf("%d\n", ft_printf("%+5d\n", 42));
 
 	printf("\n***** 24 ****\n");
 

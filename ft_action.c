@@ -15,7 +15,10 @@
 char	*ft_string(t_elem *tmpa, char **str, int *cpt_null)
 {
 	(void)cpt_null;
-	*str = mod_string(tmpa);
+	if (ARG->arg == NULL)
+		*str = ft_strdup("(null)");
+	else
+		*str = mod_string(tmpa);
 	if (SPREC.n != 0)
 		prec_s(tmpa, str);
 	if (SFLAGS.width != 0)
@@ -83,13 +86,16 @@ char	*ft_hexalower(t_elem *tmpa, char **str, int *cpt_null)
 	size_t	len;
 
 	(void)cpt_null;
-	*str = mod_hexa(tmpa);
+	if (ARG->arg == NULL)
+		*str = ft_strdup("");
+	else
+		*str = mod_hexa(tmpa);
 	len = ft_strlen(*str);
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
 	if (SFLAGS.zero == 0)
 	{
-		if (SFLAGS.diez == 1)
+		if (SFLAGS.diez == 1 && ARG->arg != NULL)
 			diez_hexaupper(str, len, tmpa);
 		if (SFLAGS.width != 0)
 			width(tmpa, str);
@@ -98,7 +104,7 @@ char	*ft_hexalower(t_elem *tmpa, char **str, int *cpt_null)
 	{
 		if (SFLAGS.width != 0)
 			width(tmpa, str);
-		if (SFLAGS.diez == 1)
+		if (SFLAGS.diez == 1 && ARG->arg != NULL)
 			diez_hexaupper_zero(str, len, tmpa);
 	}
 	ft_strlower(str);
@@ -111,14 +117,17 @@ char	*ft_hexaupper(t_elem *tmpa, char **str, int *cpt_null)
 	int		i;
 
 	(void)cpt_null;
-	*str = mod_hexa(tmpa);
+	if (ARG->arg == NULL)
+		*str = ft_strdup("");
+	else
+		*str = mod_hexa(tmpa);
 	len = ft_strlen(*str);
 	i = 0;
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
 	if (SFLAGS.zero == 0)
 	{
-		if (SFLAGS.diez == 1)
+		if (SFLAGS.diez == 1 && ARG->arg != NULL)
 			diez_hexaupper(str, len, tmpa);
 		if (SFLAGS.width != 0)
 			width(tmpa, str);
@@ -127,7 +136,7 @@ char	*ft_hexaupper(t_elem *tmpa, char **str, int *cpt_null)
 	{
 		if (SFLAGS.width != 0)
 			width(tmpa, str);
-		if (SFLAGS.diez == 1)
+		if (SFLAGS.diez == 1 && ARG->arg != NULL)
 			diez_hexaupper_zero(str, len, tmpa);
 	}
 	return (*str);

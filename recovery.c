@@ -16,16 +16,16 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 		int *i)
 {
 	t_arg		sarg;
-	char		*str;
+	t_str		sstr;
 
 	ini_sarg(&sarg);
+	ini_sstr(&sstr);
 	if (checks(format, i, &sarg) == -1)
 		return (-1);
 	*i = *i + 1;
 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
-	str = ft_strdup(sarg.spec);
-	ft_lstdbladd(lst_str, str, (sizeof(char) * ft_strlen(str)));
-	ft_strdel(&str);
+	sstr.str = ft_strdup(sarg.spec);
+	ft_lstdbladd(lst_str, &sstr, sizeof(t_str));
 	if (format[*i] != '\0')
 		recover_arg(format, lst_arg, lst_str, i);
 	return (1);

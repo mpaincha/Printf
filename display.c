@@ -19,11 +19,20 @@ static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 
 	tmps = lst_str->head;
 	found = 0;
+	// ft_putstr("\n===FIND POS====\n");
+
 	while (tmps != NULL && !found)
 	{
-		if (ft_strequ(tmps->content, spec))
+		// ft_putstr("\nSSTR");
+		// ft_putstr(SSTR->str);
+		// ft_putstr("\n SSTR.n");
+		// ft_putnbr(SSTR->n);
+		// ft_putstr("\n");
+		if (ft_strequ(SSTR->str, spec) && SSTR->n == 0)
 		{
+			// ft_putstr("  found\n");
 			found = 1;
+			SSTR->n = 1;
 			break ;
 		}
 		else
@@ -31,18 +40,21 @@ static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 	}
 	if (found == 0)
 		tmps = NULL;
+	// ft_putstr("\n===EEENNNDDD FIND POS====\n");
+
 	return (tmps);
 }
 
+
 void			ft_putlststr(t_dbllist *list, int *oct)
 {
-	t_elem	*tmp;
+	t_elem	*tmps;
 
-	tmp = list->head;
-	while (tmp != NULL)
+	tmps = list->head;
+	while (tmps != NULL)
 	{
-		*oct = *oct + write(1, tmp->content, ft_strlen(tmp->content));
-		tmp = tmp->next;
+		*oct = *oct + write(1, SSTR->str, ft_strlen(SSTR->str));
+		tmps = tmps->next;
 	}
 }
 
@@ -69,15 +81,16 @@ void			display_percent(int nb, t_dbllist *lst_str)
 
 int				stock_str(const char *format, int i, t_dbllist *lst_str)
 {
-	char	*str;
+	t_str	sstr;
 	int		start;
 
-	str = NULL;
+	ini_sstr(&sstr);
 	start = i;
 	while (format[i] != '\0' && format[i] != '%')
 		i++;
-	str = ft_strsub(format, start, (i - start));
-	ft_lstdbladd(lst_str, str, (sizeof(char) * ft_strlen(str)));
+	sstr.str = ft_strsub(format, start, (i - start));
+	sstr.n = 1;
+	ft_lstdbladd(lst_str, &sstr, sizeof(t_str));
 	// ft_strdel(&str); non sinon pb avec 42 filecheck
 	return (i - 1);
 }
@@ -100,7 +113,8 @@ void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str,
 	{
 		actions = ft_action[ARG->action];
 		tmps = find_pos(ARG->spec, lst_str);
-		tmps->content = actions(tmpa, &str, cpt_null);
+		SSTR->str = actions(tmpa, &str, cpt_null);
 		tmpa = tmpa->next;
 	}
+
 }

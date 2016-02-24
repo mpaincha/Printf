@@ -97,7 +97,7 @@ char	*mod_char(t_elem *tmpa)
 
 	if (SMOD.l == 1)
 		return (ft_strdup(mask((wchar_t)ARG->arg)));
-	str = ft_strnew(2);
+	str = ft_strnew(1);
 	str[0] = (char)ARG->arg;
 	str[1] = '\0';
 	return (str);

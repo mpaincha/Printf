@@ -207,20 +207,20 @@ int 	main (void)
 	// printf("%d\n", printf("@moulitest: %5.x, %5.0x", 0, 0));
 	// ft_printf("%d\n", ft_printf("@moulitest: %5.x, %5.0x", 0, 0));
 
-	printf("\n**** 6 ***** %%03.2d, 0 \n");
+	// printf("\n**** 6 ***** %%03.2d, 0 \n");
 
-	printf("%d\n", printf("%03.2d\n", 0));
-	ft_printf("%d\n", ft_printf("%03.2d\n", 0));
+	// printf("%d\n", printf("%03.2d\n", 0));
+	// ft_printf("%d\n", ft_printf("%03.2d\n", 0));
 
-	printf("\n**** 7 ***** %%.d, %%.0d, 0, 0 \n");
+	// printf("\n**** 7 ***** %%.d, %%.0d, 0, 0 \n");
 
-	printf("%d\n", printf("@moulitest: %.d, %.0d\n", 0, 0));
-	ft_printf("%d\n", ft_printf("@moulitest: %.d, %.0d\n", 0, 0));
+	// printf("%d\n", printf("@moulitest: %.d, %.0d\n", 0, 0));
+	// ft_printf("%d\n", ft_printf("@moulitest: %.d, %.0d\n", 0, 0));
 
-	printf("\n**** 8 ***** %%5.d, %%5.0d, 0, 0\n");
+	// printf("\n**** 8 ***** %%5.d, %%5.0d, 0, 0\n");
 
-	printf("%d\n", printf("@moulitest: %5.d, %5.0d\n", 0, 0));
-	ft_printf("%d\n", ft_printf("@moulitest: %5.d, %5.0d\n", 0, 0));
+	// printf("%d\n", printf("@moulitest: %5.d, %5.0d\n", 0, 0));
+	// ft_printf("%d\n", ft_printf("@moulitest: %5.d, %5.0d\n", 0, 0));
 
 
 
@@ -273,7 +273,7 @@ int 	main (void)
 	// printf("\n***** 17 ****\n");
 
 	// printf("%d\n", printf("%d is one\n", 1));
-	// // ft_printf("%d\n", ft_printf("%d is one\n", 1));
+	// ft_printf("%d\n", ft_printf("%d is one\n", 1));
 
 	// printf("\n***** 18 ****\n");
 
@@ -409,6 +409,44 @@ int 	main (void)
 
 	// printf("%d\n", printf("%hU\n", "4294967296"));
 	// ft_printf("%d\n", ft_printf("%hU\n", "4294967296"));
+
+	printf("\n********************************  MOULITEST ********************************************\n");
+
+	printf("%d\n", printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
+%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
+%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",
+' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
+	ft_printf("%d\n", ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
+%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
+%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",
+' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
+
+
+	printf("%d\n", printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 'a', 'b', 'c', 'd', 'e',
+'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
+	ft_printf("%d\n", ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 'a', 'b', 'c', 'd', 'e',
+'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
+
+
+	printf("%c%c%c%c%c%clol\n", 'a', 'c', 'b', '{', '|', '}');
+	ft_printf("%c%c%c%c%c%clol\n", 'a', 'c', 'b', '{', '|', '}');
+
+	// printf("%d\n", printf("coucou %s", "toi"));
+	// ft_printf("coucou %s", "toi");
 
 	ft_putstr("\n\n\nCOMPILATION OK FUCK YEAH\n\n\n");
 	return (0);

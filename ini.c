@@ -38,3 +38,9 @@ void	reini_mod(t_arg *sarg)
 	sarg->mod.j = 0;
 	sarg->mod.z = 0;
 }
+
+void	ini_sstr(t_str *sstr)
+{
+	sstr->str = NULL;
+	sstr->n = 0;
+}

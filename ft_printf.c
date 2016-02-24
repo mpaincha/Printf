@@ -22,15 +22,35 @@
 
 // 	while (tmpa != NULL)
 // 	{
-// 		ft_putstr("PREC\n");
-// 		ft_putstr("Point :");
-// 		ft_putnbr(SPREC.pt);
-// 		ft_putstr("\nNum :");
-// 		ft_putnbr(SPREC.n);
+// 		ft_putstr("ARG\n");
+// 		// ft_putstr("Point :");
+// 		ft_putchar((char)ARG->arg);
+// 		// ft_putstr("\nNum :");
+// 		// ft_putnbr(SPREC.n);
 // 		ft_putstr("\n");
 // 		tmpa = tmpa->next;
 // 	}
 // }
+
+void			ft_putlstt(t_dbllist *list)
+{
+	t_elem	*tmps;
+
+	tmps = list->head;
+		ft_putstr("\n====LIST str =====\n");
+
+	while (tmps != NULL)
+	{
+		ft_putstr("str\n");
+		// ft_putstr("Point :");
+		ft_putstr(SSTR->str);
+		ft_putstr("\nNum :");
+		ft_putnbr(SSTR->n);
+		// ft_putnbr(SPREC.n);
+		ft_putstr("\n");
+		tmps = tmps->next;
+	}
+}
 
 int		ft_printf(const char *format, ...)
 {
@@ -52,8 +72,6 @@ int		ft_printf(const char *format, ...)
 	if (lst_arg == NULL)
 		return (0);
 	recover_param(ap, lst_arg);
-	// if (lst_arg->head)
-	// 	ft_putlstarg(lst_arg);
 	cleanarg(lst_arg);
 	transformation(lst_arg, lst_str, &cpt_null);
 	if (lst_str->head)

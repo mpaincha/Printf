@@ -30,6 +30,13 @@
 # define SFLAGS ((t_flags)(ARG->flags))
 # define SMOD ((t_mod)(ARG->mod))
 # define SPREC ((t_prec)(ARG->prec))
+# define SSTR ((t_str *)(tmps->content))
+
+typedef struct		s_str
+{
+	char			*str;
+	int				n;
+}					t_str;
 
 typedef struct		s_mod
 {
@@ -72,12 +79,14 @@ typedef	struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
 typedef struct		s_elem
 {
 	void			*content;
 	struct s_elem	*prev;
 	struct s_elem	*next;
 }					t_elem;
+
 typedef struct		s_dbllist
 {
 	size_t			length;
@@ -86,6 +95,11 @@ typedef struct		s_dbllist
 }					t_dbllist;
 
 typedef char *(* t_action)(t_elem *, char **, int *);
+
+//
+void			ft_putlstt(t_dbllist *list);
+
+//
 
 int					ft_printf(const char *format, ...);
 void				display_percent(int n, t_dbllist *lst_str);
@@ -96,6 +110,7 @@ int					error(const char *msg);
 int					clean_lst(t_dbllist *lst_arg);
 void				recover_param(va_list ap, t_dbllist *lst_arg);
 void				ini_sarg(t_arg *sarg);
+void				ini_sstr(t_str *sstr);
 void				reini_mod(t_arg *sarg);
 int					checks(const char *format, int *i, t_arg *sarg);
 int					check_spec(const char *format, int *i, t_arg *sarg);

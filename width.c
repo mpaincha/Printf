@@ -29,6 +29,8 @@ void	width(t_elem *tmpa, char **str)
 		len = ft_strlen(*str);
 	else if (ARG->spec[0] == 'c')
 		len = 1;
+	else if (ARG->spec[0] == 'd')
+		len = SPREC.n;
 	if (SFLAGS.width > len)
 	{
 		nb = SFLAGS.width - len;

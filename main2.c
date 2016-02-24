@@ -207,20 +207,20 @@ int 	main (void)
 	// printf("%d\n", printf("@moulitest: %5.x, %5.0x", 0, 0));
 	// ft_printf("%d\n", ft_printf("@moulitest: %5.x, %5.0x", 0, 0));
 
-	printf("\n**** 6 *****\n");
+	printf("\n**** 6 ***** %%03.2d, 0 \n");
 
 	printf("%d\n", printf("%03.2d\n", 0));
 	ft_printf("%d\n", ft_printf("%03.2d\n", 0));
 
-	printf("\n**** 7 *****\n");
+	printf("\n**** 7 ***** %%.d, %%.0d, 0, 0 \n");
 
-	printf("%d\n", printf("@moulitest: %.d, %.0d", 0, 0));
-	ft_printf("%d\n", ft_printf("@moulitest: %.d, %.0d", 0, 0));
+	printf("%d\n", printf("@moulitest: %.d, %.0d\n", 0, 0));
+	ft_printf("%d\n", ft_printf("@moulitest: %.d, %.0d\n", 0, 0));
 
-	printf("\n**** 8 *****\n");
+	printf("\n**** 8 ***** %%5.d, %%5.0d, 0, 0\n");
 
-	printf("%d\n", printf("@moulitest: %5.d, %5.0d", 0, 0));
-	ft_printf("%d\n", ft_printf("@moulitest: %5.d, %5.0d", 0, 0));
+	printf("%d\n", printf("@moulitest: %5.d, %5.0d\n", 0, 0));
+	ft_printf("%d\n", ft_printf("@moulitest: %5.d, %5.0d\n", 0, 0));
 
 
 

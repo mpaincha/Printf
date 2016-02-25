@@ -21,17 +21,27 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	ini_sarg(&sarg);
 	ini_sstr(&sstr);
 	if (checks(format, i, &sarg) == -1)
-		return (-1);
-	*i = *i + 1;
-	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
-	sstr.str = ft_strdup(sarg.spec);
-	// ft_putstr("\nsplit arg : "); //
-	// ft_putstr(sstr.str); //
-	// ft_putstr(sarg.spec); //
-	ft_lstdbladd(lst_str, &sstr, sizeof(t_str));
-	// ft_putlstt(lst_str); //
-	if (format[*i] != '\0')
-		recover_arg(format, lst_arg, lst_str, i);
+	{
+		// ft_putstr("\nsplit arg *i :");
+		// ft_putnbr(*i);
+		// ft_putstr("\n");
+		if (format[*i] != '\0')
+			recover_arg(format, lst_arg, lst_str, i);
+		// return (-1);
+	}
+	else
+	{
+		*i = *i + 1;
+		ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
+		sstr.str = ft_strdup(sarg.spec);
+		// ft_putstr("\nsplit arg : "); //
+		// ft_putstr(sstr.str); //
+		// ft_putstr(sarg.spec); //
+		ft_lstdbladd(lst_str, &sstr, sizeof(t_str));
+		// ft_putlstt(lst_str); //
+		if (format[*i] != '\0')
+			recover_arg(format, lst_arg, lst_str, i);
+	}
 	return (1);
 }
 
@@ -68,11 +78,15 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 			return (0);
 	}
 	*i = *i + 1;
-	if (split_arg(format, lst_arg, lst_str, i) == -1)
+	if (format[*i] != '\0')
 	{
-		ft_lstdbldel(lst_arg);
-//		ft_lstdbldel(&lst_str);
-		return (-1);
+		// ft_putstr("Percent");
+		if (split_arg(format, lst_arg, lst_str, i) == -1)
+		{
+			ft_lstdbldel(lst_arg);
+//			ft_lstdbldel(&lst_str);
+			return (-1);
+		}
 	}
 	return (1);
 }
@@ -91,7 +105,15 @@ int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 				return (-1);
 		}
 		else if (*i < (int)ft_strlen(format) && ft_isascii(format[*i]))
+		{
+			// ft_putstr("\nrecover arg *i :");
+			// ft_putnbr(*i);
+			// ft_putstr("\n");
+			// ft_putstr("\nformat *i :");
+			// ft_putchar(format[*i]);
+			// ft_putstr("\n");
 			*i = stock_str(format, *i, lst_str);
+		}
 		*i = *i + 1;
 	}
 	return (1);

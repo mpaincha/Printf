@@ -84,11 +84,29 @@ int				stock_str(const char *format, int i, t_dbllist *lst_str)
 
 	ini_sstr(&sstr);
 	start = i;
+			// ft_putstr("\nSTOCK STR START :");
+			// ft_putnbr(i);
+			// ft_putstr("\n");
+			// ft_putstr("\nformat i :");
+			// ft_putchar(format[i]);
+			// ft_putstr("\n");
 	while (format[i] != '\0' && format[i] != '%')
 		i++;
+			// ft_putstr("\nSTOCK STR i :");
+			// ft_putnbr(i);
+			// ft_putstr("\n");
+			// ft_putstr("\nformat i :");
+			// ft_putchar(format[i]);
+			// ft_putstr("\n");
 	sstr.str = ft_strsub(format, start, (i - start));
+			// ft_putstr("\nsstr.str :");
+			// ft_putstr(sstr.str);
+			// ft_putstr("\n");
 	sstr.n = 1;
 	ft_lstdbladd(lst_str, &sstr, sizeof(t_str));
+	// ft_putstr("\nSTOCK STR LIST sstr.str :");
+	// ft_putlstt(lst_str);
+	// ft_putstr("//////END LST\n");
 	// ft_strdel(&str); non sinon pb avec 42 filecheck
 	return (i - 1);
 }

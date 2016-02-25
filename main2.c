@@ -478,7 +478,7 @@ int 	main (void)
 	// printf("%d\n", printf("%.u, %.0u", 0, 0));
 	// ft_printf("%d\n", ft_printf("%.u, %.0u", 0, 0));
 
-	printf("\n**** %s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير *****\n");
+	// printf("\n**** %s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير *****\n");
 
 	// printf("%d\n", printf("%s %C %d %p %x %% %S\n", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
 	// ft_printf("%d\n", ft_printf("%s %C %d %p %x %% %S\n", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
@@ -491,11 +491,40 @@ int 	main (void)
 	// printf("\n**** %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C,bonjour, 42, &c, L暖炉, long_max, 42, 42, 42, 100000, ulong_max, 42, 42, c, L플 ******\n");
 
 
-	printf("%d\n", printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", long_max, 42, 42, 42, 100000, ulong_max, 42, 42, 'c', L'플'));
-	ft_printf("%d\n", ft_printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", long_max, 42, 42, 42, 100000, ulong_max, 42, 42, 'c', L'플'));
+	// printf("%d\n", printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", long_max, 42, 42, 42, 100000, ulong_max, 42, 42, 'c', L'플'));
+	// ft_printf("%d\n", ft_printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", long_max, 42, 42, 42, 100000, ulong_max, 42, 42, 'c', L'플'));
+
+	// printf("\n**** {%% c}, 0*****\n");
+
+	// printf("%d\n", printf("{% c}\n", 0));
+	// ft_printf("%d\n", ft_printf("{% c}\n", 0));
+
+	// printf("\n**** {%% C}, 0 *****\n");
+
+	// printf("%d\n", printf("{% C}\n", 0));
+	// ft_printf("%d\n", ft_printf("{% C}\n", 0));
+
+	printf("\n**** %% *****\n");
+
+	printf("%d\n", printf("%"));
+	ft_printf("%d\n", ft_printf("%"));
+
+	printf("\n**** %% Zoooo *****\n");
+
+	printf("%d\n", printf("% Zoooo\n"));
+	ft_printf("%d\n", ft_printf("% Zoooo\n"));
+
+	printf("\n**** {%%}*****\n");
+
+	printf("%d\n", printf("{%}\n"));
+	ft_printf("%d\n", ft_printf("{%}\n"));
+
+	printf("\n**** {%% C}, 0 *****\n");
+
+	printf("%d\n", printf("{% C}\n", 0));
+	ft_printf("%d\n", ft_printf("{% C}\n", 0));
 
 	ft_putstr("\n\n\nCOMPILATION OK FUCK YEAH\n\n\n");
 	return (0);
 
 }
-

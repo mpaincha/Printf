@@ -71,6 +71,7 @@ int		ft_printf(const char *format, ...)
 	lst_str = ft_lstdblnew();
 	if (recover_arg(format, lst_arg, lst_str, &i) == -1)
 		return(0);
+	// ft_putstr("recover arg ok");
 	if (lst_arg == NULL)
 		return (0);
 	recover_param(ap, lst_arg);

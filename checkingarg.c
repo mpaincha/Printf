@@ -145,6 +145,7 @@ int				check_prec(const char *format, int *i, t_arg *sarg)
 
 int				check_spec(const char *format, int *i, t_arg *sarg)
 {
+	// ft_putstr("\n =====CHECK SPEC ");//
 	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, ft_tolower(format[*i])))
 	{
 		sarg->spec[0] = format[*i];
@@ -155,6 +156,12 @@ int				check_spec(const char *format, int *i, t_arg *sarg)
 			reini_mod(sarg);
 			sarg->spec[0] = ft_tolower(format[*i]);
 			sarg->action = define_action(SPEC, ft_tolower(format[*i]));
+			// ft_putstr("\nsarg spec : ");
+			// ft_putstr(sarg->spec);
+			// ft_putstr("\n");
+			// ft_putstr("\nsarg mod : ");
+			// ft_putnbr(sarg->mod.l);
+			// ft_putstr("\n");
 		}
 		else if (format[*i] == 'p')
 			sarg->mod.j = 1;
@@ -172,7 +179,7 @@ int				check_spec(const char *format, int *i, t_arg *sarg)
 			sarg->spec[0] = '2';
 		else
 			sarg->spec[0] = '1';
-		sarg->action = 8;
+		// sarg->action = 8;
 		return (1);
 	}
 	return (0);

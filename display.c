@@ -19,18 +19,18 @@ static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 
 	tmps = lst_str->head;
 	found = 0;
-	// ft_putstr("\n===FIND POS====\n");
+	// ft_putstr("\n===FIND POS====\n"); //
 
 	while (tmps != NULL && !found)
 	{
-		// ft_putstr("\nSSTR");
-		// ft_putstr(SSTR->str);
-		// ft_putstr("\n SSTR.n");
-		// ft_putnbr(SSTR->n);
-		// ft_putstr("\n");
+		// ft_putstr("\nSSTR"); //
+		// ft_putstr(SSTR->str); //
+		// ft_putstr("\n SSTR.n"); //
+		// ft_putnbr(SSTR->n); //
+		// ft_putstr("\n"); //
 		if (ft_strequ(SSTR->str, spec) && SSTR->n == 0)
 		{
-			// ft_putstr("  found\n");
+			// ft_putstr("  found\n"); //
 			found = 1;
 			SSTR->n = 1;
 			break ;
@@ -40,8 +40,7 @@ static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 	}
 	if (found == 0)
 		tmps = NULL;
-	// ft_putstr("\n===EEENNNDDD FIND POS====\n");
-
+	// ft_putstr("\n===EEENNNDDD FIND POS====\n"); //
 	return (tmps);
 }
 
@@ -60,22 +59,21 @@ void			ft_putlststr(t_dbllist *list, int *oct)
 
 void			display_percent(int nb, t_dbllist *lst_str)
 {
-	char	*str;
+	t_str	sstr;
 	int		i;
 
+	ini_sstr(&sstr);
 	i = 0;
-	str = NULL;
 	if (nb >= 1)
 	{
-		str = ft_strnew(nb);
+		sstr.str = ft_strnew(nb);
 		while (i < nb)
 		{
-			str[i] = '%';
+			sstr.str[i] = '%';
 			i++;
 		}
-		str[i] = '\0';
-		ft_lstdbladd(lst_str, str, (sizeof(char) * nb));
-		ft_strdel(&str);
+		sstr.str[i] = '\0';
+		ft_lstdbladd(lst_str, &sstr, sizeof(t_str));
 	}
 }
 
@@ -109,11 +107,35 @@ void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str,
 	tmpa = lst_arg->head;
 	tmps = lst_str->head;
 	str = NULL;
+	// ft_putstr("\n === Tranfo === \n");
 	while (tmpa != NULL)
 	{
+		// ft_putstr("\nspec  : ");//
+		// ft_putstr("Point :");
+		// ft_putstr(ARG->spec);//
+		// ft_putstr("\nSMOD.l  : ");//
+		// ft_putnbr(SMOD.l);//
 		actions = ft_action[ARG->action];
+		// ft_putstr("\n actions trouve ");//
+		// ft_putstr("Point :");
+		// ft_putstr(ARG->spec);//
+		// ft_putstr("\nSMOD.l  : ");//
+		// ft_putnbr(SMOD.l);//
 		tmps = find_pos(ARG->spec, lst_str);
+		// ft_putstr("\n position trouve ");//
+		// ft_putstr("Point :");
+		// ft_putstr(ARG->spec);//
+		// ft_putstr("\nSMOD.l  : ");//
+		// ft_putnbr(SMOD.l);//
 		SSTR->str = actions(tmpa, &str, cpt_null);
+		// ft_putstr("\n actions realisees ");//
+		// ft_putstr("Point :");
+		// ft_putstr(ARG->spec);//
+		// ft_putstr("\nSMOD.l  : ");//
+		// ft_putnbr(SMOD.l);//
+		// ft_putstr("\n === SSTR->str : ");//
+		// ft_putstr(SSTR->str);//
+		// ft_putstr("\n");//
 		tmpa = tmpa->next;
 	}
 

@@ -14,8 +14,17 @@
 
 char	*mod_string(t_elem *tmpa)
 {
+	// ft_putstr("\n  === MOD STRING\n"); //
+	// 	ft_putstr("Point :");
+	// 	ft_putstr(ARG->spec);//
+	// 	ft_putstr("\nSMOD.l  : ");//
+	// 	ft_putnbr(SMOD.l);//
 	if (SMOD.l == 1)
+	{
+		// ft_putstr("\nwchar\n"); //
 		return (ft_strdup(ft_wchar_str(tmpa)));
+	}
+	// ft_putstr("\nnot if\n"); //
 	return (ft_strdup((char *)ARG->arg));
 }
 

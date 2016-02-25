@@ -25,7 +25,11 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	*i = *i + 1;
 	ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
 	sstr.str = ft_strdup(sarg.spec);
+	// ft_putstr("\nsplit arg : "); //
+	// ft_putstr(sstr.str); //
+	// ft_putstr(sarg.spec); //
 	ft_lstdbladd(lst_str, &sstr, sizeof(t_str));
+	// ft_putlstt(lst_str); //
 	if (format[*i] != '\0')
 		recover_arg(format, lst_arg, lst_str, i);
 	return (1);

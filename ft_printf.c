@@ -22,9 +22,11 @@
 
 // 	while (tmpa != NULL)
 // 	{
-// 		ft_putstr("ARG\n");
+// 		ft_putstr("\nspec  : ");
 // 		// ft_putstr("Point :");
-// 		ft_putchar((char)ARG->arg);
+// 		ft_putstr(ARG->spec);
+// 		ft_putstr("\nSMOD.l  : ");
+// 		ft_putnbr(SMOD.l);
 // 		// ft_putstr("\nNum :");
 // 		// ft_putnbr(SPREC.n);
 // 		ft_putstr("\n");
@@ -41,7 +43,7 @@ void			ft_putlstt(t_dbllist *list)
 
 	while (tmps != NULL)
 	{
-		ft_putstr("str\n");
+		ft_putstr("str : ");
 		// ft_putstr("Point :");
 		ft_putstr(SSTR->str);
 		ft_putstr("\nNum :");
@@ -73,7 +75,10 @@ int		ft_printf(const char *format, ...)
 		return (0);
 	recover_param(ap, lst_arg);
 	cleanarg(lst_arg);
+	// ft_putlstarg(lst_arg); //
+	// ft_putlststr(lst_str, &oct); //
 	transformation(lst_arg, lst_str, &cpt_null);
+	// ft_putstr("ok transfo");//
 	if (lst_str->head)
 		ft_putlststr(lst_str, &oct);
 	if (cpt_null != 0)

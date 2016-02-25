@@ -13,6 +13,11 @@ int 	main (void)
 	int 	nbr = 4444444;
 	setlocale(LC_ALL, "");
 	wchar_t myChar1 = L'Ω';
+	long	long_max;
+	unsigned long	ulong_max;
+
+	long_max = -9223372036854775808;
+	ulong_max = 18446744073709551615;
 
 	// printf("/*******************************************************   TEST D d i   ***************************************************/\n");
 	// printf("|%012d| |%%| |%D| |% i| |%-05d%%| |%+4d| |%9.6d| |%#-09.0d| |%12d|\n", nbr, 5, -4, 8, 3, 32, 15, -21);
@@ -412,43 +417,85 @@ int 	main (void)
 
 	printf("\n********************************  MOULITEST ********************************************\n");
 
-	printf("%d\n", printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
-%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
-%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",
-' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
-'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
-'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
-'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
-	ft_printf("%d\n", ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
-%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
-%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",
-' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
-'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
-'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
-'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
+// 	printf("%d\n", printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
+// %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
+// %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",
+// ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+// '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+// '<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+// 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+// 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+// 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+// 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
+// 	ft_printf("%d\n", ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c \
+// %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
+// %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",
+// ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+// '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+// '<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+// 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+// 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+// 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+// 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
 
 
-	printf("%d\n", printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 'a', 'b', 'c', 'd', 'e',
-'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
-	ft_printf("%d\n", ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 'a', 'b', 'c', 'd', 'e',
-'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
+	// printf("\n**** 1 min_width_c(t_test *test) *****\n");
+
+	// printf("%d\n", printf("{%3c}", 0));
+	// ft_printf("%d\n", ft_printf("{%3c}", 0));
+
+	// printf("\n**** 2 pZero_5MinWidth(t_test *test) *****\n");
+
+	// printf("%d\n", printf("{%5p}", 0));
+	// ft_printf("%d\n", ft_printf("{%5p}", 0));
 
 
-	printf("%c%c%c%c%c%clol\n", 'a', 'c', 'b', '{', '|', '}');
-	ft_printf("%c%c%c%c%c%clol\n", 'a', 'c', 'b', '{', '|', '}');
+	// printf("\n**** 3 pZero_minus15MinWidth(t_test *test) *****\n");
 
-	// printf("%d\n", printf("coucou %s", "toi"));
-	// ft_printf("coucou %s", "toi");
+	// printf("%d\n", printf("{%-15p}", 0));
+	// ft_printf("%d\n", ft_printf("{%-15p}", 0));
+
+
+	// printf("\n**** 4 pZero_minus13MinWidth(t_test *test) *****\n");
+
+	// printf("%d\n", printf("{%-13p}", &strlen));
+	// ft_printf("%d\n", ft_printf("{%-13p}", &strlen));
+
+
+	// printf("\n**** 5 pZero_minus12MinWidth(t_test *test) *****\n");
+
+	// printf("%d\n", printf("{%-12p}", &strlen));
+	// ft_printf("%d\n", ft_printf("{%-12p}", &strlen));
+
+
+	// printf("\n**** 6 invalidConvSpec_withMinWith(t_test *test) *****\n");
+
+	// printf("%d\n", printf("{%10R}"));
+	// ft_printf("%d\n", ft_printf("{%10R}"));
+
+	// printf("\n**** %%.u, %%.0u, 0, 0 *****\n");
+
+	// printf("%d\n", printf("%.u, %.0u", 0, 0));
+	// ft_printf("%d\n", ft_printf("%.u, %.0u", 0, 0));
+
+	printf("\n**** %s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير *****\n");
+
+	// printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير");
+	// ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير");
+
+	printf("%S", L"該لحم خنزير");
+	ft_printf("%S", L"該لحم خنزير");
+	// printf("%d\n", printf("%s %C %d %p %x %c", "bonjour ", L'該', 42, &free, 42, 'm'));
+	// ft_printf("%d\n", ft_printf("%s %C %d %p %x %c", "bonjour ", L'該', 42, &free, 42, 'm'));
+
+	printf("\n**** %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C,bonjour, 42, &c, L暖炉, long_max, 42, 42, 42, 100000, ulong_max, 42, 42, c, L플 ******\n");
+
+
+	printf("%d\n", printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", long_max, 42, 42, 42, 100000, ulong_max, 42, 42, 'c', L'플'));
+	ft_printf("%d\n", ft_printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", long_max, 42, 42, 42, 100000, ulong_max, 42, 42, 'c', L'플'));
 
 	ft_putstr("\n\n\nCOMPILATION OK FUCK YEAH\n\n\n");
 	return (0);
 
 }
+

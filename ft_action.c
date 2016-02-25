@@ -15,6 +15,10 @@
 char	*ft_string(t_elem *tmpa, char **str, int *cpt_null)
 {
 	(void)cpt_null;
+			// ft_putstr("\n ===FT_STRING \n Point :");
+		// ft_putstr(ARG->spec);//
+		// ft_putstr("\nSMOD.l  : ");//
+		// ft_putnbr(SMOD.l);//
 	if (ARG->arg == NULL)
 		*str = ft_strdup("(null)");
 	else
@@ -79,6 +83,11 @@ char	*ft_unsig(t_elem *tmpa, char **str, int *cpt_null)
 {
 	(void)cpt_null;
 	*str = mod_unsig(tmpa);
+	if (ft_atoi(*str) == 0 && SPREC.pt == 1)
+	{
+		ft_strdel(str);
+		*str = ft_strdup("");
+	}
 	if (SPREC.n != 0)
 		prec_doux(tmpa, str);
 	if (SFLAGS.width != 0)

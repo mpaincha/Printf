@@ -39,6 +39,13 @@ char	*ft_ptr(t_elem *tmpa, char **str, int *cpt_null)
 
 	(void)cpt_null;
 	*str = mod_hexa(tmpa);
+	if (ft_atoi(*str) == 0 && SPREC.pt == 1)
+	{
+		ft_strdel(str);
+		*str = ft_strdup("");
+	}
+	if (SPREC.n != 0)
+		prec_doux(tmpa, str);
 	if (SFLAGS.zero == 0)
 	{
 		tmp = ft_strjoin("0x", *str);

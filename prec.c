@@ -17,7 +17,7 @@ void	prec_s(t_elem *tmpa, char **str)
 	char	*tmp;
 
 	tmp = NULL;
-	if (SPREC.n != 0 && SPREC.n < ft_strlen(*str))
+	if (SPREC.pt != 0 && SPREC.n < ft_strlen(*str))
 	{
 		tmp = ft_strnew(SPREC.n + 1);
 		tmp = ft_strncpy(tmp, *str, SPREC.n);

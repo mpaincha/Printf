@@ -26,7 +26,7 @@ char	*ft_string(t_elem *tmpa, char **str, int *cpt_null)
 	// ft_putstr("\nft_string, str :");
 	// ft_putstr(*str);
 	// ft_putstr("\n");
-	if (SPREC.n != 0)
+	if (SPREC.pt != 0)
 		prec_s(tmpa, str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);

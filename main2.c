@@ -555,24 +555,45 @@ int 	main (void)
 	// printf("%d\n", printf("%hhC, %hhC", 0, L'米'));
 	// ft_printf("%d\n", ft_printf("%hhC, %hhC", 0, L'米'));
 
-	// printf("\n**** {%%+03d}, 0 *****\n");
+	// printf("\n**** {%% 03d}, 0 *****\n");
 
-	// printf("%d\n", printf("{%+03d}", 0));
-	// ft_printf("%d\n", ft_printf("{%+03d}", 0));
+	// printf("%d\n", printf("{% 03d}", 0));
+	// ft_printf("%d\n", ft_printf("{% 03d}", 0));
 
-	printf("\n**** {%% 03d}, 0 *****\n");
+	// printf("\n**** {%% 3.2d}, 0 *****\n");
 
-	printf("%d\n", printf("{% 03d}", 0));
-	ft_printf("%d\n", ft_printf("{% 03d}", 0));
+	// printf("%d\n", printf("{% 3.2d}", 0));
+	// ft_printf("%d\n", ft_printf("{% 3.2d}", 0));
 
 
-	printf("\n**** {%%02.2d}, 0 *****\n");
+	// printf("\n**** {%%03.2d}, 0 *****\n");
 
-	printf("%d\n", printf("{%02.2d}", 0));
-	ft_printf("%d\n", ft_printf("{%02.2d}", 0));
+	// printf("%d\n", printf("{%03.2d}", 0));
+	// ft_printf("%d\n", ft_printf("{%03.2d}", 0));
+
+
+	printf("\n**** %%4.s, 42 *****\n");
+
+	printf("%d\n", printf("%4.s\n", "42"));
+	ft_printf("%d\n", ft_printf("%4.s\n", "42"));
+
+	printf("\n**** %%.4S, L我是一只猫。 *****\n");
+
+	printf("%d\n", printf("%.4S\n", L"我是一只猫。"));
+	ft_printf("%d\n", ft_printf("%.4S\n", L"我是一只猫。"));
+
+
+	printf("\n**** %%15.4S, L 我是一只猫。 *****\n");
+
+	printf("%d\n", printf("%15.4S\n", L"我是一只猫。"));
+	ft_printf("%d\n", ft_printf("%15.4S\n", L"我是一只猫。"));
+
+	printf("\n**** %%4.S , L 我是一只猫。  *****\n");
+
+	printf("%d\n", printf("%4.S\n", L"我是一只猫。"));
+	ft_printf("%d\n", ft_printf("%4.S\n", L"我是一只猫。"));
 
 	ft_putstr("\n\n\nCOMPILATION OK FUCK YEAH\n\n\n");
 	return (0);
 
 }
-

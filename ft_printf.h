@@ -121,7 +121,6 @@ int					check_flags(const char *format, int *i, t_arg *sarg);
 void				ft_putlststr(t_dbllist *lst_str, int *oct);
 int					stock_str(const char *format, int	i, t_dbllist *lst_str);
 void				cleanarg(t_dbllist *lst_arg);
-void				ft_null(t_elem *tmpa);
 void				transformation(t_dbllist *lst_arg, t_dbllist *lst_str, int *cpt_null);
 char				*ft_string(t_elem *tmpa, char **str, int *cpt_null);
 char				*ft_ptr(t_elem *tmpa, char **str, int *cpt_null);

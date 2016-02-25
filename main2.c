@@ -525,31 +525,51 @@ int 	main (void)
 	// ft_printf("%d\n", ft_printf("{% C}\n", 0));
 
 
-	printf("\n**** %%.0p, %%.p, 0, 0 *****\n");
+	// printf("\n**** %%.0p, %%.p, 0, 0 *****\n");
 
-	printf("%d\n", printf("%.0p, %.p", 0, 0));
-	ft_printf("%d\n", ft_printf("%.0p, %.p", 0, 0));
+	// printf("%d\n", printf("%.0p, %.p", 0, 0));
+	// ft_printf("%d\n", ft_printf("%.0p, %.p", 0, 0));
 
-	printf("\n**** %%.5p, 0 *****\n");
+	// printf("\n**** %%.5p, 0 *****\n");
 
-	printf("%d\n", printf("%.5p", 0));
-	ft_printf("%d\n", ft_printf("%.5p", 0));
+	// printf("%d\n", printf("%.5p", 0));
+	// ft_printf("%d\n", ft_printf("%.5p", 0));
 
-	printf("\n**** %%2.9p, 1234 *****\n");
+	// printf("\n**** %%2.9p, 1234 *****\n");
 
-	printf("%d\n", printf("%2.9p", 1234));
-	ft_printf("%d\n", ft_printf("%2.9p", 1234));
+	// printf("%d\n", printf("%2.9p", 1234));
+	// ft_printf("%d\n", ft_printf("%2.9p", 1234));
 
-	printf("\n**** %%.4p\n, 1234 *****\n");
+	// printf("\n**** %%.4p\n, 1234 *****\n");
 
-	printf("%d\n", printf("%.4p\n", 1234));
-	ft_printf("%d\n", ft_printf("%.4p\n", 1234));
+	// printf("%d\n", printf("%.4p\n", 1234));
+	// ft_printf("%d\n", ft_printf("%.4p\n", 1234));
 
-	printf("\n**** %%2.9p, 1234567 *****\n");
+	// printf("\n**** %%2.9p, 1234567 *****\n");
 
-	printf("%d\n", printf("%2.9p", 1234567));
-	ft_printf("%d\n", ft_printf("%2.9p", 1234567));
+	// printf("%d\n", printf("%2.9p", 1234567));
+	// ft_printf("%d\n", ft_printf("%2.9p", 1234567));
 
+	// printf("\n**** %%hhC, %hhC, 0, L'米' *****\n");
+
+	// printf("%d\n", printf("%hhC, %hhC", 0, L'米'));
+	// ft_printf("%d\n", ft_printf("%hhC, %hhC", 0, L'米'));
+
+	printf("\n**** {%%+03d}, 0 *****\n");
+
+	printf("%d\n", printf("{%+03d}", 0));
+	ft_printf("%d\n", ft_printf("{%+03d}", 0));
+
+	printf("\n**** {%% 03d}, 0 *****\n");
+
+	printf("%d\n", printf("{% 03d}", 0));
+	ft_printf("%d\n", ft_printf("{% 03d}", 0));
+
+
+	printf("\n**** {%%0-3d}, 0 *****\n");
+
+	printf("%d\n", printf("{%0-3d}", 0));
+	ft_printf("%d\n", ft_printf("{%0-3d}", 0));
 
 	ft_putstr("\n\n\nCOMPILATION OK FUCK YEAH\n\n\n");
 	return (0);

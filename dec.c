@@ -75,37 +75,37 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 	// ft_putstr("\n");
 }
 
-static	void	ft_null(t_elem *tmpa, char **str)
-{
-	size_t		len;
+// static	void	ft_null(t_elem *tmpa, char **str)
+// {
+// 	size_t		len;
 
-	if (SPREC.pt != 0)
-		prec_doux(tmpa, str);
-	// ft_putstr("str avec PREC : ");
-	// ft_putstr(*str);
-	// ft_putstr("\n");
-	if (SFLAGS.space == 1)
-		space(str);
-	len = ft_strlen(*str);
-	if (SFLAGS.zero == 0)
-	{
-		// ft_putstr("wesh");
-		if (SFLAGS.plus == 1)
-			plus_space(tmpa, str, len);
-		if (SFLAGS.width != 0 )
-			width(tmpa, str);
-	}
-	else if (SFLAGS.zero == 1)
-	{
-		if (SFLAGS.width != 0 )
-			width(tmpa, str);
-		if (SFLAGS.plus == 1)
-			plus_zero(tmpa, str, len);
-	}
-	// ft_putstr("str apres width : ");
-	// ft_putstr(*str);
-	// ft_putstr("\n");
-}
+// 	if (SPREC.pt != 0)
+// 		prec_doux(tmpa, str);
+// 	// ft_putstr("str avec PREC : ");
+// 	// ft_putstr(*str);
+// 	// ft_putstr("\n");
+// 	if (SFLAGS.space == 1)
+// 		space(str);
+// 	len = ft_strlen(*str);
+// 	if (SFLAGS.zero == 0)
+// 	{
+// 		// ft_putstr("wesh");
+// 		if (SFLAGS.plus == 1)
+// 			plus_space(tmpa, str, len);
+// 		if (SFLAGS.width != 0 )
+// 			width(tmpa, str);
+// 	}
+// 	else if (SFLAGS.zero == 1)
+// 	{
+// 		if (SFLAGS.width != 0 )
+// 			width(tmpa, str);
+// 		if (SFLAGS.plus == 1)
+// 			plus_zero(tmpa, str, len);
+// 	}
+// 	// ft_putstr("str apres width : ");
+// 	// ft_putstr(*str);
+// 	// ft_putstr("\n");
+// }
 
 char	*ft_dec(t_elem *tmpa, char **str, int *cpt_null)
 {
@@ -115,7 +115,7 @@ char	*ft_dec(t_elem *tmpa, char **str, int *cpt_null)
 	{
 		ft_strdel(str);
 		*str = ft_strdup("");
-		ft_null(tmpa, str);
+		ft_positive(tmpa, str);
 	}
 	// printf("ft_dec DBT, str: %s/\n", *str);
 	else if ((*str)[0] == '-')

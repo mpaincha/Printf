@@ -27,10 +27,10 @@ void	width(t_elem *tmpa, char **str)
 	len = 0;
 	if (ARG->arg != NULL)
 		len = ft_strlen(*str);
-	else if (ARG->spec[0] == 'c')
+	else if (ARG->spec[0] == 'c' || (ARG->spec[0] == 'd' && SPREC.pt == 0))
 		len = 1;
-	else if (ARG->spec[0] == 'd')
-		len = 1;
+	else if (ARG->spec[0] == 'd' && SPREC.n != 0)
+		len = SPREC.n;
 	if (SFLAGS.width > len)
 	{
 		nb = SFLAGS.width - len;

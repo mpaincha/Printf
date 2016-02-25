@@ -555,10 +555,10 @@ int 	main (void)
 	// printf("%d\n", printf("%hhC, %hhC", 0, L'米'));
 	// ft_printf("%d\n", ft_printf("%hhC, %hhC", 0, L'米'));
 
-	printf("\n**** {%%+03d}, 0 *****\n");
+	// printf("\n**** {%%+03d}, 0 *****\n");
 
-	printf("%d\n", printf("{%+03d}", 0));
-	ft_printf("%d\n", ft_printf("{%+03d}", 0));
+	// printf("%d\n", printf("{%+03d}", 0));
+	// ft_printf("%d\n", ft_printf("{%+03d}", 0));
 
 	printf("\n**** {%% 03d}, 0 *****\n");
 
@@ -566,10 +566,10 @@ int 	main (void)
 	ft_printf("%d\n", ft_printf("{% 03d}", 0));
 
 
-	printf("\n**** {%%0-3d}, 0 *****\n");
+	printf("\n**** {%%02.2d}, 0 *****\n");
 
-	printf("%d\n", printf("{%0-3d}", 0));
-	ft_printf("%d\n", ft_printf("{%0-3d}", 0));
+	printf("%d\n", printf("{%02.2d}", 0));
+	ft_printf("%d\n", ft_printf("{%02.2d}", 0));
 
 	ft_putstr("\n\n\nCOMPILATION OK FUCK YEAH\n\n\n");
 	return (0);

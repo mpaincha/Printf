@@ -18,10 +18,13 @@ void	space(char **str)
 
 	if ((*str)[0] != '-')
 	{
-
+		// ft_putstr("space");
 		tmp = ft_strjoin(" ", *str);
 		// ft_strdel(str);
 		*str = ft_strdup(tmp);
+		// ft_putstr("str :");
+		// ft_putstr(*str);
+		// ft_putstr("\n");
 		// ft_strdel(&tmp);
 	}
 }

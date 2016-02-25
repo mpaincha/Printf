@@ -480,15 +480,15 @@ int 	main (void)
 
 	printf("\n**** %s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير *****\n");
 
-	// printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير");
-	// ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير");
+	// printf("%d\n", printf("%s %C %d %p %x %% %S\n", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
+	// ft_printf("%d\n", ft_printf("%s %C %d %p %x %% %S\n", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
 
-	printf("%S", L"該لحم خنزير");
-	ft_printf("%S", L"該لحم خنزير");
+	// printf("%S", L"該لحم خنزير");
+	// ft_printf("%S", L"該لحم خنزير");
 	// printf("%d\n", printf("%s %C %d %p %x %c", "bonjour ", L'該', 42, &free, 42, 'm'));
 	// ft_printf("%d\n", ft_printf("%s %C %d %p %x %c", "bonjour ", L'該', 42, &free, 42, 'm'));
 
-	printf("\n**** %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C,bonjour, 42, &c, L暖炉, long_max, 42, 42, 42, 100000, ulong_max, 42, 42, c, L플 ******\n");
+	// printf("\n**** %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C,bonjour, 42, &c, L暖炉, long_max, 42, 42, 42, 100000, ulong_max, 42, 42, c, L플 ******\n");
 
 
 	printf("%d\n", printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", long_max, 42, 42, 42, 100000, ulong_max, 42, 42, 'c', L'플'));

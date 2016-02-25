@@ -135,7 +135,7 @@ void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str,
 		// ft_putnbr(SMOD.l);//
 		// ft_putstr("\n === SSTR->str : ");//
 		// ft_putstr(SSTR->str);//
-		// ft_putstr("\n");//
+		// ft_putstr("///\n");//
 		tmpa = tmpa->next;
 	}
 

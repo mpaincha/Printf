@@ -16,7 +16,7 @@ char	*fill_mask(wchar_t nb)
 {
 	char	*str;
 
-	str = ft_strnew(2);
+	str = ft_strnew(1);
 	str[0] = nb;
 	str[1] = '\0';
 	return (str);
@@ -32,8 +32,7 @@ char	*fill_maska(wchar_t nb)
 	a = nb & 0x3F;
 	nb = nb << 2;
 	b = nb & 0x1F00;
-	new_nb = a | b;
-	new_nb = new_nb | 0xC080;
+	new_nb = b | a | 0xC080;
 	str = ft_strnew(2);
 	str[0] = new_nb >> 8;
 	str[1] = new_nb;
@@ -54,7 +53,7 @@ char	*fill_maskb(wchar_t nb)
 	b = nb & 0x3F00;
 	nb = nb << 2;
 	c = nb & 0xF0000;
-	new_nb = a | b | c | 0xE08080;
+	new_nb = b | a | c | 0xE08080;
 	str = ft_strnew(3);
 	str[0] = new_nb >> 16;
 	str[1] = new_nb >> 8;
@@ -111,7 +110,7 @@ char	*ft_wchar_str(t_elem *tmpa)
 	arg = (wchar_t *)ARG->arg;
 	str = ft_strnew(0);
 	str[0] = '\0';
-	while (arg[i])
+	while (arg[i] != '\0')
 	{
 		str = ft_strjoin(str, mask(arg[i]));
 		i++;

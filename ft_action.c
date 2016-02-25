@@ -23,6 +23,9 @@ char	*ft_string(t_elem *tmpa, char **str, int *cpt_null)
 		*str = ft_strdup("(null)");
 	else
 		*str = mod_string(tmpa);
+	// ft_putstr("\nft_string, str :");
+	// ft_putstr(*str);
+	// ft_putstr("\n");
 	if (SPREC.n != 0)
 		prec_s(tmpa, str);
 	if (SFLAGS.width != 0)
@@ -55,6 +58,7 @@ char	*ft_ptr(t_elem *tmpa, char **str, int *cpt_null)
 		*str = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}
+	ft_strlower(str);
 	return (*str);
 }
 

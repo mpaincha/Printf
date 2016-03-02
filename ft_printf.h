@@ -157,6 +157,7 @@ void				prec_doux(t_elem *tmpa, char **str);
 void				prec_s(t_elem *tmpa, char **str);
 
 char				*ft_wchar_str(t_elem *tmpa);
+char				*mask_prec(wchar_t c,  t_elem *tmpa, size_t *i);
 char				*mask(wchar_t c);
 char				*fill_maska(wchar_t nb);
 char				*fill_maskb(wchar_t nb);

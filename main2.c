@@ -588,10 +588,13 @@ int 	main (void)
 	printf("%d\n", printf("%15.4S\n", L"我是一只猫。"));
 	ft_printf("%d\n", ft_printf("%15.4S\n", L"我是一只猫。"));
 
-	printf("\n**** %%4.S , L 我是一只猫。  *****\n");
+	printf("\n**** %%4.15S, L我是一只猫。  *****\n");
 
-	printf("%d\n", printf("%4.S\n", L"我是一只猫。"));
-	ft_printf("%d\n", ft_printf("%4.S\n", L"我是一只猫。"));
+	printf("%d\n", printf("%4.15S", L"我是一只猫。"));
+	ft_printf("%d\n", ft_printf("%4.15S", L"我是一只猫。"));
+
+
+	//"{%-15Z}", 123)
 
 	ft_putstr("\n\n\nCOMPILATION OK FUCK YEAH\n\n\n");
 	return (0);

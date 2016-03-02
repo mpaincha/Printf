@@ -22,7 +22,7 @@ char	*fill_mask(wchar_t nb)
 	return (str);
 }
 
-char	*fill_maska(wchar_t nb)
+char	*fill_maska(wchar_t nb) //2 octets
 {
 	unsigned int		a;
 	unsigned int		b;
@@ -40,7 +40,7 @@ char	*fill_maska(wchar_t nb)
 	return (str);
 }
 
-char	*fill_maskb(wchar_t nb)
+char	*fill_maskb(wchar_t nb) //3 octets
 {
 	unsigned int		a;
 	unsigned int		b;
@@ -62,7 +62,7 @@ char	*fill_maskb(wchar_t nb)
 	return (str);
 }
 
-char	*fill_maskc(wchar_t nb)
+char	*fill_maskc(wchar_t nb) //4 octets
 {
 	unsigned int		a;
 	unsigned int		b;
@@ -88,6 +88,46 @@ char	*fill_maskc(wchar_t nb)
 	return (str);
 }
 
+char	*mask_prec(wchar_t c, t_elem *tmpa, size_t *oct)
+{
+	char	*end;
+
+	end = ft_strnew(0);
+	end[0] = '\0';
+	if (c <= 127)
+	{
+		*oct = *oct + 1;
+		if (*oct <= SPREC.n)
+			return (fill_mask(c));
+		else
+			return (end);
+	}
+	else if (c <= 2047)
+	{
+		*oct = *oct + 2;
+		if (*oct <= SPREC.n)
+			return (fill_maska(c));
+		else
+			return (end);
+	}
+	else if (c <= 65535)
+	{
+		*oct = *oct + 3;
+		if (*oct <= SPREC.n)
+			return (fill_maskb(c));
+		else
+			return (end);
+	}
+	else
+	{
+		*oct = *oct + 4;
+		if (*oct <= SPREC.n)
+			return (fill_maskc(c));
+		else
+			return (end);
+	}
+}
+
 char	*mask(wchar_t c)
 {
 	if (c <= 127)
@@ -104,16 +144,29 @@ char	*ft_wchar_str(t_elem *tmpa)
 {
 	char		*str;
 	wchar_t		*arg;
-	int			i;
+	size_t		i;
+	size_t		oct;
 
 	i = 0;
+	oct = 0;
 	arg = (wchar_t *)ARG->arg;
 	str = ft_strnew(0);
 	str[0] = '\0';
-	while (arg[i] != '\0')
+	if (SPREC.pt != 0)
 	{
-		str = ft_strjoin(str, mask(arg[i]));
-		i++;
+		while (arg[i] != '\0' && oct < SPREC.n)
+		{
+			str = ft_strjoin(str, mask_prec(arg[i], tmpa, &oct));
+			i++;
+		}
+	}
+	else
+	{
+		while (arg[i] != '\0')
+		{
+			str = ft_strjoin(str, mask(arg[i]));
+			i++;
+		}
 	}
 	return (str);
 }

@@ -52,8 +52,7 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 	// ft_putstr("str avec PREC : ");
 	// ft_putstr(*str);
 	// ft_putstr("\n");
-	if (SFLAGS.space == 1)
-		space(str);
+
 	len = ft_strlen(*str);
 	if (SFLAGS.zero == 0)
 	{
@@ -70,6 +69,8 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 		if (SFLAGS.plus == 1)
 			plus_zero(tmpa, str, len);
 	}
+	if (SFLAGS.space == 1)
+		space(str);
 	// ft_putstr("str apres width : ");
 	// ft_putstr(*str);
 	// ft_putstr("\n");

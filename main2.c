@@ -572,29 +572,67 @@ int 	main (void)
 	// ft_printf("%d\n", ft_printf("{%03.2d}", 0));
 
 
-	printf("\n**** %%4.s, 42 *****\n");
+	// printf("\n**** %%4.s, 42 *****\n");
 
-	printf("%d\n", printf("%4.s\n", "42"));
-	ft_printf("%d\n", ft_printf("%4.s\n", "42"));
+	// printf("%d\n", printf("%4.s\n", "42"));
+	// ft_printf("%d\n", ft_printf("%4.s\n", "42"));
 
-	printf("\n**** %%.4S, L我是一只猫。 *****\n");
+	// printf("\n**** %%.4S, L我是一只猫。 *****\n");
 
-	printf("%d\n", printf("%.4S\n", L"我是一只猫。"));
-	ft_printf("%d\n", ft_printf("%.4S\n", L"我是一只猫。"));
+	// printf("%d\n", printf("%.4S\n", L"我是一只猫。"));
+	// ft_printf("%d\n", ft_printf("%.4S\n", L"我是一只猫。"));
 
 
-	printf("\n**** %%15.4S, L 我是一只猫。 *****\n");
+	// printf("\n**** %%15.4S, L 我是一只猫。 *****\n");
 
-	printf("%d\n", printf("%15.4S\n", L"我是一只猫。"));
-	ft_printf("%d\n", ft_printf("%15.4S\n", L"我是一只猫。"));
+	// printf("%d\n", printf("%15.4S\n", L"我是一只猫。"));
+	// ft_printf("%d\n", ft_printf("%15.4S\n", L"我是一只猫。"));
 
-	printf("\n**** %%4.15S, L我是一只猫。  *****\n");
+	// printf("\n**** %%jU, %jU, 0, USHRT_MAX");
 
-	printf("%d\n", printf("%4.15S", L"我是一只猫。"));
-	ft_printf("%d\n", ft_printf("%4.15S", L"我是一只猫。"));
+	// printf("%d\n", printf("%jU, %jU", 0, 65535));
+	// ft_printf("%d\n", ft_printf("%jU, %jU", 0, 65535));
 
+	printf("\n**** {%%+03d}, 123456\n");
+
+	printf("%d\n", printf("{%+03d}", 123456));
+	ft_printf("%d\n", ft_printf("{%+03d}", 123456));
 
 	//"{%-15Z}", 123)
+
+	printf("\n**** {%%.2d}, 0\n");
+
+	printf("%d\n", printf("{%.2d}", 0));
+	ft_printf("%d\n", ft_printf("{%.2d}", 0));
+
+	printf("\n**** {%%0.2d}, 0\n");
+
+	printf("%d\n", printf("{%0.2d}", 0));
+	ft_printf("%d\n", ft_printf("{%0.2d}", 0));
+
+	printf("\n**** {%%03.2d}, 0\n");
+
+	printf("%d\n", printf("{%03.2d}", 0));
+	ft_printf("%d\n", ft_printf("{%03.2d}", 0));
+
+	printf("\n**** {%% 03d}, 0\n");
+
+	printf("%d\n", printf("{% 03d}", 0));
+	ft_printf("%d\n", ft_printf("{% 03d}", 0));
+
+	printf("\n**** {%%03.d}, 0\n");
+
+	printf("%d\n", printf("{%03.d}", 0));
+	ft_printf("%d\n", ft_printf("{%03.d}", 0));
+
+
+	// printf("\n**** %%jU, %jU, 0, USHRT_MAX");
+
+	// printf("%d\n", printf("%jU, %jU", 0, 65535));
+	// ft_printf("%d\n", ft_printf("%jU, %jU", 0, 65535));
+
+
+
 
 	ft_putstr("\n\n\nCOMPILATION OK FUCK YEAH\n\n\n");
 	return (0);

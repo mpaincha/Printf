@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
+#include <limits.h>
+
 /*
 	% [drapeaux] [largeur] [.precision] [modificateur] type
 */
@@ -131,6 +133,7 @@ char				*ft_hexalower(t_elem *tmpa, char **str, int *cpt_null);
 char				*ft_hexaupper(t_elem *tmpa, char **str, int *cpt_null);
 char				*ft_char(t_elem *tmpa, char **str, int *cpt_null);
 char				*ft_percent(t_elem *tmpa, char **str, int *cpt_null);
+char				*ft_unknown(t_elem *tmpa, char **str, int *cpt_null);
 
 int					errormod(t_arg *sarg);
 char				*mod_string(t_elem *tmpa);
@@ -146,7 +149,8 @@ void				diez_hexaupper(char **str, size_t len, t_elem *tmpa);
 
 void				width(t_elem *tmpa, char **str);
 
-void				space(char **str);
+void				space_afterwidth(t_elem *tmpa, char **str, size_t len);
+void				space_beforewidth(char **str);
 
 void				plus_space(t_elem *tmpa, char **str, size_t	len);
 void				plus_zero(t_elem *tmpa, char **str, size_t	len);
@@ -159,7 +163,7 @@ void				prec_s(t_elem *tmpa, char **str);
 char				*ft_wchar_str(t_elem *tmpa);
 char				*mask_prec(wchar_t c,  t_elem *tmpa, size_t *i);
 char				*mask(wchar_t c);
-char				*fill_maska(wchar_t nb);
+char				*fill_maska(wchar_t  snb);
 char				*fill_maskb(wchar_t nb);
 char				*fill_maskc(wchar_t nb);
 

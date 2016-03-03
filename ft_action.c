@@ -12,6 +12,16 @@
 
 #include "ft_printf.h"
 
+char	*ft_unknown(t_elem *tmpa, char **str, int *cpt_null)
+{
+	(void)cpt_null;
+
+	*str = ft_strdup(ARG->spec);
+	if (SFLAGS.width != 0)
+		width(tmpa, str);
+	return (*str);
+}
+
 char	*ft_string(t_elem *tmpa, char **str, int *cpt_null)
 {
 	(void)cpt_null;
@@ -20,7 +30,7 @@ char	*ft_string(t_elem *tmpa, char **str, int *cpt_null)
 		*str = ft_strdup("(null)");
 	else
 		*str = mod_string(tmpa);
-	if (SPREC.pt != 0)
+	if (SMOD.l != 1 && SPREC.pt != 0)
 		prec_s(tmpa, str);
 	if (SFLAGS.width != 0)
 		width(tmpa, str);
@@ -32,7 +42,7 @@ char	*ft_ptr(t_elem *tmpa, char **str, int *cpt_null)
 	char	*tmp;
 
 	(void)cpt_null;
-	*str = mod_hexa(tmpa);
+	*str = ft_itoabase_uimax((uintmax_t)ARG->arg, 16);
 	if (ft_atoi(*str) == 0 && SPREC.pt == 1)
 	{
 		ft_strdel(str);
@@ -42,9 +52,16 @@ char	*ft_ptr(t_elem *tmpa, char **str, int *cpt_null)
 		prec_doux(tmpa, str);
 	if (SFLAGS.zero == 0)
 	{
+		// ft_putstr("SFLAGS.ZERO 0\n");
 		tmp = ft_strjoin("0x", *str);
-		ft_strdel(str);
+		// ft_putstr("\ntmp :"); //
+		// ft_putstr(tmp); //
+		// ft_putstr("\n"); //
+		// ft_strdel(str);
 		*str = ft_strdup(tmp);
+		// ft_putstr("\n*str :"); //
+		// ft_putstr(*str); //
+		// ft_putstr("\n"); //
 		ft_strdel(&tmp);
 		if (SFLAGS.width != 0)
 			width(tmpa, str);
@@ -52,9 +69,12 @@ char	*ft_ptr(t_elem *tmpa, char **str, int *cpt_null)
 	else
 	{
 		if (SFLAGS.width != 0)
+		{
 			width(tmpa, str);
-		tmp = ft_strsub(*str, 2, ft_strlen(*str) - 2);
-		tmp = ft_strjoin("0x", tmp);
+			tmp = ft_strsub(*str, 2, ft_strlen(*str) - 2);
+			tmp = ft_strjoin("0x", tmp);
+		}
+		tmp = ft_strjoin("0x", *str);
 		ft_strdel(str);
 		*str = ft_strdup(tmp);
 		ft_strdel(&tmp);

@@ -17,16 +17,23 @@ int		split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 {
 	t_arg		sarg;
 	t_str		sstr;
+	int			ret;
 
 	ini_sarg(&sarg);
 	ini_sstr(&sstr);
-	if (checks(format, i, &sarg) == -1)
+	ret = 0;
+	if ((ret = checks(format, i, &sarg)) == -1)
+		return (-1);
+	else if (ret == -2)
 	{
 		// ft_putstr("\nsplit arg *i :");
 		// ft_putnbr(*i);
 		// ft_putstr("\n");
-		if (format[*i] != '\0')
-			recover_arg(format, lst_arg, lst_str, i);
+		*i = *i + 1;
+		ft_lstdbladd(lst_arg, &sarg, sizeof(t_arg));
+		sstr.str = ft_strdup(sarg.spec);
+		ft_lstdbladd(lst_str, &sstr, sizeof(t_str));
+		recover_arg(format, lst_arg, lst_str, i);
 		// return (-1);
 	}
 	else
@@ -80,12 +87,10 @@ int		percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 	*i = *i + 1;
 	if (format[*i] != '\0')
 	{
-		// ft_putstr("Percent");
 		if (split_arg(format, lst_arg, lst_str, i) == -1)
 		{
-			ft_lstdbldel(lst_arg);
-//			ft_lstdbldel(&lst_str);
-			return (-1);
+			recover_arg(format, lst_arg, lst_str, i);
+			return (1);
 		}
 	}
 	return (1);
@@ -96,7 +101,7 @@ int		recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str,
 {
 	int		ret;
 
-	while (*i < (int)ft_strlen(format))
+	while (format && *i < (int)ft_strlen(format))
 	{
 		if (format[*i] == '%')
 		{

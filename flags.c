@@ -12,16 +12,35 @@
 
 #include "ft_printf.h"
 
-void	space(char **str)
+void	space_beforewidth(char **str)
 {
 	char	*tmp;
 
+	tmp = NULL;
 	if ((*str)[0] != '-')
 	{
-		// ft_putstr("space");
 		tmp = ft_strjoin(" ", *str);
-		// ft_strdel(str);
 		*str = ft_strdup(tmp);
+	}
+}
+
+void	space_afterwidth(t_elem *tmpa, char **str, size_t len)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	if ((*str)[0] != '-')
+	{
+		if (SFLAGS.width > len)
+		{
+			(*str)[0] = ' ';
+			ft_strdel(&tmp);
+		}
+		else
+		{
+			tmp = ft_strjoin(" ", *str);
+			*str = ft_strdup(tmp);
+		}
 		// ft_putstr("str :");
 		// ft_putstr(*str);
 		// ft_putstr("\n");

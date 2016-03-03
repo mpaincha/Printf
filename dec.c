@@ -49,28 +49,44 @@ static	void	ft_positive(t_elem *tmpa, char **str)
 
 	if (SPREC.pt != 0)
 		prec_doux(tmpa, str);
-	// ft_putstr("str avec PREC : ");
-	// ft_putstr(*str);
-	// ft_putstr("\n");
 
 	len = ft_strlen(*str);
+
 	if (SFLAGS.zero == 0)
 	{
 		// ft_putstr("wesh");
 		if (SFLAGS.plus == 1)
 			plus_space(tmpa, str, len);
-		if (SFLAGS.width != 0 )
+		if (SFLAGS.width != 0)
+		{
+			if (SFLAGS.space == 1)
+				space_beforewidth(str);
 			width(tmpa, str);
+		}
+		else
+		{
+			if (SFLAGS.space == 1)
+				space_beforewidth(str);
+		}
 	}
-	else if (SFLAGS.zero == 1)
+	else
 	{
-		if (SFLAGS.width != 0 )
+		if (SFLAGS.width != 0)
+		{
+
 			width(tmpa, str);
+			if (SFLAGS.space == 1)
+				space_afterwidth(tmpa, str, len);
+		}
+		else
+		{
+			if (SFLAGS.space == 1)
+				space_beforewidth(str);
+		}
 		if (SFLAGS.plus == 1)
 			plus_zero(tmpa, str, len);
 	}
-	if (SFLAGS.space == 1)
-		space(str);
+
 	// ft_putstr("str apres width : ");
 	// ft_putstr(*str);
 	// ft_putstr("\n");

@@ -107,6 +107,7 @@ int				stock_str(const char *format, int i, t_dbllist *lst_str)
 	// ft_putstr("\nSTOCK STR LIST sstr.str :");
 	// ft_putlstt(lst_str);
 	// ft_putstr("//////END LST\n");
+	// ft_putnbr(i - 1);
 	// ft_strdel(&str); non sinon pb avec 42 filecheck
 	return (i - 1);
 }
@@ -117,7 +118,7 @@ void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str,
 	t_elem					*tmpa;
 	static const t_action	ft_action[] = {ft_string, ft_ptr, ft_dec, ft_octal,
 							ft_unsig, ft_hexalower, ft_hexaupper, ft_char,
-							ft_percent};
+							ft_percent, ft_unknown};
 	t_action				actions;
 	t_elem					*tmps;
 	char					*str;

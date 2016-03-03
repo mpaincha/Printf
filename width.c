@@ -12,6 +12,37 @@
 
 #include "ft_printf.h"
 
+static	void	width_null(t_elem *tmpa, size_t *len)
+{
+	if (ARG->spec[0] == 'c' || ARG->spec[0] == '%'
+		|| !(ft_strchr(SPEC, ARG->spec[0])))
+		*len = 1;
+	else if (ARG->spec[0] == 'd')
+	{
+		if (SFLAGS.space == 0)
+		{
+			if (SPREC.pt != 0)
+				*len = SPREC.n;
+			else
+				*len = 1;
+		}
+		else
+		{
+			if (SPREC.pt != 0)
+				*len = SPREC.n  + 1;
+			else
+				*len = 2;
+		}
+	}
+	else if (ARG->spec[0] == 'p')
+	{
+		if (SPREC.pt != 0)
+			*len = 3;
+		else
+			*len = 1;
+	}
+}
+
 void	width(t_elem *tmpa, char **str)
 {
 	char	*tmp;
@@ -25,32 +56,22 @@ void	width(t_elem *tmpa, char **str)
 	tmp = NULL;
 	add = NULL;
 	len = 0;
-	if (ARG->arg != NULL)
+	if (ARG->arg == NULL  && ft_strlen(*str) == 0)
+		width_null(tmpa, &len);
+	else
 		len = ft_strlen(*str);
-	else if (ARG->spec[0] == 'c')// || (ARG->spec[0] == 'd' && SPREC.pt == 0))
-		len = 1;
-	else if (ARG->spec[0] == 'd')
-	{
-		if (SFLAGS.space == 0)
-		{
-			if (SPREC.pt != 0)
-				len = SPREC.n;
-			else
-				len = 1;
-		}
-		else
-		{
-			if (SPREC.pt != 0)
-				len = SPREC.n  + 1;
-			else
-				len = 2;
-		}
-	}
-	else if (ARG->spec[0] == 'p')
-		len = 1;
 	if (SFLAGS.width > len)
 	{
+		// ft_putstr("\nlen :"); //
+		// ft_putnbr(len);
+		// ft_putstr("\n"); //
+
 		nb = SFLAGS.width - len;
+
+		// ft_putstr("\nb :"); //
+		// ft_putnbr(nb);
+		// ft_putstr("\n"); //
+
 		add = ft_strnew(nb);
 		(SFLAGS.zero == 0) ? (tadd = ' ') : (tadd = '0');
 		while (i < nb)

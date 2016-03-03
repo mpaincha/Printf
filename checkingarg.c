@@ -146,6 +146,8 @@ int				check_prec(const char *format, int *i, t_arg *sarg)
 int				check_spec(const char *format, int *i, t_arg *sarg)
 {
 	// ft_putstr("\n =====CHECK SPEC ");//
+	// ft_putchar(format[*i]);//
+	// ft_putstr();
 	if (ft_strlen(sarg->spec) == 0 && ft_strchr(SPEC, ft_tolower(format[*i])))
 	{
 		sarg->spec[0] = format[*i];
@@ -212,7 +214,19 @@ int				checks(const char *format, int *i, t_arg *sarg)
 	else
 		return (-1);
 	if (check_spec(format, i, sarg))
+	{
+		// ft_putstr("debug");
 		return (1);
+	}
 	else
-		return (-1);
+	{
+		if (ft_isupper(format[*i]))
+		{
+			sarg->spec[0] = format[*i];
+			sarg->action = 9;
+			return (-2);
+		}
+		else
+			return (-1);
+	}
 }

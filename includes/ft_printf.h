@@ -19,24 +19,26 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
-#include <limits.h>
+# include <limits.h>
 
 /*
-	% [drapeaux] [largeur] [.precision] [modificateur] type
+**	% [drapeaux] [largeur] [.precision] [modificateur] type
 */
 
 # define FLAGS "#0-+ "
 # define MOD "hljz"
-# define SPEC "spdouxXc%"
+# define SPEC "spdouxXc%%"
 
 # define ARG ((t_arg *)(tmpa->content))
 # define SFLAGS ((t_flags)(ARG->flags))
 # define SMOD ((t_mod)(ARG->mod))
 # define SPREC ((t_prec)(ARG->prec))
 # define SSTR ((t_str *)(tmps->content))
-//# define SSTR(X) ((t_str *)((X)->content))
 
-// # define DEBUG	printf("%s - %s: %d\n", __FILE__, __FUNCTION__, __LINE__)
+/*
+**	# define SSTR(X) ((t_str *)((X)->content))
+**	# define DEBUG	printf("%s - %s: %d\n", __FILE__, __FUNCTION__, __LINE__)
+*/
 
 typedef struct		s_counters
 {
@@ -95,7 +97,7 @@ typedef struct		s_arg
 
 }					t_arg;
 
-typedef void (* t_action)(t_elem *, char **, int *);
+typedef				void (* t_action)(t_elem *, char **, int *);
 
 int					ft_printf(const char *format, ...);
 void				display_percent(int n, t_dbllist *lst_str);
@@ -167,7 +169,4 @@ void				ft_strlower(char **str);
 char				*ft_itoabase_imax(intmax_t n, size_t base);
 char				*ft_itoabase_uimax(uintmax_t n, size_t base);
 
-
-
 #endif
-

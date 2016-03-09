@@ -19,6 +19,7 @@ void	ft_lstdbladd(t_dbllist *list, void *content, size_t cont_size)
 	new_elem = (t_elem *)malloc(sizeof(t_elem));
 	if (new_elem == NULL)
 		return ;
+	ft_bzero(new_elem, sizeof(t_elem));
 	new_elem->content = (void *)malloc(cont_size);
 	if (new_elem->content == NULL)
 	{

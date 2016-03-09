@@ -32,14 +32,12 @@ size_t		ft_intlenbase_imax(intmax_t n, size_t base)
 	return (i);
 }
 
-char				*ft_itoabase_imax(intmax_t n, size_t base)
+char		*ft_itoabase_imax(intmax_t n, size_t base)
 {
 	char			*str;
-	int				i;
 	size_t			len;
 
 	len = ft_intlenbase_imax(n, base);
-	i = 0;
 	str = ft_strnew(len + 1);
 	if (base == 10 && n < 0)
 	{

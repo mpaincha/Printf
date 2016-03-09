@@ -44,10 +44,9 @@ void	prec_doux(t_elem *tmpa, char **str)
 		while (i < nb)
 			add[i++] = '0';
 		add[i] = '\0';
-		tmp = ft_strjoin(add, *str);
+		tmp = ft_strjoinandfree(add, *str, 1);
 		ft_strdel(str);
 		*str = ft_strdup(tmp);
 		ft_strdel(&tmp);
-		ft_strdel(&add);
 	}
 }

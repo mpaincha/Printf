@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-static	void	width_null(t_elem *tmpa, size_t *len)
+static	void	len_width_null(t_elem *tmpa, size_t *len)
 {
 	if (ARG->spec[0] == 'c' || ARG->spec[0] == '%'
 		|| !(ft_strchr(SPEC, ARG->spec[0])))
 		*len = 1;
-	else if (ARG->spec[0] == 'd')
+	if (ARG->spec[0] == 'd')
 	{
 		if (SFLAGS.space == 0)
 		{
@@ -29,60 +29,55 @@ static	void	width_null(t_elem *tmpa, size_t *len)
 		else
 		{
 			if (SPREC.pt != 0)
-				*len = SPREC.n  + 1;
+				*len = SPREC.n;
 			else
 				*len = 2;
 		}
 	}
-	else if (ARG->spec[0] == 'p')
-	{
-		if (SPREC.pt != 0)
-			*len = 3;
-		else
-			*len = 1;
-	}
 }
 
-void	width(t_elem *tmpa, char **str)
+static	size_t	len_width(t_elem *tmpa, char **str)
 {
-	char	*tmp;
-	size_t	i;
-	size_t	nb;
-	char	*add;
-	char	tadd;
 	size_t	len;
 
-	i = 0;
-	tmp = NULL;
-	add = NULL;
 	len = 0;
-	if (ARG->arg == NULL  && ft_strlen(*str) == 0)
-		width_null(tmpa, &len);
+	if (ARG->arg == NULL && ft_strlen(*str) == 0)
+		len_width_null(tmpa, &len);
 	else
 		len = ft_strlen(*str);
-	if (SFLAGS.width > len)
+	return (len);
+}
+
+static	void	which_add(t_elem *tmpa, char *tadd)
+{
+	if (SFLAGS.zero == 0)
+		*tadd = ' ';
+	else
+		*tadd = '0';
+}
+
+void			width(t_elem *tmpa, char **str)
+{
+	char	*tmp;
+	char	*add;
+	size_t	i;
+	size_t	len;
+	char	tadd;
+
+	tmp = NULL;
+	add = NULL;
+	i = 0;
+	if (SFLAGS.width > (len = len_width(tmpa, str)))
 	{
-		// ft_putstr("\nlen :"); //
-		// ft_putnbr(len);
-		// ft_putstr("\n"); //
-
-		nb = SFLAGS.width - len;
-
-		// ft_putstr("\nb :"); //
-		// ft_putnbr(nb);
-		// ft_putstr("\n"); //
-
-		add = ft_strnew(nb);
-		(SFLAGS.zero == 0) ? (tadd = ' ') : (tadd = '0');
-		while (i < nb)
+		add = ft_strnew(SFLAGS.width - len);
+		which_add(tmpa, &tadd);
+		while (i < (SFLAGS.width - len))
 			add[i++] = tadd;
 		add[i] = '\0';
 		if (SFLAGS.minus == 0)
-			tmp = ft_strjoin(add, *str);
+			tmp = ft_strjoinandfree(add, *str, 3);
 		else
-			tmp = ft_strjoin(*str, add);
-		ft_strdel(str);
-		ft_strdel(&add);
+			tmp = ft_strjoinandfree(*str, add, 3);
 		*str = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}

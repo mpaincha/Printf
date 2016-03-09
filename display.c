@@ -12,25 +12,17 @@
 
 #include "ft_printf.h"
 
-static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
+static t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 {
 	int			found;
 	t_elem		*tmps;
 
 	tmps = lst_str->head;
 	found = 0;
-	// ft_putstr("\n===FIND POS====\n"); //
-
 	while (tmps != NULL && !found)
 	{
-		// ft_putstr("\nSSTR"); //
-		// ft_putstr(SSTR->str); //
-		// ft_putstr("\n SSTR.n"); //
-		// ft_putnbr(SSTR->n); //
-		// ft_putstr("\n"); //
 		if (ft_strequ(SSTR->str, spec) && SSTR->n == 0)
 		{
-			// ft_putstr("  found\n"); //
 			found = 1;
 			SSTR->n = 1;
 			break ;
@@ -40,10 +32,8 @@ static	t_elem	*find_pos(char *spec, t_dbllist *lst_str)
 	}
 	if (found == 0)
 		tmps = NULL;
-	// ft_putstr("\n===EEENNNDDD FIND POS====\n"); //
 	return (tmps);
 }
-
 
 void			ft_putlststr(t_dbllist *list, int *oct)
 {
@@ -84,78 +74,34 @@ int				stock_str(const char *format, int i, t_dbllist *lst_str)
 
 	ini_sstr(&sstr);
 	start = i;
-			// ft_putstr("\nSTOCK STR START :");
-			// ft_putnbr(i);
-			// ft_putstr("\n");
-			// ft_putstr("\nformat i :");
-			// ft_putchar(format[i]);
-			// ft_putstr("\n");
 	while (format[i] != '\0' && format[i] != '%')
 		i++;
-			// ft_putstr("\nSTOCK STR i :");
-			// ft_putnbr(i);
-			// ft_putstr("\n");
-			// ft_putstr("\nformat i :");
-			// ft_putchar(format[i]);
-			// ft_putstr("\n");
 	sstr.str = ft_strsub(format, start, (i - start));
-			// ft_putstr("\nsstr.str :");
-			// ft_putstr(sstr.str);
-			// ft_putstr("\n");
 	sstr.n = 1;
 	ft_lstdbladd(lst_str, &sstr, sizeof(t_str));
-	// ft_putstr("\nSTOCK STR LIST sstr.str :");
-	// ft_putlstt(lst_str);
-	// ft_putstr("//////END LST\n");
-	// ft_putnbr(i - 1);
-	// ft_strdel(&str); non sinon pb avec 42 filecheck
 	return (i - 1);
 }
 
 void			transformation(t_dbllist *lst_arg, t_dbllist *lst_str,
-				int * cpt_null)
+				int *cpt_null)
 {
 	t_elem					*tmpa;
 	static const t_action	ft_action[] = {ft_string, ft_ptr, ft_dec, ft_octal,
 							ft_unsig, ft_hexalower, ft_hexaupper, ft_char,
-							ft_percent, ft_unknown};
+							ft_unknown};
 	t_action				actions;
 	t_elem					*tmps;
-	char					*str;
+	char					*todel;
 
 	tmpa = lst_arg->head;
 	tmps = lst_str->head;
-	str = NULL;
-	// ft_putstr("\n === Tranfo === \n");
 	while (tmpa != NULL)
 	{
-		// ft_putstr("\nspec  : ");//
-		// ft_putstr("Point :");
-		// ft_putstr(ARG->spec);//
-		// ft_putstr("\nSMOD.l  : ");//
-		// ft_putnbr(SMOD.l);//
 		actions = ft_action[ARG->action];
-		// ft_putstr("\n actions trouve ");//
-		// ft_putstr("Point :");
-		// ft_putstr(ARG->spec);//
-		// ft_putstr("\nSMOD.l  : ");//
-		// ft_putnbr(SMOD.l);//
 		tmps = find_pos(ARG->spec, lst_str);
-		// ft_putstr("\n position trouve ");//
-		// ft_putstr("Point :");
-		// ft_putstr(ARG->spec);//
-		// ft_putstr("\nSMOD.l  : ");//
-		// ft_putnbr(SMOD.l);//
-		SSTR->str = actions(tmpa, &str, cpt_null);
-		// ft_putstr("\n actions realisees ");//
-		// ft_putstr("Point :");
-		// ft_putstr(ARG->spec);//
-		// ft_putstr("\nSMOD.l  : ");//
-		// ft_putnbr(SMOD.l);//
-		// ft_putstr("\n === SSTR->str : ");//
-		// ft_putstr(SSTR->str);//
-		// ft_putstr("///\n");//
+		todel = SSTR->str;
+		actions(tmpa, &SSTR->str, cpt_null);
+		ft_strdel(&todel);
 		tmpa = tmpa->next;
 	}
-
 }

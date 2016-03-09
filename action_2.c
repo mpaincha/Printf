@@ -1,59 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   diez.c                                             :+:      :+:    :+:   */
+/*   action_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/22 11:26:12 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/02/22 11:26:14 by mpaincha         ###   ########.fr       */
+/*   Created: 2016/02/10 18:19:44 by mpaincha          #+#    #+#             */
+/*   Updated: 2016/02/10 18:19:46 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	diez_o(char **str)
+static void		ptr_without_zero(t_elem *tmpa, char **str)
 {
 	char	*tmp;
 
-	tmp = ft_strjoinandfree("0", *str, 2);
+	tmp = ft_strjoinandfree("0x", *str, 2);
 	*str = ft_strdup(tmp);
 	ft_strdel(&tmp);
+	if (SFLAGS.width != 0)
+		width(tmpa, str);
 }
 
-void	diez_hexaupper(char **str)
-{
-	char	*tmp;
-
-	tmp = ft_strjoinandfree("0X", *str, 2);
-	*str = ft_strdup(tmp);
-	ft_strdel(&tmp);
-}
-
-void	diez_hexaupper_zero(char **str, size_t len, t_elem *tmpa)
+static void		ptr_with_zero(char **str)
 {
 	char	*tmp;
 
 	tmp = NULL;
-	if (SFLAGS.width > len)
+	tmp = ft_strjoinandfree("0x", *str, 2);
+	*str = ft_strdup(tmp);
+	ft_strdel(&tmp);
+}
+
+void			ft_ptr(t_elem *tmpa, char **str, int *cpt_null)
+{
+	char	*tmp;
+
+	(void)cpt_null;
+	tmp = NULL;
+	*str = ft_itoabase_uimax((uintmax_t)ARG->arg, 16);
+	if (ft_atoi(*str) == 0 && SPREC.pt == 1)
 	{
-		if (SFLAGS.width - len == 1)
-		{
-			(*str)[0] = 'X';
-			tmp = ft_strjoinandfree("0", *str, 2);
-			*str = ft_strdup(tmp);
-			ft_strdel(&tmp);
-		}
-		else
-		{
-			(*str)[0] = '0';
-			(*str)[1] = 'X';
-		}
+		ft_strdel(str);
+		*str = ft_strdup("");
 	}
+	if (SPREC.n != 0)
+		prec_doux(tmpa, str);
+	if (SFLAGS.zero == 0)
+		ptr_without_zero(tmpa, str);
 	else
-	{
-		tmp = ft_strjoinandfree("0X", *str, 2);
-		*str = ft_strdup(tmp);
-		ft_strdel(&tmp);
-	}
+		ptr_with_zero(str);
+	ft_strlower(str);
 }

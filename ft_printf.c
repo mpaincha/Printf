@@ -12,83 +12,45 @@
 
 #include "ft_printf.h"
 
-
-// static void			ft_putlstarg(t_dbllist *list)
-// {
-// 	t_elem	*tmpa;
-
-// 	tmpa = list->head;
-// 		ft_putstr("\n====LIST ARG =====\n");
-
-// 	while (tmpa != NULL)
-// 	{
-// 		ft_putstr("\nspec  : ");
-// 		// ft_putstr("Point :");
-// 		ft_putstr(ARG->spec);
-// 		ft_putstr("\nSMOD.l  : ");
-// 		ft_putnbr(SMOD.l);
-// 		ft_putstr("\nSMOD.j  : ");
-// 		ft_putnbr(SMOD.j);
-// 		// ft_putstr("\nNum :");
-// 		// ft_putnbr(SPREC.n);
-// 		ft_putstr("\n");
-// 		tmpa = tmpa->next;
-// 	}
-// }
-
-void			ft_putlstt(t_dbllist *list)
+static int		recover(const char *format, t_dbllist *lst_arg,
+				t_dbllist *lst_str, int *i)
 {
-	t_elem	*tmps;
-
-	tmps = list->head;
-		ft_putstr("\n====LIST str =====\n");
-
-	while (tmps != NULL)
+	if (recover_arg(format, lst_arg, lst_str, i) == -1)
 	{
-		ft_putstr("str : ");
-		// ft_putstr("Point :");
-		ft_putstr(SSTR->str);
-		ft_putstr("\nNum :");
-		ft_putnbr(SSTR->n);
-		// ft_putnbr(SPREC.n);
-		ft_putstr("\n");
-		tmps = tmps->next;
+		ft_lstdbldel_arg(lst_arg);
+		ft_memdel((void **)&lst_arg);
+		ft_lstdbldel_str(lst_str);
+		ft_memdel((void **)&lst_str);
+		free(lst_arg);
+		return (-1);
 	}
+	return (1);
 }
 
-int		ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list			ap;
 	t_dbllist		*lst_arg;
 	t_dbllist		*lst_str;
-	int				i;
-	int				oct;
-	int				cpt_null;
+	t_counters		counters;
 
-	i = 0;
-	oct = 0;
-	cpt_null = 0;
-	va_start(ap, format);
+	ini_counters(&counters);
 	lst_arg = ft_lstdblnew();
 	lst_str = ft_lstdblnew();
-	if (recover_arg(format, lst_arg, lst_str, &i) == -1)
-		return(0);
-	if (lst_arg == NULL)
-		return (0);
+	va_start(ap, format);
+	if (recover(format, lst_arg, lst_str, &counters.i) == -1)
+		return (-1);
 	recover_param(ap, lst_arg);
 	cleanarg(lst_arg);
-	// ft_putlstarg(lst_arg); //
-	// ft_putlststr(lst_str, &oct); //
-	transformation(lst_arg, lst_str, &cpt_null);
-	// ft_putstr("ok transfo");//
+	transformation(lst_arg, lst_str, &counters.cpt_null);
 	if (lst_str->head)
-		ft_putlststr(lst_str, &oct);
-	if (cpt_null != 0)
-		oct = oct + cpt_null;
-	// ft_lstdbldel(&lst_arg);
-	// free(lst_arg);
-	// ft_lstdbldel(&lst_str);
-	// free(lst_str);
+		ft_putlststr(lst_str, &counters.oct);
+	if (counters.cpt_null != 0)
+		counters.oct = counters.oct + counters.cpt_null;
+	ft_lstdbldel_arg(lst_arg);
+	ft_memdel((void **)&lst_arg);
+	ft_lstdbldel_str(lst_str);
+	ft_memdel((void **)&lst_str);
 	va_end(ap);
-	return (oct);
+	return (counters.oct);
 }

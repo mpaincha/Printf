@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoabase.c                                      :+:      :+:    :+:   */
+/*   flags_space.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/09 10:43:07 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/02/09 10:43:11 by mpaincha         ###   ########.fr       */
+/*   Created: 2016/01/27 11:41:33 by mpaincha          #+#    #+#             */
+/*   Updated: 2016/01/27 11:41:34 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char				*ft_itoabase(int n, size_t base)
+void	space_beforewidth(char **str)
 {
-	char			*str;
-	unsigned int	nb;
-	size_t			len;
+	char	*tmp;
 
-	len = ft_intlenbase(n, base);
-	nb = (unsigned int)n;
-	str = ft_strnew(len + 1);
-	if (base == 10 && n < 0)
+	tmp = NULL;
+	if ((*str)[0] != '-')
 	{
-		nb = -n;
-		str[0] = '-';
+		tmp = ft_strjoinandfree(" ", *str, 2);
+		*str = ft_strdup(tmp);
+		ft_strdel(&tmp);
 	}
-	str[len] = '\0';
-	if (n == 0)
-		str[--len] = '0';
-	while (nb != 0)
+}
+
+void	space_afterwidth(t_elem *tmpa, char **str, size_t len)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	if ((*str)[0] != '-')
 	{
-		if (base > 10 && nb % base >= 10)
-			str[--len] = (nb % base) + 55;
+		if (SFLAGS.width > len)
+		{
+			(*str)[0] = ' ';
+			ft_strdel(&tmp);
+		}
 		else
-			str[--len] = (nb % base) + 48;
-		nb = nb / base;
+		{
+			tmp = ft_strjoinandfree(" ", *str, 2);
+			*str = ft_strdup(tmp);
+			ft_strdel(&tmp);
+		}
 	}
-	return (str);
 }

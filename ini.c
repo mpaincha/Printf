@@ -44,3 +44,19 @@ void	ini_sstr(t_str *sstr)
 	sstr->str = NULL;
 	sstr->n = 0;
 }
+
+void	ini_mask(t_mask *mask)
+{
+	mask->a = 0;
+	mask->b = 0;
+	mask->c = 0;
+	mask->d = 0;
+	mask->new_nb = 0;
+}
+
+void	ini_counters(t_counters *counters)
+{
+	counters->i = 0;
+	counters->oct = 0;
+	counters->cpt_null = 0;
+}

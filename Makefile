@@ -6,7 +6,7 @@
 #    By: mpaincha <mpaincha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 12:19:31 by fsimmet           #+#    #+#              #
-#    Updated: 2016/01/04 11:15:51 by mpaincha         ###   ########.fr        #
+#    Updated: 2016/03/07 11:18:15 by mpaincha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ ft_tolower.c \
 ft_toupper.c \
 ft_strcmp.c \
 ft_strjoin.c \
+ft_strjoinandfree.c \
 ft_strdel.c \
 ft_strnew.c \
 ft_strclr.c \
@@ -63,25 +64,33 @@ ft_strncat.c \
 ft_strncmp.c \
 ft_strequ.c \
 checkingarg.c \
+checkingmod.c \
+checkingspecprec.c \
 recovery.c \
 cleaning.c \
 display.c \
-errors.c \
-flags.c \
-ft_action.c \
+flags_minus.c \
+flags_plus.c \
+flags_space.c \
+action_1.c \
+action_2.c \
+action_3.c \
+action_4.c \
 ft_printf.c \
 wchar.c \
+wchar_prec.c \
+fill_mask.c \
 ini.c \
-mod.c \
+mod_1.c \
+mod_2.c \
 prec.c \
 width.c \
 diez.c \
-dec.c \
 ft_strlower.c
 SRCO = $(SRC:.c=.o)
 HEADERS = .
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 

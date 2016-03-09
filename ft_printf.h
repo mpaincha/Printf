@@ -33,6 +33,25 @@
 # define SMOD ((t_mod)(ARG->mod))
 # define SPREC ((t_prec)(ARG->prec))
 # define SSTR ((t_str *)(tmps->content))
+//# define SSTR(X) ((t_str *)((X)->content))
+
+// # define DEBUG	printf("%s - %s: %d\n", __FILE__, __FUNCTION__, __LINE__)
+
+typedef struct		s_counters
+{
+	int				i;
+	int				oct;
+	int				cpt_null;
+}					t_counters;
+
+typedef struct		s_mask
+{
+	unsigned int	a;
+	unsigned int	b;
+	unsigned int	c;
+	unsigned int	d;
+	unsigned int	new_nb;;
+}					t_mask;
 
 typedef struct		s_str
 {
@@ -96,23 +115,18 @@ typedef struct		s_dbllist
 	struct s_elem	*tail;
 }					t_dbllist;
 
-typedef char *(* t_action)(t_elem *, char **, int *);
-
-//
-void			ft_putlstt(t_dbllist *list);
-
-//
+typedef void (* t_action)(t_elem *, char **, int *);
 
 int					ft_printf(const char *format, ...);
 void				display_percent(int n, t_dbllist *lst_str);
 int					recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
 int					percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
 int					split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
-int					error(const char *msg);
-int					clean_lst(t_dbllist *lst_arg);
 void				recover_param(va_list ap, t_dbllist *lst_arg);
 void				ini_sarg(t_arg *sarg);
 void				ini_sstr(t_str *sstr);
+void				ini_mask(t_mask *mask);
+void				ini_counters(t_counters *counters);
 void				reini_mod(t_arg *sarg);
 int					checks(const char *format, int *i, t_arg *sarg);
 int					check_spec(const char *format, int *i, t_arg *sarg);
@@ -124,18 +138,16 @@ void				ft_putlststr(t_dbllist *lst_str, int *oct);
 int					stock_str(const char *format, int	i, t_dbllist *lst_str);
 void				cleanarg(t_dbllist *lst_arg);
 void				transformation(t_dbllist *lst_arg, t_dbllist *lst_str, int *cpt_null);
-char				*ft_string(t_elem *tmpa, char **str, int *cpt_null);
-char				*ft_ptr(t_elem *tmpa, char **str, int *cpt_null);
-char				*ft_dec(t_elem *tmpa, char **str, int *cpt_null);
-char				*ft_octal(t_elem *tmpa, char **str, int *cpt_null);
-char				*ft_unsig(t_elem *tmpa, char **str, int *cpt_null);
-char				*ft_hexalower(t_elem *tmpa, char **str, int *cpt_null);
-char				*ft_hexaupper(t_elem *tmpa, char **str, int *cpt_null);
-char				*ft_char(t_elem *tmpa, char **str, int *cpt_null);
-char				*ft_percent(t_elem *tmpa, char **str, int *cpt_null);
-char				*ft_unknown(t_elem *tmpa, char **str, int *cpt_null);
+void				ft_string(t_elem *tmpa, char **str, int *cpt_null);
+void				ft_ptr(t_elem *tmpa, char **str, int *cpt_null);
+void				ft_dec(t_elem *tmpa, char **str, int *cpt_null);
+void				ft_octal(t_elem *tmpa, char **str, int *cpt_null);
+void				ft_unsig(t_elem *tmpa, char **str, int *cpt_null);
+void				ft_hexalower(t_elem *tmpa, char **str, int *cpt_null);
+void				ft_hexaupper(t_elem *tmpa, char **str, int *cpt_null);
+void				ft_char(t_elem *tmpa, char **str, int *cpt_null);
+void				ft_unknown(t_elem *tmpa, char **str, int *cpt_null);
 
-int					errormod(t_arg *sarg);
 char				*mod_string(t_elem *tmpa);
 char				*mod_dec(t_elem *tmpa);
 char				*mod_octal(t_elem *tmpa);
@@ -145,7 +157,7 @@ char				*mod_char(t_elem *tmpa);
 
 void				diez_o(char **str);
 void				diez_hexaupper_zero(char **str, size_t len, t_elem *tmpa);
-void				diez_hexaupper(char **str, size_t len, t_elem *tmpa);
+void				diez_hexaupper(char **str);
 
 void				width(t_elem *tmpa, char **str);
 
@@ -161,8 +173,9 @@ void				prec_doux(t_elem *tmpa, char **str);
 void				prec_s(t_elem *tmpa, char **str);
 
 char				*ft_wchar_str(t_elem *tmpa);
-char				*mask_prec(wchar_t c,  t_elem *tmpa, size_t *i);
+char				*mask_prec(wchar_t c,  t_elem *tmpa, size_t *oct);
 char				*mask(wchar_t c);
+char				*fill_mask(wchar_t nb);
 char				*fill_maska(wchar_t  snb);
 char				*fill_maskb(wchar_t nb);
 char				*fill_maskc(wchar_t nb);
@@ -182,23 +195,13 @@ int					ft_isupper(int c);
 char				*ft_itoa(int n);
 size_t				ft_intlenbase_imax(intmax_t n, size_t base);
 size_t				ft_intlenbase(int n, size_t base);
-size_t				ft_intlenbase_uimax_x(uintmax_t n, size_t base);
 size_t				ft_intlenbase_uimax(uintmax_t n, size_t base);
 char				*ft_itoabase_imax(intmax_t n, size_t base);
-char				*ft_itoabase_imax_x(intmax_t n, size_t base);
-char				*ft_itoabase_uimax_x(uintmax_t n, size_t base);
 char				*ft_itoabase_uimax(uintmax_t n, size_t base);
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstiter(t_list *lst, void(*f)(t_list *elem));
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdbladd(t_dbllist *list, void *content, size_t cont_size);
-void				ft_lstdbldel(t_dbllist *list);
+void				ft_lstdbldel_str(t_dbllist *list);
+void				ft_lstdbldel_arg(t_dbllist *list);
 t_dbllist			*ft_lstdblnew(void);
-void				ft_putlsthead(t_dbllist *list);
-void				ft_putlsttail(t_dbllist *list);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
@@ -223,13 +226,11 @@ char				*ft_strcpy(char *dst, const char *src);
 void				ft_strdel(char **as);
 char				*ft_strdup(const char *s1);
 int					ft_strequ(char const *s1, char const *s2);
-void				ft_striter(char *s, void (*f)(char *));
-void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoinandfree(char *s1, char *s2,
+					int tofree);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlen(const char *s);
-char				*ft_strmap(char const *s, char (*f)(char));
-char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strncat(char *s1, const char *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, size_t n);
@@ -238,8 +239,6 @@ char				*ft_strnew(size_t size);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strrev(char *str);
-char				**ft_strsplit(char const *s, char c);
-char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);

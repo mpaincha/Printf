@@ -1,58 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   diez.c                                             :+:      :+:    :+:   */
+/*   flags_minus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/22 11:26:12 by mpaincha          #+#    #+#             */
-/*   Updated: 2016/02/22 11:26:14 by mpaincha         ###   ########.fr       */
+/*   Created: 2016/01/27 11:41:33 by mpaincha          #+#    #+#             */
+/*   Updated: 2016/01/27 11:41:34 by mpaincha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	diez_o(char **str)
+void	minus_space(t_elem *tmpa, char **str, size_t len)
 {
 	char	*tmp;
+	int		i;
 
-	tmp = ft_strjoinandfree("0", *str, 2);
-	*str = ft_strdup(tmp);
-	ft_strdel(&tmp);
-}
-
-void	diez_hexaupper(char **str)
-{
-	char	*tmp;
-
-	tmp = ft_strjoinandfree("0X", *str, 2);
-	*str = ft_strdup(tmp);
-	ft_strdel(&tmp);
-}
-
-void	diez_hexaupper_zero(char **str, size_t len, t_elem *tmpa)
-{
-	char	*tmp;
-
+	i = 0;
 	tmp = NULL;
 	if (SFLAGS.width > len)
 	{
-		if (SFLAGS.width - len == 1)
+		while (!(ft_isdigit((*str)[i])))
+			i++;
+		if (i > 0)
 		{
-			(*str)[0] = 'X';
-			tmp = ft_strjoinandfree("0", *str, 2);
-			*str = ft_strdup(tmp);
-			ft_strdel(&tmp);
-		}
-		else
-		{
-			(*str)[0] = '0';
-			(*str)[1] = 'X';
+			(*str)[i - 1] = '-';
+			return ;
 		}
 	}
+	tmp = ft_strjoinandfree("-", *str, 2);
+	*str = ft_strdup(tmp);
+	ft_strdel(&tmp);
+}
+
+void	minus_zero(t_elem *tmpa, char **str, size_t len)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	if (SFLAGS.width > len)
+		(*str)[0] = '-';
 	else
 	{
-		tmp = ft_strjoinandfree("0X", *str, 2);
+		tmp = ft_strjoinandfree("-", *str, 2);
 		*str = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}

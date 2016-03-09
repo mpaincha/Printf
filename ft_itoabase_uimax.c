@@ -27,14 +27,12 @@ size_t		ft_intlenbase_uimax(uintmax_t n, size_t base)
 	return (i);
 }
 
-char				*ft_itoabase_uimax(uintmax_t n, size_t base)
+char		*ft_itoabase_uimax(uintmax_t n, size_t base)
 {
 	char			*str;
-	int				i;
 	size_t			len;
 
 	len = ft_intlenbase_uimax(n, base);
-	i = 0;
 	str = ft_strnew(len + 1);
 	str[len] = '\0';
 	if (n == 0)

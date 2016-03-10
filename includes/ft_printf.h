@@ -18,22 +18,20 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include <stdio.h>
 # include <limits.h>
 
 /*
 **	% [drapeaux] [largeur] [.precision] [modificateur] type
 */
 
-# define FLAGS "#0-+ "
-# define MOD "hljz"
-# define SPEC "spdouxXc%%"
-
-# define ARG ((t_arg *)(tmpa->content))
-# define SFLAGS ((t_flags)(ARG->flags))
-# define SMOD ((t_mod)(ARG->mod))
-# define SPREC ((t_prec)(ARG->prec))
-# define SSTR ((t_str *)(tmps->content))
+# define FLAGS	"#0-+ "
+# define MOD	"hljz"
+# define SPEC	"spdouxXc%%"
+# define ARG	((t_arg *)(tmpa->content))
+# define SFLAGS	((t_flags)(ARG->flags))
+# define SMOD	((t_mod)(ARG->mod))
+# define SPREC	((t_prec)(ARG->prec))
+# define SSTR	((t_str *)(tmps->content))
 
 /*
 **	# define SSTR(X) ((t_str *)((X)->content))
@@ -53,7 +51,7 @@ typedef struct		s_mask
 	unsigned int	b;
 	unsigned int	c;
 	unsigned int	d;
-	unsigned int	new_nb;;
+	unsigned int	new_nb;
 }					t_mask;
 
 typedef struct		s_str
@@ -94,32 +92,39 @@ typedef struct		s_arg
 	t_prec			prec;
 	char			*spec;
 	int				action;
-
 }					t_arg;
 
-typedef				void (* t_action)(t_elem *, char **, int *);
+typedef	void		(*t_action)(t_elem *, char **, int *);
 
 int					ft_printf(const char *format, ...);
 void				display_percent(int n, t_dbllist *lst_str);
-int					recover_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
-int					percent(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
-int					split_arg(const char *format, t_dbllist *lst_arg, t_dbllist *lst_str, int *i);
+int					recover_arg(const char *format, t_dbllist *lst_arg, \
+					t_dbllist *lst_str, int *i);
+int					percent(const char *format, t_dbllist *lst_arg, \
+					t_dbllist *lst_str, int *i);
+int					split_arg(const char *format, t_dbllist *lst_arg, \
+					t_dbllist *lst_str, int *i);
 void				recover_param(va_list ap, t_dbllist *lst_arg);
+
 void				ini_sarg(t_arg *sarg);
 void				ini_sstr(t_str *sstr);
 void				ini_mask(t_mask *mask);
 void				ini_counters(t_counters *counters);
 void				reini_mod(t_arg *sarg);
+
 int					checks(const char *format, int *i, t_arg *sarg);
 int					check_spec(const char *format, int *i, t_arg *sarg);
 int					check_prec(const char *format, int *i, t_arg *sarg);
 int					check_mod(const char *format, int *i, t_arg *sarg);
 int					check_width(char *str, t_arg *sarg, int *i);
 int					check_flags(const char *format, int *i, t_arg *sarg);
+
 void				ft_putlststr(t_dbllist *lst_str, int *oct);
 int					stock_str(const char *format, int	i, t_dbllist *lst_str);
 void				cleanarg(t_dbllist *lst_arg);
-void				transformation(t_dbllist *lst_arg, t_dbllist *lst_str, int *cpt_null);
+void				transformation(t_dbllist *lst_arg, t_dbllist *lst_str, \
+					int *cpt_null);
+
 void				ft_string(t_elem *tmpa, char **str, int *cpt_null);
 void				ft_ptr(t_elem *tmpa, char **str, int *cpt_null);
 void				ft_dec(t_elem *tmpa, char **str, int *cpt_null);
@@ -155,10 +160,10 @@ void				prec_doux(t_elem *tmpa, char **str);
 void				prec_s(t_elem *tmpa, char **str);
 
 char				*ft_wchar_str(t_elem *tmpa);
-char				*mask_prec(wchar_t c,  t_elem *tmpa, size_t *oct);
+char				*mask_prec(wchar_t c, t_elem *tmpa, size_t *oct);
 char				*mask(wchar_t c);
 char				*fill_mask(wchar_t nb);
-char				*fill_maska(wchar_t  snb);
+char				*fill_maska(wchar_t snb);
 char				*fill_maskb(wchar_t nb);
 char				*fill_maskc(wchar_t nb);
 

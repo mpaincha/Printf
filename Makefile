@@ -30,15 +30,11 @@ all:
 
 $(NAME): $(O_FILES)
 	$(eval FT_O = $(shell find $(LIBFT) -type f -print | grep "\.o"))
-	@ar rcs $@ $(O_FILES) $(FT_O) && printf "\033[0;32m" || printf "\033[0;31m"
-	@printf "%-24s\033[1;30m<<--\033[0;0m\n" "$@"
+	@ar rcs $@ $(O_FILES) $(FT_O)
 
 $(O_DIR)%.o: $(C_DIR)%.c
 	@mkdir $(O_DIR) 2> /dev/null || echo "" > /dev/null
 	@gcc $(FLAGS) $(LINKS) -o $@ -c $< \
-	&& printf "\033[0;0m%-24s\033[1;30m-->>	\033[0;32m$@\033[0;0m\n" "$<" \
-	|| (printf "\033[0;0m%-24s\033[1;30m-->>	\033[0;31m$@\033[0;0m\n" "$<" \
-	&& exit 1)
 
 clean:
 	@rm $(O_FILES) 2> /dev/null || echo "" > /dev/null

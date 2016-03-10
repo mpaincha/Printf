@@ -23,13 +23,24 @@ static void		ptr_without_zero(t_elem *tmpa, char **str)
 		width(tmpa, str);
 }
 
-static void		ptr_with_zero(char **str)
+static void		ptr_with_zero(t_elem *tmpa, char **str)
 {
 	char	*tmp;
 
 	tmp = NULL;
-	tmp = ft_strjoinandfree("0x", *str, 2);
-	*str = ft_strdup(tmp);
+	if (SFLAGS.width != 0 && SFLAGS.width > SPREC.n)
+	{
+		width(tmpa, str);
+		tmp = ft_strsub(*str, 2, ft_strlen(*str) - 2);
+		ft_strdel(str);
+		tmp = ft_strjoinandfree("0x", tmp, 2);
+		*str = ft_strdup(tmp);
+	}
+	else
+	{
+		tmp = ft_strjoinandfree("0x", *str, 2);
+		*str = ft_strdup(tmp);
+	}
 	ft_strdel(&tmp);
 }
 
@@ -50,6 +61,6 @@ void			ft_ptr(t_elem *tmpa, char **str, int *cpt_null)
 	if (SFLAGS.zero == 0)
 		ptr_without_zero(tmpa, str);
 	else
-		ptr_with_zero(str);
+		ptr_with_zero(tmpa, str);
 	ft_strlower(str);
 }

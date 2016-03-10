@@ -10,62 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-# NAME = libftprintf.a
-# SRC = ft_printf.c \
-# ft_itoabase_imax.c \
-# ft_itoabase_uimax.c \
-# ft_lstdbldel_options.c \
-# checkingarg.c \
-# checkingmod.c \
-# checkingspecprec.c \
-# recovery.c \
-# cleaning.c \
-# display.c \
-# flags_minus.c \
-# flags_plus.c \
-# flags_space.c \
-# action_1.c \
-# action_2.c \
-# action_3.c \
-# action_4.c \
-# wchar.c \
-# wchar_prec.c \
-# fill_mask.c \
-# ini.c \
-# mod_1.c \
-# mod_2.c \
-# prec.c \
-# width.c \
-# diez.c \
-# ft_strlower.c
-# SRCO = $(SRC:.c=.o)
-# HEADERS = .
-# CC = gcc
-# CFLAGS = -Wall -Wextra -Werror -g
-
-# all: $(NAME)
-
-# %.o: %.c
-# 	$(CC) -o $@ -c $< $(CFLAGS)
-
-# $(NAME): $(SRCO)
-# 	make -C Libft/ all
-# 	make $(NAME)
-# 	# ar rc $@ $^ -L Libft/libft.a
-# 	# ranlib $@
-
-# clean:
-# 	make -C Libft/ clean
-# 	rm -f $(SRCO)
-
-# fclean: clean
-# 	make -C Libft/ fclean
-# 	rm -f $(NAME)
-
-# re: fclean all
-
-# .PHONY: re clean fclean all
-
 NAME = libftprintf.a
 
 H_DIR = includes/

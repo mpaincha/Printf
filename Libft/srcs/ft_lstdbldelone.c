@@ -20,6 +20,8 @@ void	ft_lstdbldelone(t_dbllist **list, t_elem *to_remove)
 	{
 		ft_lstdbldel(list);
 		*list = ft_lstdblnew();
+		(*list)->length = 0;
+		return ;
 	}
 	else if (to_remove->next == NULL)
 	{

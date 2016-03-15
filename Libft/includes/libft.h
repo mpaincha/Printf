@@ -35,7 +35,9 @@ typedef struct		s_dbllist
 	struct s_elem	*head;
 	struct s_elem	*tail;
 }					t_dbllist;
+
 int					ft_atoi(const char *str);
+intmax_t			ft_atoi_intmax(const char *str);
 void				*ft_bzero(void *s, size_t n);
 int					ft_count_words(char const *s, char c);
 size_t				ft_intlen(int n);
@@ -54,10 +56,21 @@ void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void(*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
+
 void				ft_lstdbladd(t_dbllist *list, void *content,
+					size_t cont_size);
+void				ft_lstdbladd_head(t_dbllist *list, void *content,
+					size_t cont_size);
+void				ft_lstdbladd_tail(t_dbllist *list, void *content,
 					size_t cont_size);
 void				ft_lstdbldel(t_dbllist **list);
 t_dbllist			*ft_lstdblnew(void);
+void				ft_putlsthead(t_dbllist *list);
+void				ft_putlsttail(t_dbllist *list);
+void				ft_lstdbldelone(t_dbllist **list, t_elem *to_remove);
+
+
+
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);

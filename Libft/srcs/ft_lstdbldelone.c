@@ -38,6 +38,7 @@ void	ft_lstdbldelone(t_dbllist **list, t_elem *to_remove)
 		to_remove->next->prev = to_remove->prev;
 		to_remove->prev->next = to_remove->next;
 	}
+	free(to_remove->content);
 	free(to_remove);
 	(*list)->length--;
 }

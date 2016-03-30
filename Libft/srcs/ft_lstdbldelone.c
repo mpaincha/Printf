@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_listdbldelone.c                                  :+:      :+:    :+:   */
+/*   ft_lstdbldelone.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaincha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,13 @@
 
 #include "../includes/libft.h"
 
-void	ft_lstdbldelone(t_dbllist **list, t_elem *to_remove)
+static	void	dbldelone_else(t_elem *to_remove)
+{
+	to_remove->next->prev = to_remove->prev;
+	to_remove->prev->next = to_remove->next;
+}
+
+void			ft_lstdbldelone(t_dbllist **list, t_elem *to_remove)
 {
 	if (to_remove == NULL)
 		return ;
@@ -34,10 +40,7 @@ void	ft_lstdbldelone(t_dbllist **list, t_elem *to_remove)
 		(*list)->head->prev = NULL;
 	}
 	else
-	{
-		to_remove->next->prev = to_remove->prev;
-		to_remove->prev->next = to_remove->next;
-	}
+		dbldelone_else(to_remove);
 	free(to_remove->content);
 	free(to_remove);
 	(*list)->length--;

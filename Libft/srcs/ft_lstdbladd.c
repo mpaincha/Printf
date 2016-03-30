@@ -12,7 +12,7 @@
 
 #include "../includes/libft.h"
 
-void	ft_lstdbladd(t_dbllist *list, void *content, size_t cont_size)
+void			ft_lstdbladd(t_dbllist *list, void *content, size_t cont_size)
 {
 	t_elem		*new_elem;
 
@@ -40,7 +40,20 @@ void	ft_lstdbladd(t_dbllist *list, void *content, size_t cont_size)
 	list->length++;
 }
 
-void	ft_lstdbladd_head(t_dbllist *list, void *content, size_t cont_size)
+static	void	addhead_tailnull(t_dbllist *list, t_elem *new_elem)
+{
+	new_elem->next = NULL;
+	list->tail = new_elem;
+}
+
+static	void	addtail_tailnull(t_dbllist *list, t_elem *new_elem)
+{
+	new_elem->prev = NULL;
+	list->head = new_elem;
+}
+
+void			ft_lstdbladd_head(t_dbllist *list, void *content,
+				size_t cont_size)
 {
 	t_elem		*new_elem;
 
@@ -58,10 +71,7 @@ void	ft_lstdbladd_head(t_dbllist *list, void *content, size_t cont_size)
 	new_elem->next = NULL;
 	new_elem->prev = NULL;
 	if (list->tail == NULL)
-	{
-		new_elem->next = NULL;
-		list->tail = new_elem;
-	}
+		addhead_tailnull(list, new_elem);
 	else
 	{
 		list->head->prev = new_elem;
@@ -71,7 +81,8 @@ void	ft_lstdbladd_head(t_dbllist *list, void *content, size_t cont_size)
 	list->length++;
 }
 
-void	ft_lstdbladd_tail(t_dbllist *list, void *content, size_t cont_size)
+void			ft_lstdbladd_tail(t_dbllist *list, void *content,
+				size_t cont_size)
 {
 	t_elem		*new_elem;
 
@@ -89,10 +100,7 @@ void	ft_lstdbladd_tail(t_dbllist *list, void *content, size_t cont_size)
 	new_elem->next = NULL;
 	new_elem->prev = NULL;
 	if (list->tail == NULL)
-	{
-		new_elem->prev = NULL;
-		list->head = new_elem;
-	}
+		addtail_tailnull(list, new_elem);
 	else
 	{
 		list->tail->next = new_elem;
